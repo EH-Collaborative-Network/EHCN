@@ -1,10 +1,10 @@
-import { MdCastForEducation } from "react-icons/md";
+import { MdFeed } from "react-icons/md";
 
 export default {
   name: 'newsItem',
   type: 'document',
   title: 'News Item',
-  icon: MdCastForEducation,
+  icon: MdFeed,
   fields: [
     {
       name: 'name',

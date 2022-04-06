@@ -17,12 +17,10 @@ export default {
        title: 'Slug (what should the link to this page look like)'
     },
     {
-        name: 'people',
-        type: 'reference',
-        description: 'EHCN Personnel associated with this course (if any)',
-        title: 'EHCN Personnel',
-        to: [{type: 'person'}]
-    },
+        name: 'mainLink',
+        title: 'Link to course website (if any)',
+        type: 'link'
+      },
     {
       name: 'description',
       title: 'Description',
@@ -35,9 +33,11 @@ export default {
         type: 'richText'
     },
     {
-      name: 'mainLink',
-      title: 'Link to course website (if any)',
-      type: 'link'
+        name: 'people',
+        type: 'array',
+        description: 'EHCN Personnel associated with this course (if any)',
+        title: 'EHCN Personnel',
+        of:[{type:'reference', title:'Associated EHCN Personnel', to: [{type: 'person'}]}]
     },
     {
         name: 'media',
@@ -47,52 +47,52 @@ export default {
     },
     {
         name: 'events',
-        type: 'reference',
+        type: 'array',
         description: 'Events associated with this course (if any)',
         title: 'Associated Events',
-        to: [{type: 'event'}]
+        of:[{type:'reference', title:'Associated Event', to: [{type: 'event'}]}]
     },
     {
         name: 'learningResources',
-        type: 'reference',
+        type: 'array',
         description: 'Learning Resources associated with this course (if any)',
         title: 'Associated Learning Resources',
-        to: [{type: 'learningResource'}]
+        of:[{type:'reference', title:'Associated Learning Resource', to: [{type: 'learningResource'}]}]
     },
     {
         name: 'newsItems',
-        type: 'reference',
+        type: 'array',
         description: 'News Items associated with this course (if any)',
         title: 'Associated News Items',
-        to: [{type: 'newsItem'}]
+        of:[{type:'reference', title:'Associated Learning Resource', to: [{type: 'learningResource'}]}]
     },
     {
         name: 'partners',
-        type: 'reference',
+        type: 'array',
         description: 'Partner Institutions associated with this course (if any)',
         title: 'Associated Partners',
-        to: [{type: 'partner'}]
+        of:[{type:'reference', title:'Associated Partner', to: [{type: 'partner'}]}]
     },
     {
         name: 'Projects',
-        type: 'reference',
+        type: 'array',
         description: 'Projects associated with this course (if any)',
         title: 'Associated Projects',
-        to: [{type: 'project'}]
+        of:[{type:'reference', title:'Associated Project', to: [{type: 'project'}]}]
     },
     {
         name: 'researchThreads',
-        type: 'reference',
+        type: 'array',
         description: 'Research Threads associated with this course (if any)',
         title: 'Associated Research Threads',
-        to: [{type: 'researchThread'}]
+        of:[{type:'reference', title:'Associated Research Thread', to: [{type: 'researchThread'}]}]
     },
     {
         name: 'workingGroups',
-        type: 'reference',
+        type: 'array',
         description: 'Working Groups associated with this course (if any)',
         title: 'Associated Working Groups',
-        to: [{type: 'workingGroup'}]
+        of:[{type:'reference', title:'Associated Working Group', to: [{type: 'workingGroup'}]}]
     },
     {
         name: 'keywords',

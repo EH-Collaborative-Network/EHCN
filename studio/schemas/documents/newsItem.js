@@ -22,13 +22,6 @@ export default {
        title: 'Slug (what should the link to this page look like)'
     },
     {
-        name: 'people',
-        type: 'reference',
-        description: 'EHCN Personnel associated with this news item (if any)',
-        title: 'EHCN Personnel',
-        to: [{type: 'person'}]
-    },
-    {
       name: 'body',
       title: 'Body text',
       type: 'richText'
@@ -46,53 +39,53 @@ export default {
         type: 'richText'
     },
     {
-        name: 'events',
-        type: 'reference',
-        description: 'Events associated with this news item (if any)',
-        title: 'Associated Events',
-        to: [{type: 'event'}]
+        name: 'people',
+        type: 'array',
+        description: 'EHCN Personnel associated with this news item (if any)',
+        title: 'EHCN Personnel',
+        of:[{type:'reference', title:'Associated EHCN Personnel', to: [{type: 'person'}]}]
     },
     {
-        name: 'learningResources',
-        type: 'reference',
-        description: 'Learning Resources associated with this news item (if any)',
-        title: 'Associated Learning Resources',
-        to: [{type: 'learningResource'}]
+        name: 'events',
+        type: 'array',
+        description: 'Events associated with this news item (if any)',
+        title: 'Associated Events',
+        of:[{type:'reference', title:'Associated Event', to: [{type: 'event'}]}]
     },
     {
         name: 'partners',
-        type: 'reference',
+        type: 'array',
         description: 'Partner Institutions associated with this news item (if any)',
         title: 'Associated Partners',
-        to: [{type: 'partner'}]
+        of:[{type:'reference', title:'Associated Partner', to: [{type: 'partner'}]}]
     },
     {
         name: 'Courses',
-        type: 'reference',
+        type: 'array',
         description: 'Courses associated with this news item (if any)',
         title: 'Associated Courses',
-        to: [{type: 'course'}] 
+        of:[{type:'reference', title:'Associated Course', to: [{type: 'course'}]}]
     },
     {
         name: 'Projects',
-        type: 'reference',
+        type: 'array',
         description: 'Projects associated with this news item (if any)',
         title: 'Associated Projects',
-        to: [{type: 'project'}]
+        of:[{type:'reference', title:'Associated Projects', to: [{type: 'project'}]}]
     },
     {
         name: 'researchThreads',
-        type: 'reference',
+        type: 'array',
         description: 'Research Threads associated with this news item (if any)',
         title: 'Associated Research Threads',
-        to: [{type: 'researchThread'}]
+        of:[{type:'reference', title:'Associated Research Thread', to: [{type: 'researchThread'}]}]
     },
     {
         name: 'workingGroups',
-        type: 'reference',
+        type: 'array',
         description: 'Working Groups associated with this news item (if any)',
         title: 'Associated Working Groups',
-        to: [{type: 'workingGroup'}]
+        of:[{type:'reference', title:'Associated Working Group', to: [{type: 'workingGroup'}]}]
     },
     {
         name: 'keywords',

@@ -20,6 +20,7 @@ import workingGroup from './documents/workingGroup'
 // Object types
 import richText from './objects/richText'
 import link from './objects/link'
+import applicationLink from './objects/applicationLink'
 import mediaItem from './objects/mediaItem'
 import embed from './objects/embed'
 
@@ -36,6 +37,7 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     richText,
     link,
+    applicationLink,
     mediaItem,
     embed,
     // The following are document types which will appear

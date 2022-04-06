@@ -27,7 +27,7 @@ export default {
         type: 'array',
         title: 'Application Links',
         description: 'Add application links',
-        of: [{type: 'link'}]
+        of: [{type: 'applicationLink'}]
       },
       {
         name: 'keywords',

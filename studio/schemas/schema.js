@@ -17,7 +17,9 @@ import project from './documents/project'
 import researchThread from './documents/researchThread'
 import workingGroup from './documents/workingGroup'
 
+
 // Object types
+import translation from './objects/translation'
 import richText from './objects/richText'
 import link from './objects/link'
 import applicationLink from './objects/applicationLink'
@@ -40,6 +42,7 @@ export default createSchema({
     applicationLink,
     mediaItem,
     embed,
+    translation,
     // The following are document types which will appear
     // in the studio.
     siteSettings,

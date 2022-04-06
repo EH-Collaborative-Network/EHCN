@@ -30,7 +30,13 @@ export default {
       name: 'bio',
       title: 'Bio',
       type: 'richText'
-    }
+    },
+    {
+      name: 'translatedBios',
+      title: 'Translated Bios',
+      type: 'array',
+      of: [{type: 'translation'}],
+  },
   ],
   preview: {
     select: {

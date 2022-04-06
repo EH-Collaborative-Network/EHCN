@@ -27,6 +27,12 @@ export default {
       type: 'richText'
     },
     {
+        name: 'translatedTexts',
+        title: 'Translated text',
+        type: 'array',
+        of: [{type: 'translation'}],
+    },
+    {
         name: 'excerpt',
         title: 'Excerpt',
         type: 'text',

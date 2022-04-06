@@ -22,11 +22,23 @@ export default {
       type: 'richText'
     },
     {
+        name: 'translatedDescriptions',
+        title: 'Translated Descriptions',
+        type: 'array',
+        of: [{type: 'translation'}],
+    },
+    {
         name: 'credits',
         title: 'additional credits',
         description: 'this is an optional space to put any other credits to people, organizations, etc.',
         type: 'richText'
       },
+      {
+        name: 'translatedCredits',
+        title: 'Translated Credits',
+        type: 'array',
+        of: [{type: 'translation'}],
+    },
     {
       name: 'mainLink',
       title: 'Link to Working Group website (if any)',
@@ -35,6 +47,7 @@ export default {
     {
         name: 'media',
         title: 'Image(s)',
+        options: {layout: 'grid'},
         type: 'array',
         of: [{type: 'mediaItem'}],
     },

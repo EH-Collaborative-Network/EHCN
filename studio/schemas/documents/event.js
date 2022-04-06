@@ -43,10 +43,22 @@ export default {
       type: 'richText'
     },
     {
+        name: 'translatedDescriptions',
+        title: 'Translated Descriptions',
+        type: 'array',
+        of: [{type: 'translation'}],
+    },
+    {
         name: 'credits',
         title: 'additional credits',
         description: 'this is an optional space to put any other credits to people, organizations, etc.',
         type: 'richText'
+    },
+    {
+        name: 'translatedCredits',
+        title: 'Translated Credits',
+        type: 'array',
+        of: [{type: 'translation'}],
     },
     {
         name: 'people',
@@ -59,6 +71,7 @@ export default {
         name: 'media',
         title: 'Image(s)',
         type: 'array',
+        options: {layout: 'grid'},
         of: [{type: 'mediaItem'}],
     },
     {

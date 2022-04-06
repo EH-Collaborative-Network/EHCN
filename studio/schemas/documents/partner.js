@@ -22,6 +22,12 @@ export default {
       type: 'richText'
     },
     {
+        name: 'translatedDescriptions',
+        title: 'Translated Descriptions',
+        type: 'array',
+        of: [{type: 'translation'}],
+    },
+    {
       name: 'mainLink',
       title: 'Link to Insitution website',
       type: 'link'
@@ -30,6 +36,7 @@ export default {
         name: 'media',
         title: 'Image(s)',
         type: 'array',
+        options: {layout: 'grid'},
         of: [{type: 'image'}],
     },
     {

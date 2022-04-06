@@ -23,6 +23,12 @@ export default {
       type: 'richText'
     },
     {
+        name: 'translatedDescriptions',
+        title: 'Translated Descriptions',
+        type: 'array',
+        of: [{type: 'translation'}],
+    },
+    {
         name: 'applications',
         type: 'array',
         title: 'Application Links',

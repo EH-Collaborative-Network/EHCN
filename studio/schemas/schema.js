@@ -5,17 +5,25 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Document types
-import category from './documents/category'
-import person from './documents/person'
-import sampleProject from './documents/sampleProject'
 import siteSettings from './documents/siteSettings'
+import person from './documents/person'
+import opportunity from './documents/opportunity'
+import course from './documents/course'
+import event from './documents/event'
+import learningResource from './documents/learningResource'
+import newsItem from './documents/newsItem'
+import partner from './documents/partner'
+import project from './documents/project'
+import researchThread from './documents/researchThread'
+import workingGroup from './documents/workingGroup'
 
 // Object types
-import bioPortableText from './objects/bioPortableText'
-import figure from './objects/figure'
-import projectMember from './objects/projectMember'
-import projectPortableText from './objects/projectPortableText'
-import simplePortableText from './objects/simplePortableText'
+import richText from './objects/richText'
+import link from './objects/link'
+import mediaItem from './objects/mediaItem'
+import embed from './objects/embed'
+
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,16 +34,22 @@ export default createSchema({
   types: schemaTypes.concat([
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
-    bioPortableText,
-    figure,
-    projectMember,
-    projectPortableText,
-    simplePortableText,
+    richText,
+    link,
+    mediaItem,
+    embed,
     // The following are document types which will appear
     // in the studio.
-    category,
+    siteSettings,
+    opportunity,
     person,
-    sampleProject,
-    siteSettings
+    course,
+    event,
+    learningResource,
+    newsItem,
+    partner,
+    project,
+    researchThread,
+    workingGroup
   ])
 })

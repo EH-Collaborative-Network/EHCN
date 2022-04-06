@@ -1,7 +1,7 @@
 export default {
-  name: 'bioPortableText',
+  name: 'richText',
   type: 'array',
-  title: 'Excerpt',
+  title: 'richText',
   of: [
     {
       title: 'Block',

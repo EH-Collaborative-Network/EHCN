@@ -3,7 +3,7 @@ import { MdPerson } from "react-icons/md";
 export default {
   name: 'person',
   type: 'document',
-  title: 'Person',
+  title: 'EHCN Personnel',
   icon: MdPerson,
   fields: [
     {
@@ -12,24 +12,24 @@ export default {
       title: 'Name'
     },
     {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      description: 'Some frontend will require a slug to be set to be able to show the person',
-      options: {
-        source: 'name',
-        maxLength: 96
-      }
+       name:'staff',
+       type: 'boolean',
+       title: 'Is this person Staff?'
     },
+    {
+        name:'steering',
+        type: 'boolean',
+        title: 'Is this person on the Steering Committee?'
+     },
     {
       name: 'image',
       title: 'Image',
-      type: 'figure'
+      type: 'image'
     },
     {
       name: 'bio',
       title: 'Bio',
-      type: 'bioPortableText'
+      type: 'richText'
     }
   ],
   preview: {

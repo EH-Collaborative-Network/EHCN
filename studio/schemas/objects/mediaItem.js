@@ -8,8 +8,12 @@ export default{
         collapsed: true,
     },
     fields: [
-        {name: 'image', type: 'image', title: 'Image', description: 'upload image if your media item is an image', options: { hotspot:true
-        }, fields: [
+        {name: 'imageFile', 
+         type: 'image', 
+         title: 'Image', 
+         description: 'upload image if your media item is an image', 
+         options: { hotspot:true}, 
+         fields: [
             {
               name: 'caption',
               type: 'string',
@@ -19,7 +23,12 @@ export default{
               }
             },
         ]},
-        {name: 'pdf', type: 'file', title: 'PDF', description: 'upload pdf if your media item is a pdf', options: {}, fields: [
+        {name: 'pdf', 
+         type: 'file', 
+         title: 'PDF', 
+         description: 'upload pdf if your media item is a pdf', 
+         options: {}, 
+         fields: [
             {
               name: 'caption',
               type: 'string',
@@ -29,9 +38,14 @@ export default{
               }
             },
         ]},
-        {name: 'embed', type: 'embed', title: 'Embed', description: 'paste embed code if your media item is from soundcloud, vimeo, youtube, etc. or if your media item is an iframe', options: {
+        {name: 'embed', 
+         type: 'embed', 
+         title: 'Embed', 
+         description: 'paste embed code if your media item is from soundcloud, vimeo, youtube, etc. or if your media item is an iframe', 
+         options: {
             collapsible: true,
-        }}
+          }
+        }
       ],
       preview: {
         select: {

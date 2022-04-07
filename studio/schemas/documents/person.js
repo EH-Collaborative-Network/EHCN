@@ -22,7 +22,7 @@ export default {
         title: 'Is this person on the Steering Committee?'
      },
     {
-      name: 'profilePicture',
+      name: 'image',
       title: 'Image',
       type: 'image'
     },

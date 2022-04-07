@@ -8,36 +8,16 @@ export default{
         collapsed: true,
     },
     fields: [
-        {name: 'imageFile', 
-         type: 'image', 
+        {name: 'image', 
+         type: 'figure', 
          title: 'Image', 
          description: 'upload image if your media item is an image', 
-         options: { hotspot:true}, 
-         fields: [
-            {
-              name: 'caption',
-              type: 'string',
-              title: 'Caption',
-              options: {
-                isHighlighted: true // <-- make this field easily accessible
-              }
-            },
-        ]},
+         },
         {name: 'pdf', 
-         type: 'file', 
+         type: 'pdf', 
          title: 'PDF', 
          description: 'upload pdf if your media item is a pdf', 
-         options: {}, 
-         fields: [
-            {
-              name: 'caption',
-              type: 'string',
-              title: 'Caption',
-              options: {
-                isHighlighted: true // <-- make this field easily accessible
-              }
-            },
-        ]},
+         },
         {name: 'embed', 
          type: 'embed', 
          title: 'Embed', 

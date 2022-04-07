@@ -18,8 +18,10 @@ import workingGroup from './documents/workingGroup'
 // Object types
 import applicationLink from './objects/applicationLink'
 import embed from './objects/embed'
+import figure from './objects/figure'
 import link from './objects/link'
 import mediaItem from './objects/mediaItem'
+import pdf from './objects/pdf'
 import richText from './objects/richText'
 import translation from './objects/translation'
 // Then we give our schema to the builder and provide the result to Sanity
@@ -33,8 +35,10 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     applicationLink,
     embed,
+    figure,
     link,
     mediaItem,
+    pdf,
     richText,
     translation,
     // The following are document types which will appear

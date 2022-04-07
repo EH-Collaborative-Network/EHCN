@@ -5,6 +5,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Document types
 import course from './documents/course'
 import event from './documents/event'
+import language from './documents/language'
 import learningResource from './documents/learningResource'
 import newsItem from './documents/newsItem'
 import opportunity from './documents/opportunity'
@@ -40,6 +41,7 @@ export default createSchema({
     // in the studio.
     course,
     event,
+    language,
     learningResource,
     newsItem,
     opportunity,

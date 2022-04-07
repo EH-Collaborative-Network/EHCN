@@ -8,7 +8,7 @@ export default{
         collapsed: true,
     },
     fields: [
-        {name: 'image', type: 'image', title: 'Image', description: 'upload image if your media item is an image', options: {
+        {name: 'image', type: 'image', title: 'Image', description: 'upload image if your media item is an image', options: { hotspot:true
         }, fields: [
             {
               name: 'caption',

@@ -21,6 +21,13 @@ export default {
       description: 'Describe your portfolio for search engines and social media.'
     },
     {
+      name: 'languages',
+      type: 'array',
+      description: 'Languages with translations available globally accross the website',
+      title: 'Languages',
+      of:[{type:'reference', title:'Language', to: [{type: 'language'}]}]
+    },
+    {
       name: 'keywords',
       type: 'array',
       title: 'Keywords',

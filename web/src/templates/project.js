@@ -32,7 +32,7 @@ export const query = graphql`
         }
         alt
       }
-      title
+      name
       slug {
         current
       }

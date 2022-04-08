@@ -19,7 +19,15 @@ export default {
     {
        name:'slug',
        type: 'slug',
-       title: 'Slug (what should the link to this page look like)'
+       title: 'Slug (what should the link to this page look like)',
+       options: {
+        source: 'title',
+        maxLength: 200, // will be ignored if slugify is set
+        slugify: input => input
+                             .toLowerCase()
+                             .replace(/\s+/g, '-')
+                             .slice(0, 200)
+      }
     },
     {
         name:'studentLed',

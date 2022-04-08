@@ -1,10 +1,10 @@
-import { MdPages } from "react-icons/md";
+import { MdArticle } from "react-icons/md";
 
 export default {
   name: 'page',
   type: 'document',
   title: 'Page',
-  icon: MdPages,
+  icon: MdArticle,
   fields: [
     {
       name: 'name',

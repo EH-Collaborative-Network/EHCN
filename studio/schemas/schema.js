@@ -15,6 +15,7 @@ import project from './documents/project'
 import researchThread from './documents/researchThread'
 import siteSettings from './documents/siteSettings'
 import workingGroup from './documents/workingGroup'
+import sampleProject from './documents/sampleProject'
 // Object types
 import applicationLink from './objects/applicationLink'
 import embed from './objects/embed'
@@ -48,6 +49,7 @@ export default createSchema({
     language,
     learningResource,
     newsItem,
+    sampleProject,
     opportunity,
     person,
     partner,

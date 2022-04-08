@@ -140,6 +140,82 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'studentLed',
+      type: 'string',
+      title: 'Student-Led'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'facultyLed',
+      type: 'string',
+      title: 'faculty-Led'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'selectCat',
+      type: 'string',
+      title: 'Select a category'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'networkWide',
+      type: 'string',
+      title: 'Network-Wide'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'institutionSpecific',
+      type: 'string',
+      title: 'Institution-Specific'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'results',
+      type: 'string',
+      title: 'Results'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'eventsByLocation',
+      type: 'string',
+      title: 'Display Events Happening In',
+      description: '(location)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'eventsByTopic',
+      type: 'string',
+      title: 'Display Events Happening About',
+      description: '(topic)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'eventsByTimezone',
+      type: 'string',
+      title: 'Display Events in',
+      description: '(timezone)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'seeMore',
+      type: 'string',
+      title: 'See More',
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'back',
+      type: 'string',
+      title: 'Back',
+      description: '(as in back to previous page)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedContent',
+      type: 'string',
+      title: 'Related Content'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'ehcnSupported',
       type: 'string',
       title: 'EHCN is supported by the <a href="https://opensocietyuniversitynetwork.org/">Open Society University Network</a>.'

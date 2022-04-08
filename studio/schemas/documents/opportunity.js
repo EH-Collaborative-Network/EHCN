@@ -9,7 +9,8 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Title'
+      title: 'Title',
+      validation: Rule => Rule.required().error('title cannot be left blank')
     },
     {
        name:'institution',

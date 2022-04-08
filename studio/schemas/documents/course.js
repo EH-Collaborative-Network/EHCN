@@ -9,7 +9,8 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Title'
+      title: 'Title',
+      validation: Rule => Rule.required().error('title cannot be left blank')
     },
     {
       name: 'mainImage',
@@ -19,7 +20,16 @@ export default {
     {
        name:'slug',
        type: 'slug',
-       title: 'Slug (what should the link to this page look like)'
+       title: 'Slug (what should the link to this page look like)',
+       validation: Rule => Rule.required().error('slug cannot be left blank'),
+       options: {
+        source: 'name',
+        maxLength: 200, // will be ignored if slugify is set
+        slugify: input => input
+                             .toLowerCase()
+                             .replace(/\s+/g, '-')
+                             .slice(0, 200)
+      }
     },
     {
         name: 'mainLink',

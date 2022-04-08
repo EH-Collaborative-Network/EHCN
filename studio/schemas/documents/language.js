@@ -9,7 +9,8 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Title'
+      title: 'Title',
+      validation: Rule => Rule.required().error('title cannot be left blank')
     },
     {
         description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',

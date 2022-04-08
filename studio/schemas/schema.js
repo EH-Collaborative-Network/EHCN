@@ -9,6 +9,7 @@ import language from './documents/language'
 import learningResource from './documents/learningResource'
 import newsItem from './documents/newsItem'
 import opportunity from './documents/opportunity'
+import page from './documents/page'
 import person from './documents/person'
 import partner from './documents/partner'
 import project from './documents/project'
@@ -50,6 +51,7 @@ export default createSchema({
     learningResource,
     newsItem,
     opportunity,
+    page,
     person,
     partner,
     project,

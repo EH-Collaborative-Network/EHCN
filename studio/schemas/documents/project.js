@@ -21,7 +21,7 @@ export default {
        type: 'slug',
        title: 'Slug (what should the link to this page look like)',
        options: {
-        source: 'title',
+        source: 'name',
         maxLength: 200, // will be ignored if slugify is set
         slugify: input => input
                              .toLowerCase()

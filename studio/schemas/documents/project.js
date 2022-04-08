@@ -9,7 +9,8 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Title'
+      title: 'Title',
+      validation: Rule => Rule.required().min(1)
     },
     {
       name: 'mainImage',
@@ -20,6 +21,7 @@ export default {
        name:'slug',
        type: 'slug',
        title: 'Slug (what should the link to this page look like)',
+       validation: Rule => Rule.required().min(1),
        options: {
         source: 'name',
         maxLength: 200, // will be ignored if slugify is set

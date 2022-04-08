@@ -13,7 +13,6 @@ async function createProjectPages (graphql, actions) {
         edges {
           node {
             id
-            publishedAt
             slug {
               current
             }

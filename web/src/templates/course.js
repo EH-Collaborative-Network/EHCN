@@ -116,7 +116,7 @@ export const query = graphql`
           current
         }
       }
-      learningResources{
+      learningResources {
         id
         name
         slug{

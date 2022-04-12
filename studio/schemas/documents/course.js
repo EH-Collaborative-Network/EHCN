@@ -92,7 +92,7 @@ export default {
         type: 'array',
         description: 'News Items associated with this course (if any)',
         title: 'Associated News Items',
-        of:[{type:'reference', title:'Associated Learning Resource', to: [{type: 'learningResource'}]}]
+        of:[{type:'reference', title:'Associated News Item', to: [{type: 'newsItem'}]}]
     },
     {
         name: 'partners',

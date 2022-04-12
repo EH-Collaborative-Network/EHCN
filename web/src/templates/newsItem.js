@@ -54,13 +54,6 @@ export const query = graphql`
           current
         }
       }
-      learningResources{
-        id
-        name
-        slug{
-          current
-        }
-      }
       partners{
         id
         name

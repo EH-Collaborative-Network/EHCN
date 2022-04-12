@@ -4,8 +4,8 @@ import { cn, buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 import BlockContent from "./block-content";
 
-import * as styles from "./project-preview.module.css";
-import { responsiveTitle3 } from "./typography.module.css";
+// import * as styles from "./css/project-preview.module.css";
+// import { responsiveTitle3 } from "./css/typography.module.css";
 
 function ProjectPreview(props) {
   return (

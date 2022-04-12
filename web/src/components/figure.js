@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { getGatsbyImageData } from "gatsby-source-sanity";
 import clientConfig from "../../client-config";
 
-import * as styles from "./figure.module.css";
+// import * as styles from "./css/figure.module.css";
 
 export function Figure({ node }) {
   if (!node.asset) {

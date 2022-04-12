@@ -47,7 +47,7 @@ export default {
         title: 'Image(s)',
         type: 'array',
         options: {layout: 'grid'},
-        of: [{type: 'image'}],
+        of: [{type: 'mediaItem'}],
     },
     {
         name: 'people',

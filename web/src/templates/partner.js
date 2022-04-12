@@ -7,38 +7,16 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query ProjectTemplateQuery($id: String!) {
-    sampleProject: sanityProject(id: { eq: $id }) {
+  query PartnerTemplateQuery($id: String!) {
+    samplePartner: sanityPartner(id: { eq: $id }) {
+      id
       id
       name
       mainLink{
         url
         text
       }
-      mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
-        asset {
-          _id
-        }
-        altText
-      }
       _rawDescription
-      _rawCredits
       media{
         embed{
           embed
@@ -82,22 +60,22 @@ export const query = graphql`
   }
 `;
 
-const ProjectTemplate = props => {
+const PartnerTemplate = props => {
   const { data, errors } = props;
-  const project = data && data.sampleProject;
+  const partner = data && data.samplePartner;
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || "Untitled"} />}
+      {partner && <SEO title={partner.title || "Untitled"} />}
 
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {project && <Project {...project} />}
+      {partner && <Project {...partner} />}
     </Layout>
   );
 };
 
-export default ProjectTemplate;
+export default PartnerTemplate;

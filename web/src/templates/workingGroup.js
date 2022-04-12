@@ -7,8 +7,8 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query ProjectTemplateQuery($id: String!) {
-    sampleProject: sanityProject(id: { eq: $id }) {
+  query WorkingGroupTemplateQuery($id: String!) {
+    sampleWorkingGroup: sanityWorkingGroup(id: { eq: $id }) {
       id
       name
       mainLink{
@@ -82,22 +82,22 @@ export const query = graphql`
   }
 `;
 
-const ProjectTemplate = props => {
+const WorkingGroupTemplate = props => {
   const { data, errors } = props;
-  const project = data && data.sampleProject;
+  const workingGroup = data && data.sampleWorkingGroup;
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || "Untitled"} />}
+      {workingGroup && <SEO title={workingGroup.title || "Untitled"} />}
 
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {project && <Project {...project} />}
+      {workingGroup && <Project {...workingGroup} />}
     </Layout>
   );
 };
 
-export default ProjectTemplate;
+export default WorkingGroupTemplate;

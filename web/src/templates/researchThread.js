@@ -7,8 +7,8 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query ProjectTemplateQuery($id: String!) {
-    sampleProject: sanityProject(id: { eq: $id }) {
+  query ResearchThreadTemplateQuery($id: String!) {
+    sampleResearchThread: sanityResearchThread(id: { eq: $id }) {
       id
       name
       mainLink{
@@ -82,22 +82,22 @@ export const query = graphql`
   }
 `;
 
-const ProjectTemplate = props => {
+const ResearchThreadTemplate = props => {
   const { data, errors } = props;
-  const project = data && data.sampleProject;
+  const sampleResearchThread = data && data.sampleResearchThread;
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || "Untitled"} />}
+      {sampleResearchThread && <SEO title={sampleResearchThread.title || "Untitled"} />}
 
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {project && <Project {...project} />}
+      {sampleResearchThread && <Project {...sampleResearchThread} />}
     </Layout>
   );
 };
 
-export default ProjectTemplate;
+export default ResearchThreadTemplate;

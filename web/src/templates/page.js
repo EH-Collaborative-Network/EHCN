@@ -14,7 +14,6 @@ export const query = graphql`
       name
       _rawBody
       translatedTexts{
-        id
         _rawText
         language{
           id

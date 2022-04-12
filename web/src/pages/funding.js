@@ -36,7 +36,6 @@ export const query = graphql`
                 id
                 _rawDescription
                 translatedDescriptions{
-                  id
                   _rawText
                   language{
                     id
@@ -52,7 +51,6 @@ export const query = graphql`
           id
           _rawBody
           translatedTexts{
-            id
             _rawText
             language{
               id

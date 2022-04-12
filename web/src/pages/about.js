@@ -25,7 +25,6 @@ export const query = graphql`
                 name
                 _rawBio
                 translatedBios{
-                  id
                   _rawText
                   language{
                     id
@@ -63,7 +62,6 @@ export const query = graphql`
           id
           _rawBody
           translatedTexts{
-            id
             _rawText
             language{
               id

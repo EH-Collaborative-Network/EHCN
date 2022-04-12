@@ -8,6 +8,35 @@ import Layout from "../containers/layout";
 
 export const query = graphql`
   query PartnerTemplateQuery($id: String!) {
+    opps: allSanityOpportunity(
+      filter: {applications: {elemMatch: {partner: {_id: {eq: $id}}}}}
+    ){
+      edges{
+          node {
+              applications {
+                text
+                url
+                partner {
+                  name
+                  slug {
+                    current
+                  }
+                }
+              }
+              institution
+              title
+              id
+              _rawDescription
+              translatedDescriptions{
+                _rawText
+                language{
+                  id
+                  name
+                }
+              }
+            }
+      }
+  }
     samplePartner: sanityPartner(id: { eq: $id }) {
       id
       id
@@ -18,7 +47,6 @@ export const query = graphql`
       }
       _rawDescription
       translatedDescriptions{
-        id
         _rawText
         language{
           id
@@ -69,7 +97,6 @@ export const query = graphql`
         name
         _rawBio
         translatedBios{
-          id
           _rawText
           language{
             id

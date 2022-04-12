@@ -42,7 +42,6 @@ export const query = graphql`
       }
       _rawDescription
       translatedDescriptions{
-        id
         _rawText
         language{
           id
@@ -50,7 +49,6 @@ export const query = graphql`
         }
       }
       translatedCredits{
-        id
         _rawText
         language{
           id
@@ -103,7 +101,6 @@ export const query = graphql`
         name
         _rawBio
         translatedBios{
-          id
           _rawText
           language{
             id

@@ -12,13 +12,33 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query IndexPageQuery {
+  query FundingPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
       keywords
     }
-    hp: allSanityPage(filter: {name: {eq: "Homepage"}}) {
+    opps: allSanityOpportunity{
+        edges{
+            node {
+                applications {
+                  text
+                  url
+                  partner {
+                    name
+                    slug {
+                      current
+                    }
+                  }
+                }
+                institution
+                title
+                id
+                _rawDescription
+              }
+        }
+    }
+    fp: allSanityPage(filter: {name: {eq: "Funding"}}) {
       edges {
         node {
           id
@@ -40,7 +60,7 @@ export const query = graphql`
   }
 `;
 
-const IndexPage = props => {
+const FundingPage = props => {
   const { data, errors } = props;
 
   if (errors) {
@@ -52,7 +72,7 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site;
-  const hp = (data || {}).hp.edges[0]?.node?._rawBody;
+  const fp = (data || {}).fp.edges[0]?.node?._rawBody;
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
@@ -73,9 +93,9 @@ const IndexPage = props => {
           <h1 hidden>Welcome to {site.title}</h1>
         </Container>
       </Layout>
-      <BlockContent blocks={hp}/>
+      <BlockContent blocks={fp}/>
     </>
   );
 };
 
-export default IndexPage;
+export default FundingPage;

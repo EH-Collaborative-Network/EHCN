@@ -12,13 +12,44 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query IndexPageQuery {
+  query AboutPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
       keywords
     }
-    hp: allSanityPage(filter: {name: {eq: "Homepage"}}) {
+    people: allSanityPerson{
+        edges{
+            node{
+                id
+                name
+                _rawBio
+                image {
+                    crop {
+                        _key
+                        _type
+                        top
+                        bottom
+                        left
+                        right
+                    }
+                    hotspot {
+                        _key
+                        _type
+                        x
+                        y
+                        height
+                        width
+                    }
+                    asset {
+                        _id
+                    }
+                    altText
+                }
+            }
+        }
+    }
+    ap: allSanityPage(filter: {name: {eq: "About"}}) {
       edges {
         node {
           id
@@ -40,7 +71,7 @@ export const query = graphql`
   }
 `;
 
-const IndexPage = props => {
+const AboutPage = props => {
   const { data, errors } = props;
 
   if (errors) {
@@ -52,7 +83,7 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site;
-  const hp = (data || {}).hp.edges[0]?.node?._rawBody;
+  const ap = (data || {}).ap.edges[0]?.node?._rawBody;
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
@@ -73,9 +104,9 @@ const IndexPage = props => {
           <h1 hidden>Welcome to {site.title}</h1>
         </Container>
       </Layout>
-      <BlockContent blocks={hp}/>
+      <BlockContent blocks={ap}/>
     </>
   );
 };
 
-export default IndexPage;
+export default AboutPage;

@@ -12,6 +12,14 @@ export const query = graphql`
       id
       name
       _rawBody
+      translatedTexts{
+        id
+        _rawText
+        language{
+          id
+          name
+        }
+      }
       excerpt
       _rawCredits
       slug {

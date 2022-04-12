@@ -65,6 +65,12 @@ export default {
         type: 'richText'
     },
     {
+      name: 'translatedCredits',
+      title: 'Translated Credits',
+      type: 'array',
+      of: [{type: 'translation'}],
+  },
+    {
         name: 'people',
         type: 'array',
         description: 'EHCN Personnel associated with this news item (if any)',

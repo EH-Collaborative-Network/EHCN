@@ -1,3 +1,5 @@
+import { MdInsertLink } from "react-icons/md";
+
 export default {
   name: 'richText',
   type: 'array',
@@ -22,11 +24,38 @@ export default {
             name: 'link',
             type: 'object',
             title: 'URL',
+            blockEditor: {
+              icon: MdInsertLink
+            },
             fields: [
               {
                 title: 'URL',
                 name: 'href',
                 type: 'url'
+              }
+            ]
+          },
+          {
+            name: 'internalLink',
+            type: 'object',
+            title: 'Internal link',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [
+                  { type: 'page' },
+                  { type: 'project' },
+                  { type: 'researchThread' },
+                  { type: 'newsItem' },
+                  { type: 'workingGroup' },
+                  { type: 'course' },
+                  { type: 'event' },
+                  { type: 'learningResource' },
+                  { type: 'partner' }
+                  // other types you may want to link to
+                ]
               }
             ]
           }

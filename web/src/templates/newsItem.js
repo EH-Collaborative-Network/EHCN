@@ -22,6 +22,14 @@ export const query = graphql`
       }
       excerpt
       _rawCredits
+      translatedCredits{
+        id
+        _rawText
+        language{
+          id
+          name
+        }
+      }
       slug {
         current
       }
@@ -29,6 +37,14 @@ export const query = graphql`
         id
         name
         _rawBio
+        translatedBios{
+          id
+          _rawText
+          language{
+            id
+            name
+          }
+        }
         image {
           crop {
             _key

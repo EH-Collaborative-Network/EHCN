@@ -35,6 +35,14 @@ export const query = graphql`
                 title
                 id
                 _rawDescription
+                translatedDescriptions{
+                  id
+                  _rawText
+                  language{
+                    id
+                    name
+                  }
+                }
               }
         }
     }
@@ -43,6 +51,14 @@ export const query = graphql`
         node {
           id
           _rawBody
+          translatedTexts{
+            id
+            _rawText
+            language{
+              id
+              name
+            }
+          }
         }
       }
     }

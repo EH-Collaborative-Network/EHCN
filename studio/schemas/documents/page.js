@@ -33,6 +33,12 @@ export default {
         type: 'richText'
     },
     {
+        name: 'translatedTexts',
+        title: 'Translated Text',
+        type: 'array',
+        of: [{type: 'translation'}],
+    },
+    {
         name: 'keywords',
         type: 'array',
         title: 'Keywords',

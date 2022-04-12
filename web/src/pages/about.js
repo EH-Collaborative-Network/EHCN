@@ -24,6 +24,14 @@ export const query = graphql`
                 id
                 name
                 _rawBio
+                translatedBios{
+                  id
+                  _rawText
+                  language{
+                    id
+                    name
+                  }
+                }
                 image {
                     crop {
                         _key
@@ -54,6 +62,14 @@ export const query = graphql`
         node {
           id
           _rawBody
+          translatedTexts{
+            id
+            _rawText
+            language{
+              id
+              name
+            }
+          }
         }
       }
     }

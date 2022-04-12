@@ -38,6 +38,22 @@ export const query = graphql`
         altText
       }
       _rawDescription
+      translatedDescriptions{
+        id
+        _rawText
+        language{
+          id
+          name
+        }
+      }
+      translatedCredits{
+        id
+        _rawText
+        language{
+          id
+          name
+        }
+      }
       _rawCredits
       media{
         embed{

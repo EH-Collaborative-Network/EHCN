@@ -13,6 +13,11 @@ export default {
       validation: Rule => Rule.required().error('title cannot be left blank')
     },
     {
+      name:'date',
+      type: 'datetime',
+      title: 'Publish Date & Time (for sorting purposes)'
+    },
+    {
       name: 'mainImage',
       title: 'Thumbnail Image',
       type: 'figure',
@@ -81,14 +86,14 @@ export default {
         of:[{type:'reference', title:'Associated Partner', to: [{type: 'partner'}]}]
     },
     {
-        name: 'Courses',
+        name: 'courses',
         type: 'array',
         description: 'Courses associated with this news item (if any)',
         title: 'Associated Courses',
         of:[{type:'reference', title:'Associated Course', to: [{type: 'course'}]}]
     },
     {
-        name: 'Projects',
+        name: 'projects',
         type: 'array',
         description: 'Projects associated with this news item (if any)',
         title: 'Associated Projects',

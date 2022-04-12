@@ -108,7 +108,7 @@ export default {
         of:[{type:'reference', title:'Associated Partner', to: [{type: 'partner'}]}]
     },
     {
-        name: 'Courses',
+        name: 'courses',
         type: 'array',
         description: 'Courses associated with this project (if any)',
         title: 'Associated Courses',

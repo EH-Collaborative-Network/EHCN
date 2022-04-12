@@ -78,9 +78,88 @@ export const query = graphql`
       slug {
         current
       }
+
       people{
         id
+        name
+        _rawBio
+        image {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+          }
+          altText
+        }
       }
+      events {
+        id
+        name
+        startDate
+        endDate
+        _rawDisplayDate
+        slug{
+          current
+        }
+      }
+      learningResources{
+        id
+        name
+        slug{
+          current
+        }
+      }
+      newsItems{
+        id
+        date
+        name
+        slug{
+          current
+        }
+      }
+      partners{
+        id
+        name
+        slug{
+          current
+        }
+      }
+      projects{
+        id
+        name
+        slug{
+          current
+        }
+      }
+      researchThreads{
+        id
+        name
+        slug{
+          current
+        }
+      }
+      workingGroups{
+        id
+        name
+        slug{
+          current
+        }
+      }
+
     }
   }
 `;

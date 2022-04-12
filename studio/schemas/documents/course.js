@@ -102,7 +102,7 @@ export default {
         of:[{type:'reference', title:'Associated Partner', to: [{type: 'partner'}]}]
     },
     {
-        name: 'Projects',
+        name: 'projects',
         type: 'array',
         description: 'Projects associated with this course (if any)',
         title: 'Associated Projects',

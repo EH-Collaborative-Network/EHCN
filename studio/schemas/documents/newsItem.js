@@ -43,12 +43,13 @@ export default {
     },
     {
       name: 'body',
-      title: 'Body text',
+      title: 'Body text (English)',
       type: 'richText'
     },
     {
         name: 'translatedTexts',
         title: 'Translated text',
+        description: 'select add item to add text in another language',
         type: 'array',
         of: [{type: 'translation'}],
     },

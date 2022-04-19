@@ -29,12 +29,13 @@ export default {
     },
     {
       name: 'bio',
-      title: 'Bio',
+      title: 'English Bio',
       type: 'richText'
     },
     {
       name: 'translatedBios',
       title: 'Translated Bios',
+      description: 'select add item to add a bio in another language',
       type: 'array',
       of: [{type: 'translation'}],
   },

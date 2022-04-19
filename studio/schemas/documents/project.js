@@ -44,12 +44,13 @@ export default {
       },
     {
       name: 'description',
-      title: 'Description',
+      title: 'English Description',
       type: 'richText'
     },
     {
         name: 'translatedDescriptions',
         title: 'Translated Descriptions',
+        description: 'select add item to add a description in another language',
         type: 'array',
         of: [{type: 'translation'}],
     },

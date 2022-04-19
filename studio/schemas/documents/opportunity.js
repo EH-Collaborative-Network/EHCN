@@ -20,7 +20,8 @@ export default {
     },
     {
       name: 'description',
-      title: 'Description',
+      title: 'English Description',
+      description: 'select add item to add a description in another language',
       type: 'richText'
     },
     {

@@ -29,12 +29,13 @@ export default {
     {
         name: 'body',
         title: 'Text',
-        description: 'text to go on page',
+        description: 'text to go on page (English)',
         type: 'richText'
     },
     {
         name: 'translatedTexts',
         title: 'Translated Text',
+        description: 'select add item to add text in another language',
         type: 'array',
         of: [{type: 'translation'}],
     },

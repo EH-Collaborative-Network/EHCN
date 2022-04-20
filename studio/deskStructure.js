@@ -55,4 +55,4 @@ export default () =>
       // defined in schema.js. We filter out those that we have
       // defined the structure above
       ...S.documentTypeListItems().filter(hiddenDocTypes)
-    ])
+    ].reverse())

@@ -42,30 +42,21 @@ export default {
         title: 'Link to project website (if any)',
         type: 'link'
       },
-    {
-      name: 'description',
-      title: 'English Description',
-      type: 'richText'
-    },
-    {
-        name: 'translatedDescriptions',
-        title: 'Translated Descriptions',
-        description: 'select add item to add a description in another language',
+      {
+        name: 'descriptions',
+        title: 'Description',
         type: 'array',
+        description:"select add item to add a description in any language (including English)",
         of: [{type: 'translation'}],
     },
     {
         name: 'credits',
-        title: 'additional credits',
-        description: 'this is an optional space to put any other credits to people, organizations, etc.',
-        type: 'richText'
-    },
-    {
-        name: 'translatedCredits',
-        title: 'Translated Credits',
+        title: 'Credits',
         type: 'array',
+        description:"select add item to add credits in any language (including English)",   
         of: [{type: 'translation'}],
     },
+   
     {
         name: 'people',
         type: 'array',

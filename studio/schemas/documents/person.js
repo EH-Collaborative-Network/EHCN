@@ -28,17 +28,13 @@ export default {
       type: 'figure'
     },
     {
-      name: 'bio',
-      title: 'English Bio',
-      type: 'richText'
-    },
-    {
-      name: 'translatedBios',
-      title: 'Translated Bios',
-      description: 'select add item to add a bio in another language',
+      name: 'bios',
+      title: 'Bios',
       type: 'array',
+      description:"select add item to add a bio in any language (including English)",
       of: [{type: 'translation'}],
-  },
+  }
+    
   ],
   preview: {
     select: {

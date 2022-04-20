@@ -16,7 +16,7 @@ import project from './documents/project'
 import researchThread from './documents/researchThread'
 import siteSettings from './documents/siteSettings'
 import workingGroup from './documents/workingGroup'
-
+import timeZone from './documents/timeZone'
 // Object types
 import applicationLink from './objects/applicationLink'
 import embed from './objects/embed'
@@ -26,6 +26,7 @@ import mediaItem from './objects/mediaItem'
 import pdf from './objects/pdf'
 import richText from './objects/richText'
 import translation from './objects/translation'
+import dateObj from './objects/dateObj'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -43,6 +44,7 @@ export default createSchema({
     pdf,
     richText,
     translation,
+    dateObj,
     // The following are document types which will appear
     // in the studio.
     course,
@@ -57,6 +59,8 @@ export default createSchema({
     project,
     researchThread,
     siteSettings,
+    timeZone,
     workingGroup
+
   ])
 })

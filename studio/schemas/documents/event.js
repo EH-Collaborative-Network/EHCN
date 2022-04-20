@@ -33,18 +33,22 @@ export default {
     },
     {
         name:'startDate',
-        type: 'datetime',
-        title: 'Start Date & Time (for sorting purposes)'
+        type: 'date',
+        title: 'Start Date in EST (for sorting purposes)',
+        description: "this is for ordering events on the calendar, it won't be displayed on the website"
      },
      {
         name:'endDate',
-        type: 'datetime',
-        title: 'End Date & Time (for sorting purposes)'
+        type: 'date',
+        title: 'End Date in EST (for sorting purposes)',
+        description: "this is for ordering events on the calendar, it won't be displayed on the website"
      },
      {
          name: 'displayDate',
          type: 'richText',
          title: 'Display Date & Time',
+         type: 'array',
+         of: [{type: 'dateObj'}],
          description: 'this will show up on the event page'
      },
      {
@@ -52,28 +56,18 @@ export default {
         title: 'Link to event website (if any)',
         type: 'link'
       },
-    {
-      name: 'description',
-      title: 'English Description',
-      type: 'richText'
-    },
-    {
-        name: 'translatedDescriptions',
-        title: 'Translated Descriptions',
-        description: 'select add item to add a description in another language',
+      {
+        name: 'descriptions',
+        title: 'Description',
         type: 'array',
+        description:"select add item to add a description in any language (including English)",
         of: [{type: 'translation'}],
     },
     {
         name: 'credits',
-        title: 'additional credits',
-        description: 'this is an optional space to put any other credits to people, organizations, etc.',
-        type: 'richText'
-    },
-    {
-        name: 'translatedCredits',
-        title: 'Translated Credits',
+        title: 'Credits',
         type: 'array',
+        description:"select add item to add credits in any language (including English)",   
         of: [{type: 'translation'}],
     },
     {

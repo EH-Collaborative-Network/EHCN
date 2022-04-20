@@ -32,29 +32,19 @@ export default {
       }
     },
     {
-      name: 'description',
-      title: 'English Description',
-      type: 'richText'
-    },
-    {
-        name: 'translatedDescriptions',
-        title: 'Translated Descriptions',
-        description: 'select add item to add a description in another language',
-        type: 'array',
-        of: [{type: 'translation'}],
-    },
-    {
-        name: 'credits',
-        title: 'additional credits',
-        description: 'this is an optional space to put any other credits to people, organizations, etc.',
-        type: 'richText'
-      },
-      {
-        name: 'translatedCredits',
-        title: 'Translated Credits',
-        type: 'array',
-        of: [{type: 'translation'}],
-    },
+      name: 'descriptions',
+      title: 'Description',
+      type: 'array',
+      description:"select add item to add a description in any language (including English)",
+      of: [{type: 'translation'}],
+  },
+  {
+      name: 'credits',
+      title: 'Credits',
+      type: 'array',
+      description:"select add item to add credits in any language (including English)",   
+      of: [{type: 'translation'}],
+  },
     {
       name: 'mainLink',
       title: 'Link to Working Group website (if any)',

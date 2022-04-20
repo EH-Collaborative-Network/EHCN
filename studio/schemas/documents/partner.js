@@ -27,17 +27,12 @@ export default {
       }
     },
     {
-      name: 'description',
-      title: 'English Description',
-      type: 'richText'
-    },
-    {
-        name: 'translatedDescriptions',
-        title: 'Translated Descriptions',
-        description: 'select add item to add a description in another language',
-        type: 'array',
-        of: [{type: 'translation'}],
-    },
+      name: 'descriptions',
+      title: 'Description',
+      type: 'array',
+      description:"select add item to add a description in any language (including English)",
+      of: [{type: 'translation'}],
+  },
     {
       name: 'mainLink',
       title: 'Link to Insitution website',

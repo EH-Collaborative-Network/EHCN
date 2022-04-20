@@ -19,17 +19,12 @@ export default {
        description:'(if network-wide, set to false)'
     },
     {
-      name: 'description',
-      title: 'English Description',
-      description: 'select add item to add a description in another language',
-      type: 'richText'
-    },
-    {
-        name: 'translatedDescriptions',
-        title: 'Translated Descriptions',
-        type: 'array',
-        of: [{type: 'translation'}],
-    },
+      name: 'descriptions',
+      title: 'Description',
+      type: 'array',
+      description:"select add item to add a description in any language (including English)",
+      of: [{type: 'translation'}],
+  },
     {
         name: 'applications',
         type: 'array',

@@ -27,18 +27,12 @@ export default {
       }
     },
     {
-        name: 'body',
-        title: 'Text',
-        description: 'text to go on page (English)',
-        type: 'richText'
-    },
-    {
-        name: 'translatedTexts',
-        title: 'Translated Text',
-        description: 'select add item to add text in another language',
-        type: 'array',
-        of: [{type: 'translation'}],
-    },
+      name: 'bodies',
+      title: 'Texts',
+      type: 'array',
+      description:"select add item to add text in any language (including English)",
+      of: [{type: 'translation'}],
+  },
     {
         name: 'keywords',
         type: 'array',

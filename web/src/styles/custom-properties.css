@@ -23,12 +23,12 @@
   --font-micro-line-height: calc(12 / 10); /* 12px */
   --font-small-size: 0.82em; /* 14px */
   --font-small-line-height: calc(21 / 14); /* 21px */
-  --font-base-size: 1.2vw; /* 16px */
+  --font-base-size: clamp(14px, 1.2vw, 40px); /* 16px */
   --font-base-letter-spacing: 0.03em;
   --font-base-line-height: 1.5; /* 24px */
   --font-large-size: calc(18 / var(--unit) * 1em); /* 18px */
   --font-large-line-height: calc(27 / 18); /* 27px */
-  --font-title3-size: 1.2em; 
+  --font-title3-size: 1.2rem; 
   --font-title3-line-height: calc(30 / 21); /* 30px */
   --font-title2-size: calc(24 / var(--unit) * 1em); /* 24px */
   --font-title2-line-height: calc(33 / 24); /* 33px */

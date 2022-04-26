@@ -9,9 +9,16 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Title',
+      title: 'Title (Internal use only)',
       validation: Rule => Rule.required().error('title cannot be left blank')
     },
+    {
+      name: 'titles',
+      title: 'Titles to Display',
+      type: 'array',
+      description:"select add item to add a title in any language (including English)",
+      of: [{type: 'titleTranslation'}],
+  },
     {
       name: 'mainImage',
       title: 'Thumbnail Image',

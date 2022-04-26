@@ -26,6 +26,7 @@ import mediaItem from './objects/mediaItem'
 import pdf from './objects/pdf'
 import richText from './objects/richText'
 import translation from './objects/translation'
+import titleTranslation from './objects/titleTranslation'
 import dateObj from './objects/dateObj'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -44,6 +45,7 @@ export default createSchema({
     pdf,
     richText,
     translation,
+    titleTranslation,
     dateObj,
     // The following are document types which will appear
     // in the studio.

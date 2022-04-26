@@ -1,21 +1,7 @@
-/****************/
-/* Font import */
-/****************/
-@font-face {
-	font-family: "Sharp Sans";
-	src: url("/fonts/WOFF/SharpSansDispNo1-Medium.woff") format("woff"),url("/fonts/EOT/SharpSansDispNo1-Medium.eot") format("eot");
-}
-@font-face {
-	font-family: "Sharp Sans Bold";
-	src: url("/fonts/WOFF/SharpSansDispNo1-Bold.woff") format("woff"),url("/fonts/EOT/SharpSansDispNo1-Bold.eot") format("eot");
-}
-@font-face {
-	font-family: "Sharp Sans Semibold";
-	src: url("/fonts/WOFF/SharpSansDispNo1-Semibold.woff") format("woff"),url("/fonts/EOT/SharpSansDispNo1-Semibold.eot") format("eot");
-}
+
 
 :root {
-  --font-family-sans:"Sharp Sans Semibold", sans-serif;
+  --font-family-sans:"Sharp Sans", sans-serif;
   --font-family-bold: "Sharp Sans Bold", sans-serif;
   --color-black: #333;
   --color-dark-gray: #32373e;
@@ -31,20 +17,21 @@
   --light-blue-gradient-ms: -ms-linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
   --blue-link-gradient: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
   /* Typography */
-  --unit: 16;
-  --font-micro-size: calc(10 / var(--unit) * 1rem); /* 10px */
+  --unit: 1.2;
+  --line-unit: 16;
+  --font-micro-size: calc(10 / var(--unit) * 1em); /* 10px */
   --font-micro-line-height: calc(12 / 10); /* 12px */
-  --font-small-size: calc(14 / var(--unit) * 1rem); /* 14px */
+  --font-small-size: 0.82em; /* 14px */
   --font-small-line-height: calc(21 / 14); /* 21px */
-  --font-base-size: 1em; /* 16px */
-  --font-base-line-height: calc(24 / var(--unit)); /* 24px */
-  --font-large-size: calc(18 / var(--unit) * 1rem); /* 18px */
+  --font-base-size: 1.2vw; /* 16px */
+  --font-base-letter-spacing: 0.03em;
+  --font-base-line-height: 1.5; /* 24px */
+  --font-large-size: calc(18 / var(--unit) * 1em); /* 18px */
   --font-large-line-height: calc(27 / 18); /* 27px */
-
-  --font-title3-size: calc(21 / var(--unit) * 1rem); /* 21px */
+  --font-title3-size: 1.2em; 
   --font-title3-line-height: calc(30 / 21); /* 30px */
-  --font-title2-size: calc(24 / var(--unit) * 1rem); /* 24px */
+  --font-title2-size: calc(24 / var(--unit) * 1em); /* 24px */
   --font-title2-line-height: calc(33 / 24); /* 33px */
-  --font-title1-size: calc(49 / var(--unit) * 1rem); /* 49px */
+  --font-title1-size: 2.4rem;
   --font-title1-line-height: calc(57 / 49); /* 57px */
 }

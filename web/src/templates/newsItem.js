@@ -10,18 +10,15 @@ export const query = graphql`
     sampleNewsItem: sanityNewsItem(id: { eq: $id }) {
       id
       name
-      _rawBody
-      translatedTexts{
-        _rawText
+      bodies{
+        _rawText(resolveReferences: { maxDepth: 20 })
         language{
           id
           name
         }
       }
-      excerpt
-      _rawCredits
-      translatedCredits{
-        _rawText
+      credits{
+        _rawText(resolveReferences: { maxDepth: 20 })
         language{
           id
           name
@@ -33,9 +30,8 @@ export const query = graphql`
       people{
         id
         name
-        _rawBio
-        translatedBios{
-          _rawText
+        bios{
+          _rawText(resolveReferences: { maxDepth: 20 })
           language{
             id
             name

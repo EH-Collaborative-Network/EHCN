@@ -36,22 +36,20 @@ export const query = graphql`
         }
         altText
       }
-      _rawDescription
-      translatedDescriptions{
-        _rawText
+      descriptions{
+        _rawText(resolveReferences: { maxDepth: 20 })
         language{
           id
           name
         }
       }
-      translatedCredits{
-        _rawText
+      credits{
+        _rawText(resolveReferences: { maxDepth: 20 })
         language{
           id
           name
         }
       }
-      _rawCredits
       media{
         embed{
           embed

@@ -28,6 +28,7 @@ function LayoutContainer(props) {
           );
         }
         return (
+          <div id='global-wrapper'>
           <Layout
             {...props}
             showNav={showNav}
@@ -35,6 +36,7 @@ function LayoutContainer(props) {
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
           />
+          </div>
         );
       }}
     />

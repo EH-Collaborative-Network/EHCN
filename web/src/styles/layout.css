@@ -12,10 +12,15 @@ body {
   color: var(--color-black);
   margin: 0;
 }
-
+#global-wrapper{
+  background:var(--blue-gradient);
+}
 html,
 body,
 body > div,
 body > div > div {
   height: 100%;
+}
+#query-on-demand-indicator-element{
+  display: none;
 }

@@ -36,22 +36,20 @@ export const query = graphql`
         }
         altText
       }
-      _rawDescription
-      translatedDescriptions{
+      descriptions{
         _rawText
         language{
           id
           name
         }
       }
-      translatedCredits{
+      credits{
         _rawText
         language{
           id
           name
         }
       }
-      _rawCredits
       media{
         embed{
           embed
@@ -94,7 +92,13 @@ export const query = graphql`
       people{
         id
         name
-        _rawBio
+        bios{
+          _rawText
+          language{
+            id
+            name
+          }
+        }
         image {
           crop {
             _key

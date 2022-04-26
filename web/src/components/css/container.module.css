@@ -1,0 +1,16 @@
+@import '../../styles/custom-media.css';
+
+.root {
+  background: var(--clear);
+  min-height: calc(100vh - 50px);
+  margin-left: 0;
+
+  @media (--media-min-small) {
+    margin-left:16vw;
+    padding:50px;
+  }
+
+}
+.root > p{
+  margin-top:0;
+}

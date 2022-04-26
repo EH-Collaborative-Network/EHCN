@@ -12,7 +12,7 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query FundingPageQuery {
+  query CalendarPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
@@ -35,7 +35,7 @@ export const query = graphql`
                 title
                 id
                 descriptions{
-                  _rawText(resolveReferences: { maxDepth: 20 })
+                  _rawText
                   language{
                     id
                     name
@@ -44,21 +44,7 @@ export const query = graphql`
               }
         }
     }
-    fp: allSanityPage(filter: {name: {eq: "Funding"}}) {
-      edges {
-        node {
-          id
-          bodies{
-            _rawText(resolveReferences: { maxDepth: 20 })
-            language{
-              id
-              name
-            }
-          }
-        }
-      }
-    }
-    projects: allSanityProject(
+    projects: allSanityEvent(
       limit: 6
       filter: { slug: { current: { ne: null } }}
     ) {
@@ -72,7 +58,7 @@ export const query = graphql`
   }
 `;
 
-const FundingPage = props => {
+const CalendarPage = props => {
   const { data, errors } = props;
 
   if (errors) {
@@ -84,13 +70,7 @@ const FundingPage = props => {
   }
 
   const site = (data || {}).site;
-  const fp = (data || {}).fp.edges[0]?.node?.bodies;
-  const projectNodes = (data || {}).projects
-    ? mapEdgesToNodes(data.projects)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : [];
-  console.log(projectNodes)
+
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -103,7 +83,7 @@ const FundingPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <BlockContent blocks={fp}/>
+          Calendar
         </Container>
       </Layout>
       
@@ -111,4 +91,4 @@ const FundingPage = props => {
   );
 };
 
-export default FundingPage;
+export default CalendarPage;

@@ -22,7 +22,13 @@ export const query = graphql`
       edges {
         node {
           id
-          _rawBody
+          bodies{
+            _rawText(resolveReferences: { maxDepth: 20 })
+            language{
+              id
+              name
+            }
+          }
         }
       }
     }
@@ -52,7 +58,7 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site;
-  const hp = (data || {}).hp.edges[0]?.node?._rawBody;
+  const hp = (data || {}).hp.edges[0]?.node?.bodies;
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
@@ -71,9 +77,10 @@ const IndexPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
+          <BlockContent blocks={hp}/>
         </Container>
       </Layout>
-      <BlockContent blocks={hp}/>
+      
     </>
   );
 };

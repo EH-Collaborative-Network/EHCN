@@ -23,9 +23,14 @@ export const query = graphql`
             node{
                 id
                 name
-                _rawBio
-                translatedBios{
-                  _rawText
+                bios{
+                  text{
+                    children {
+                      _key
+                      _type
+                      text
+                    }
+                  }
                   language{
                     id
                     name
@@ -60,9 +65,8 @@ export const query = graphql`
       edges {
         node {
           id
-          _rawBody
-          translatedTexts{
-            _rawText
+          bodies{
+            _rawText(resolveReferences: { maxDepth: 20 })
             language{
               id
               name
@@ -97,7 +101,7 @@ const AboutPage = props => {
   }
 
   const site = (data || {}).site;
-  const ap = (data || {}).ap.edges[0]?.node?._rawBody;
+  const ap = (data || {}).ap.edges[0]?.node?.bodies;
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
@@ -116,9 +120,10 @@ const AboutPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
+          <BlockContent blocks={ap}/>
         </Container>
       </Layout>
-      <BlockContent blocks={ap}/>
+      
     </>
   );
 };

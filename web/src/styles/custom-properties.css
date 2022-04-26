@@ -1,14 +1,35 @@
-:root {
-  --font-family-sans: -apple-system, BlinkMacSystemFont, sans-serif;
+/****************/
+/* Font import */
+/****************/
+@font-face {
+	font-family: "Sharp Sans";
+	src: url("/fonts/WOFF/SharpSansDispNo1-Medium.woff") format("woff"),url("/fonts/EOT/SharpSansDispNo1-Medium.eot") format("eot");
+}
+@font-face {
+	font-family: "Sharp Sans Bold";
+	src: url("/fonts/WOFF/SharpSansDispNo1-Bold.woff") format("woff"),url("/fonts/EOT/SharpSansDispNo1-Bold.eot") format("eot");
+}
+@font-face {
+	font-family: "Sharp Sans Semibold";
+	src: url("/fonts/WOFF/SharpSansDispNo1-Semibold.woff") format("woff"),url("/fonts/EOT/SharpSansDispNo1-Semibold.eot") format("eot");
+}
 
-  --color-black: #202123;
+:root {
+  --font-family-sans:"Sharp Sans Semibold", sans-serif;
+  --font-family-bold: "Sharp Sans Bold", sans-serif;
+  --color-black: #333;
   --color-dark-gray: #32373e;
   --color-gray: #697a90;
   --color-light-gray: #b4bcc7;
   --color-very-light-gray: #e7ebed;
-  --color-white: #fff;
+  --color-white: rgba(245,245,245,1);
   --color-accent: #156dff;
-
+  --clear: rgba(245,245,245,0);
+  --blue-gradient:linear-gradient(-180deg, rgba(245,245,245,1) 0%, rgba(245,245,245,1) 35%, rgba(0,130,151,0.5) 100%);
+  --light-blue-gradient: linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
+  --light-blue-gradient-moz: -moz-linear-gradient(0deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
+  --light-blue-gradient-ms: -ms-linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
+  --blue-link-gradient: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
   /* Typography */
   --unit: 16;
   --font-micro-size: calc(10 / var(--unit) * 1rem); /* 10px */

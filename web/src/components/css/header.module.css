@@ -1,0 +1,65 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 18%;
+    z-index: 9;
+    height:100vh;
+    background: var(--light-blue-gradient);
+}
+.wrapper{
+    position: relative;
+    max-width:100%;
+    padding:25px 20px;
+    padding-top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:80%;
+}
+
+.logo img{
+    width:83%;
+    margin-top:16px;
+    margin-left:10px;
+}
+.osun{
+    width: 83%;
+    left:-2%;
+    position: relative;
+}
+.menu a{
+    color: inherit;
+    display: inline-block;
+    text-decoration: underline;
+}
+.menu{
+    list-style: none;
+    padding:0;
+}
+.menu li{
+    margin:5px 0;
+}
+/* blue hover effect */
+.menu li a{
+    position:relative;
+}
+.menu li a:hover::after{
+    opacity: 1;
+    width: 100%;
+}
+.menu li a::after{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    content: " ";
+    background: var(--blue-link-gradient);
+    opacity: 0;
+    transition: 0.5s;
+}

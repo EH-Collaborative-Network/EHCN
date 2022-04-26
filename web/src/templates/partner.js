@@ -25,9 +25,8 @@ export const query = graphql`
               institution
               title
               id
-              _rawDescription
-              translatedDescriptions{
-                _rawText
+              descriptions{
+                _rawText(resolveReferences: { maxDepth: 20 })
                 language{
                   id
                   name
@@ -44,9 +43,8 @@ export const query = graphql`
         url
         text
       }
-      _rawDescription
-      translatedDescriptions{
-        _rawText
+      descriptions{
+        _rawText(resolveReferences: { maxDepth: 20 })
         language{
           id
           name
@@ -94,9 +92,8 @@ export const query = graphql`
       people{
         id
         name
-        _rawBio
-        translatedBios{
-          _rawText
+        bios{
+          _rawText(resolveReferences: { maxDepth: 20 })
           language{
             id
             name

@@ -11,9 +11,8 @@ export const query = graphql`
       id
       id
       name
-      _rawBody
-      translatedTexts{
-        _rawText
+      bodies{
+        _rawText(resolveReferences: { maxDepth: 20 })
         language{
           id
           name

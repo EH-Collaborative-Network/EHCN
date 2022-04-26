@@ -39,6 +39,9 @@ export default {
             name: 'internalLink',
             type: 'object',
             title: 'Internal link',
+            blockEditor: {
+              icon: () => '🔗'
+            },
             fields: [
               {
                 name: 'reference',

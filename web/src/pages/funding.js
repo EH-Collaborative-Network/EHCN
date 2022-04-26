@@ -48,6 +48,13 @@ export const query = graphql`
       edges {
         node {
           id
+          titles{
+            text
+            language{
+              id
+              name
+            }
+          }
           bodies{
             _rawText(resolveReferences: { maxDepth: 20 })
             language{

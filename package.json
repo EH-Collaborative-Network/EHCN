@@ -15,5 +15,8 @@
   },
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "gatsby-plugin-manifest": "^4.13.0"
   }
 }

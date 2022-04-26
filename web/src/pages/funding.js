@@ -7,6 +7,7 @@ import {
 } from "../lib/helpers";
 import Container from "../components/container";
 import BlockContent from "../components/block-content";
+import TranslatedTitle from "../components/translatedTitle";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
@@ -92,6 +93,7 @@ const FundingPage = props => {
 
   const site = (data || {}).site;
   const fp = (data || {}).fp.edges[0]?.node?.bodies;
+  const titles = (data || {}).fp.edges[0]?.node?.titles;
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
@@ -110,7 +112,7 @@ const FundingPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <h1>Funding Opportunities</h1>
+          <h1><TranslatedTitle translations={titles}/></h1>
           <div className="top-text two-column"><BlockContent blocks={fp}/></div>
         </Container>
       </Layout>

@@ -32,6 +32,17 @@ export const query = graphql`
         }
       }
     }
+    menu: allSanityLanguage {
+      edges {
+        node {
+          id
+          fundingOpportunities
+          researchThreads
+          calendar
+          aboutEHCN
+        }
+      }
+    }
     projects: allSanityProject(
       limit: 6
       filter: { slug: { current: { ne: null } }}

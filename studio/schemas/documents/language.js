@@ -13,6 +13,12 @@ export default {
       validation: Rule => Rule.required().error('title cannot be left blank')
     },
     {
+      description: 'i18n code',
+      name:'code',
+      type: 'string',
+      title: 'i18n code'
+    },
+    {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'EHCN',
       type: 'string',

@@ -11,6 +11,7 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
+
 export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -70,6 +71,7 @@ const IndexPage = props => {
 
   const site = (data || {}).site;
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
+
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)

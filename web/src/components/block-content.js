@@ -53,12 +53,23 @@ const components = {
 
 const BlockContent = ({ blocks }) => {
   let translation = []
+
+
+  let lang;
   if(blocks){
-    blocks.forEach(element => {
-      if(element.language.name == "English"){
-        translation = element._rawText
-      }
-    });
+    if(lang){
+      blocks.forEach(element => {
+        if(element.language.name == lang){
+          translation = element._rawText
+        }
+      });
+    } else {
+      blocks.forEach(element => {
+        if(element.language.name == "English"){
+          translation = element._rawText
+        }
+      });
+    }
   }
 
 

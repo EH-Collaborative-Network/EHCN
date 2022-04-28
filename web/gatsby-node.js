@@ -5,6 +5,8 @@ const {isFuture,parseISO} = require('date-fns')
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 /* Project */
+
+
 async function createProjectPages (graphql, actions) {
   const {createPage} = actions
   const result = await graphql(`

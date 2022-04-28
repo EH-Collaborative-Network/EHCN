@@ -1,6 +1,9 @@
 import { graphql, StaticQuery } from "gatsby";
 import React, { useState } from "react";
 import Layout from "../components/layout";
+import { useLocation } from '@reach/router';
+import queryString from 'query-string';
+import LangContext from '../components/context/lang.js'
 
 const query = graphql`
   query SiteTitleQuery {
@@ -12,6 +15,13 @@ const query = graphql`
 
 function LayoutContainer(props) {
   const [showNav, setShowNav] = useState(false);
+  const location = useLocation();
+  console.log(location)
+  let lang = "en"
+  if(location?.search){
+    lang = queryString.parse(location.search).lang
+    lang = lang ? lang : "en";
+  }
   function handleShowNav() {
     setShowNav(true);
   }
@@ -19,6 +29,7 @@ function LayoutContainer(props) {
     setShowNav(false);
   }
   return (
+    
     <StaticQuery
       query={query}
       render={data => {
@@ -28,15 +39,22 @@ function LayoutContainer(props) {
           );
         }
         return (
+          <LangContext.Consumer>
+            {theme => {
+              theme.setLang(lang)
+              return(
           <div id='global-wrapper'>
           <Layout
             {...props}
+            lang={lang}
             showNav={showNav}
             siteTitle={data.site.title}
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
           />
           </div>
+          )}}
+          </LangContext.Consumer>
         );
       }}
     />

@@ -17,7 +17,7 @@
 }
 
 .root p a{
-  color:#BF0D3E;
+  color: var(--color-red);
   text-decoration: none;
 }
 /* blue hover effect */

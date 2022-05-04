@@ -87,9 +87,9 @@ const IndexPage = props => {
 
   return (
       <>  
-      <Layout>
+      <Layout extra='white'>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
-        <Container extra='homepage'>
+        <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <BlockContent blocks={hp}/>
           <Map/>

@@ -2,6 +2,6 @@
 @import '../../styles/custom-properties.css';
 
 .content {
-  background: var(--color-white);
+  /* background: var(--color-white); */
 
 }

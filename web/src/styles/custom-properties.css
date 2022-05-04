@@ -13,6 +13,9 @@
   --color-blue:#fff;
   --color-accent: #156dff;
   --clear: rgba(245,245,245,0);
+  --white-gradient-after: linear-gradient(90deg, rgba(245,245,245,0.9) 0%, rgba(245,245,245,0.9) 5%, rgba(245,245,245,0.5088629201680672) 95%, rgba(245,245,245,0) 100%);
+  --white-gradient:linear-gradient(90deg, rgba(245,245,245,0.5) 0%, rgba(245,245,245,0.5) 10%, rgba(245,245,245,0.5088629201680672) 90%, rgba(245,245,245,0) 100%);
+  --blue-hover-gradient: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 50%, rgba(212,234,237,0.9) 99%, rgba(245,245,245, 0) 100%);
   --light-blue-gradient-solid: linear-gradient(90deg, rgba(212,234,237,0.9) 0%, rgba(212,234,237,0.9) 5%, rgba(212,234,237,0.9) 99%, rgba(245,245,245, 0) 100%);
   --blue-gradient:linear-gradient(-180deg, rgba(245,245,245,1) 0%, rgba(245,245,245,1) 35%, rgba(0,130,151,0.5) 100%);
   --light-blue-gradient: linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);

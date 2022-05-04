@@ -1,0 +1,45 @@
+@import '../../styles/custom-media.css';
+
+.root {
+  background: var(--blue-link-gradient);
+  transition: 0.2s;
+  position: relative;
+  flex-basis: calc(100% - 100px);
+  padding: 20px 50px;
+  margin: 5px;
+  font-size: 0.82em;
+
+  @media (--media-min-small) {
+
+  }
+
+}
+
+.root .button{
+  margin-right: 30px;
+}
+
+.root:hover{
+  background:var(--blue-hover-gradient);
+}
+
+
+.institution > h5, .network > h5{
+  margin-bottom:1em;
+}
+
+.toggle{
+  color: var(--color-red);
+  font-style:italic;
+  cursor: pointer;
+  float:right;
+  position:relative;
+  top:-2.5em;
+}
+.toggle:hover{
+  text-decoration: underline;
+}
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}

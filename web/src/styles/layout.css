@@ -30,6 +30,9 @@ body {
 #global-wrapper{
   background:var(--blue-gradient);
 }
+#global-wrapper.white{
+  background: var(--color-white);
+}
 html,
 body,
 body > div,
@@ -46,9 +49,46 @@ h1{
 h1,h2,h3,h4,h5,h6{
   font-weight:normal;
 }
+h5{
+  font-size: 1em;
+  margin-top:0;
+}
 h4{
   text-transform:uppercase;
   font-size: var(--font-small-size);
+}
+.button{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px 10px;
+    z-index: 0;
+    padding-right: 0;
+    padding-left: 5px;
+    margin-top: 8px;
+    margin-right:12px;
+    color: var(--color-black);
+    background: var(--white-gradient);
+    border-radius: 0px;
+    text-decoration: none;
+}
+.button::after{
+   position: absolute;
+    top: 0;
+    z-index: -1;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    content: " ";
+    background: rgb(245,245,245);
+    background: var(--white-gradient-after);
+    opacity: 0;
+    transition: 0.5s;
+    
+}
+.button:hover::after{
+  opacity: 1;
+  width: 100%;
 }
 #query-on-demand-indicator-element{
   display: none;
@@ -69,11 +109,11 @@ h4{
 select{
 	border-radius: 0;
 	font-family: inherit;
-	color:  #333;
+	color: var(--color-black);
   width:90%;
-	border: 0px solid #333;
-	background: #f5f5f5;
-	background: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
+	border: 0px solid var(--color-black);
+	background: var(--color-white);
+	background: var(--blue-link-gradient);
 	background:  -ms-linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
 	background: -moz-linear-gradient(0deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
 	padding: 2px 8px;

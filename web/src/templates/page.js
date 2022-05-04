@@ -39,7 +39,7 @@ const PageTemplate = props => {
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {page && <Project {...page} />}
+
     </Layout>
   );
 };

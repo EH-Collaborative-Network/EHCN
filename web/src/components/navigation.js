@@ -25,7 +25,7 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle }) =>{
       return(
         <ul className={styles.menu}>
       
-            <li><Link to="/about/">{theme.lang == "en" ? "About EHCN→" : "Sobre EHCN"} {theme.lang}</Link></li>
+            <li><Link to="/about/">{theme.lang == "en" ? "About EHCN→" : "Sobre EHCN"} </Link></li>
             <li><Link to="/funding">Funding Opportunities→</Link></li>
             <li><Link to="/researchthreads/">Research Threads→</Link></li>
             <li><Link to="/calendar/">Calendar→</Link></li>
@@ -42,21 +42,13 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle }) =>{
         theme.setLang(value)
       }
       return(
-        <ul>
-
-  
-  
-                <li>
-                  <label htmlFor="lang">Select language:</label>
-                  <select onChange={handler} name="lang" id="lang">
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                  </select>
-                </li>
-
-      
-          
-        </ul>
+        <div>
+          <select onChange={handler} name="lang" id="lang">
+            <option style={{"display":"none"}} selected>Select language</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+          </select> 
+        </div>
       )}}
      </LangContext.Consumer>
         <ul className={styles.menu}>

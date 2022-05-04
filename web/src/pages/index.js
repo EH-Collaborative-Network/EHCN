@@ -10,6 +10,7 @@ import BlockContent from "../components/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import Map from "../components/map";
 
 
 export const query = graphql`
@@ -91,6 +92,7 @@ const IndexPage = props => {
         <Container extra='homepage'>
           <h1 hidden>Welcome to {site.title}</h1>
           <BlockContent blocks={hp}/>
+          <Map/>
         </Container>
       </Layout>
       

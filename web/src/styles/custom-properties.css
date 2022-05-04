@@ -8,9 +8,12 @@
   --color-gray: #697a90;
   --color-light-gray: #b4bcc7;
   --color-very-light-gray: #e7ebed;
+  --color-red:#BF0D3E;
   --color-white: rgba(245,245,245,1);
+  --color-blue:#fff;
   --color-accent: #156dff;
   --clear: rgba(245,245,245,0);
+  --light-blue-gradient-solid: linear-gradient(90deg, rgba(212,234,237,0.9) 0%, rgba(212,234,237,0.9) 5%, rgba(212,234,237,0.9) 99%, rgba(245,245,245, 0) 100%);
   --blue-gradient:linear-gradient(-180deg, rgba(245,245,245,1) 0%, rgba(245,245,245,1) 35%, rgba(0,130,151,0.5) 100%);
   --light-blue-gradient: linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
   --light-blue-gradient-moz: -moz-linear-gradient(0deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);

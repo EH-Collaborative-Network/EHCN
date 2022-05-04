@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import React from "react";
-
+import LangContext from './context/lang.js'
 import { Figure } from "./figure";
 import { Link } from "gatsby";
 
@@ -52,29 +52,46 @@ const components = {
 }
 
 const BlockContent = ({ blocks }) => {
-  let translation = []
-
-
-  let lang;
-  if(blocks){
-    if(lang){
-      blocks.forEach(element => {
-        if(element.language.name == lang){
-          translation = element._rawText
-        }
-      });
-    } else {
-      blocks.forEach(element => {
-        if(element.language.name == "English"){
-          translation = element._rawText
-        }
-      });
-    }
-  }
+  
 
 
   return(
-  <PortableText value={translation} components={components} serializers={serializers} />
+    <LangContext.Consumer>
+    { theme => {
+      let translation = []
+
+
+      let lang = theme.lang;
+      if(blocks){
+
+
+        if(lang){
+          blocks.forEach(element => {
+            if(element.language.code == lang){
+              translation = element._rawText
+            }
+          });
+        } else {
+          blocks.forEach(element => {
+            if(element.language.name == "English"){
+              translation = element._rawText
+            }
+          });
+        }
+
+        if(translation.length < 1){
+          blocks.forEach(element => {
+            if(element.language.name == "English"){
+              translation = element._rawText
+            }
+          });
+        }
+      }
+      return(
+        <PortableText value={translation} components={components} serializers={serializers} />
+      )
+    }}
+    </LangContext.Consumer>
   )
 };
 

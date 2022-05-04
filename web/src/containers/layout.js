@@ -41,7 +41,7 @@ function LayoutContainer(props) {
         return (
           <LangContext.Consumer>
             {theme => {
-              theme.setLang(lang)
+      
               return(
           <div id='global-wrapper'>
           <Layout

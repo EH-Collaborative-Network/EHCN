@@ -11,12 +11,10 @@ class LangProvider extends React.Component {
     lang: "en",
   }
   setLang = (language) => {
+    this.setState((state) => ({
+      lang: language
+    }));
     localStorage.setItem("lang", JSON.stringify(language))
-    // let {lang} = this.state;
-
-    // if(lang !== language){
-    //   this.setState({ lang: language })
-    // }
     // this.setState({ lang })
   }
 

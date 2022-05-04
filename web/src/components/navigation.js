@@ -18,6 +18,27 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
             <li><Link to="/calendar/">Calendar→</Link></li>
             <li><Link to="/learningresources/">Learning Resources→</Link></li>
         </ul>
+        <ul>
+        <LangContext.Consumer>
+        {theme => {
+
+              let handler = (event) => {
+                let value = event.target.value
+                theme.setLang(value)
+              }
+              return(
+                <li>
+                  <label htmlFor="lang">Select language:</label>
+                  <select onChange={handler} name="lang" id="lang">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                  </select>
+                </li>
+              )
+            }}
+        </LangContext.Consumer>
+          
+        </ul>
         <ul className={styles.menu}>
           <li><img className={styles.osun} src={osun}/></li>
         </ul>

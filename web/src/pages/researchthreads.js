@@ -12,7 +12,7 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 export const query = graphql`
-  query CalendarPageQuery {
+  query ThreadsPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
@@ -44,7 +44,7 @@ export const query = graphql`
               }
         }
     }
-    projects: allSanityEvent(
+    projects: allSanityResearchThread(
       limit: 60
       filter: { slug: { current: { ne: null } }}
     ) {
@@ -58,7 +58,7 @@ export const query = graphql`
   }
 `;
 
-const CalendarPage = props => {
+const ThreadsPage = props => {
   const { data, errors } = props;
 
   if (errors) {
@@ -83,7 +83,7 @@ const CalendarPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          Calendar
+          Research Threads
         </Container>
       </Layout>
       
@@ -91,4 +91,4 @@ const CalendarPage = props => {
   );
 };
 
-export default CalendarPage;
+export default ResourcesPage;

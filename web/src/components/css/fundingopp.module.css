@@ -38,7 +38,13 @@
   cursor: pointer;
   position:relative;
   display: inline-block;
+  background: var(--blue-link-gradient);
+  top: -0.7em;
+  left: 20px;
   /* top:-2.5em; */
+}
+.toggle::after{
+  background: var(--blue-hover-gradient);
 }
 .toggle:hover{
   text-decoration: underline;

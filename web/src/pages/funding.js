@@ -130,7 +130,7 @@ const FundingPage = props => {
           { networkWide &&
             <div className={styles.network}>
             <h5>Showing <em>Network-wide</em> Opportunities below.  &nbsp;</h5>
-            <div onClick={handler} className={styles.toggle}>Show <em>Institution-specific</em> Opportunities instead→</div>
+            <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Institution-specific</em> Opportunities instead→</div>
             <div className={styles.institution}>
                   {networkOpps.map(function(node, index){
                     return <FundingOpportunity key={index} node={node}></FundingOpportunity>;
@@ -141,7 +141,7 @@ const FundingPage = props => {
             { !networkWide && 
             <div className={styles.institution}>
               <h5>Showing <em>Institution-specific</em> Opportunities below.  &nbsp;</h5>
-              <div onClick={handler} className={styles.toggle}>Show <em>Network-wide</em> Opportunities instead→</div>
+              <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Network-wide</em> Opportunities instead→</div>
            
               <div className={styles.wrapper}>
                   {institutionOpps.map(function(node, index){

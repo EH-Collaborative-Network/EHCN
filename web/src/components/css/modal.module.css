@@ -1,0 +1,68 @@
+@import '../../styles/custom-media.css';
+
+.root {
+  background: var(--clear);
+  margin-top:0;
+  padding-top:0;
+  position: relative;
+  /* margin-left: 0;
+  display: block;
+  overflow-x:hidden; */
+  @media (--media-min-small) {
+
+  }
+
+}
+.steering{
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  padding: 0;
+  position: relative;
+  top:-1em;
+}
+.steering li{
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: block;
+  cursor: pointer;
+}
+
+.partners{
+  top: -1em;
+  position: relative;
+}
+
+.modal{
+  background: var(--color-light-blue);
+  height: 70vh;
+  width:60vw;
+  overflow: scroll;
+  position:fixed;
+  left:20vw;
+  top:15vh;
+  z-index: -2;
+  box-shadow: 0 0 5px 15px #d4eaed;
+  @media (--media-min-small) {
+    /* margin-left:16vw;
+    padding:50px;
+    padding-left:75px; */
+  }
+}
+.close{
+  text-align: right;
+  padding: 25px 30px;
+  cursor: pointer;
+  float:right;
+  position:absolute;
+  right: 0;
+}
+.inner{
+  padding:20px 20px;
+  overflow:scroll;
+  height: 70vh;
+}
+.inner h4{
+  font-size:1em;
+}

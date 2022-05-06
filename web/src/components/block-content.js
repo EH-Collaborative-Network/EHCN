@@ -63,12 +63,19 @@ const BlockContent = ({ blocks }) => {
 
       let lang = theme.lang;
       if(blocks){
-
+        console.log(blocks)
 
         if(lang){
           blocks.forEach(element => {
             if(element.language.code == lang){
-              translation = element._rawText
+              if(element._rawText){
+                translation = element._rawText
+              }else if(element.text){
+                translation = element.text
+              }else{
+                translation = ""
+              }
+              
             }
           });
         } else {

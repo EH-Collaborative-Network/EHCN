@@ -4,6 +4,8 @@ import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import BlockContent from "../components/block-content";
+import Carousel from "../components/carousel";
 
 export const query = graphql`
   query PartnerTemplateQuery($id: String!) {
@@ -35,7 +37,12 @@ export const query = graphql`
             }
       }
   }
-    samplePartner: sanityPartner(id: { eq: $id }) {
+  site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+    title
+    description
+    keywords
+  }
+    partner: sanityPartner(id: { eq: $id }) {
       id
       id
       name
@@ -84,6 +91,7 @@ export const query = graphql`
             _id
           }
           altText
+          caption
         }
       }
       slug {
@@ -181,19 +189,26 @@ export const query = graphql`
 
 const PartnerTemplate = props => {
   const { data, errors } = props;
-  const partner = data && data.samplePartner;
+  
+  const site = (data || {}).site;
+  const partner = data && data.partner;
+  const media = partner.media;
+  const descriptions = partner.descriptions;
   return (
-    <Layout>
-      {errors && <SEO title="GraphQL Error" />}
-      {partner && <SEO title={partner.title || "Untitled"} />}
-
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-      {partner && <Project {...partner} />}
+    <>  
+    <Layout extra='white'>
+      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <Container>
+        <h1 hidden>Welcome to {site.title}</h1>
+        <h1>{partner.name}</h1>
+        {media.length > 1 &&
+           <Carousel media={media}/>
+        }
+        <div className="top-text two-column"><BlockContent blocks={descriptions}/></div>
+      </Container>
     </Layout>
+    
+  </>
   );
 };
 

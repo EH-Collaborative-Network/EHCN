@@ -1,4 +1,4 @@
-import { MdInsertLink } from "react-icons/md";
+import { MdInsertLink, MdImage } from "react-icons/md";
 
 export default {
   name: 'richText',
@@ -34,6 +34,14 @@ export default {
                 type: 'url'
               }
             ]
+          },
+          {
+            title: 'Image',
+            name: 'image',
+            type: 'image',
+            blockEditor: {
+              icon: MdImage,
+            }
           },
           {
             name: 'internalLink',

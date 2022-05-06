@@ -124,3 +124,6 @@ select:focus{
   border:none;
   outline:none;
 }
+#light-box.show{
+  z-index: 9;
+}

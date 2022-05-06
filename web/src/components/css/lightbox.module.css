@@ -1,0 +1,19 @@
+@import '../../styles/custom-media.css';
+
+.root {
+  background: rgba(245,245,245,0.9);
+  height: 100vh;
+  width:100vw;
+  overflow: scroll;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index: -2;
+  @media (--media-min-small) {
+    /* margin-left:16vw;
+    padding:50px;
+    padding-left:75px; */
+  }
+
+}
+

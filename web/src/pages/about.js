@@ -155,6 +155,7 @@ console.log(partners)
           <h1 hidden>Welcome to {site.title}</h1>
           <h1>About EHCN</h1>
           <div className="top-text two-column"><BlockContent blocks={ap}/></div>
+          <br/>
           <h4>Partner Institutions</h4>
           <div className="">
             <div className={styles.partners}>

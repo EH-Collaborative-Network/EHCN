@@ -90,6 +90,41 @@ h4{
   opacity: 1;
   width: 100%;
 }
+
+.blue-button{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px 10px;
+  z-index: 0;
+  padding-right: 0;
+  padding-left: 5px;
+  margin-top: 8px;
+  margin-right:12px;
+  color: var(--color-black);
+  background: var(--light-blue-gradient);
+  border-radius: 0px;
+  text-decoration: none;
+}
+.blue-button::after{
+ position: absolute;
+  top: 0;
+  z-index: -1;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  content: " ";
+  background: rgb(245,245,245);
+  background: var(--light-blue-gradient);
+  opacity: 0;
+  transition: 0.5s;
+  
+}
+.blue-button:hover::after{
+opacity: 1;
+width: 100%;
+}
+
 #query-on-demand-indicator-element{
   display: none;
 }
@@ -97,7 +132,7 @@ h4{
 .homepage > p:nth-child(2){
   font-size: var(--font-title3-size);
 }
-.top-text.two-column{
+.two-column{
   column-count: 2;
   column-gap: 1rem;
   margin-bottom:25px;
@@ -124,7 +159,7 @@ select:focus{
   border:none;
   outline:none;
 }
-#light-box.show{
+#light-box.show, .modal.show{
   z-index: 9;
 }
 #light-box  div{

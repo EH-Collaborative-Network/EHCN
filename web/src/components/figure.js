@@ -5,7 +5,7 @@ import clientConfig from "../../client-config";
 import * as styles from "./css/carousel.module.css";
 
 export function Figure({ node }) {
-  console.log(node)
+
   if (!node.asset) {
     return null;
   }

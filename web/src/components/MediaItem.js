@@ -7,9 +7,9 @@ const MediaItem = ({ media }) => {
 let embed = media.embed;
 let image = media.image;
 let pdf = media.pdf;
-
+console.log(media)
 function lightboxed(e){
-  let media = e.target.cloneNode(true)
+  let media = e.target.closest(".alice-carousel__stage-item > div").cloneNode(true);
   document.querySelector("#light-box .inner").innerHTML = ""
   document.querySelector("#light-box .inner").append(media)
   document.getElementById("light-box").classList.add("show");
@@ -19,7 +19,6 @@ function lightboxed(e){
         {image &&
             <Figure node={image} />
         }
-
     </div>
   ) 
 };

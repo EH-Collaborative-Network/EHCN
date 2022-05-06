@@ -91,6 +91,7 @@ export const query = graphql`
             _id
           }
           altText
+          caption
         }
       }
       slug {

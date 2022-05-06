@@ -17,3 +17,12 @@
 
 }
 
+.close{
+    text-align: right;
+    padding: 25px 30px;
+    cursor: pointer;
+}
+
+.inner{
+    text-align: center;
+}

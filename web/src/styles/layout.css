@@ -127,3 +127,14 @@ select:focus{
 #light-box.show{
   z-index: 9;
 }
+#light-box  div{
+  width: auto;
+  height: auto;
+}
+#light-box figcaption{
+  text-align: left;
+  margin-top:1em
+}
+#light-box img:hover{
+  filter:none;
+}

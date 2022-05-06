@@ -53,3 +53,7 @@
   filter:blur(3px);
   cursor: pointer;
 }
+
+.root figcaption{
+  display: none;
+}

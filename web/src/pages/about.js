@@ -165,8 +165,8 @@ console.log(partners)
             </div>
           </div>
           <h4>Steering Committee</h4>
-          <div className="two-column">
-            <ul className={styles.steering}>
+          <div className="">
+            <ul className={styles.steering + " two-column"}>
             {steeringPeople.map(function(node, index){
                 return <Person key={index} person={node}></Person>;
             })}

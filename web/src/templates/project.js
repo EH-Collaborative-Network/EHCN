@@ -6,7 +6,7 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import TranslatedTitle from "../components/translatedTitle";
 import Carousel from "../components/carousel";
-
+import BlockContent from "../components/block-content";
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {

@@ -4,12 +4,45 @@ import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import TranslatedTitle from "../components/translatedTitle";
+import Carousel from "../components/carousel";
 
 export const query = graphql`
   query WorkingGroupTemplateQuery($id: String!) {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      description
+      keywords
+      languages {
+        name
+        code
+      }
+    }
+    languagePhrases: allSanityLanguage {
+      edges {
+        node {
+          name
+          code
+          aboutEHCN
+          calendar
+          fundingOpportunities
+          ehcnSupported
+          learningResources
+          researchThreads
+        }
+      }
+    }
     sampleWorkingGroup: sanityWorkingGroup(id: { eq: $id }) {
       id
       name
+      titles{
+        text
+        language{
+          id
+          name
+          code
+        }
+      }
       mainLink{
         url
         text
@@ -40,6 +73,7 @@ export const query = graphql`
         _rawText
         language{
           id
+          code
           name
         }
       }
@@ -47,6 +81,7 @@ export const query = graphql`
         _rawText
         language{
           id
+          code
           name
         }
       }
@@ -96,6 +131,7 @@ export const query = graphql`
           _rawText
           language{
             id
+            code
             name
           }
         }
@@ -182,17 +218,20 @@ export const query = graphql`
 const WorkingGroupTemplate = props => {
   const { data, errors } = props;
   const workingGroup = data && data.sampleWorkingGroup;
+  const site = (data || {}).site;
+  const globalLanguages = site.languages;
+  const languagePhrases = (data || {}).languagePhrases?.edges;
   return (
-    <Layout>
-      {errors && <SEO title="GraphQL Error" />}
-      {workingGroup && <SEO title={workingGroup.title || "Untitled"} />}
-
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-      {workingGroup && <Project {...workingGroup} />}
+    <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages}>
+      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <Container>
+        <h1 hidden>Welcome to {site.title}</h1>
+        <h1><TranslatedTitle translations={workingGroup.titles}/></h1>
+        {media.length > 1 &&
+          <Carousel media={workingGroup.media}/>
+        }
+        <div className="top-text two-column"><BlockContent blocks={workingGroup.descriptions}/></div>
+      </Container>
     </Layout>
   );
 };

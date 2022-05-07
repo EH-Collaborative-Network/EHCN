@@ -5,14 +5,16 @@ import logo from '../assets/logo.png';
 import osun from '../assets/osun.png';
 import * as styles from "./css/header.module.css";
 import LangContext from './context/lang.js'
+import TranslatedPhrase from "./translatedPhrase";
 
-const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle }) =>{
+const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, globalLanguages }) =>{
   let defaultLang = "en";
   const [language, setLanguage] = useState(defaultLang);
   // let handler = (event) => {
   //   let value = event.target.value
   //   localStorage.setItem("lang", JSON.stringify(value))
   //   setLanguage(value)
+  console.log(globalLanguages)
   // }
   return (
  
@@ -25,11 +27,11 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle }) =>{
       return(
         <ul className={styles.menu}>
       
-            <li><Link to="/about/">{theme.lang == "en" ? "About EHCN→" : "Sobre EHCN"} </Link></li>
-            <li><Link to="/funding">Funding Opportunities→</Link></li>
-            <li><Link to="/researchthreads/">Research Threads→</Link></li>
-            <li><Link to="/calendar/">Calendar→</Link></li>
-            <li><Link to="/learningresources/">Learning Resources→</Link></li>
+            <li><Link to="/about/"><TranslatedPhrase translations={translations} phrase={"aboutEHCN"}/>→</Link></li>
+            <li><Link to="/funding"><TranslatedPhrase translations={translations} phrase={"fundingOpportunities"}/>→</Link></li>
+            <li><Link to="/researchthreads/"><TranslatedPhrase translations={translations} phrase={"researchThreads"}/>→</Link></li>
+            <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"calendar"}/>→</Link></li>
+            <li><Link to="/learningresources/"><TranslatedPhrase translations={translations} phrase={"learningResources"}/>→</Link></li>
         </ul>
         )
     }}
@@ -61,13 +63,16 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle }) =>{
 
           <select className={styles.lang} onChange={handler} name="lang" id="lang">
             {/* <option style={{"display":"none"}} selected>Select language</option> */}
-            <option value="en">English</option>
-            <option value="es">Spanish</option>
+           { globalLanguages.map(function(language, index){
+              return(<option key={index} value={language.code} selected={language.code == theme.lang}>{language.name}</option>)
+            })}
+            
           </select> 
         </div>
       )}}
      </LangContext.Consumer>
         <ul className={styles.menu}>
+          <li><TranslatedPhrase translations={translations} phrase={"ehcnSupported"}/></li>
           <li><img className={styles.osun} src={osun}/></li>
         </ul>
       </div>

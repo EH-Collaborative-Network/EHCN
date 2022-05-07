@@ -10,13 +10,31 @@ import BlockContent from "../components/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
-
+import TranslatedPhrase from "../components/translatedPhrase";
 export const query = graphql`
   query ThreadsPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
       keywords
+      languages {
+        name
+        code
+      }
+    }
+    languagePhrases: allSanityLanguage {
+      edges {
+        node {
+          name
+          code
+          aboutEHCN
+          calendar
+          fundingOpportunities
+          ehcnSupported
+          learningResources
+          researchThreads
+        }
+      }
     }
     opps: allSanityOpportunity{
         edges{
@@ -39,6 +57,7 @@ export const query = graphql`
                   language{
                     id
                     name
+                    code
                   }
                 }
               }
@@ -58,9 +77,9 @@ export const query = graphql`
   }
 `;
 
-const ThreadsPage = props => {
+const ResearchThreads = props => {
   const { data, errors } = props;
-
+  const languagePhrases = (data || {}).languagePhrases?.edges;
   if (errors) {
     return (
       <Layout>
@@ -70,6 +89,7 @@ const ThreadsPage = props => {
   }
 
   const site = (data || {}).site;
+  const globalLanguages = site.languages;
 
   if (!site) {
     throw new Error(
@@ -79,11 +99,11 @@ const ThreadsPage = props => {
 
   return (
       <>  
-      <Layout>
+      <Layout extra="" navTranslations={languagePhrases} globalLanguages={globalLanguages}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          Research Threads
+          <h1><TranslatedPhrase translations={languagePhrases} phrase={"researchThreads"}/></h1>
         </Container>
       </Layout>
       
@@ -91,4 +111,4 @@ const ThreadsPage = props => {
   );
 };
 
-export default ResourcesPage;
+export default ResearchThreads;

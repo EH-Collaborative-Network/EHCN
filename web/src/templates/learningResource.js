@@ -4,12 +4,45 @@ import Container from "../components/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import TranslatedTitle from "../components/translatedTitle";
+import Carousel from "../components/carousel";
 
 export const query = graphql`
   query LearningResourceTemplateQuery($id: String!) {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      description
+      keywords
+      languages {
+        name
+        code
+      }
+    }
+    languagePhrases: allSanityLanguage {
+      edges {
+        node {
+          name
+          code
+          aboutEHCN
+          calendar
+          fundingOpportunities
+          ehcnSupported
+          learningResources
+          researchThreads
+        }
+      }
+    }
     sampleLearningResource: sanityLearningResource(id: { eq: $id }) {
       id
       name
+      titles{
+        text
+        language{
+          id
+          name
+          code
+        }
+      }
       mainLink{
         url
         text
@@ -41,6 +74,7 @@ export const query = graphql`
         language{
           id
           name
+          code
         }
       }
       credits{
@@ -48,6 +82,7 @@ export const query = graphql`
         language{
           id
           name
+          code
         }
       }
       media{
@@ -148,18 +183,21 @@ export const query = graphql`
 
 const LearningResourceTemplate = props => {
   const { data, errors } = props;
+  const site = (data || {}).site;
+  const globalLanguages = site.languages;
   const learningResource = data && data.sampleLearningResource;
+  const languagePhrases = (data || {}).languagePhrases?.edges;
   return (
-    <Layout>
-      {errors && <SEO title="GraphQL Error" />}
-      {learningResource && <SEO title={learningResource.title || "Untitled"} />}
-
-      {errors && (
-        <Container>
-          <GraphQLErrorList errors={errors} />
-        </Container>
-      )}
-      {learningResource && <Project {...learningResource} />}
+    <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages}>
+      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <Container>
+        <h1 hidden>Welcome to {site.title}</h1>
+        <h1><TranslatedTitle translations={learningResource.titles}/></h1>
+        {media.length > 1 &&
+           <Carousel media={learningResource.media}/>
+        }
+        <div className="top-text two-column"><BlockContent blocks={learningResource.descriptions}/></div>
+      </Container>
     </Layout>
   );
 };

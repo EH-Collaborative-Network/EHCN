@@ -23,6 +23,7 @@
     "prop-types": "^15.8.1",
     "query-string": "^7.1.1",
     "react-alice-carousel": "^2.6.0",
+    "react-html-parser": "^2.0.2",
     "react-p5-wrapper": "^3.3.0"
   }
 }

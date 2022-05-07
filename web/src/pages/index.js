@@ -19,6 +19,24 @@ export const query = graphql`
       title
       description
       keywords
+      languages {
+        name
+        code
+      }
+    }
+    languagePhrases: allSanityLanguage {
+      edges {
+        node {
+          name
+          code
+          aboutEHCN
+          calendar
+          fundingOpportunities
+          ehcnSupported
+          learningResources
+          researchThreads
+        }
+      }
     }
     hp: allSanityPage(filter: {name: {eq: "Homepage"}}) {
       edges {
@@ -28,6 +46,7 @@ export const query = graphql`
             _rawText(resolveReferences: { maxDepth: 20 })
             language{
               id
+              code
               name
             }
           }
@@ -71,7 +90,9 @@ const IndexPage = props => {
   }
 
   const site = (data || {}).site;
+  const globalLanguages = site.languages;
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
+  const languagePhrases = (data || {}).languagePhrases?.edges;
 
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
@@ -87,7 +108,7 @@ const IndexPage = props => {
 
   return (
       <>  
-      <Layout extra='white'>
+      <Layout extra='white' navTranslations={languagePhrases} globalLanguages={globalLanguages}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>

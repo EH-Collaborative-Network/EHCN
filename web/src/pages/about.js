@@ -13,12 +13,31 @@ import Layout from "../containers/layout";
 import Person from "../components/person";
 import * as styles from "../components/css/modal.module.css";
 import { Link } from "@reach/router";
+import TranslatedTitle from "../components/translatedTitle";
 export const query = graphql`
   query AboutPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
       keywords
+      languages {
+        name
+        code
+      }
+    }
+    languagePhrases: allSanityLanguage {
+      edges {
+        node {
+          name
+          code
+          aboutEHCN
+          calendar
+          fundingOpportunities
+          ehcnSupported
+          learningResources
+          researchThreads
+        }
+      }
     }
     partners: allSanityPartner{
       edges{
@@ -79,6 +98,7 @@ export const query = graphql`
             language{
               id
               name
+              code
             }
           }
           bodies{
@@ -86,6 +106,7 @@ export const query = graphql`
             language{
               id
               name
+              code
             }
           }
         }
@@ -117,10 +138,13 @@ const AboutPage = props => {
   }
 
   const site = (data || {}).site;
+  const globalLanguages = site.languages;
   const ap = (data || {}).ap.edges[0]?.node?.bodies;
+  const titles = (data || {}).ap.edges[0]?.node?.titles;
   const people = (data || {}).people?.edges;
   const partners = (data || {}).partners?.edges;
-console.log(partners)
+  const languagePhrases = (data || {}).languagePhrases?.edges;
+
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
@@ -134,7 +158,7 @@ console.log(partners)
     if(node.node.steering){
       steeringPeople.push(node);
     }
-    console.log(node.node.staff)
+   
     if(node.node.staff){
       staffPeople.push(node);
     }
@@ -149,18 +173,18 @@ console.log(partners)
 
   return (
       <>  
-      <Layout extra=''>
+      <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <h1>About EHCN</h1>
+          <h1><TranslatedTitle translations={titles}/></h1>
           <div className="top-text two-column"><BlockContent blocks={ap}/></div>
           <br/>
           <h4>Partner Institutions</h4>
           <div className="">
             <div className={styles.partners}>
             {partners.map(function(node, index){
-                return <Link to={"/"+node.node.slug.current} key={index}><div className="button">{node.node.name + "→"}</div></Link>;
+                return <Link to={"/partner/"+node.node.slug.current} key={index}><div className="button">{node.node.name + "→"}</div></Link>;
             })}
             </div>
           </div>

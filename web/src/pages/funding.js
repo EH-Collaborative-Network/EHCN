@@ -14,12 +14,32 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { FundingOpportunity } from "../components/fundingOpportunity";
 import * as styles from "../components/css/fundingopp.module.css";
+
+
 export const query = graphql`
   query FundingPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
       keywords
+      languages {
+        name
+        code
+      }
+    }
+    languagePhrases: allSanityLanguage {
+      edges {
+        node {
+          name
+          code
+          aboutEHCN
+          calendar
+          fundingOpportunities
+          ehcnSupported
+          learningResources
+          researchThreads
+        }
+      }
     }
     opps: allSanityOpportunity{
         edges{
@@ -56,6 +76,7 @@ export const query = graphql`
             language{
               id
               name
+              code
             }
           }
           bodies{
@@ -63,6 +84,7 @@ export const query = graphql`
             language{
               id
               name
+              code
             }
           }
         }
@@ -95,9 +117,11 @@ const FundingPage = props => {
   const [networkWide, setNetworkWide] = useState(true);
   
   const site = (data || {}).site;
+  const globalLanguages = site.languages;
   const fp = (data || {}).fp.edges[0]?.node?.bodies;
   const titles = (data || {}).fp.edges[0]?.node?.titles;
   const oppNodes = (data || {}).opps?.edges;
+  const languagePhrases = (data || {}).languagePhrases?.edges;
   let institutionOpps = [];
   let networkOpps = [];
   oppNodes.forEach(node => {
@@ -120,7 +144,7 @@ const FundingPage = props => {
   }
   return (
       <>  
-      <Layout>
+      <Layout extra="" navTranslations={languagePhrases} globalLanguages={globalLanguages}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>

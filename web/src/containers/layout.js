@@ -16,7 +16,7 @@ const query = graphql`
 function LayoutContainer(props) {
   const [showNav, setShowNav] = useState(false);
   const location = useLocation();
- console.log(props)
+
   let lang = "en"
   if(location?.search){
     lang = queryString.parse(location.search).lang

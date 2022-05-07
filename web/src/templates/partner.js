@@ -6,9 +6,33 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import BlockContent from "../components/block-content";
 import Carousel from "../components/carousel";
+import TranslatedTitle from "../components/translatedTitle";
 
 export const query = graphql`
   query PartnerTemplateQuery($id: String!) {
+    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+      title
+      description
+      keywords
+      languages {
+        name
+        code
+      }
+    }
+    languagePhrases: allSanityLanguage {
+      edges {
+        node {
+          name
+          code
+          aboutEHCN
+          calendar
+          fundingOpportunities
+          ehcnSupported
+          learningResources
+          researchThreads
+        }
+      }
+    }
     opps: allSanityOpportunity(
       filter: {applications: {elemMatch: {partner: {_id: {eq: $id}}}}}
     ){
@@ -31,6 +55,7 @@ export const query = graphql`
                 _rawText(resolveReferences: { maxDepth: 20 })
                 language{
                   id
+                  code
                   name
                 }
               }
@@ -54,6 +79,7 @@ export const query = graphql`
         _rawText(resolveReferences: { maxDepth: 20 })
         language{
           id
+          code
           name
         }
       }
@@ -104,6 +130,7 @@ export const query = graphql`
           _rawText(resolveReferences: { maxDepth: 20 })
           language{
             id
+            code
             name
           }
         }
@@ -191,12 +218,14 @@ const PartnerTemplate = props => {
   const { data, errors } = props;
   
   const site = (data || {}).site;
+  const globalLanguages = site.languages;
   const partner = data && data.partner;
   const media = partner.media;
   const descriptions = partner.descriptions;
+  const languagePhrases = (data || {}).languagePhrases?.edges;
   return (
     <>  
-    <Layout extra='white'>
+    <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>

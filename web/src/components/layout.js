@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import "../styles/layout.css";
 import * as styles from "./css/layout.module.css";
 import Lightbox from "./lightbox";
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) =>{
+const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, navTranslations, globalLanguages }) =>{
 
   
   return(
     
 
       <>
-        <Navigation siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
+        <Navigation siteTitle={siteTitle} globalLanguages={globalLanguages} onHideNav={onHideNav} translations={navTranslations} onShowNav={onShowNav} showNav={showNav} />
         <div className={styles.content}>{children}</div>
         <Lightbox/>
       </>

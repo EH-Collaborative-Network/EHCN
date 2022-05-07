@@ -63,7 +63,7 @@ const BlockContent = ({ blocks }) => {
 
       let lang = theme.lang;
       if(blocks){
-        console.log(blocks)
+ 
 
         if(lang){
           blocks.forEach(element => {

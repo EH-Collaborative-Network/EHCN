@@ -218,6 +218,7 @@ export const query = graphql`
 const ProjectTemplate = props => {
   const { data, errors } = props;
   const project = data && data.sampleProject;
+  const media = project.media;
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const languagePhrases = (data || {}).languagePhrases?.edges;

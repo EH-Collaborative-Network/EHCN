@@ -219,6 +219,7 @@ const WorkingGroupTemplate = props => {
   const { data, errors } = props;
   const workingGroup = data && data.sampleWorkingGroup;
   const site = (data || {}).site;
+  const media = workingGroup.media;
   const globalLanguages = site.languages;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   return (

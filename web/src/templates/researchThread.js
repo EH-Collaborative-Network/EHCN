@@ -220,6 +220,7 @@ const ResearchThreadTemplate = props => {
   const researchThread = data && data.sampleResearchThread;
   const site = (data || {}).site;
   const globalLanguages = site.languages;
+  const media = researchThread.media;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   return (
     <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages}>

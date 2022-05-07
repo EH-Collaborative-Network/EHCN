@@ -222,6 +222,7 @@ const CourseTemplate = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const course = data && data.sampleCourse;
+  const media = course.media;
   const languagePhrases = (data || {}).languagePhrases?.edges;
 
   return (

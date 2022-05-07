@@ -231,6 +231,7 @@ const EventTemplate = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const event = data && data.sampleEvent;
+  const media = event.media;
   const languagePhrases = (data || {}).languagePhrases?.edges;
 
   return (

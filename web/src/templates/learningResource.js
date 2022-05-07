@@ -186,6 +186,7 @@ const LearningResourceTemplate = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const learningResource = data && data.sampleLearningResource;
+  const media = learningResource.media;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   return (
     <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages}>

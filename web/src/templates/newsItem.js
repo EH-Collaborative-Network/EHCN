@@ -29,6 +29,7 @@ export const query = graphql`
           ehcnSupported
           learningResources
           researchThreads
+          availableIn
         }
       }
     }
@@ -157,7 +158,7 @@ const NewsItemTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={newsItem.titles} /></h1>
-        <div className="top-text two-column"><BlockContent blocks={newsItem.bodies}/></div>
+        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={newsItem.bodies}/></div>
       </Container>
     </Layout>
   );

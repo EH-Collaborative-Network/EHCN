@@ -29,6 +29,7 @@ export const query = graphql`
           ehcnSupported
           learningResources
           researchThreads
+          availableIn
         }
       }
     }
@@ -198,7 +199,7 @@ const LearningResourceTemplate = props => {
         {media.length > 1 &&
            <Carousel media={learningResource.media}/>
         }
-        <div className="top-text two-column"><BlockContent blocks={learningResource.descriptions}/></div>
+        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={learningResource.descriptions}/></div>
       </Container>
     </Layout>
   );

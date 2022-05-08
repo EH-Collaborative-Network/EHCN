@@ -29,6 +29,7 @@ export const query = graphql`
           ehcnSupported
           learningResources
           researchThreads
+          availableIn
         }
       }
     }
@@ -244,7 +245,7 @@ const EventTemplate = props => {
         {media.length > 1 &&
            <Carousel media={event.media}/>
         }
-        <div className="top-text two-column"><BlockContent blocks={event.descriptions}/></div>
+        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={event.descriptions}/></div>
       </Container>
     </Layout>
   );

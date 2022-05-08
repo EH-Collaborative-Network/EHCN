@@ -35,6 +35,7 @@ export const query = graphql`
           ehcnSupported
           learningResources
           researchThreads
+          availableIn
         }
       }
     }
@@ -112,7 +113,7 @@ const IndexPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <BlockContent blocks={hp}/>
+          <BlockContent  languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/>
           <Map/>
         </Container>
       </Layout>

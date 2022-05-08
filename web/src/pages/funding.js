@@ -38,6 +38,7 @@ export const query = graphql`
           ehcnSupported
           learningResources
           researchThreads
+          availableIn
         }
       }
     }
@@ -149,7 +150,7 @@ const FundingPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedTitle translations={titles}/></h1>
-          <div className="top-text two-column"><BlockContent blocks={fp}/></div>
+          <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={fp}/></div>
           <div className="funding-opportunities">
           { networkWide &&
             <div className={styles.network}>

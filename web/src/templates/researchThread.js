@@ -96,6 +96,7 @@ export const query = graphql`
           caption
           asset {
             _id
+            url
           }
         }
         image{

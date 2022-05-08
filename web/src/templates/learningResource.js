@@ -95,6 +95,7 @@ export const query = graphql`
           altText
           caption
           asset {
+            url
             _id
           }
         }

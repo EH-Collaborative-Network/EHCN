@@ -5,6 +5,9 @@ import * as styles from "./css/lightbox.module.css";
 const Lightbox = ({ }) => {
   function handler(){
       document.getElementById("light-box").classList.remove("show");
+      let inner = document.getElementById("light-box")
+      inner = inner.querySelector(".inner");
+      inner.innerHTML = ""
   }
   return(
     <div id="light-box" className={styles.root}>

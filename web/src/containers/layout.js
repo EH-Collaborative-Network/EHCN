@@ -43,17 +43,17 @@ function LayoutContainer(props) {
             {theme => {
       
               return(
-          <div id='global-wrapper' className={`${props.extra ? props.extra : ""}`}>
-          <Layout
-            {...props}
-            lang={lang}
-            showNav={showNav}
-            siteTitle={data.site.title}
-            onHideNav={handleHideNav}
-            onShowNav={handleShowNav}
-          />
-          </div>
-          )}}
+                <div id='global-wrapper' className={`${props.extra ? props.extra : ""}`}>
+                <Layout
+                  {...props}
+                  lang={lang}
+                  showNav={showNav}
+                  siteTitle={data.site.title}
+                  onHideNav={handleHideNav}
+                  onShowNav={handleShowNav}
+                />
+                </div>
+              )}}
           </LangContext.Consumer>
         );
       }}

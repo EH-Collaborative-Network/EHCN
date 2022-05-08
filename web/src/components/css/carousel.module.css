@@ -19,6 +19,7 @@
   
 }
 .inner{
+  background-color: var(--color-light-blue);
   /* height:40vh;
   overflow: visible;
   white-space:nowrap; */
@@ -29,14 +30,45 @@
 .figure{
   margin:0 5px;
 }
-
+.root .embed{
+  height: 40vh !important;
+  width: 72vh !important;
+  overflow: hidden;
+}
+.root .embed iframe{
+  /* max-width: calc(177.778vh);
+    height: calc(56.25vw
+); */
+  height: calc(23vh * (100/56.25)) !important;
+  width: calc(129vh * (100/177.778)) !important;
+  margin:0;
+  pointer-events: none;
+}
+.pdf iframe{
+  height: 40vh;
+  cursor: pointer;
+}
+.root .pdf:hover{
+  filter:blur(3px);
+}
+.root .pdf iframe{
+  pointer-events: none;
+}
+.embed > div{
+  padding:0 !important;
+}
+.embed > iframe{
+  position: relative !important;
+}
+.embed p{
+  display: none;
+}
 .figure, .figure  div{
-  width: auto;
   height: 40vh;
   display: inline-block;
 }
 .wrapper{
-  box-shadow: inset 0 0 5px 5px var(--color-white);
+  box-shadow: inset 0 0 5px 5px var(--color-light-blue);
   height:100%;
   width:100%;
   position: absolute;
@@ -53,7 +85,10 @@
   filter:blur(3px);
   cursor: pointer;
 }
-
+.root .embed:hover{
+  filter:blur(3px);
+  cursor: pointer;
+}
 .root figcaption{
   display: none;
 }

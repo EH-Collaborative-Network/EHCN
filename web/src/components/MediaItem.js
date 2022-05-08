@@ -1,6 +1,7 @@
 import React from "react";
 import { Figure } from "./figure";
 import * as styles from "./css/carousel.module.css";
+import ReactHtmlParser from 'react-html-parser';
 
 const MediaItem = ({ media }) => {
 
@@ -18,6 +19,12 @@ function lightboxed(e){
     <div onClick={lightboxed}>
         {image &&
             <Figure node={image} />
+        }
+        {embed?.embed &&
+          <div className={styles.embed}>{ReactHtmlParser(embed.embed)}<figcaption className="embed-caption">{embed.caption}</figcaption></div>
+        }
+        {pdf &&
+          <div className={styles.pdf}>{ReactHtmlParser("<iframe src="+pdf.asset.url+"></iframe>")}<figcaption className="embed-caption">{pdf.caption}</figcaption></div>
         }
     </div>
   ) 

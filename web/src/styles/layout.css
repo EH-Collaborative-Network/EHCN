@@ -173,3 +173,17 @@ select:focus{
 #light-box img:hover{
   filter:none;
 }
+#light-box iframe{
+  width: 62% !important;
+  height: 35vw !important;
+  position: relative !important;
+}
+
+#light-box figcaption.embed-caption{
+  width:60%;
+  margin-left: 19%;
+}
+
+li.alice-carousel__stage-item {
+  width: auto !important;
+}

@@ -21,8 +21,14 @@
     text-align: right;
     padding: 25px 30px;
     cursor: pointer;
+    position: absolute;
+    right:0;
+    top:0;
+    z-index: 9;
 }
 
 .inner{
     text-align: center;
+    margin-top:3em;
 }
+

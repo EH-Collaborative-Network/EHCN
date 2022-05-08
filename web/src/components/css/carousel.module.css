@@ -32,7 +32,7 @@
 }
 .root .embed{
   height: 40vh !important;
-  width: 72vh !important;
+  width: 73.5vh !important;
   overflow: hidden;
 }
 .root .embed iframe{
@@ -57,6 +57,11 @@
 .embed > div{
   padding:0 !important;
 }
+.root .embed,.root .pdf,.root .figure, .root .embed *,.root .pdf *,.root .figure *{
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .embed > iframe{
   position: relative !important;
 }

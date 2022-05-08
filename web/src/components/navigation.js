@@ -64,7 +64,7 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, gl
           <select className={styles.lang} onChange={handler} name="lang" id="lang">
             {/* <option style={{"display":"none"}} selected>Select language</option> */}
            { globalLanguages.map(function(language, index){
-              return(<option key={index} value={language.code} defaultValue={language.code == theme.lang}>{language.name}</option>)
+              return(<option key={index} value={language.code} selected={language.code == theme.lang}>{language.name}</option>)
             })}
             
           </select> 

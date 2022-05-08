@@ -187,3 +187,10 @@ select:focus{
 li.alice-carousel__stage-item {
   width: auto !important;
 }
+.red-color{
+  color:var(--color-red);
+  cursor:pointer;
+}
+.red-color:hover{
+  text-decoration: underline;
+}

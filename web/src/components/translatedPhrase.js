@@ -43,6 +43,7 @@ const TranslatedPhrase = ({ translations, phrase }) => {
           });
         }
       }
+
       return(
         <>{ReactHtmlParser(translation)}</>
       )

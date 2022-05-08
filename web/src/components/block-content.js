@@ -55,6 +55,8 @@ const components = {
 
 const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
   const [adhoc, setAdhoc] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [special, setSpecial] = useState(true);
   let language ='';
   let defaultLangs = [];
   let adhocLangs = [];
@@ -65,9 +67,10 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
     <LangContext.Consumer>
     { theme => {
       let translation = []
-
-      console.log(globalLanguages)
       let lang = theme.lang;
+      if(!status){
+        setStatus(lang)
+      }
       if(blocks){
         let unfilteredLangs = []
         /*Adhoc translations */
@@ -85,6 +88,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
           blocks.forEach(element => {
             if(element.language.code == lang){
               language = element.language.name
+              
               if(element._rawText){
                 translation = element._rawText
               }else if(element.text){
@@ -107,23 +111,32 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         }
 
         if(translation.length < 1){
+          setSpecial(true);
           blocks.forEach(element => {
             if(element.language.name == "English"){
               translation = element._rawText
+              language = "English"
             }
 
           });
         }
       }
-      console.log(adhocLangs)
+    
       function handler(code){
         if(!code){
           setAdhoc(null)
+          setStatus(lang)
         }
+        if(code == lang){
+          setAdhoc(null)
+          setStatus(lang)
+        }
+        
         blocks.map(function(node,index){
       
           if(node.language.code == code){
             setAdhoc(node._rawText)
+            setStatus(node.language.code)
           }
         })
       }
@@ -132,11 +145,13 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         <>
         <PortableText value={adhoc ? adhoc : translation} components={components} serializers={serializers} />
         { adhocLangs.map(function(node, index){
-          return(<div onClick={()=>handler(node.language.code)}>{node.language.name}</div>)
+          if(status != node.language.code){
+          return(<div className="blue-button red-color" onClick={()=>handler(node.language.code)}><TranslatedPhrase translations={languagePhrases} phrase={"availableIn"}/>{" " + node.language.name+"→"}</div>)
+          }
         })
         }
-        {(adhocLangs.length > 0) &&
-          <div onClick={()=>handler(lang)}><TranslatedPhrase translations={languagePhrases} phrase={"availableIn"}/>{" "+language}</div>
+        {((adhocLangs.length > 0) && status != lang && (special && (status !== "en"))) &&
+          <div className="blue-button red-color" onClick={()=>handler(lang)}><TranslatedPhrase translations={languagePhrases} phrase={"availableIn"}/>{" "+language+"→"}</div>
 
         }
         </>

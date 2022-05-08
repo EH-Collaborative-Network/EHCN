@@ -20,6 +20,8 @@
 }
 .inner{
   background-color: var(--color-light-blue);
+  height:40vh;
+  overflow: hidden;
   /* height:40vh;
   overflow: visible;
   white-space:nowrap; */

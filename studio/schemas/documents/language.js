@@ -38,6 +38,12 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'availableIn',
+      type: 'string',
+      title: 'This text is also available in'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'learningResources',
       type: 'string',
       title: 'Learning Resources'

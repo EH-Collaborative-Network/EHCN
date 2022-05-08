@@ -178,9 +178,9 @@ const AboutPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedTitle translations={titles}/></h1>
-          <div className="top-text two-column"><BlockContent blocks={ap}/></div>
+          <div className="top-text two-column"><BlockContent blocks={ap} globalLanguages={globalLanguages}/></div>
           <br/>
-          <h4>Partner Institutions</h4>
+          <h4>Partner Institutions</h4> 
           <div className="">
             <div className={styles.partners}>
             {partners.map(function(node, index){

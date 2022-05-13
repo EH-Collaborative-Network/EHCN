@@ -5,7 +5,6 @@ import clientConfig from "../../client-config";
 import * as styles from "./css/carousel.module.css";
 
 export function Figure({ node }) {
-
   if (!node.asset) {
     return null;
   }
@@ -14,7 +13,7 @@ export function Figure({ node }) {
 
   return (
     <figure className={styles.figure}>
-      <GatsbyImage image={imageData} alt={node.alt} />
+      <GatsbyImage image={imageData} alt={node.altText} />
       {node.caption && <figcaption>{node.caption}</figcaption>}
     </figure>
   );

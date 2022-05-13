@@ -162,6 +162,9 @@ select:focus{
 #light-box.show, .modal.show{
   z-index: 9;
 }
+#light-box.show *{
+  opacity: 1;
+}
 #light-box  div{
   width: auto;
   height: auto;

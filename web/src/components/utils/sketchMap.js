@@ -188,11 +188,11 @@ function sketch (p) {
     p.windowResized = function() {
         if(window.innerWidth <= 768){
             p.resizeCanvas((window.innerWidth / 100 * 100 - 20), (window.innerHeight / 100 * 72));
-            p.camera(0, 0, 200 + p.sin(frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
+            p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
     
         }else{
             p.resizeCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 72));
-                  p.camera(0, 0, 200 + p.sin(frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
+                  p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
     
         }
     }

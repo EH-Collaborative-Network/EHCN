@@ -104,14 +104,17 @@ function sketch (p) {
     
     p.setup = function() {
         let c;
-        if(window.innerWidth <= 768){
-         c = p.createCanvas((window.innerWidth / 100 * 100 - 20), (window.innerHeight / 100 * 72), p.WEBGL); 
-        }else{
-         c = p.createCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 72), p.WEBGL); 
+        if(typeof window != `undefined`){
+            if(window.innerWidth <= 768){
+              c = p.createCanvas((window.innerWidth / 100 * 100 - 20), (window.innerHeight / 100 * 72), p.WEBGL); 
+            }else{
+              c = p.createCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 72), p.WEBGL); 
+            }
+            // c.parent(el)
+            p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
+            graphics = p.createGraphics(1000, 500);
         }
-        // c.parent(el)
-        p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
-        graphics = p.createGraphics(1000, 500);
+       
     
     }
     
@@ -186,12 +189,12 @@ function sketch (p) {
     }
     
     p.windowResized = function() {
-        if(window.innerWidth <= 768){
-            p.resizeCanvas((window.innerWidth / 100 * 100 - 20), (window.innerHeight / 100 * 72));
+        if(window?.innerWidth <= 768){
+            p.resizeCanvas((window?.innerWidth / 100 * 100 - 20), (window?.innerHeight / 100 * 72));
             p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
     
         }else{
-            p.resizeCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 72));
+            p.resizeCanvas((window?.innerWidth / 100 * 82 - 100), (window?.innerHeight / 100 * 72));
                   p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
     
         }

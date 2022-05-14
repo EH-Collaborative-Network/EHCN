@@ -24,6 +24,17 @@ export const query = graphql`
         code
       }
     }
+    partners: allSanityPartner{
+      edges{
+        node{
+          id
+          name
+          slug{
+            current
+          }
+        }
+      }
+    }
     languagePhrases: allSanityLanguage {
       edges {
         node {
@@ -36,6 +47,7 @@ export const query = graphql`
           learningResources
           researchThreads
           availableIn
+          ourPartners
         }
       }
     }
@@ -94,7 +106,7 @@ const IndexPage = props => {
   const globalLanguages = site.languages;
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
   const languagePhrases = (data || {}).languagePhrases?.edges;
-
+  const partners = (data || {}).partners.edges;
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
@@ -114,7 +126,7 @@ const IndexPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <BlockContent  languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/>
-          <Map/>
+          <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
         </Container>
       </Layout>
       

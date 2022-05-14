@@ -11,6 +11,7 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import TranslatedPhrase from "../components/translatedPhrase";
+import TranslatedTitle from "../components/translatedTitle"
 export const query = graphql`
   query ThreadsPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -64,7 +65,7 @@ export const query = graphql`
               }
         }
     }
-    projects: allSanityResearchThread(
+    researchThreads: allSanityResearchThread(
       limit: 60
       filter: { slug: { current: { ne: null } }}
     ) {
@@ -72,6 +73,22 @@ export const query = graphql`
         node {
           id
           name
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+          descriptions{
+            _rawText(resolveReferences: { maxDepth: 20 })
+            language{
+              id
+              name
+              code
+            }
+          }
         }
       }
     }
@@ -81,6 +98,7 @@ export const query = graphql`
 const ResearchThreads = props => {
   const { data, errors } = props;
   const languagePhrases = (data || {}).languagePhrases?.edges;
+  const threads = (data || {}).researchThreads.edges;
   if (errors) {
     return (
       <Layout>
@@ -105,6 +123,14 @@ const ResearchThreads = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedPhrase translations={languagePhrases} phrase={"researchThreads"}/></h1>
+        {threads.map(function(thread,index){
+          return(
+            <div>
+            <h1><TranslatedTitle translations={thread.node.titles}/></h1>
+            <BlockContent translations={thread.node.descriptions}/>
+            </div>
+          )
+        })}
         </Container>
       </Layout>
       

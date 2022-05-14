@@ -9,7 +9,6 @@ const TranslatedPhrase = ({ translations, phrase }) => {
     { theme => {
       let translation = []
 
-
       let lang = theme.lang;
       if(translations){
       

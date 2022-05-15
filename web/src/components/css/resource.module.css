@@ -1,0 +1,26 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.root {
+  /* background: var(--color-white); */
+  background-color: var(--color-light-blue);
+  box-shadow:0 0 6px 6px var(--color-light-blue);
+  color: var(--color-black);
+  padding:5px;
+  flex-basis: calc(50% - 20px);
+  margin-top:1em;
+
+}
+.root > a{
+    text-decoration: none;
+    color: var(--color-black);
+}
+.root > a > a:last-child{
+    float:right;
+}
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content: space-between;
+}

@@ -11,6 +11,10 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import TranslatedPhrase from "../components/translatedPhrase";
+import TranslatedTitle from "../components/translatedTitle";
+import { Link } from "@reach/router";
+import * as styles from "../components/css/resource.module.css";
+
 export const query = graphql`
   query ResourcesPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -64,7 +68,7 @@ export const query = graphql`
               }
         }
     }
-    projects: allSanityLearningResource(
+    resources: allSanityLearningResource(
       limit: 60
       filter: { slug: { current: { ne: null } }}
     ) {
@@ -72,6 +76,25 @@ export const query = graphql`
         node {
           id
           name
+          slug{
+            current
+          }
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+          descriptions{
+            _rawText
+            language{
+              id
+              code
+              name
+            }
+          }
         }
       }
     }
@@ -81,7 +104,8 @@ export const query = graphql`
 const LearningResources = props => {
   const { data, errors } = props;
   const languagePhrases = (data || {}).languagePhrases?.edges;
-
+  const resources = (data || {}).resources?.edges;
+  console.log(resources, "mew")
   if (errors) {
     return (
       <Layout>
@@ -106,6 +130,19 @@ const LearningResources = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedPhrase translations={languagePhrases} phrase={"learningResources"}/></h1>
+          <div className={styles.wrapper}>
+          {resources.map(function(node, index){
+            return(
+              <div className={styles.root}>
+                <Link to={"learning-resource/"+node.node.slug?.current}>
+                  <TranslatedTitle translations={node.node.titles}/>
+                  <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.node.descriptions}/>
+                  <Link className="button" to={"learning-resource/"+node.node.slug?.current}>See More→</Link>
+                </Link>
+              </div>
+            )
+          })}
+          </div>
         </Container>
       </Layout>
       

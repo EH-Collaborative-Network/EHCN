@@ -6,7 +6,7 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import TranslatedTitle from "../components/translatedTitle";
 import Carousel from "../components/carousel";
-
+import BlockContent from "../components/block-content";
 export const query = graphql`
   query ResearchThreadTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -36,6 +36,7 @@ export const query = graphql`
     sampleResearchThread: sanityResearchThread(id: { eq: $id }) {
       id
       name
+      studentLed
       titles{
         text
         language{
@@ -230,10 +231,11 @@ const ResearchThreadTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={researchThread.titles}/></h1>
+        <div className="top-text two-column"><BlockContent blocks={researchThread.descriptions}/></div>
+
         {media.length > 1 &&
            <Carousel media={researchThread.media}/>
         }
-        <div className="top-text two-column"><BlockContent blocks={researchThread.descriptions}/></div>
       </Container>
     </Layout>
   );

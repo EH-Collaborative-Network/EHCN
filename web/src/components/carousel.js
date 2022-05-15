@@ -3,10 +3,23 @@ import AliceCarousel from "react-alice-carousel";
 import * as styles from "./css/carousel.module.css";
 import MediaItem from "./MediaItem";
 import 'react-alice-carousel/lib/alice-carousel.css';
+import { Figure } from "./figure";
+import TranslatedTitle from "./translatedTitle";
+import { Link } from "@reach/router";
 
-const Carousel = ({ media }) => {
+const Carousel = ({ media, imageOnly }) => {
   let medias = media.map(function(node, index){
-    return <MediaItem key={index} media={node}></MediaItem>;
+    if(imageOnly){
+      return(
+        <Link to={"project/"+node[2]}>
+        <Figure key={index} node={node[0]} />
+        <h4><TranslatedTitle translations={node[1]}/>→</h4>
+        </Link>
+      )
+    }else{
+      return <MediaItem key={index} media={node}></MediaItem>;
+    }
+    
 })
 
 let resp = {

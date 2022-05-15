@@ -32,6 +32,7 @@
 }
 .root > h1:nth-child(2){
   margin-top:0;
+  margin-bottom:0;
 }
 .root p a::after{
   position: absolute;

@@ -1,0 +1,75 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.root {
+  /* background: var(--color-white); */
+    background-color: var(--color-light-blue);
+    box-shadow: 0px 0px 6px 6px var(--color-light-blue);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-top:1em;
+    display: none;
+}
+
+.main{
+    flex-basis: 40%;
+}
+
+.facultyStudent{
+   position: fixed;
+   top:3em;
+   right:50px;
+   text-align: right;
+}
+.facultyStudent input{
+    float:left;
+    position: relative;
+    top:5px;
+}
+.facultyStudent input{
+    margin-left:2em;
+}
+.facultyStudent input{
+    margin-right:0.5em;
+}
+.main h4{
+    margin-bottom: 0;
+    margin-top:0;
+    position:relative;
+    display: inline-block;
+}
+.main a h4::after{
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    content: " ";
+    background: var(--blue-link-gradient);
+    opacity: 0;
+    transition: 0.5s;
+}
+.main a:hover h4::after{
+    opacity: 1;
+    width: 100%;
+}
+.main a{
+    text-decoration: none;
+    color:var(--color--black);
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    padding:5px;
+}
+.main h4 + *{
+    margin-top: 0.5em;
+    text-overflow: ellipsis;
+    display: inline-block;
+    font-size: var(--font-small-size);
+    line-height: var(--font-small-height);
+}
+.wrapper{
+    flex-basis: 60%;
+}

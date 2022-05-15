@@ -197,3 +197,6 @@ li.alice-carousel__stage-item {
 .red-color:hover{
   text-decoration: underline;
 }
+.show-thread.faculty-led, .show-thread.student-led{
+  display: flex;
+}

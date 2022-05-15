@@ -29,6 +29,19 @@
 .inner > *{
   /* display: inline-block; */
 }
+.root h4{
+  top:-2.7em;
+  padding:0 5px;
+  position: relative;
+  background-color: var(--color-light-blue);
+  box-shadow: 0px 0px 5px 5px var(--color-light-blue);
+  color:var(--color--black);
+  text-decoration: none;
+}
+.root li > a{
+  color:var(--color--black);
+  text-decoration: none;
+}
 .figure{
   margin:0 5px;
 }

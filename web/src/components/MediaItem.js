@@ -7,9 +7,10 @@ const MediaItem = ({ media }) => {
 
 let embed = media.embed;
 let image = media.image;
+
 let pdf = media.pdf;
 let embedCode;
-console.log(media)
+
 if(embed?.embed?.length){
   if(embed.embed.includes("iframe")){
     embedCode = embed.embed.split("<iframe")[0] + "<iframe title='"+embed.altText+"' "+embed.embed.split("<iframe")[1];

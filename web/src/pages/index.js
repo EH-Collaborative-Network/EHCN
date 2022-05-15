@@ -125,7 +125,7 @@ const IndexPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <BlockContent  languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/>
+          <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/>
           <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
         </Container>
       </Layout>

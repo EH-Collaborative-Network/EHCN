@@ -515,7 +515,7 @@ module.exports = {
             credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "Working Group"
+            type: "Working"
           }))
 
           let finalArray = courses.concat(events, resources, news, projects, partners, threads, groups, opps, pages)

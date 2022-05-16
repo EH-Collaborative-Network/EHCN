@@ -78,17 +78,6 @@ export const query = graphql`
         }
       }
     }
-    projects: allSanityProject(
-      limit: 6
-      filter: { slug: { current: { ne: null } }}
-    ) {
-      edges {
-        node {
-          id
-          name
-        }
-      }
-    }
   }
 `;
 
@@ -108,12 +97,8 @@ const IndexPage = props => {
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const partners = (data || {}).partners.edges;
-  const projectNodes = (data || {}).projects
-    ? mapEdgesToNodes(data.projects)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : [];
-  console.log(projectNodes)
+
+
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -127,7 +112,12 @@ const IndexPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/>
-          <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
+          {
+            typeof window != `undefined` &&
+            <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
+          }
+          
+          
         </Container>
       </Layout>
       

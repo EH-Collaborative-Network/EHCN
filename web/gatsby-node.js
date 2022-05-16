@@ -354,8 +354,8 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           module: {
               rules: [
                   {
-                      test: /p5/,
-                      use: 'null-loader'
+                      test: /react-p5-wrapper/,
+                      use: loaders.null()
                   }
               ]
           }

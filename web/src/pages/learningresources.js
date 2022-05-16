@@ -106,7 +106,7 @@ const LearningResources = props => {
   const { data, errors } = props;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const resources = (data || {}).resources?.edges;
-  console.log(resources, "mew")
+
   if (errors) {
     return (
       <Layout>

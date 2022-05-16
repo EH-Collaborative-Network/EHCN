@@ -6,35 +6,27 @@ import osun from '../assets/osun.png';
 import * as styles from "./css/header.module.css";
 import LangContext from './context/lang.js'
 import TranslatedPhrase from "./translatedPhrase";
+import translate from "./utils/translate";
 
 const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, globalLanguages }) =>{
   let defaultLang = "en";
   const [language, setLanguage] = useState(defaultLang);
-  // let handler = (event) => {
-  //   let value = event.target.value
-  //   localStorage.setItem("lang", JSON.stringify(value))
-  //   setLanguage(value)
-  console.log(globalLanguages)
-  // }
   return (
- 
     <div className={styles.header}>
       <div className={styles.logo}><Link to="/"><img alt={"EHCN's logo which has an abstracted 'E' in the shape of the E.H. building on Bard campus with a grey H inside of it. Alongside this, is the text Experimental Humanities Collaborative Network."} src={logo} /></Link></div>
       <div className={styles.wrapper}>  
       <LangContext.Consumer>
-    { theme => {
-      
-      return(
-        <ul className={styles.menu}>
-      
-            <li><Link to="/about/"><TranslatedPhrase translations={translations} phrase={"aboutEHCN"}/>→</Link></li>
-            <li><Link to="/funding"><TranslatedPhrase translations={translations} phrase={"fundingOpportunities"}/>→</Link></li>
-            <li><Link to="/researchthreads/"><TranslatedPhrase translations={translations} phrase={"researchThreads"}/>→</Link></li>
-            <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"calendar"}/>→</Link></li>
-            <li><Link to="/learningresources/"><TranslatedPhrase translations={translations} phrase={"learningResources"}/>→</Link></li>
-        </ul>
-        )
-    }}
+      { theme => {
+        return(
+          <ul className={styles.menu}>
+              <li><Link to="/about/"><TranslatedPhrase translations={translations} phrase={"aboutEHCN"}/>→</Link></li>
+              <li><Link to="/funding"><TranslatedPhrase translations={translations} phrase={"fundingOpportunities"}/>→</Link></li>
+              <li><Link to="/researchthreads/"><TranslatedPhrase translations={translations} phrase={"researchThreads"}/>→</Link></li>
+              <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"calendar"}/>→</Link></li>
+              <li><Link to="/learningresources/"><TranslatedPhrase translations={translations} phrase={"learningResources"}/>→</Link></li>
+          </ul>
+          )
+      }}
     </LangContext.Consumer>
     <LangContext.Consumer>
     {theme => {
@@ -50,9 +42,26 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, gl
         let url = "/search?query="+phrase;
         window.location.href = url;
       }
+      function handleEnter(e){
+        if(e.key == "Enter"){
+          let el = e.target;
+          let parent = el.closest("div");
+          let phrase = parent.querySelector("input").value
+          let url = "/search?query="+phrase;
+          window.location.href = url;
+        }
+      }
       return(
         <>
-          <div className={styles.searchWrapper}><input type="text" /><button onClick={handleSearch} className="blue-button">enter</button></div>
+          <div className={styles.searchWrapper}>
+            <input type="text" onKeyDown={handleEnter} placeholder={translate(translations, "search" ,theme)} />
+            <button onClick={handleSearch} className="blue-button">
+              <svg width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.0023 11.2C22.0023 16.4901 17.4814 20.9 11.7511 20.9C6.02087 20.9 1.5 16.4901 1.5 11.2C1.5 5.90992 6.02087 1.5 11.7511 1.5C17.4814 1.5 22.0023 5.90992 22.0023 11.2Z" stroke="#333333" stroke-width="3"/>
+              <path d="M27.9786 27.9995C28.5976 28.5501 29.5453 28.4943 30.0955 27.8749C30.6456 27.2556 30.5898 26.3071 29.9709 25.7565L27.9786 27.9995ZM17.9062 19.0395L27.9786 27.9995L29.9709 25.7565L19.8985 16.7965L17.9062 19.0395Z" fill="#333333"/>
+              </svg>
+            </button>
+          </div>
           <div className={styles.langWrapper}>
             <svg className={styles.globe} width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M28.4781 14.8786C28.4781 22.2473 22.2355 28.2571 14.4891 28.2571C6.74262 28.2571 0.5 22.2473 0.5 14.8786C0.5 7.50986 6.74262 1.5 14.4891 1.5C22.2355 1.5 28.4781 7.50986 28.4781 14.8786Z" stroke="#333333"/>

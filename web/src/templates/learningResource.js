@@ -30,6 +30,7 @@ export const query = graphql`
           learningResources
           researchThreads
           availableIn
+          search
         }
       }
     }

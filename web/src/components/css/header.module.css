@@ -31,6 +31,33 @@
     left:-2%;
     position: relative;
 }
+.searchWrapper{
+    position:relative;
+}
+.searchWrapper input{
+    width:90%;
+}
+.searchWrapper button{
+    outline:none;
+    border:none;
+    cursor: pointer;
+    padding:0;
+    right:5px;
+    top:4px;
+    position:absolute;
+    vertical-align: top;
+}
+.searchWrapper button:hover svg{
+    top:-4px;
+    left:1px;
+}
+.searchWrapper svg{
+    width:20px;
+    height:20px;
+    vertical-align: top;
+    position:relative;
+    top:-5px;
+}
 .langWrapper{
     position: relative;
 }

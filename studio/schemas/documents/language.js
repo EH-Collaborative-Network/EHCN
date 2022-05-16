@@ -56,6 +56,12 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'search',
+      type: 'string',
+      title: 'Search'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'researchThreads',
       type: 'string',
       title: 'Research Threads'

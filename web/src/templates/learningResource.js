@@ -198,7 +198,7 @@ const LearningResourceTemplate = props => {
         <h1><TranslatedTitle translations={learningResource.titles}/></h1>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={learningResource.descriptions}/></div>
         {media.length > 1 &&
-           <Carousel media={learningResource.media}/>
+          <Carousel media={learningResource.media}/>
         }
       </Container>
     </Layout>

@@ -235,10 +235,10 @@ const CourseTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={course.titles}/></h1>
+        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={course.descriptions}/></div>
         {media.length > 1 &&
            <Carousel media={course.media}/>
         }
-        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={course.descriptions}/></div>
       </Container>
     </Layout>
     

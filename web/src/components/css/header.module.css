@@ -5,10 +5,23 @@
     position:fixed;
     top:0;
     left:0;
-    width: 18%;
+    width: 100%;
     z-index: 9;
     height:100vh;
-    background: var(--light-blue-gradient);
+    display:none;
+    background: var(--color-light-blue);
+    @media (--media-min-medium) {
+        width: 18%;
+        display:block;
+        background: var(--light-blue-gradient);
+    }
+
+}
+.mobileHeader{
+    display:block;
+    @media (--media-min-medium) {
+        display:none;
+    }
 }
 .wrapper{
     position: relative;
@@ -22,14 +35,22 @@
 }
 
 .logo img{
-    width:83%;
-    margin-top:16px;
-    margin-left:10px;
+    width:35%;
+    margin-top:10px;
+    margin-left:4px;
+    @media (--media-min-medium) {
+        width: 83%;
+        margin-top:16px;
+        margin-left:10px;
+    }
 }
 .osun{
-    width: 83%;
+    width: 45%;
     left:-2%;
     position: relative;
+    @media (--media-min-medium) {
+        width: 83%;
+    }
 }
 .searchWrapper{
     position:relative;
@@ -42,11 +63,14 @@
     border:none;
     cursor: pointer;
     padding:0;
-    right:5px;
+    right:20px;
     top:4px;
     position:absolute;
     vertical-align: top;
     background-color: transparent;
+    @media (--media-min-medium){
+        right: 5px;
+    }
 }
 .searchWrapper button:hover svg{
     top:-4px;
@@ -71,6 +95,7 @@
 .lang{
     padding-left:30px;
     height:2.5em;
+    margin-left:0;
 }
 .menu a{
     color: inherit;
@@ -83,7 +108,31 @@
 }
 .menu li{
     margin:7px 0;
-    font-size: var(--font-small-size);
+    font-size: var(--font-base-size);
+    @media (--media-min-medium) {
+        font-size: var(--font-small-size);
+    }
+}
+.close{
+    display: inline;
+    float:right;
+    width: 35px;
+    height:35px;
+    position:fixed;
+    top: 15px;
+    right: 15px;
+    @media (--media-min-medium){
+        display:none;
+    }
+}
+.mobileHeader .close{
+    margin-top: 5px;
+    width: 40px;
+    height:40px;
+}
+.close svg{
+    width: 100%;
+    height:auto;
 }
 /* blue hover effect */
 .menu li a{

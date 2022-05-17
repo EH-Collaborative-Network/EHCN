@@ -233,7 +233,6 @@ const ResearchThreadTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={researchThread.titles}/></h1>
         <div className="top-text two-column"><BlockContent blocks={researchThread.descriptions}/></div>
-
         {media.length > 1 &&
            <Carousel media={researchThread.media}/>
         }

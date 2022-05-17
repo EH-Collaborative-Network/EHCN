@@ -231,10 +231,10 @@ const ProjectTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={project.titles}/></h1>
+        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={project.descriptions}/></div>
         {media.length > 1 &&
            <Carousel media={project.media}/>
         }
-        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={project.descriptions}/></div>
       </Container>
     </Layout>
   );

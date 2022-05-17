@@ -5,13 +5,6 @@
   margin-top:0;
   padding-top:0;
   position: relative;
-  /* margin-left: 0;
-  display: block;
-  overflow-x:hidden; */
-  @media (--media-min-small) {
-
-  }
-
 }
 .steering{
   list-style: none;
@@ -36,18 +29,19 @@
 
 .modal{
   background: var(--color-light-blue);
-  height: 70vh;
-  width:60vw;
+  height: 94vh;
+  width:90vw;
+  left:5vw;
+  top:3vh;
   overflow: scroll;
   position:fixed;
-  left:20vw;
-  top:15vh;
   z-index: -2;
   box-shadow: 0 0 5px 15px #d4eaed;
-  @media (--media-min-small) {
-    /* margin-left:16vw;
-    padding:50px;
-    padding-left:75px; */
+  @media (--media-min-medium) {
+    height: 70vh;
+    width:60vw;
+    left:20vw;
+    top:15vh;
   }
 }
 .close{
@@ -57,11 +51,21 @@
   float:right;
   position:absolute;
   right: 0;
+  width: 35px;
+  @media (--media-min-medium) {
+    width: 50px;
+  }
+}
+.close svg{
+  width: 100%;
 }
 .inner{
   padding:20px 20px;
   overflow:scroll;
-  height: 70vh;
+  height: 90vh;
+  @media (--media-min-medium) {
+    height: 70vh;
+  }
 }
 .inner h4{
   font-size:1em;

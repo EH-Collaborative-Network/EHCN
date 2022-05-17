@@ -28,10 +28,10 @@
   --line-unit: 16;
   --font-micro-size: calc(10 / var(--unit) * 1em); /* 10px */
   --font-micro-line-height: calc(12 / 10); /* 12px */
-  --font-small-size: 0.82em; /* 14px */
+  --font-small-size: 0.82rem; /* 14px */
   --font-small-line-height: calc(21 / 14); /* 21px */
   --font-base-size: clamp(14px, 1.2vw, 40px); /* 16px */
-  --font-base-letter-spacing: 0.03em;
+  --font-base-letter-spacing: 0.03rem;
   --font-base-line-height: 1.5; /* 24px */
   --font-large-size: calc(18 / var(--unit) * 1em); /* 18px */
   --font-large-line-height: calc(27 / 18); /* 27px */

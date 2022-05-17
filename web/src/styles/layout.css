@@ -141,6 +141,11 @@ width: 100%;
 .top-text.two-column > p:first-child{
   margin-top:0;
 }
+@media(max-width:675px){
+  .top-text.two-column{
+    column-count:1;
+  }
+}
 select{
 	border-radius: 0;
 	font-family: inherit;

@@ -24,7 +24,10 @@
     float:right;
 }
 .root > a > p{
-    max-width: 90%;
+    max-width: 95%;
+    @media (--media-min-medium) {
+        max-width: 90%;
+    }
 }
 .wrapper{
     display: flex;
@@ -43,8 +46,11 @@
 }
 .searchWrapper{
     position:relative;
-    width:70%;
+    width:100%;
     margin:1em 0;
+    @media (--media-min-medium) {
+        width:70%;
+    }
 }
 .searchWrapper input{
     width:90%;
@@ -54,11 +60,14 @@
     border:none;
     cursor: pointer;
     padding:0;
-    right:50px;
+    right:10px;
     background-color: transparent;
     top:12px;
     position:absolute;
     vertical-align: top;
+    @media (--media-min-medium) {
+        right:50px;
+    }
 }
 .searchWrapper button:hover svg{
     top:-4px;

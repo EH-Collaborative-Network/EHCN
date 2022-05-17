@@ -6,23 +6,22 @@
   position: relative;
   flex-basis: calc(100% - 50px);
   padding: 20px;
-  margin: 5px;
+  margin: 5px 0;
   font-size: 0.82em;
-
-  @media (--media-min-small) {
-
+  @media (--media-min-medium) {
+    margin: 5px;
   }
-
 }
 .root p{
-  max-width: calc(100% - 100px);
+  max-width: calc(100% - 10px);
+  @media (--media-min-medium) {
+    max-width: calc(100% - 100px);
+  }
 }
-
 
 .root:hover{
   background:var(--blue-hover-gradient);
 }
-
 
 .institution > h5, .network > h5{
   margin-bottom:1em;
@@ -40,8 +39,10 @@
   display: inline-block;
   background: var(--blue-link-gradient);
   top: -0.7em;
-  left: 20px;
-  /* top:-2.5em; */
+  left: 0px;
+  @media (--media-min-medium) {
+    left: 20px;
+  }
 }
 .toggle::after{
   background: var(--blue-hover-gradient);

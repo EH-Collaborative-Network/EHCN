@@ -230,7 +230,7 @@ const ResearchThreads = props => {
           </div>
         {threads.map(function(thread,index){
           let media = []
-          console.log(thread)
+
           thread.node.projects.map(function(project,index){
             let x = []
             x.push(project.mainImage)

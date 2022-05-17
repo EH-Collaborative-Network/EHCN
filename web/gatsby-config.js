@@ -432,7 +432,7 @@ module.exports = {
             credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "Course"
+            type: "course"
           }))
 
           let events = data.allSanityEvent.edges.map((edge) => ({
@@ -442,7 +442,7 @@ module.exports = {
             credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "Event"
+            type: "event"
           }))
 
 
@@ -451,7 +451,7 @@ module.exports = {
             descriptions:  edge.node.descriptions,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "Learning Resource"
+            type: "learningResource"
           }))
 
 
@@ -462,7 +462,7 @@ module.exports = {
             credits:  edge.node._rawCredits,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "News Item"
+            type: "news"
           }))
 
 
@@ -470,7 +470,7 @@ module.exports = {
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
             titles: edge.node.titles,
-            type: "Funding Opportunity"
+            type: "fundingOpportunity"
           }))
 
           let pages = data.allSanityPage.edges.map((edge) => ({
@@ -478,7 +478,7 @@ module.exports = {
             descriptions:  edge.node.bodies,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "Page"
+            type: "page"
           }))
 
           let partners = data.allSanityPartner.edges.map((edge) => ({
@@ -488,7 +488,7 @@ module.exports = {
             credits:  edge.node.credits,
             name: edge.node.name,
             slug:edge.node.slug,
-            type: "Partner"
+            type: "partner"
           }))
           let projects = data.allSanityProject.edges.map((edge) => ({
             id: edge.node.id,
@@ -497,7 +497,7 @@ module.exports = {
             credits:  edge.node.credits,
             titles: edge.node.titles,
             slug: edge.node.slug,
-            type: "Project"
+            type: "project"
           }))
           let threads = data.allSanityResearchThread.edges.map((edge) => ({
             id: edge.node.id,
@@ -506,7 +506,7 @@ module.exports = {
             credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "Research Thread"
+            type: "researchThread"
           }))
           let groups = data.allSanityWorkingGroup.edges.map((edge) => ({
             id: edge.node.id,
@@ -515,7 +515,7 @@ module.exports = {
             credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
-            type: "Working"
+            type: "workingGroup"
           }))
 
           let finalArray = courses.concat(events, resources, news, projects, partners, threads, groups, opps, pages)

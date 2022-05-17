@@ -141,6 +141,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         })
       }
 
+
       return(
         <>
         <PortableText value={adhoc ? adhoc : translation} components={components} serializers={serializers} />
@@ -152,7 +153,6 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         }
         {((adhocLangs.length > 0) && status != lang && (special && (status !== "en"))) &&
           <div className="blue-button red-color" onClick={()=>handler(lang)}><TranslatedPhrase translations={languagePhrases} phrase={"availableIn"}/>{" "+language+"→"}</div>
-
         }
         </>
       )

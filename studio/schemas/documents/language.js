@@ -50,6 +50,18 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'learningResource',
+      type: 'string',
+      title: 'Learning Resource'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'page',
+      type: 'string',
+      title: 'Page'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'researchThread',
       type: 'string',
       title: 'Research Thread'
@@ -140,6 +152,12 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'featured',
+      type: 'string',
+      title: 'Featured'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'partner',
       type: 'string',
       title: 'Partner Institution'
@@ -203,6 +221,12 @@ export default {
       name:'results',
       type: 'string',
       title: 'Results'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'noResults',
+      type: 'string',
+      title: 'No results for'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',

@@ -52,7 +52,7 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, gl
         }
       }
       return(
-        <>
+        <div>
           <div className={styles.searchWrapper}>
             <input type="text" onKeyDown={handleEnter} placeholder={translate(translations, "search" ,theme)} />
             <button onClick={handleSearch} className="blue-button">
@@ -87,7 +87,7 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, gl
               
             </select> 
           </div>
-        </>
+        </div>
       )}}
      </LangContext.Consumer>
         <ul className={styles.menu}>

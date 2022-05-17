@@ -35,7 +35,7 @@
     position:relative;
 }
 .searchWrapper input{
-    width:90%;
+    width:83%;
 }
 .searchWrapper button{
     outline:none;
@@ -46,6 +46,7 @@
     top:4px;
     position:absolute;
     vertical-align: top;
+    background-color: transparent;
 }
 .searchWrapper button:hover svg{
     top:-4px;

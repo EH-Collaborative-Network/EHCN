@@ -1,11 +1,6 @@
 import { useFlexSearch } from 'react-use-flexsearch'
 import React from "react";
 import { graphql } from "gatsby";
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from "../lib/helpers";
 import { useState } from 'react';
 import Container from "../components/container";
 import { useLocation } from '@reach/router';
@@ -13,8 +8,10 @@ import queryString from 'query-string';
 import BlockContent from "../components/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
+import { Link } from '@reach/router';
 import Layout from "../containers/layout";
 import TranslatedTitle from "../components/translatedTitle"
+import TranslatedPhrase from '../components/translatedPhrase';
 import { useEffect } from 'react';
 import * as styles from "../components/css/search.module.css";
 import translate from "../components/utils/translate";
@@ -44,6 +41,17 @@ export const query = graphql`
                 researchThreads
                 availableIn
                 search
+                results
+                course
+                learningResource
+                researchThread
+                event
+                partner
+                news
+                fundingOpportunity
+                project
+                workingGroup
+                noResults
             }
         }
     }
@@ -102,10 +110,11 @@ const Search = props => {
   }
   return (
       <>  
-      <Layout extra='white' navTranslations={languagePhrases} globalLanguages={globalLanguages}>
+      <Layout navTranslations={languagePhrases} globalLanguages={globalLanguages}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
+          <h1><TranslatedPhrase phrase={"search"} translations={languagePhrases}/></h1>
           <div className={styles.searchWrapper}>
           <LangContext.Consumer>
             {theme => {
@@ -120,17 +129,68 @@ const Search = props => {
               </svg>
             </button>
           </div>
+          
+          <h4><TranslatedPhrase phrase={"results"} translations={languagePhrases} />:</h4>
+          {(query?.length > 0 && results.length == 0) &&
+            <em id="no-results"><TranslatedPhrase translations={languagePhrases} phrase={"noResults"}/> "{query}"</em>
+          }
+          <div className={styles.resultsWrapper}>
           {
 
               results.map(function(node,index){
-                return(
-                    <div key={index}>
-                        <h1>{node.type}</h1>
-                        <TranslatedTitle translations={node.titles}/>
-                    </div>
-                )
+                let slug = node.slug?.current || "";
+                    switch (node.type) {
+                      case 'learningResource':
+                        slug = "/learning-resource/"+slug;
+                        break;
+                      case 'course':
+                        slug = "/course/"+slug;
+                        break
+                      case 'fundingOpportunity':
+                        slug = "/funding/"+slug;
+                        break;
+                      case 'news':
+                        slug = "/news/"+slug;
+                        break;
+                      case 'event':
+                        slug = "/event/"+slug;
+                        break;
+                      case 'project':
+                        slug = "/project/"+slug;
+                        break;
+                      case 'workingGroup':
+                        slug = "/working-group/"+slug;
+                        break;
+                      case 'researchThread':
+                        slug = "/research-thread/"+slug;
+                        break;
+                      case 'partner':
+                        slug = "/partner/"+slug;
+                        break;
+                      default:
+                        slug = slug;
+                    }
+            
+                    return(
+                        <div key={index}>
+                          <Link to={slug}>
+                            
+                            <sup><TranslatedPhrase translations={languagePhrases} phrase={node.type}/></sup>
+                            <h4>{
+                              node.type == "partner" ? 
+                              (<>{node.name}</>)
+                              :
+                              (<><TranslatedTitle translations={node.titles}/>→</>)
+                            }</h4>
+                            <div><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.descriptions}/></div>
+                          </Link>
+                        </div>
+                    )
+                
+                
               })
           }
+          </div>
         </Container>
       </Layout>
       

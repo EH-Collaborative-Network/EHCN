@@ -13,6 +13,11 @@ export default {
       validation: Rule => Rule.required().error('title cannot be left blank')
     },
     {
+      name:'featured',
+      type: 'boolean',
+      title: 'Do you want to feature this resource on the learning resources page?'
+   },
+    {
       name: 'titles',
       title: 'Titles to Display',
       type: 'array',

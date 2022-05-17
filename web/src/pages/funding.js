@@ -64,6 +64,7 @@ export const query = graphql`
                   language{
                     id
                     name
+                    code
                   }
                 }
               }

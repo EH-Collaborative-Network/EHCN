@@ -209,7 +209,7 @@ const AboutPage = props => {
             </ul>
           </div>
           <h4>Staff</h4>
-          <div className="two-column">
+          <div className="staff-no-column">
             <ul className={styles.steering}>
             {staffPeople.map(function(node, index){
                 return <Person key={index} person={node}></Person>;

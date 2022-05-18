@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from "gatsby";
 import React, { useState } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/Layout/layout";
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import LangContext from '../components/context/lang.js'

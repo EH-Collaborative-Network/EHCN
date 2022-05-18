@@ -5,12 +5,12 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
-import Container from "../components/container";
-import BlockContent from "../components/block-content";
+import Container from "../components/Container/container";
+import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
-import Map from "../components/map";
+import Map from "../components/Map/map";
 
 
 export const query = graphql`

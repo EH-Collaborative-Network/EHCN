@@ -43,7 +43,7 @@ strong{
   font-family: var(--font-family-bold);
 }
 h1{
-  font-size: var(--font-title1-size);
+  font-size: var(--font-large-size);
   margin:25px 0;
 }
 h1,h2,h3,h4,h5,h6{
@@ -130,7 +130,7 @@ width: 100%;
 }
 
 .homepage > p:nth-child(2){
-  font-size: var(--font-title3-size);
+  font-size: var(--font-medium-size);
 }
 .two-column{
   column-count: 2;

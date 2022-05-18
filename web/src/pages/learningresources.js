@@ -1,18 +1,18 @@
 import React from "react";
 import { useFlexSearch } from 'react-use-flexsearch'
 import { graphql } from "gatsby";
-import translate from "../components/utils/translate";
+import translate from "../components/TranslationHelpers/translate";
 import LangContext from '../components/context/lang';
-import Container from "../components/container";
-import BlockContent from "../components/block-content";
+import Container from "../components/Container/container";
+import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { useState } from 'react';
-import TranslatedPhrase from "../components/translatedPhrase";
-import TranslatedTitle from "../components/translatedTitle";
+import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
+import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import { Link } from "@reach/router";
-import * as styles from "../components/css/resource.module.css";
+import * as styles from "../components/LearningResource/resource.module.css";
 
 export const query = graphql`
   query ResourcesPageQuery {

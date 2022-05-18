@@ -6,14 +6,14 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
-import Container from "../components/container";
-import BlockContent from "../components/block-content";
-import TranslatedTitle from "../components/translatedTitle";
+import Container from "../components/Container/container";
+import BlockContent from "../components/TranslationHelpers/block-content";
+import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
-import { FundingOpportunity } from "../components/fundingOpportunity";
-import * as styles from "../components/css/fundingopp.module.css";
+import { FundingOpportunity } from "../components/FundingOpportunity/fundingOpportunity";
+import * as styles from "../components/FundingOpportunity/fundingopp.module.css";
 
 
 export const query = graphql`

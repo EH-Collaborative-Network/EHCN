@@ -2,19 +2,19 @@ import { useFlexSearch } from 'react-use-flexsearch'
 import React from "react";
 import { graphql } from "gatsby";
 import { useState } from 'react';
-import Container from "../components/container";
+import Container from "../components/Container/container";
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
-import BlockContent from "../components/block-content";
+import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import { Link } from '@reach/router';
 import Layout from "../containers/layout";
-import TranslatedTitle from "../components/translatedTitle"
-import TranslatedPhrase from '../components/translatedPhrase';
+import TranslatedTitle from "../components/TranslationHelpers/translatedTitle"
+import TranslatedPhrase from '../components/TranslationHelpers/translatedPhrase';
 import { useEffect } from 'react';
-import * as styles from "../components/css/search.module.css";
-import translate from "../components/utils/translate";
+import * as styles from "../components/Search/search.module.css";
+import translate from "../components/TranslationHelpers/translate";
 import LangContext from '../components/context/lang';
 
 export const query = graphql`

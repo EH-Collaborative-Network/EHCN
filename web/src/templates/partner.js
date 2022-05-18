@@ -1,13 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Container from "../components/container";
+import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
-import BlockContent from "../components/block-content";
-import Carousel from "../components/carousel";
-import TranslatedTitle from "../components/translatedTitle";
-import RelatedBlock from "../components/relatedBlock";
+import BlockContent from "../components/TranslationHelpers/block-content";
+import Carousel from "../components/Carousel/carousel";
+import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
+import RelatedBlock from "../components/RelatedBlock/relatedBlock";
 export const query = graphql`
   query PartnerTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {

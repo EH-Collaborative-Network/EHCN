@@ -108,7 +108,7 @@ function sketch (p) {
             if(window.innerWidth <= 768){
               c = p.createCanvas((window.innerWidth / 100 * 100 - 20), (window.innerHeight / 100 * 72), p.WEBGL); 
             }else{
-              c = p.createCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 72), p.WEBGL); 
+              c = p.createCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 62), p.WEBGL); 
             }
             // c.parent(el)
             p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);

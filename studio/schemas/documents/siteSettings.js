@@ -28,6 +28,18 @@ export default {
       of:[{type:'reference', title:'Language', to: [{type: 'language'}]}]
     },
     {
+      name:'showMarquee',
+      type: 'boolean',
+      title: 'Do you want to show the marquee?'
+    },
+    {
+      name: 'marqueeText',
+      title: 'Marquee Text',
+      type: 'array',
+      description:"select add item to add a marquee text in any language (including English)",
+      of: [{type: 'translation'}],
+    },
+    {
       name: 'keywords',
       type: 'array',
       title: 'Keywords',

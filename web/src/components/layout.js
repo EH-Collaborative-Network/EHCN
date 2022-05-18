@@ -4,15 +4,19 @@ import PropTypes from 'prop-types'
 import "../styles/layout.css";
 import * as styles from "./css/layout.module.css";
 import Lightbox from "./lightbox";
-const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle, navTranslations, globalLanguages }) =>{
+import Marquee from "./marquee";
+const Layout = ({ children, siteTitle, navTranslations, globalLanguages, showMarquee, marqueeContent }) =>{
 
   
   return(
     
 
       <>
-        <Navigation siteTitle={siteTitle} globalLanguages={globalLanguages} onHideNav={onHideNav} translations={navTranslations} onShowNav={onShowNav} showNav={showNav} />
+        <Navigation siteTitle={siteTitle} globalLanguages={globalLanguages} translations={navTranslations} />
         <div className={styles.content}>{children}</div>
+        {showMarquee &&
+          <Marquee marqueeContent={marqueeContent} languagePhrases={navTranslations} globalLanguages={globalLanguages}/>
+        }
         <Lightbox/>
       </>
 

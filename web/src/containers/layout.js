@@ -14,7 +14,6 @@ const query = graphql`
 `;
 
 function LayoutContainer(props) {
-  const [showNav, setShowNav] = useState(false);
   const location = useLocation();
 
   let lang = "en"
@@ -22,14 +21,8 @@ function LayoutContainer(props) {
     lang = queryString.parse(location.search).lang
     lang = lang ? lang : "en";
   }
-  function handleShowNav() {
-    setShowNav(true);
-  }
-  function handleHideNav() {
-    setShowNav(false);
-  }
+
   return (
-    
     <StaticQuery
       query={query}
       render={data => {
@@ -47,10 +40,7 @@ function LayoutContainer(props) {
                 <Layout
                   {...props}
                   lang={lang}
-                  showNav={showNav}
                   siteTitle={data.site.title}
-                  onHideNav={handleHideNav}
-                  onShowNav={handleShowNav}
                 />
                 </div>
               )}}

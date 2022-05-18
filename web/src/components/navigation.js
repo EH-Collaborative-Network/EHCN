@@ -8,7 +8,7 @@ import LangContext from './context/lang.js'
 import TranslatedPhrase from "./translatedPhrase";
 import translate from "./utils/translate";
 
-const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, globalLanguages }) =>{
+const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
   let defaultLang = "en";
   function closeHandler(){
     document.getElementById("navigation").style.display = "none"
@@ -114,6 +114,7 @@ const Navigation = ({ onHideNav, onShowNav, showNav, siteTitle, translations, gl
       )}}
      </LangContext.Consumer>
         <ul className={styles.menu}>
+          <li><a className={styles.email} href="mailto:ehcn@opensocietyuniversitynetwork.org">ehcn@opensociety<br/>universitynetwork.org</a></li>
           <li><TranslatedPhrase translations={translations} phrase={"ehcnSupported"}/></li>
           <li><img className={styles.osun} src={osun}/></li>
         </ul>

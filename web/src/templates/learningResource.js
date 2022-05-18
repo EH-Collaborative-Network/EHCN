@@ -7,6 +7,7 @@ import Layout from "../containers/layout";
 import TranslatedTitle from "../components/translatedTitle";
 import Carousel from "../components/carousel";
 import BlockContent from "../components/block-content";
+import RelatedBlock from "../components/relatedBlock";
 export const query = graphql`
   query LearningResourceTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -266,6 +267,7 @@ const LearningResourceTemplate = props => {
         {media.length > 1 &&
           <Carousel media={learningResource.media}/>
         }
+        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={learningResource}/>
       </Container>
     </Layout>
   );

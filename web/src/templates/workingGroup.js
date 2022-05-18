@@ -6,7 +6,7 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import TranslatedTitle from "../components/translatedTitle";
 import Carousel from "../components/carousel";
-
+import RelatedBlock from "../components/relatedBlock";
 export const query = graphql`
   query WorkingGroupTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -300,6 +300,7 @@ const WorkingGroupTemplate = props => {
         {media.length > 1 &&
           <Carousel media={workingGroup.media}/>
         }
+        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={workingGroup}/>
       </Container>
     </Layout>
   );

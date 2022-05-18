@@ -7,6 +7,7 @@ import Layout from "../containers/layout";
 import TranslatedTitle from "../components/translatedTitle";
 import Carousel from "../components/carousel";
 import BlockContent from "../components/block-content";
+import RelatedBlock from "../components/relatedBlock";
 export const query = graphql`
   query ResearchThreadTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -301,6 +302,7 @@ const ResearchThreadTemplate = props => {
         {media.length > 1 &&
            <Carousel media={researchThread.media}/>
         }
+        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={researchThread}/>
       </Container>
     </Layout>
   );

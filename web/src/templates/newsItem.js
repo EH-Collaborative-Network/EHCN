@@ -7,6 +7,7 @@ import Layout from "../containers/layout";
 import TranslatedTitle from "../components/translatedTitle";
 import Carousel from "../components/carousel";
 import BlockContent from "../components/block-content";
+import RelatedBlock from "../components/relatedBlock";
 export const query = graphql`
   query newsItemTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -217,6 +218,7 @@ const NewsItemTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={newsItem.titles} /></h1>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={newsItem.bodies}/></div>
+        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={newsItem}/>
       </Container>
     </Layout>
   );

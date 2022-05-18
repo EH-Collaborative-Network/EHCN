@@ -270,6 +270,54 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedWorkingGroups',
+      type: 'string',
+      title: 'Related Working Groups'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedProjects',
+      type: 'string',
+      title: 'Related Projects'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedCourses',
+      type: 'string',
+      title: 'Related Courses'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedLearningResources',
+      type: 'string',
+      title: 'Related Learning Resources'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedNews',
+      type: 'string',
+      title: 'Related News'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedPartners',
+      type: 'string',
+      title: 'Related Partners'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedResearchThreads',
+      type: 'string',
+      title: 'Related Research Threads'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'relatedEvents',
+      type: 'string',
+      title: 'Related Events'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'ehcnSupported',
       type: 'string',
       title: 'EHCN is supported by the <a href="https://opensocietyuniversitynetwork.org/">Open Society University Network</a>.'

@@ -17,6 +17,13 @@
     }
 
 }
+.sanity{
+    width: 100%;
+    @media (--media-min-medium) {
+        width:70%;
+    }
+}
+
 .mobileHeader{
     display:block;
     @media (--media-min-medium) {

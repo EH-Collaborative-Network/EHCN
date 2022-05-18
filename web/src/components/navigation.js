@@ -3,6 +3,7 @@ import React from "react";
 import { createContext, useState, useContext, useMemo } from 'react';
 import logo from '../assets/logo.png'; 
 import osun from '../assets/osun.png';
+import sanity from '../assets/sanity.png'
 import * as styles from "./css/header.module.css";
 import LangContext from './context/lang.js'
 import TranslatedPhrase from "./translatedPhrase";
@@ -117,6 +118,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
           <li><a className={styles.email} href="mailto:ehcn@opensocietyuniversitynetwork.org">ehcn@opensociety<br/>universitynetwork.org</a></li>
           <li><TranslatedPhrase translations={translations} phrase={"ehcnSupported"}/></li>
           <li><img className={styles.osun} src={osun}/></li>
+          <li className={styles.sanity}>Structured content powered by <a href="https://sanity.io">Sanity.io</a></li>
         </ul>
       </div>
     </div>

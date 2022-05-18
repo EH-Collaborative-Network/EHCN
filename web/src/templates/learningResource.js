@@ -40,6 +40,14 @@ export const query = graphql`
           researchThreads
           availableIn
           search
+          relatedCourses
+          relatedEvents
+          relatedWorkingGroups
+          relatedProjects
+          relatedResearchThreads
+          relatedLearningResources
+          relatedPartners
+          relatedNews
         }
       }
     }
@@ -145,6 +153,14 @@ export const query = graphql`
         slug{
           current
         }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
       }
       newsItems{
         id
@@ -152,6 +168,14 @@ export const query = graphql`
         name
         slug{
           current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
         }
       }
       partners{
@@ -167,12 +191,28 @@ export const query = graphql`
         slug{
           current
         }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
       }
       researchThreads{
         id
         name
         slug{
           current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
         }
       }
       workingGroups{
@@ -181,12 +221,28 @@ export const query = graphql`
         slug{
           current
         }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
       }
       courses{
         id
         name
         slug{
           current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
         }
       }
     }

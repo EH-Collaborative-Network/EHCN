@@ -9,7 +9,7 @@ if(marqueeContent){
 
   return(
     <div aria-hidden="true" className={styles.marquee}>
-      <ul class={styles.listInline}>
+      <ul className={styles.listInline}>
         <li><BlockContent blocks={marqueeContent} languagePhrases={languagePhrases} globalLanguages={globalLanguages} /> ⟡ </li>
         <li><BlockContent blocks={marqueeContent} languagePhrases={languagePhrases} globalLanguages={globalLanguages} /> ⟡ </li>
         <li><BlockContent blocks={marqueeContent} languagePhrases={languagePhrases} globalLanguages={globalLanguages} /> ⟡ </li>

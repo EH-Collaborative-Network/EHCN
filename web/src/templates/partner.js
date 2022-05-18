@@ -7,7 +7,7 @@ import Layout from "../containers/layout";
 import BlockContent from "../components/block-content";
 import Carousel from "../components/carousel";
 import TranslatedTitle from "../components/translatedTitle";
-
+import RelatedBlock from "../components/relatedBlock";
 export const query = graphql`
   query PartnerTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -28,6 +28,7 @@ export const query = graphql`
         code
       }
     }
+
     languagePhrases: allSanityLanguage {
       edges {
         node {
@@ -41,11 +42,20 @@ export const query = graphql`
           researchThreads
           availableIn
           search
+          news
+          relatedCourses
+          relatedEvents
+          relatedWorkingGroups
+          relatedProjects
+          relatedResearchThreads
+          relatedLearningResources
+          relatedPartners
+          relatedNews
         }
       }
     }
     opps: allSanityOpportunity(
-      filter: {applications: {elemMatch: {partner: {_id: {eq: $id}}}}}
+      filter: {applications: {elemMatch: {partner: {id: {eq: $id}}}}}
     ){
       edges{
           node {
@@ -54,6 +64,7 @@ export const query = graphql`
                 url
                 partner {
                   name
+                  id
                   slug {
                     current
                   }
@@ -62,6 +73,14 @@ export const query = graphql`
               institution
               title
               id
+              titles{
+                text
+                language{
+                  id
+                  name
+                  code
+                }
+              }
               descriptions{
                 _rawText(resolveReferences: { maxDepth: 20 })
                 language{
@@ -78,7 +97,7 @@ export const query = graphql`
     description
     keywords
   }
-    partner: sanityPartner(id: { eq: $id }) {
+  partner: sanityPartner(id: { eq: $id }) {
       id
       id
       name
@@ -178,12 +197,28 @@ export const query = graphql`
         slug{
           current
         }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
       }
       learningResources{
         id
         name
         slug{
           current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
         }
       }
       newsItems{
@@ -193,12 +228,28 @@ export const query = graphql`
         slug{
           current
         }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
       }
       projects{
         id
         name
         slug{
           current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
         }
       }
       researchThreads{
@@ -207,6 +258,14 @@ export const query = graphql`
         slug{
           current
         }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
       }
       workingGroups{
         id
@@ -214,12 +273,28 @@ export const query = graphql`
         slug{
           current
         }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
       }
       courses{
         id
         name
         slug{
           current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
         }
       }
     }
@@ -230,6 +305,7 @@ const PartnerTemplate = props => {
   const { data, errors } = props;
   
   const site = (data || {}).site;
+  const opps = (data || {}).opps?.edges;
   const globalLanguages = site.languages;
   const partner = data && data.partner;
   const media = partner.media;
@@ -246,6 +322,7 @@ const PartnerTemplate = props => {
         {media.length > 1 &&
            <Carousel media={media}/>
         }
+        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={partner}/>
       </Container>
     </Layout>
     

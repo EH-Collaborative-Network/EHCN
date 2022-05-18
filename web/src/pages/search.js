@@ -179,7 +179,7 @@ const Search = props => {
                       default:
                         slug = slug;
                     }
-            
+                    console.log(node)
                     return(
                         <div key={index}>
                           <Link to={slug}>

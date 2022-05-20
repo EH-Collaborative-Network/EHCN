@@ -97,14 +97,6 @@ export const query = graphql`
           name
         }
       }
-      credits{
-        _rawText
-        language{
-          id
-          code
-          name
-        }
-      }
       media{
         embed{
           embed
@@ -144,40 +136,6 @@ export const query = graphql`
       }
       slug {
         current
-      }
-      people{
-        id
-        name
-        bios{
-          _rawText
-          language{
-            id
-            code
-            name
-          }
-        }
-        image {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
       }
       events {
         id
@@ -301,7 +259,7 @@ const WorkingGroupTemplate = props => {
         {media.length > 1 &&
           <Carousel media={workingGroup.media}/>
         }
-        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={workingGroup}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={workingGroup}/>
       </Container>
     </Layout>
   );

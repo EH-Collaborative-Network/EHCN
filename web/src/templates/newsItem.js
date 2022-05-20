@@ -70,50 +70,8 @@ export const query = graphql`
           name
         }
       }
-      credits{
-        _rawText(resolveReferences: { maxDepth: 20 })
-        language{
-          id
-          code
-          name
-        }
-      }
       slug {
         current
-      }
-      people{
-        id
-        name
-        bios{
-          _rawText(resolveReferences: { maxDepth: 20 })
-          language{
-            id
-            code
-            name
-          }
-        }
-        image {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
       }
       events {
         id
@@ -217,7 +175,7 @@ const NewsItemTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={newsItem.titles} /></h1>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={newsItem.bodies}/></div>
-        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={newsItem}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={newsItem}/>
       </Container>
     </Layout>
   );

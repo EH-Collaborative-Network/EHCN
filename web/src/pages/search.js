@@ -86,10 +86,10 @@ const Search = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const languagePhrases = (data || {}).languagePhrases?.edges;
-  const store = (data || {}).items.store
-  const index = (data || {}).items.index
+  const store = (data || {}).items?.store
+  const index = (data || {}).items?.index
   const [query, setQuery] = useState(null);
-  const results = useFlexSearch(query, index, store)
+  const results = index ? useFlexSearch(query, index, store) : []
   
   useEffect(()=>{
     if(location?.search){

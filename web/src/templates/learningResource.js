@@ -97,14 +97,6 @@ export const query = graphql`
           code
         }
       }
-      credits{
-        _rawText(resolveReferences: { maxDepth: 20 })
-        language{
-          id
-          name
-          code
-        }
-      }
       media{
         embed{
           embed
@@ -267,7 +259,7 @@ const LearningResourceTemplate = props => {
         {media.length > 1 &&
           <Carousel media={learningResource.media}/>
         }
-        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={learningResource}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={learningResource}/>
       </Container>
     </Layout>
   );

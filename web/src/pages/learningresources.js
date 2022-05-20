@@ -123,10 +123,10 @@ const LearningResources = props => {
   const { data, errors } = props;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const resources = (data || {}).resources?.edges;
-  const store = (data || {}).items.store
-  const index = (data || {}).items.index
+  const store = (data || {}).items?.store
+  const index = (data || {}).items?.index
   const [query, setQuery] = useState(null);
-  const results = useFlexSearch(query, index, store)
+  const results = index ? useFlexSearch(query, index, store) : []
   let filteredResults = [];
   results?.map(function(node, index){
     if(node.type == "learningResource"){

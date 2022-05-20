@@ -100,14 +100,6 @@ export const query = graphql`
           code
         }
       }
-      credits{
-        _rawText(resolveReferences: { maxDepth: 20 })
-        language{
-          id
-          name
-          code
-        }
-      }
       media{
         embed{
           embed
@@ -147,41 +139,6 @@ export const query = graphql`
       }
       slug {
         current
-      }
-
-      people{
-        id
-        name
-        bios{
-          _rawText(resolveReferences: { maxDepth: 20 })
-          language{
-            id
-            code
-            name
-          }
-        }
-        image {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
       }
       events {
         id
@@ -321,7 +278,7 @@ const EventTemplate = props => {
         {media.length > 1 &&
            <Carousel media={event.media}/>
         }
-        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={event}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={event}/>
       </Container>
     </Layout>
   );

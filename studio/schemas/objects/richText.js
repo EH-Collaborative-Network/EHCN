@@ -1,4 +1,4 @@
-import { MdInsertLink, MdImage } from "react-icons/md";
+import { MdInsertLink, MdImage, MdPerson } from "react-icons/md";
 
 export default {
   name: 'richText',
@@ -44,6 +44,24 @@ export default {
             }
           },
           {
+            name: 'person',
+            type: 'object',
+            title: 'EHCN Personnel',
+            blockEditor: {
+              icon: () => MdPerson
+            },
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [
+                  { type: 'person' }
+                ]
+              }
+            ]
+          },
+          {
             name: 'internalLink',
             type: 'object',
             title: 'Internal link',
@@ -65,7 +83,6 @@ export default {
                   { type: 'event' },
                   { type: 'learningResource' },
                   { type: 'partner' }
-                  // other types you may want to link to
                 ]
               }
             ]

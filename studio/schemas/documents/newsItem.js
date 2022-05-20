@@ -55,20 +55,6 @@ export default {
       description:"select add item to add text in any language (including English)",
       of: [{type: 'translation'}],
   },
-  {
-    name: 'credits',
-    title: 'Credits',
-    type: 'array',
-    description:"select add item to add credits in any language (including English)",   
-    of: [{type: 'translation'}],
-},
-    {
-        name: 'people',
-        type: 'array',
-        description: 'EHCN Personnel associated with this news item (if any)',
-        title: 'EHCN Personnel',
-        of:[{type:'reference', title:'Associated EHCN Personnel', to: [{type: 'person'}]}]
-    },
     {
         name: 'events',
         type: 'array',

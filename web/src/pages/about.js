@@ -204,7 +204,7 @@ const AboutPage = props => {
           <div className="">
             <ul className={styles.steering + " two-column"}>
             {steeringPeople.map(function(node, index){
-                return <Person key={index} person={node}></Person>;
+                return <li key={index}><Person person={node}></Person></li>;
             })}
             </ul>
           </div>
@@ -212,7 +212,7 @@ const AboutPage = props => {
           <div className="staff-no-column">
             <ul className={styles.steering}>
             {staffPeople.map(function(node, index){
-                return <Person key={index} person={node}></Person>;
+                return <li key={index}><Person person={node}></Person></li>;
             })}
             </ul>
           </div>

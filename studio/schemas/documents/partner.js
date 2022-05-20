@@ -46,13 +46,6 @@ export default {
         of: [{type: 'mediaItem'}],
     },
     {
-        name: 'people',
-        type: 'array',
-        description: 'EHCN Personnel associated with this institution',
-        title: 'EHCN Personnel',
-        of:[{type:'reference', title:'Associated EHCN Personnel', to: [{type: 'person'}]}]
-    },
-    {
         name: 'events',
         type: 'array',
         description: 'Events associated with this partner (if any)',

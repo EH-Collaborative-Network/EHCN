@@ -19,7 +19,7 @@ if(node){
                {
                    node.researchThreads.map(function(node,index){
                        return(
-                           <li className="blue-button" key={index}><Link to={"/research-thread/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
+                           <li key={index}><Link className="blue-button" to={"/research-thread/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
                        )
                    })
                 }            
@@ -33,7 +33,7 @@ if(node){
                {
                    node.partners.map(function(node,index){
                        return(
-                           <li className="blue-button" key={index}><Link to={"/partner/"+node.slug?.current}>{node.name}→</Link></li>
+                           <li key={index}><Link className="blue-button" to={"/partner/"+node.slug?.current}>{node.name}→</Link></li>
                        )
                    })
                 }            
@@ -61,7 +61,7 @@ if(node){
                {
                    node.newsItems.map(function(node,index){
                        return(
-                           <li className="blue-button" key={index}><Link to={"/news/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
+                           <li key={index}><Link className="blue-button" to={"/news/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
                        )
                    })
                 }            
@@ -76,7 +76,7 @@ if(node){
                {
                    node.courses.map(function(node,index){
                        return(
-                           <li className="blue-button" key={index}><Link to={"/course/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
+                           <li key={index}><Link className="blue-button" to={"/course/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
                        )
                    })
                 }            
@@ -90,7 +90,7 @@ if(node){
                {
                    node.workingGroups.map(function(node,index){
                        return(
-                           <li className="blue-button" key={index}><Link to={"/working-group/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
+                           <li key={index}><Link className="blue-button" to={"/working-group/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
                        )
                    })
                 }            
@@ -104,7 +104,7 @@ if(node){
                {
                    node.projects.map(function(node,index){
                        return(
-                           <li className="blue-button" key={index}><Link to={"/project/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
+                           <li key={index}><Link className="blue-button" to={"/project/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
                        )
                    })
                 }            
@@ -119,7 +119,7 @@ if(node){
                {
                    node.learningResources.map(function(node,index){
                        return(
-                           <li className="blue-button" key={index}><Link to={"/learning-resource/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
+                           <li key={index}><Link className="blue-button" to={"/learning-resource/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
                        )
                    })
                 }            
@@ -133,7 +133,7 @@ if(node){
             {
                 opps.map(function(node,index){
                     return(
-                        <li className="blue-button" key={index}><Link to={"/funding/"}><TranslatedTitle translations={node.node.titles}/>→</Link></li>
+                        <li key={index}><Link className="blue-button" to={"/funding/"}><TranslatedTitle translations={node.node.titles}/>→</Link></li>
                     )
                 })
             }            

@@ -4,6 +4,8 @@ import LangContext from '../context/lang.js'
 import { Figure } from "../Figure/figure";
 import { Link } from "gatsby";
 import TranslatedPhrase from "./translatedPhrase.js";
+import Person from "../Person/person"
+import * as styles from "./block.module.css";
 
 const serializers = {
   types: {
@@ -36,6 +38,13 @@ const serializers = {
         </a>
       );
     },
+    person: ({ mark, children }) => {
+      const { slug = {} } = mark;
+      const href = `/${slug.current}`;
+      return (
+        <span className={styles.blockPerson}><Person node={mark} key={""}/></span>
+      );
+    },
   },
 };
 
@@ -48,6 +57,13 @@ const components = {
           {children}
         </Link>
       )
+    },
+    person: ({ value, children }) => {
+      let person = {};
+      person.node = value.reference;
+      return (
+        <span className={styles.blockPerson}><Person blue={true} person={person} key={""}/></span>
+      );
     },
   }
 }

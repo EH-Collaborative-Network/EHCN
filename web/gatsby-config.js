@@ -52,13 +52,6 @@ module.exports = {
             allSanityCourse {
               edges {
                 node {
-                  credits {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
                   descriptions {
                     _rawText(resolveReferences: {maxDepth: 10})
                     language {
@@ -69,15 +62,6 @@ module.exports = {
                   id
                   keywords
                   name
-                  people {
-                    bios {
-                      _rawText(resolveReferences: {maxDepth: 10})
-                      language {
-                        code
-                        name
-                      }
-                    }
-                  }
                   titles {
                     text
                     language {
@@ -94,13 +78,6 @@ module.exports = {
             allSanityEvent {
               edges {
                 node {
-                  credits {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
                   descriptions {
                     _rawText(resolveReferences: {maxDepth: 10})
                     language {
@@ -111,15 +88,6 @@ module.exports = {
                   id
                   keywords
                   name
-                  people {
-                    bios {
-                      _rawText(resolveReferences: {maxDepth: 10})
-                      language {
-                        code
-                        name
-                      }
-                    }
-                  }
                   titles {
                     text
                     language {
@@ -161,13 +129,6 @@ module.exports = {
             allSanityNewsItem {
               edges {
                 node {
-                  credits {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
                   bodies {
                     _rawText(resolveReferences: {maxDepth: 10})
                     language {
@@ -178,15 +139,6 @@ module.exports = {
                   id
                   keywords
                   name
-                  people {
-                    bios {
-                      _rawText(resolveReferences: {maxDepth: 10})
-                      language {
-                        code
-                        name
-                      }
-                    }
-                  }
                   titles {
                     text
                     language {
@@ -261,15 +213,6 @@ module.exports = {
                   id
                   keywords
                   name
-                  people {
-                    bios {
-                      _rawText(resolveReferences: {maxDepth: 10})
-                      language {
-                        code
-                        name
-                      }
-                    }
-                  }
                   slug {
                     current
                   }
@@ -279,13 +222,6 @@ module.exports = {
             allSanityProject {
               edges {
                 node {
-                  credits {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
                   descriptions {
                     _rawText(resolveReferences: {maxDepth: 10})
                     language {
@@ -296,15 +232,6 @@ module.exports = {
                   id
                   keywords
                   name
-                  people {
-                    bios {
-                      _rawText(resolveReferences: {maxDepth: 10})
-                      language {
-                        code
-                        name
-                      }
-                    }
-                  }
                   titles {
                     text
                     language {
@@ -321,13 +248,6 @@ module.exports = {
             allSanityResearchThread {
               edges {
                 node {
-                  credits {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
                   descriptions {
                     _rawText(resolveReferences: {maxDepth: 10})
                     language {
@@ -338,15 +258,6 @@ module.exports = {
                   id
                   keywords
                   name
-                  people {
-                    bios {
-                      _rawText(resolveReferences: {maxDepth: 10})
-                      language {
-                        code
-                        name
-                      }
-                    }
-                  }
                   titles {
                     text
                     language {
@@ -363,13 +274,6 @@ module.exports = {
             allSanityWorkingGroup {
               edges {
                 node {
-                  credits {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
                   descriptions {
                     _rawText(resolveReferences: {maxDepth: 10})
                     language {
@@ -380,15 +284,6 @@ module.exports = {
                   id
                   keywords
                   name
-                  people {
-                    bios {
-                      _rawText(resolveReferences: {maxDepth: 10})
-                      language {
-                        code
-                        name
-                      }
-                    }
-                  }
                   titles {
                     text
                     language {
@@ -428,8 +323,6 @@ module.exports = {
           let courses = data.allSanityCourse.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
-            people: edge.node.people,
-            credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "course"
@@ -438,8 +331,6 @@ module.exports = {
           let events = data.allSanityEvent.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
-            people: edge.node.people,
-            credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "event"
@@ -458,8 +349,6 @@ module.exports = {
           let news = data.allSanityNewsItem.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.bodies,
-            people: edge.node.people,
-            credits:  edge.node._rawCredits,
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "news"
@@ -484,8 +373,6 @@ module.exports = {
           let partners = data.allSanityPartner.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
-            people: edge.node.people,
-            credits:  edge.node.credits,
             name: edge.node.name,
             slug:edge.node.slug,
             type: "partner"
@@ -493,8 +380,6 @@ module.exports = {
           let projects = data.allSanityProject.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
-            people: edge.node.people,
-            credits:  edge.node.credits,
             titles: edge.node.titles,
             slug: edge.node.slug,
             type: "project"
@@ -502,8 +387,6 @@ module.exports = {
           let threads = data.allSanityResearchThread.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
-            people: edge.node.people,
-            credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "researchThread"
@@ -511,8 +394,6 @@ module.exports = {
           let groups = data.allSanityWorkingGroup.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
-            people: edge.node.people,
-            credits:  edge.node.credits,
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "workingGroup"

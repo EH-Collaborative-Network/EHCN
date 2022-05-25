@@ -213,3 +213,6 @@ li.alice-carousel__stage-item {
 .show-thread.faculty-led, .show-thread.student-led{
   display: flex;
 }
+.masonry-inner .gatsby-image-wrapper, .masonry-inner figure, .masonry-inner div{
+  height: auto;
+}

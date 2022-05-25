@@ -41,12 +41,25 @@
 
 .inner{
     text-align: center;
-    margin-top:2.5em;
+    padding-top:2.5em;
+    margin-top:0;
     max-height: calc(100vh - 3em);
     padding-bottom:1em;
     overflow:scroll;
     @media (--media-min-small) {
-      margin-top:3em;
+      padding-top:3em;
+      margin-top:0;
     }
 }
+.inner > div{
+  margin-bottom:3em;
+}
 
+
+.root figure{
+  max-width: 60vw;
+  height: auto;
+}
+.root figure img{
+  max-width: 100%;
+}

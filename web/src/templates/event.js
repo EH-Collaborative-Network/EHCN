@@ -5,7 +5,8 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
-import Carousel from "../components/Carousel/carousel";
+// import Carousel from "../components/Carousel/carousel";
+import Masonry from "../components/Masonry/Masonry";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
 export const query = graphql`
@@ -63,9 +64,18 @@ export const query = graphql`
           code
         }
       }
-      startDate
-      endDate
-      _rawDisplayDate
+      timeZone{
+        name
+        offset
+      }
+      startDate{
+        date
+        time
+      }
+      endDate{
+        date
+        time
+      }
       mainLink{
         url
         text
@@ -91,6 +101,7 @@ export const query = graphql`
           _id
         }
         altText
+        caption
       }
       descriptions{
         _rawText(resolveReferences: { maxDepth: 20 })
@@ -135,6 +146,7 @@ export const query = graphql`
             _id
           }
           altText
+          caption
         }
       }
       slug {
@@ -143,9 +155,18 @@ export const query = graphql`
       events {
         id
         name
-        startDate
-        endDate
-        _rawDisplayDate
+        timeZone{
+          name
+          offset
+        }
+        startDate{
+          date
+          time
+        }
+        endDate{
+          date
+          time
+        }
         slug{
           current
         }
@@ -276,7 +297,7 @@ const EventTemplate = props => {
         <h1><TranslatedTitle translations={event.titles}/></h1>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={event.descriptions}/></div>
         {media.length > 1 &&
-           <Carousel media={event.media}/>
+           <Masonry media={event.media}/>
         }
         <RelatedBlock opps={""} languagePhrases={languagePhrases} node={event}/>
       </Container>

@@ -39,25 +39,24 @@ export default {
       }
     },
     {
-        name:'startDate',
-        type: 'date',
-        title: 'Start Date in EST (for sorting purposes)',
-        description: "this is for ordering events on the calendar, it won't be displayed on the website"
+      name:'timeZone',
+      title: 'Timezone for start/end date & time',
+      description: 'in which timezone are you entering the date and time?',
+      type: 'reference',
+      to:{ type: 'timezone'}
+    },
+     {
+         name: 'startDate',
+         title: 'Start Date & Time',
+         type: 'dateObj',
+         description: ''
      },
      {
-        name:'endDate',
-        type: 'date',
-        title: 'End Date in EST (for sorting purposes)',
-        description: "this is for ordering events on the calendar, it won't be displayed on the website"
-     },
-     {
-         name: 'displayDate',
-         type: 'richText',
-         title: 'Display Date & Time',
-         type: 'array',
-         of: [{type: 'dateObj'}],
-         description: 'this will show up on the event page'
-     },
+      name: 'endDate',
+      title: 'End Date & Time',
+      type: 'dateObj',
+      description: ''
+    },
      {
         name: 'mainLink',
         title: 'Link to event website (if any)',

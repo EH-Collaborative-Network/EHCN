@@ -157,9 +157,18 @@ export const query = graphql`
       events {
         id
         name
-        startDate
-        endDate
-        _rawDisplayDate
+        timeZone{
+          name
+          offset
+        }
+        startDate{
+          date
+          time
+        }
+        endDate{
+          date
+          time
+        }
         slug{
           current
         }

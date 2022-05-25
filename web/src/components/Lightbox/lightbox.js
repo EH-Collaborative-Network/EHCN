@@ -18,7 +18,7 @@ const Lightbox = ({ }) => {
               <rect width="73.4602" height="3.52472" rx="1.76236" transform="matrix(0.698084 -0.716016 0.698084 0.716016 0 53.6006)" fill="#333333"/>
               </svg>
             </div>
-            <div className={styles.inner + " "+"inner"}></div>
+            <div className={  " "+"inner"}></div>
         </div>
     </div>
   )

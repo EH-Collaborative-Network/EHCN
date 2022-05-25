@@ -19,7 +19,10 @@ if(embed?.embed?.length){
   }
 }
 function lightboxed(e){
-  let media = e.target.closest(".alice-carousel__stage-item > div").cloneNode(true);
+  let media = e.target.closest(".alice-carousel__stage-item > div")?.cloneNode(true);
+  if(!media){
+     media = e.target.closest(".masonry-inner > div")?.cloneNode(true);
+  }
   document.querySelector("#light-box .inner").innerHTML = ""
   document.querySelector("#light-box .inner").append(media)
   document.getElementById("light-box").classList.add("show");

@@ -257,6 +257,13 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'timezone',
+      type: 'string',
+      title: 'timezone',
+      description: '(timezone)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'seeMore',
       type: 'string',
       title: 'See More',

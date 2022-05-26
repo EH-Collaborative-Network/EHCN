@@ -11,9 +11,17 @@
     font-weight: bold;
     margin:0;
 }
+.timeWrapper > div{
+    display: flex;
+}
+.timeWrapper label{
+    white-space: nowrap;
+}
 .timeWrapper select{
-    width: 40%;
+    max-width: 200px;
     margin:0;
-    flex-basis: 40%;
+    top:-2px;
+    position:relative;
+    margin-left:10px;
     vertical-align: top;
 }

@@ -8,7 +8,7 @@ const TimeZoneList = () => {
     
   return(
     <>
-    <option value="null" >{Intl.DateTimeFormat().resolvedOptions().timeZone}</option>
+    <option value="null" >{Intl.DateTimeFormat().resolvedOptions().timeZone.split("_").join(" ")}</option>
   <option value='9.5' >ACST</option>
   <option value='-3' >ADT</option>
   <option value='0' >ADT</option>

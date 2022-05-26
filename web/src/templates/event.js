@@ -12,6 +12,7 @@ import RelatedBlock from "../components/RelatedBlock/relatedBlock";
 import DisplayTime from "../components/Time/displayTime";
 import TimeZoneList from "../components/Time/timeZoneList";
 import * as styles from "../components/Time/time.module.css";
+import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 export const query = graphql`
   query EventTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -56,6 +57,7 @@ export const query = graphql`
           relatedPartners
           relatedNews
           locale
+          timezone
         }
       }
     }
@@ -310,9 +312,12 @@ const EventTemplate = props => {
         <h1><TranslatedTitle translations={event.titles}/></h1>
         <div className={styles.timeWrapper}>
           <p><DisplayTime event={event} offset={offset} languagePhrases={languagePhrases}/></p>
-          <select onChange={handleTime}>
-            <TimeZoneList/>
-          </select>
+          <div>
+            <label for="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
+            <select id="change-tz" onChange={handleTime}>
+              <TimeZoneList />
+            </select>
+          </div>
         </div>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={event.descriptions}/></div>
         {media.length > 1 &&

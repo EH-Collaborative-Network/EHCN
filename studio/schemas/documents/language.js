@@ -19,6 +19,12 @@ export default {
       title: 'i18n code'
     },
     {
+      description: 'locale code',
+      name:'locale',
+      type: 'string',
+      title: 'locale to use for time conversion (mainly to get weekday and month names)'
+    },
+    {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'EHCN',
       type: 'string',

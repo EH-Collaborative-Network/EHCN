@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -9,6 +9,9 @@ import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import Masonry from "../components/Masonry/Masonry";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
+import DisplayTime from "../components/Time/displayTime";
+import TimeZoneList from "../components/Time/timeZoneList";
+import * as styles from "../components/Time/time.module.css";
 export const query = graphql`
   query EventTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -21,12 +24,14 @@ export const query = graphql`
         language{
           id
           code
+          locale
           name
         }
       }
       languages {
         name
         code
+        locale
       }
     }
     languagePhrases: allSanityLanguage {
@@ -50,6 +55,7 @@ export const query = graphql`
           relatedLearningResources
           relatedPartners
           relatedNews
+          locale
         }
       }
     }
@@ -288,13 +294,26 @@ const EventTemplate = props => {
   const event = data && data.sampleEvent;
   const media = event.media;
   const languagePhrases = (data || {}).languagePhrases?.edges;
-
+  const [offset, setOffset] = useState(null);
+  function handleTime(e){
+    let value = e.target.value;
+    if(value){
+      let value = parseInt(value);
+    }
+    setOffset(value);
+  }
   return (
     <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={site.showMarquee} marqueeContent={site.marqueeText}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={event.titles}/></h1>
+        <div className={styles.timeWrapper}>
+          <p><DisplayTime event={event} offset={offset} languagePhrases={languagePhrases}/></p>
+          <select onChange={handleTime}>
+            <TimeZoneList/>
+          </select>
+        </div>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={event.descriptions}/></div>
         {media.length > 1 &&
            <Masonry media={event.media}/>

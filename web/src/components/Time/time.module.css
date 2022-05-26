@@ -1,0 +1,19 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+
+.timeWrapper{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom:2em;
+}
+.timeWrapper p{
+    font-weight: bold;
+    margin:0;
+}
+.timeWrapper select{
+    width: 40%;
+    margin:0;
+    flex-basis: 40%;
+    vertical-align: top;
+}

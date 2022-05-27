@@ -110,6 +110,29 @@ export const query = graphql`
         node {
           id
           name
+          slug{
+            current
+          }
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+          timeZone{
+            name
+            offset
+          }
+          startDate{
+            date
+            time
+          }
+          endDate{
+            date
+            time
+          }
         }
       }
     }
@@ -197,7 +220,7 @@ const CalendarPage = props => {
             <LangContext.Consumer>
             {theme => {
                     return(
-                      <CreateCalendar theme={theme} translations={languagePhrases} year={year} month={month} />
+                      <CreateCalendar events={events} theme={theme} translations={languagePhrases} year={year} offset={offset} month={month} />
                     )}}
             </LangContext.Consumer>
             

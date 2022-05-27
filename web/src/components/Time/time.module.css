@@ -37,6 +37,16 @@
   right: 10px;
   top:10px;
 }
+.calendar a{
+    font-size: var(--font-small-size);
+    display: inline-block;
+    text-decoration: none;
+    color:var(--color-red);
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 2em);
+    overflow: hidden;
+}
 .buttonWrapper{
     display: flex;
     justify-content: space-between;

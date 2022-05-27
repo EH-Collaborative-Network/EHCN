@@ -121,6 +121,14 @@ export const query = graphql`
               code
             }
           }
+          descriptions{
+            _rawText(resolveReferences: { maxDepth: 20 })
+            language{
+              id
+              code
+              name
+            }
+          }
           timeZone{
             name
             offset
@@ -220,7 +228,7 @@ const CalendarPage = props => {
             <LangContext.Consumer>
             {theme => {
                     return(
-                      <CreateCalendar events={events} theme={theme} translations={languagePhrases} year={year} offset={offset} month={month} />
+                      <CreateCalendar globalLanguages={globalLanguages} events={events} theme={theme} translations={languagePhrases} year={year} offset={offset} month={month} />
                     )}}
             </LangContext.Consumer>
             

@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/layout.css";
 import * as styles from "./modal.module.css";
 import BlockContent from "../TranslationHelpers/block-content";
-
+import TranslatedTitle from "../TranslationHelpers/translatedTitle";
 const Modal = ({ content,name }) =>{
     function handler(e){
         let el = e.target.closest(".modal")
@@ -17,6 +17,7 @@ const Modal = ({ content,name }) =>{
               </svg>
             </div>
             <div className={styles.inner}>
+   
                 <h4>{name}</h4>
                 {content &&
                     <BlockContent blocks={content}/>

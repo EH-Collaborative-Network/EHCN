@@ -1,5 +1,6 @@
 import ReactHtmlParser from 'react-html-parser';
 import React from "react";
+import Popover from '../Popover/popover';
 import getWeekdayNames from '../TranslationHelpers/getWeekdayNames';
 import getMonthNames from '../TranslationHelpers/getMonthNames';
 import TranslatedTitle from '../TranslationHelpers/translatedTitle';
@@ -7,7 +8,7 @@ import * as styles from "./time.module.css"
 import { Link } from 'gatsby';
 import createDateTime from './createDateTime';
 import DisplayStartTime from './dispalyStartTime';
-const CreateCalendar = ({ translations, year, month, theme, events, offset = null }) => {
+const CreateCalendar = ({globalLanguages, translations, year, month, theme, events, offset = null }) => {
     function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
       let day = date.getDay();
       if (day == 0) day = 7; // make Sunday (0) the last day
@@ -33,6 +34,20 @@ const CreateCalendar = ({ translations, year, month, theme, events, offset = nul
     let d = new Date(year, mon);
     let od = new Date(year, mon);
 
+    function modalHandler(e){
+      let el = e.target.closest("div");
+      if(!el.querySelector(".modal").classList.contains("show")){
+          el.querySelector(".modal").classList.add('show');
+      }
+      
+    }
+    function modalRemove(e){
+      let el = e.target.closest("div");
+      if(el.querySelector(".modal").classList.contains("show")){
+          el.querySelector(".modal").classList.remove('show');
+      }
+      
+    }
 
     
     
@@ -61,9 +76,12 @@ const CreateCalendar = ({ translations, year, month, theme, events, offset = nul
         dayEvents.forEach(function(event){
           if(event[0].getDate() == event[1].getDate()){
             dayContent.push(
-              <Link to={'/event/'+ event[2].slug.current}>
-                <DisplayStartTime event={event[2]} offset={offset} languagePhrases={translations} /> - <TranslatedTitle translations={event[2].titles}/>
+              <div>
+              <Link onMouseOut={modalRemove} onMouseOver={modalHandler} to={'/event/'+ event[2].slug.current}>
+                <TranslatedTitle translations={event[2].titles}/>    
               </Link>
+              <Popover globalLanguages={globalLanguages} offset={offset} languagePhrases={translations} event={event[2]}  />
+              </div>
             )
           }else{
             dayContent.push(

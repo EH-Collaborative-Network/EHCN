@@ -31,6 +31,21 @@
 .calendar > h4{
     text-align: center;
 }
+.calendar p{
+    margin:0;
+}
+.calendar svg{
+    display: none;
+}
+.calendar a{
+    display: block;
+}
+.calendar td a > div{
+    width: 400px;
+    height:200px;
+    left:calc(50vw - 200px);
+    top:calc(50vh - 100px);
+}
 .calendar th h4{
     word-break: break-all;
     margin:0;
@@ -70,6 +85,9 @@
     text-overflow: ellipsis;
     max-width: calc(100% - 2em);
     overflow: hidden;
+}
+.calendar a:hover{
+    text-decoration: underline;
 }
 .buttonWrapper{
     display: flex;

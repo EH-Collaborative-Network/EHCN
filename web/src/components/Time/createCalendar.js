@@ -6,7 +6,8 @@ import TranslatedTitle from '../TranslationHelpers/translatedTitle';
 import * as styles from "./time.module.css"
 import { Link } from 'gatsby';
 import createDateTime from './createDateTime';
-const CreateCalendar = ({ translations, year, month, theme, events }) => {
+import DisplayStartTime from './dispalyStartTime';
+const CreateCalendar = ({ translations, year, month, theme, events, offset = null }) => {
     function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
       let day = date.getDay();
       if (day == 0) day = 7; // make Sunday (0) the last day
@@ -24,6 +25,7 @@ const CreateCalendar = ({ translations, year, month, theme, events }) => {
       let ed = createDateTime(end.date, end.time, event.node.timeZone.offset);
       if(sd.getMonth() == mon || ed.getMonth() == mon){
         currentEvents.push([sd,ed,event.node]);
+
       }
     })
 
@@ -43,20 +45,47 @@ const CreateCalendar = ({ translations, year, month, theme, events }) => {
         
         //if event falls, place it otherwise just date....
         let dayEvents = [];
-
+        let multiEvents = [];
         currentEvents.forEach(function(event){
            if(event[0].getDate() == d.getDate() || event[1].getDate() == d.getDate()){
              dayEvents.push(event)
+           }else if(event[0].getDate() < d.getDate() && event[1].getDate() > d.getDate()){
+             multiEvents.push(event);
            }
+
         })
 
         let currentDay = d.getDate();
         let dayContent = [];
+        dayEvents =  dayEvents.sort((a, b) => a[0] - b[0])
         dayEvents.forEach(function(event){
+          if(event[0].getDate() == event[1].getDate()){
             dayContent.push(
-              <Link to={'/event/'+ event[2].slug.current}><TranslatedTitle translations={event[2].titles}/></Link>
+              <Link to={'/event/'+ event[2].slug.current}>
+                <DisplayStartTime event={event[2]} offset={offset} languagePhrases={translations} /> - <TranslatedTitle translations={event[2].titles}/>
+              </Link>
             )
+          }else{
+            dayContent.push(
+              <Link className={styles.multiDay} to={'/event/'+ event[2].slug.current}><TranslatedTitle translations={event[2].titles}/></Link>
+            )
+          }
+            
         })
+        multiEvents.forEach(function(event,i){
+          console.log(i)
+          if((event[1].getDate() - event[0].getDate()) >= 3 && (d.getDate() - event[0].getDate()) == Math.floor((event[1].getDate() - event[0].getDate())/2)){
+            dayContent.push(
+              <Link className={styles.multiDay + " " + styles.mid} to={'/event/'+ event[2].slug.current}><TranslatedTitle translations={event[2].titles}/></Link>
+            )
+          }else{
+            dayContent.push(
+              <Link className={styles.multiDay} to={'/event/'+ event[2].slug.current}><span></span></Link>
+            )
+          }
+      
+        })
+        
         let currentWeekDay = getDay(d)
 
         if(currentWeekDay == 0 || d.getDate() == 1){
@@ -80,7 +109,7 @@ const CreateCalendar = ({ translations, year, month, theme, events }) => {
     // * * * 1  2  3  4
     for (let i = 0; i < getDay(od); i++) {
       daySquares[0].unshift(<td></td>);
-      console.log('mew')
+
     }
     // add spaces after last days of month for the last row
     // 29 30 31 * * * *
@@ -89,7 +118,7 @@ const CreateCalendar = ({ translations, year, month, theme, events }) => {
         daySquares[prevRow].push(<td></td>);
       }
     }
-    console.log(daySquares)
+
     return(
       <div className={styles.calendar}>
         <h4>{monthNames[mon]} - {year}</h4>

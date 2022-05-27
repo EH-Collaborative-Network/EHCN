@@ -11,6 +11,7 @@
     width: 100%;
     position:relative;
     top:-1em;
+    table-layout: fixed;
 }
 .calendar table{
     width: 100%;
@@ -20,6 +21,12 @@
 .calendar th{
     max-width: 14.2%;
     width: 14.2%;
+    overflow: hidden;
+}
+.calendar td{
+    max-width:50px;
+    width: calc(100% / 7);
+    overflow: hidden;
 }
 .calendar > h4{
     text-align: center;
@@ -36,6 +43,23 @@
   position:absolute;
   right: 10px;
   top:10px;
+}
+.calendar .multiDay{
+    position: absolute;
+    max-width: 100%;
+    bottom:0;
+    left:0;
+    width:calc(100% - 8px);
+    display: block;
+    background: var(--color-white);
+    opacity: 0.7;
+    padding:0 5px;
+    height:1.5em;
+    color:var(--color-red);
+}
+.calendar .mid {
+    overflow:visible;
+    text-overflow: unset;
 }
 .calendar a{
     font-size: var(--font-small-size);

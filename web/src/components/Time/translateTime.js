@@ -1,6 +1,6 @@
 
   
-function translateTime(d, locale = null, timezone, noTime = false, onlyTime = false){
+function translateTime(d, locale = null, timezone, noTime = false, onlyTime = false, noYear = false){
     let td;
     let tz;
 
@@ -22,7 +22,11 @@ function translateTime(d, locale = null, timezone, noTime = false, onlyTime = fa
         tz = timezone
     }
     if(noTime){
-        td = d.toLocaleString((locale || "en-US"), {year: 'numeric', month: 'long', day: 'numeric', timeZone:tz});
+        if(noYear){
+            td = d.toLocaleString((locale || "en-US"), {month: 'long', day: 'numeric', timeZone:tz}); 
+        }else{
+            td = d.toLocaleString((locale || "en-US"), {year: 'numeric', month: 'long', day: 'numeric', timeZone:tz});
+        }
     }else{
         td = d.toLocaleString((locale || "en-US"), {year: 'numeric', month: 'long', day: 'numeric', hour:'numeric',minute:'numeric', timeZone:tz});
     }

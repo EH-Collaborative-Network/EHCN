@@ -81,7 +81,7 @@ export const query = graphql`
 const PageTemplate = props => {
   const { data, errors } = props;
   const page = data && data.samplePage;
-  let previewQuery = '*[_id == "'+ page._id +'"][0]'
+  let previewQuery = '*[_id == "'+ page._id +'"]'
   let previewParams = {isDraft: true};
   client.fetch(previewQuery).then((data) => {
     console.log(data)

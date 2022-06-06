@@ -6,6 +6,14 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import BlockContent from "../components/TranslationHelpers/block-content";
+import sanityClient from "@sanity/client";
+const client = sanityClient({
+  projectId: '46orb7yp',
+  dataset: 'production',
+  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
+  token: '', // or leave blank for unauthenticated usage
+  useCdn: true, // `false` if you want to ensure fresh data
+})
 export const query = graphql`
   query PageTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -44,7 +52,7 @@ export const query = graphql`
     }
     samplePage: sanityPage(id: { eq: $id }) {
       id
-      id
+      _id
       name
       titles{
         text
@@ -73,6 +81,11 @@ export const query = graphql`
 const PageTemplate = props => {
   const { data, errors } = props;
   const page = data && data.samplePage;
+  let previewQuery = '*[_id == "'+ page._id +'"][0]'
+  let previewParams = {isDraft: true};
+  client.fetch(previewQuery).then((data) => {
+    console.log(data)
+  })
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const languagePhrases = (data || {}).languagePhrases?.edges;

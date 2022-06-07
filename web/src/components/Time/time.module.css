@@ -72,7 +72,12 @@
 .calendar th h4{
     word-break: break-all;
     margin:0;
+    height:1.3em;
+    overflow: hidden;
     font-size: var(--font-small-size);
+    @media(--media-min-medium){
+        height:auto;
+    }
 }
 .calendar tr{
     border:1px solid transparent;

@@ -13,10 +13,14 @@
     column-count: 1;
 }
 .three{
-    column-count: 3;
+    @media (--media-min-medium) {
+        column-count: 3;
+    }
 }
 .two{
-    column-count: 2;
+    @media (--media-min-medium) {
+        column-count: 2;
+    }
 }
 .inner figure {
    width: 100%;

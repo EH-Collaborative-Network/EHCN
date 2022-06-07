@@ -6,20 +6,34 @@
   display:flex;
   justify-content: space-between;
   margin-bottom:2em;
+  flex-direction: column-reverse;
+  @media (--media-min-medium) {
+      flex-direction:row;
+  }
 }
 .calendar{
     width: 100%;
     position:relative;
-    top:-1em;
+    top:-1.5em;
     table-layout: fixed;
+    @media (--media-min-medium) {
+        top:-1.85em;
+    }
+    
 }
 .calendar > h4:first-child{
-    font-size: var(--font-basic-size);
+    font-size: var(--font-small-size);
+    @media (--media-min-medium) {
+        font-size: var(--font-basic-size);
+    }
 }
 .week{
     width: 100%;
     position:relative;
-    top:-1em;
+    top:-1.5em;
+    @media (--media-min-medium) {
+        top:-1.85em;
+    }
 }
 .calendar table{
     width: 100%;
@@ -30,6 +44,7 @@
     max-width: 14.2%;
     width: 14.2%;
     overflow: hidden;
+    
 }
 .calendar td{
     max-width:50px;
@@ -57,6 +72,10 @@
 .calendar th h4{
     word-break: break-all;
     margin:0;
+    font-size: 0.45rem;
+    @media (--media-min-medium) {
+        font-size: var(--font-small-size);
+    }
 }
 .calendar tr{
     border:1px solid transparent;
@@ -66,6 +85,10 @@
   position:absolute;
   right: 10px;
   top:10px;
+  font-size: 0.45rem;
+    @media (--media-min-medium) {
+        font-size: var(--font-small-size);
+    }
 }
 .calendar .multiDay{
     position: absolute;
@@ -116,6 +139,12 @@
     background-color: transparent;
     cursor: pointer;
 }
+.bubbleButton svg{
+    height: 25px;
+    @media (--media-min-medium) {
+        height: 35px;
+    }
+}
 .bubbleButton:disabled{
     opacity:0.2;
     cursor:default;
@@ -141,8 +170,11 @@
 .dayRow > div{
     display: flex;
     justify-content: flex-start;
-    flex-basis: 85%;
+    flex-basis: 80%;
     vertical-align: top;
+    @media (--media-min-medium) {
+        flex-basis: 85%;
+    }
 }
 
 .dayRow > div > *{
@@ -182,6 +214,12 @@
     cursor: pointer;
     position:relative;
 }
+.buttonWrapper svg{
+    width: 30px;
+    @media (--media-min-medium) {
+        width: auto;
+    }
+}
 .buttonWrapper button:hover{
     top:2px;
     left:2px;
@@ -193,11 +231,15 @@
 }
 .selectWrapper{
     position:absolute;
-    top:50px;
-    right:50px;
+    top:115px;
+    right:15px;
     display: flex;
     width: auto;
     align-items: center;
+    @media (--media-min-medium) {
+        top:50px;
+        right:50px;
+    }
 }
 .select{
     max-width: 200px;
@@ -214,6 +256,11 @@
 }
 .timeWrapper > div{
     display: flex;
+    margin-bottom:0.5em;
+    @media (--media-min-medium) {
+        flex-direction:row;
+        margin-bottom:0;
+    }
 }
 .timeWrapper label{
     white-space: nowrap;
@@ -221,7 +268,8 @@
 .timeWrapper select{
     max-width: 200px;
     margin:0;
-    top:-2px;
+    top:0px;
+    font-size:var(--font-small-size);
     position:relative;
     margin-left:10px;
     vertical-align: top;

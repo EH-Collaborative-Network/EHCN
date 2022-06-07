@@ -1,5 +1,5 @@
 
-
+@import './custom-media.css';
 :root {
   --font-family-sans:"Sharp Sans", sans-serif;
   --font-family-bold: "Sharp Sans Bold", sans-serif;
@@ -19,11 +19,15 @@
   --blue-link-gradient: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
   /* Typography */
   --font-small-size: 0.82rem; /* 14px */
-  --font-base-size: clamp(14px, 1.2vw, 40px); /* 16px */
+  --font-base-size: clamp(12px, 1.2vw, 40px); /* 16px */
   --font-base-letter-spacing: 0.03rem;
   --font-base-line-height: 1.5; /* 24px */
   --font-medium-size: 1.2rem; 
   --font-medium-line-height: calc(30 / 21); /* 30px */
   --font-large-size: 2.4rem;
   --font-large-line-height: calc(57 / 49); /* 57px */
+  @media (--media-max-medium) {
+    --font-large-size: 2rem;
+    
+  }
 }

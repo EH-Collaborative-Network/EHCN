@@ -7,11 +7,13 @@
   margin-left: 0;
   width: calc(100% - 24px);
   margin: 0 auto;
+  padding-bottom:4em;
   @media (--media-min-medium) {
     margin-left:16vw;
     padding:50px;
     padding-left:75px;
     width: auto;
+    padding-bottom:0;
   }
 
 }

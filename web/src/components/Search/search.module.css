@@ -59,9 +59,13 @@
     text-transform: none;
     float:right;
     position: absolute;
-    top:10px;
-    right:20px;
+    top:5px;
+    right:15px;
     color:var(--color-red);
+    @media (--media-min-medium) {
+        top:10px;
+        right:20px; 
+    }
 }
 .resultsWrapper > div > a > h4 > h4{
     font-size: var(--font-base-size);

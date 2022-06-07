@@ -238,7 +238,7 @@ const CalendarPage = props => {
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/></h1>
           <button className={styles.bubbleButton} disabled={monthView ? true : false} onClick={showMonth}>
-            <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg  viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 6.40039)" fill="#D4EAED"/>
             <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 9.49609 6.40039)" fill="#D4EAED"/>
             <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 18.9941 6.40039)" fill="#D4EAED"/>
@@ -258,7 +258,7 @@ const CalendarPage = props => {
             </svg>
           </button>
           <button className={styles.bubbleButton} disabled={monthView ? false : true} onClick={showWeek}>
-            <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg  viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 6.40039)" fill="#D4EAED"/>
             <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 14.9336)" fill="#D4EAED"/>
             <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 23.4668)" fill="#D4EAED"/>

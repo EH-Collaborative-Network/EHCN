@@ -9,9 +9,18 @@ import Container from "../components/Container/container";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
+import { useLocation } from '@reach/router';
+import queryString from 'query-string';
 import Layout from "../containers/layout";
 import Map from "../components/Map/map";
-
+import sanityClient from "@sanity/client";
+const client = sanityClient({
+  projectId: '46orb7yp',
+  dataset: 'production',
+  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
+  token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
+  useCdn: true, // `false` if you want to ensure fresh data
+})
 
 export const query = graphql`
   query IndexPageQuery {
@@ -65,6 +74,7 @@ export const query = graphql`
       edges {
         node {
           id
+          _id
           bodies{
             _rawText(resolveReferences: { maxDepth: 20 })
             language{
@@ -106,7 +116,18 @@ const IndexPage = props => {
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const partners = (data || {}).partners.edges;
-
+  let previewQuery = '*[_id == "drafts.'+ (data || {}).hp.edges[0]?.node?._id +'"]'
+  const location = useLocation();
+  let preview = false;
+  let previewData;
+  if(location?.search){
+    preview = queryString.parse(location.search).preview;
+  }
+  if(preview){
+    client.fetch(previewQuery).then((data) => {
+      previewData = data;
+    })
+  }
 
   if (!site) {
     throw new Error(
@@ -120,7 +141,7 @@ const IndexPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/>
+          <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : hp}/>
           {
             typeof window != `undefined` &&
             <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>

@@ -4,10 +4,20 @@ import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import { useLocation } from '@reach/router';
+import queryString from 'query-string';
 import BlockContent from "../components/TranslationHelpers/block-content";
 import Carousel from "../components/Carousel/carousel";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
+import sanityClient from "@sanity/client";
+const client = sanityClient({
+  projectId: '46orb7yp',
+  dataset: 'production',
+  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
+  token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
+  useCdn: true, // `false` if you want to ensure fresh data
+})
 export const query = graphql`
   query PartnerTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -99,7 +109,7 @@ export const query = graphql`
   }
   partner: sanityPartner(id: { eq: $id }) {
       id
-      id
+      _id
       name
       mainLink{
         url
@@ -283,6 +293,18 @@ const PartnerTemplate = props => {
   const opps = (data || {}).opps?.edges;
   const globalLanguages = site.languages;
   const partner = data && data.partner;
+  let previewQuery = '*[_id == "drafts.'+ partner._id +'"]'
+  const location = useLocation();
+  let preview = false;
+  let previewData;
+  if(location?.search){
+    preview = queryString.parse(location.search).preview;
+  }
+  if(preview){
+    client.fetch(previewQuery).then((data) => {
+      previewData = data;
+    })
+  }
   const media = partner.media;
   const descriptions = partner.descriptions;
   const languagePhrases = (data || {}).languagePhrases?.edges;
@@ -292,12 +314,12 @@ const PartnerTemplate = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
-        <h1>{partner.name}</h1>
-        <div className="top-text two-column"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={descriptions}/></div>
+        <h1>{(preview && previewData) ? previewData.name : partner.name}</h1>
+        <div className="top-text two-column"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.descriptions : descriptions}/></div>
         {media.length > 1 &&
-           <Carousel media={media}/>
+           <Carousel media={(preview && previewData) ? previewData.media : media}/>
         }
-        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={partner}/>
+        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={(preview && previewData) ? previewData : partner}/>
       </Container>
     </Layout>
     

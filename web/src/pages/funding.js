@@ -11,10 +11,19 @@ import BlockContent from "../components/TranslationHelpers/block-content";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
+import { useLocation } from '@reach/router';
+import queryString from 'query-string';
 import Layout from "../containers/layout";
 import { FundingOpportunity } from "../components/FundingOpportunity/fundingOpportunity";
 import * as styles from "../components/FundingOpportunity/fundingopp.module.css";
-
+import sanityClient from "@sanity/client";
+const client = sanityClient({
+  projectId: '46orb7yp',
+  dataset: 'production',
+  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
+  token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
+  useCdn: true, // `false` if you want to ensure fresh data
+})
 
 export const query = graphql`
   query FundingPageQuery {
@@ -83,6 +92,7 @@ export const query = graphql`
       edges {
         node {
           id
+          _id
           titles{
             text
             language{
@@ -131,6 +141,18 @@ const FundingPage = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const fp = (data || {}).fp.edges[0]?.node?.bodies;
+  let previewQuery = '*[_id == "drafts.'+ (data || {}).fp.edges[0]?.node?._id +'"]'
+  const location = useLocation();
+  let preview = false;
+  let previewData;
+  if(location?.search){
+    preview = queryString.parse(location.search).preview;
+  }
+  if(preview){
+    client.fetch(previewQuery).then((data) => {
+      previewData = data;
+    })
+  }
   const titles = (data || {}).fp.edges[0]?.node?.titles;
   const oppNodes = (data || {}).opps?.edges;
   const languagePhrases = (data || {}).languagePhrases?.edges;
@@ -160,8 +182,8 @@ const FundingPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <h1><TranslatedTitle translations={titles}/></h1>
-          <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={fp}/></div>
+          <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
+          <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
           <div className="funding-opportunities">
           { networkWide &&
             <div className={styles.network}>

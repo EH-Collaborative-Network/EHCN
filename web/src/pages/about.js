@@ -10,10 +10,20 @@ import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import { useLocation } from '@reach/router';
+import queryString from 'query-string';
 import Person from "../components/Person/person";
 import * as styles from "../components/Modal/modal.module.css";
 import { Link } from "@reach/router";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
+import sanityClient from "@sanity/client";
+const client = sanityClient({
+  projectId: '46orb7yp',
+  dataset: 'production',
+  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
+  token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
+  useCdn: true, // `false` if you want to ensure fresh data
+})
 export const query = graphql`
   query AboutPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -105,6 +115,7 @@ export const query = graphql`
       edges {
         node {
           id
+          _id
           titles{
             text
             language{
@@ -152,6 +163,18 @@ const AboutPage = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const ap = (data || {}).ap.edges[0]?.node?.bodies;
+  let previewQuery = '*[_id == "drafts.'+ (data || {}).ap.edges[0]?.node?._id +'"]'
+  const location = useLocation();
+  let preview = false;
+  let previewData;
+  if(location?.search){
+    preview = queryString.parse(location.search).preview;
+  }
+  if(preview){
+    client.fetch(previewQuery).then((data) => {
+      previewData = data;
+    })
+  }
   const titles = (data || {}).ap.edges[0]?.node?.titles;
   const people = (data || {}).people?.edges;
   const partners = (data || {}).partners?.edges;
@@ -189,8 +212,8 @@ const AboutPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <h1><TranslatedTitle translations={titles}/></h1>
-          <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} blocks={ap} globalLanguages={globalLanguages}/></div>
+          <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
+          <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.bodies : ap} globalLanguages={globalLanguages}/></div>
           <br/>
           <h4>Partner Institutions</h4> 
           <div className="">

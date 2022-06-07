@@ -72,10 +72,7 @@
 .calendar th h4{
     word-break: break-all;
     margin:0;
-    font-size: 0.45rem;
-    @media (--media-min-medium) {
-        font-size: var(--font-small-size);
-    }
+    font-size: var(--font-small-size);
 }
 .calendar tr{
     border:1px solid transparent;
@@ -85,10 +82,7 @@
   position:absolute;
   right: 10px;
   top:10px;
-  font-size: 0.45rem;
-    @media (--media-min-medium) {
-        font-size: var(--font-small-size);
-    }
+  font-size: var(--font-small-size);
 }
 .calendar .multiDay{
     position: absolute;
@@ -141,8 +135,10 @@
 }
 .bubbleButton svg{
     height: 25px;
+    width: 25px;
     @media (--media-min-medium) {
         height: 35px;
+        width: 35px;
     }
 }
 .bubbleButton:disabled{

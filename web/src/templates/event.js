@@ -83,6 +83,14 @@ export const query = graphql`
           code
         }
       }
+      subtitles{
+        text
+        language{
+          id
+          name
+          code
+        }
+      }
       timeZone{
         name
         offset
@@ -121,6 +129,14 @@ export const query = graphql`
         }
         altText
         caption
+      }
+      locations{
+        _rawText(resolveReferences: { maxDepth: 20 })
+        language{
+          id
+          name
+          code
+        }
       }
       descriptions{
         _rawText(resolveReferences: { maxDepth: 20 })
@@ -338,7 +354,11 @@ const EventTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : event.titles}/></h1>
         <div className={styles.timeWrapper}>
-          <p><DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/></p>
+        <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : event.subtitles}/></div>
+          <div>
+            <DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/>
+            <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/>
+          </div>
           <div>
             <label for="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
             <select id="change-tz" onChange={handleTime}>

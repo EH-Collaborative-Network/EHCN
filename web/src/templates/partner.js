@@ -115,6 +115,14 @@ export const query = graphql`
         url
         text
       }
+      locations{
+        _rawText(resolveReferences: { maxDepth: 20 })
+        language{
+          id
+          name
+          code
+        }
+      }
       descriptions{
         _rawText(resolveReferences: { maxDepth: 20 })
         language{
@@ -318,6 +326,7 @@ const PartnerTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1>{(preview && previewData) ? previewData.name : partner.name}</h1>
+        <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : partner.locations}/></div>
         <div className="top-text two-column"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.descriptions : descriptions}/></div>
         {media.length > 1 &&
            <Carousel media={(preview && previewData) ? previewData.media : media}/>

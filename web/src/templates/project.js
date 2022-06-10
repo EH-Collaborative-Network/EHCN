@@ -74,6 +74,14 @@ export const query = graphql`
           code
         }
       }
+      subtitles{
+        text
+        language{
+          id
+          name
+          code
+        }
+      }
       mainLink{
         url
         text
@@ -290,6 +298,7 @@ const ProjectTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : project.titles}/></h1>
+        <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : project.subtitles}/></div>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : project.descriptions}/></div>
         {media.length > 1 &&
            <Carousel media={(preview && previewData) ? previewData.media : project.media}/>

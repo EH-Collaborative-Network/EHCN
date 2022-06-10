@@ -255,7 +255,7 @@
     height:100px;
     position: relative;
 }
-.timeWrapper p{
+.timeWrapper div:first-child{
     font-weight: bold;
     margin:0;
 }

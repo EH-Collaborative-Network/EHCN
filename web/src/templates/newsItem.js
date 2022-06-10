@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -186,17 +186,20 @@ const NewsItemTemplate = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const newsItem = data && data.sampleNewsItem;
-  let previewQuery = '*[_id == "drafts.'+ newsItem._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ newsItem._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
   const languagePhrases = (data || {}).languagePhrases?.edges;
   return (
@@ -206,7 +209,7 @@ const NewsItemTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : newsItem.titles} /></h1>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : newsItem.bodies}/></div>
-        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={(preview && previewData) ? previewData : newsItem}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={newsItem}/>
       </Container>
     </Layout>
   );

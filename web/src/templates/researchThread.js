@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -266,17 +266,20 @@ export const query = graphql`
 const ResearchThreadTemplate = props => {
   const { data, errors } = props;
   const researchThread = data && data.sampleResearchThread;
-  let previewQuery = '*[_id == "drafts.'+ researchThread._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ researchThread._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
   const site = (data || {}).site;
   const globalLanguages = site.languages;
@@ -292,7 +295,7 @@ const ResearchThreadTemplate = props => {
         {media.length > 1 &&
            <Carousel media={(preview && previewData) ? previewData.media : researchThread.media}/>
         }
-        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={(preview && previewData) ? previewData : researchThread}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={researchThread}/>
       </Container>
     </Layout>
   );

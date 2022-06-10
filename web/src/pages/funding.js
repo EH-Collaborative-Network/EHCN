@@ -1,6 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
-import { useState } from 'react';
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
@@ -141,17 +140,20 @@ const FundingPage = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const fp = (data || {}).fp.edges[0]?.node?.bodies;
-  let previewQuery = '*[_id == "drafts.'+ (data || {}).fp.edges[0]?.node?._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ (data || {}).fp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
   const titles = (data || {}).fp.edges[0]?.node?.titles;
   const oppNodes = (data || {}).opps?.edges;

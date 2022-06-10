@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -269,17 +269,20 @@ const CourseTemplate = props => {
   const course = data && data.sampleCourse;
   const media = course.media;
   const languagePhrases = (data || {}).languagePhrases?.edges;
-  let previewQuery = '*[_id == "drafts.'+ course._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ course._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
   return (
     <>  
@@ -292,7 +295,7 @@ const CourseTemplate = props => {
         {media.length > 1 &&
            <Carousel media={(preview && previewData) ? previewData.media : course.media}/>
         }
-        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={(preview && previewData) ? previewData : course}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={course}/>
       </Container>
     </Layout>
     

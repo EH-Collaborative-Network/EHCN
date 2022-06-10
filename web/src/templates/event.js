@@ -73,6 +73,7 @@ export const query = graphql`
     }
     sampleEvent: sanityEvent(id: { eq: $id }) {
       id
+      _id
       name
       titles{
         text
@@ -304,17 +305,21 @@ const EventTemplate = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const event = data && data.sampleEvent;
-  let previewQuery = '*[_id == "drafts.'+ event._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ event._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}, startDate, endDate, timeZone->}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+        
+      }))
+    }
+    fetchData()
   }
   const media = event.media;
   const languagePhrases = (data || {}).languagePhrases?.edges;
@@ -333,7 +338,7 @@ const EventTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : event.titles}/></h1>
         <div className={styles.timeWrapper}>
-          <p><DisplayTime event={(preview && previewData) ? previewData : event} offset={offset} languagePhrases={languagePhrases}/></p>
+          <p><DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/></p>
           <div>
             <label for="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
             <select id="change-tz" onChange={handleTime}>
@@ -345,7 +350,7 @@ const EventTemplate = props => {
         {media.length > 1 &&
            <Masonry media={(preview && previewData) ? previewData.media : event.media}/>
         }
-        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={(preview && previewData) ? previewData : event}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={event}/>
       </Container>
     </Layout>
   );

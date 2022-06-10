@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -265,17 +265,20 @@ export const query = graphql`
 const ProjectTemplate = props => {
   const { data, errors } = props;
   const project = data && data.sampleProject;
-  let previewQuery = '*[_id == "drafts.'+ project._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ project._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
   const media = project.media;
   const site = (data || {}).site;
@@ -291,7 +294,7 @@ const ProjectTemplate = props => {
         {media.length > 1 &&
            <Carousel media={(preview && previewData) ? previewData.media : project.media}/>
         }
-        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={(preview && previewData) ? previewData : project}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={project}/>
       </Container>
     </Layout>
   );

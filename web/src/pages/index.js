@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
 import {
   mapEdgesToNodes,
@@ -116,17 +116,20 @@ const IndexPage = props => {
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const partners = (data || {}).partners.edges;
-  let previewQuery = '*[_id == "drafts.'+ (data || {}).hp.edges[0]?.node?._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ (data || {}).hp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
 
   if (!site) {

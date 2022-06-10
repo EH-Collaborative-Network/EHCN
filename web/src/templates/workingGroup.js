@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -265,17 +265,20 @@ export const query = graphql`
 const WorkingGroupTemplate = props => {
   const { data, errors } = props;
   const workingGroup = data && data.sampleWorkingGroup;
-  let previewQuery = '*[_id == "drafts.'+ workingGroup._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ workingGroup._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
   const site = (data || {}).site;
   const media = workingGroup.media;
@@ -291,7 +294,7 @@ const WorkingGroupTemplate = props => {
         {media.length > 1 &&
           <Carousel media={(preview && previewData) ? previewData.media : workingGroup.media}/>
         }
-        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={(preview && previewData) ? previewData : workingGroup}/>
+        <RelatedBlock opps={""} languagePhrases={languagePhrases} node={workingGroup}/>
       </Container>
     </Layout>
   );

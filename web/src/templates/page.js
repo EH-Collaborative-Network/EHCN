@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -14,7 +14,7 @@ const client = sanityClient({
   dataset: 'production',
   apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
   token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
-  useCdn: true, // `false` if you want to ensure fresh data
+  useCdn: false, // `false` if you want to ensure fresh data
 })
 export const query = graphql`
   query PageTemplateQuery($id: String!) {
@@ -83,18 +83,24 @@ export const query = graphql`
 const PageTemplate = props => {
   const { data, errors } = props;
   const page = data && data.samplePage;
-  let previewQuery = '*[_id == "drafts.'+ page._id +'"]'
+  let previewQuery = '*[_id == "drafts.'+ page._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
   const location = useLocation();
   let preview = false;
-  let previewData;
+  const [previewData, setPreviewData] = useState(false)
   if(location?.search){
     preview = queryString.parse(location.search).preview;
+    
   }
-  if(preview){
-    client.fetch(previewQuery).then((data) => {
-      previewData = data;
-    })
+  if(preview && !previewData){
+    const fetchData = async () => {
+      setPreviewData(await client.fetch(previewQuery).then((data) => {
+        return(data[0]);
+      }))
+    }
+    fetchData()
   }
+  
+
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const languagePhrases = (data || {}).languagePhrases?.edges;
@@ -103,6 +109,7 @@ const PageTemplate = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
+
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : page.titles}/></h1>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : page.bodies}/></div>
       </Container>

@@ -19,6 +19,13 @@ export default {
       description:"select add item to add a title in any language (including English)",
       of: [{type: 'titleTranslation'}],
   },
+  {
+    name: 'subtitles',
+    title: 'Subtitles to Display',
+    type: 'array',
+    description:"select add item to add a title in any language (including English)",
+    of: [{type: 'titleTranslation'}],
+},
     {
       name: 'mainImage',
       title: 'Thumbnail Image',
@@ -62,6 +69,13 @@ export default {
         title: 'Link to event website (if any)',
         type: 'link'
       },
+      {
+        name: 'locations',
+        title: 'Location Information',
+        type: 'array',
+        description:"select add item to add a description in any language (including English)",
+        of: [{type: 'translation'}],
+    },
       {
         name: 'descriptions',
         title: 'Description',

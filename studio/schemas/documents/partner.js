@@ -39,6 +39,13 @@ export default {
       type: 'link'
     },
     {
+      name: 'locations',
+      title: 'Location Information',
+      type: 'array',
+      description:"select add item to add a description in any language (including English)",
+      of: [{type: 'translation'}],
+  },
+    {
         name: 'media',
         title: 'Image(s)',
         type: 'array',

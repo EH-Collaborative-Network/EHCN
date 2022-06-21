@@ -356,7 +356,9 @@ const EventTemplate = props => {
         <div className={styles.timeWrapper}>
         <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : event.subtitles}/></div>
           <div>
-            <DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/>
+            {(event.timeZone && event.startDate) &&
+              <DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/>
+            }
             <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/>
           </div>
           <div>

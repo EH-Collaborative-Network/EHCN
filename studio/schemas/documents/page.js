@@ -22,7 +22,8 @@ export default {
     {
        name:'slug',
        type: 'slug',
-       title: 'Slug (what should the link to this page look like)',
+       title: 'Slug (what should the link to this page look like) ',
+       description: 'No hashtags, spaces, or punctuation. Use a dash instead of a space.',
        validation: Rule => Rule.required().error('slug cannot be left blank'),
        options: {
         source: 'name',

@@ -41,8 +41,8 @@ const DisplayTime = ({ event, offset = null, languagePhrases }) => {
       let timeZone = event.timeZone.offset
       let startDate = event.startDate.date
       let startTime = event.startDate.time
-      let endDate = event.endDate.date
-      let endTime = event.endDate.time
+      let endDate = event.endDate?.date || event.startDate.date
+      let endTime = event.endDate?.time || event.startDate.time
       let start = createDateTime(startDate, startTime, timeZone);
       let end = createDateTime(endDate, endTime, timeZone);
       let onlyTime = false;

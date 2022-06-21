@@ -20,7 +20,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
   return (
     <>
     <div className={styles.mobileHeader}>
-      <div className={styles.logo}><Link to="/"><img alt={"EHCN's logo which has an abstracted 'E' in the shape of the E.H. building on Bard campus with a grey H inside of it. Alongside this, is the text Experimental Humanities Collaborative Network."} src={logo} /></Link></div>
+      <div className={styles.logo}><Link to="/"><img alt={"EHCN's logo which has an abstracted 'E' with a grey 'H' inside of it. Alongside this, is the text Experimental Humanities Collaborative Network."} src={logo} /></Link></div>
         <div className={styles.close} onClick={openHandler}>
           <svg viewBox="0 0 75 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="73.4602" height="3.52472" rx="1.76236" transform="matrix(1 0 -0.0253564 0.999678 0.179688 25.8008)" fill="#333333"/>
@@ -30,7 +30,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
         </div>
     </div>
     <div id="navigation" className={styles.header}>
-      <div className={styles.logo}><Link to="/"><img alt={"EHCN's logo which has an abstracted 'E' in the shape of the E.H. building on Bard campus with a grey H inside of it. Alongside this, is the text Experimental Humanities Collaborative Network."} src={logo} /></Link></div>
+      <div className={styles.logo}><Link to="/"><img alt={"EHCN's logo which has an abstracted 'E' with a grey 'H' inside of it. Alongside this, is the text Experimental Humanities Collaborative Network."} src={logo} /></Link></div>
       <div className={styles.close} onClick={closeHandler}>
         <svg  viewBox="0 0 54 57" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="73.4602" height="3.45354" rx="1.72677" transform="matrix(0.698084 0.716016 -0.698084 0.716016 2.61719 0.69043)" fill="#333333"/>
@@ -77,8 +77,9 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
       return(
         <div>
           <div className={styles.searchWrapper}>
-            <input type="text" onKeyDown={handleEnter} placeholder={translate(translations, "search" ,theme)} />
-            <button onClick={handleSearch} className="blue-button">
+            <input aria-label="search" type="text" onKeyDown={handleEnter} placeholder={translate(translations, "search" ,theme)} />
+            <button onClick={handleSearch} className="blue-button" aria-labelledby="nav-search-label">
+              <span id="nav-search-label" hidden>Search</span>
               <svg width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M22.0023 11.2C22.0023 16.4901 17.4814 20.9 11.7511 20.9C6.02087 20.9 1.5 16.4901 1.5 11.2C1.5 5.90992 6.02087 1.5 11.7511 1.5C17.4814 1.5 22.0023 5.90992 22.0023 11.2Z" stroke="#333333" stroke-width="3"/>
               <path d="M27.9786 27.9995C28.5976 28.5501 29.5453 28.4943 30.0955 27.8749C30.6456 27.2556 30.5898 26.3071 29.9709 25.7565L27.9786 27.9995ZM17.9062 19.0395L27.9786 27.9995L29.9709 25.7565L19.8985 16.7965L17.9062 19.0395Z" fill="#333333"/>
@@ -102,7 +103,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
               <path d="M14.6664 1.32511C16.8058 1.81542 21.1309 4.17803 23.2146 8.93933C24.3506 11.5351 24.4074 15.3422 24.3506 15.2845" stroke="#333333"/>
             </svg>
 
-            <select className={styles.lang} onChange={handler} name="lang" id="lang">
+            <select aria-label="select language" className={styles.lang} onChange={handler} name="lang" id="lang">
               {/* <option style={{"display":"none"}} selected>Select language</option> */}
             { globalLanguages.map(function(language, index){
                 return(<option key={index} value={language.code} selected={language.code == theme.lang}>{language.name}</option>)
@@ -116,7 +117,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
         <ul className={styles.menu}>
           <li><a className={styles.email} href="mailto:ehcn@opensocietyuniversitynetwork.org">ehcn@opensociety<br/>universitynetwork.org</a></li>
           <li><TranslatedPhrase translations={translations} phrase={"ehcnSupported"}/></li>
-          <li><img className={styles.osun} src={osun}/></li>
+          <li><img className={styles.osun} alt="dark green text reads Open Society University Network with red semicircles encircling 'open'" src={osun}/></li>
           <li className={styles.sanity}>Structured content powered by <a href="https://sanity.io">Sanity.io</a></li>
         </ul>
       </div>

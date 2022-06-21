@@ -67,53 +67,57 @@ const CreateWeek = ({globalLanguages, translations, year, week, theme, events, o
     let satSquares = [];
 
     events.forEach(function(event){
-      let start = event.node.startDate
-      let end = event.node.endDate
-      let sd = createDateTime(start.date, start.time, event.node.timeZone.offset);
-      let ed = createDateTime(end.date, end.time, event.node.timeZone.offset);
-      if(sd.getMonth() == week.getMonth() || ed.getMonth() == week.getMonth){
-        if((sd.getDate() == currentRange[0].getDate() && sd.getMonth() == currentRange[0].getMonth()) || (ed.getDate() == currentRange[0].getDate() && ed.getMonth() == currentRange[0].getMonth()) ){
-          sunSquares.push([sd,ed,event.node]);
-        }
-        if((sd.getDate() == currentRange[1].getDate() && sd.getMonth() == currentRange[1].getMonth()) || (ed.getDate() == currentRange[1].getDate() && ed.getMonth() == currentRange[1].getMonth()) ){
-          monSquares.push([sd,ed,event.node]);
-        }
-        if((sd.getDate() == currentRange[2].getDate() && sd.getMonth() == currentRange[2].getMonth()) || (ed.getDate() == currentRange[2].getDate() && ed.getMonth() == currentRange[2].getMonth()) ){
-          tuesSquares.push([sd,ed,event.node]);
-        }
-        if((sd.getDate() == currentRange[3].getDate() && sd.getMonth() == currentRange[3].getMonth()) || (ed.getDate() == currentRange[3].getDate() && ed.getMonth() == currentRange[3].getMonth()) ){
-          wedSquares.push([sd,ed,event.node]);
-        }
-        if((sd.getDate() == currentRange[4].getDate() && sd.getMonth() == currentRange[4].getMonth()) || (ed.getDate() == currentRange[4].getDate() && ed.getMonth() == currentRange[4].getMonth()) ){
-          thursSquares.push([sd,ed,event.node]);
-        }
-        if((sd.getDate() == currentRange[5].getDate() && sd.getMonth() == currentRange[5].getMonth()) || (ed.getDate() == currentRange[5].getDate() && ed.getMonth() == currentRange[5].getMonth()) ){
-          friSquares.push([sd,ed,event.node]);
-        }
-        if((sd.getDate() == currentRange[6].getDate() && sd.getMonth() == currentRange[6].getMonth()) || (ed.getDate() == currentRange[6].getDate() && ed.getMonth() == currentRange[6].getMonth()) ){
-          satSquares.push([sd,ed,event.node]);
-        }
-        if(sd.getDate() < ed.getDate()){
-          if(sd.getTime() < currentRange[0].getTime() && (ed.getTime() > currentRange[0].getTime()) ){
+      // console.log(event)
+      if(event.node.startDate && event.node.timeZone){
+        let start = event.node.startDate
+        let end = event.node.endDate || event.node.startDate;
+        
+        let sd = createDateTime(start.date, start.time, event.node.timeZone.offset);
+        let ed = createDateTime(end.date, end.time, event.node.timeZone.offset);
+        if(sd.getMonth() == week.getMonth() || ed.getMonth() == week.getMonth){
+          if((sd.getDate() == currentRange[0].getDate() && sd.getMonth() == currentRange[0].getMonth()) || (ed.getDate() == currentRange[0].getDate() && ed.getMonth() == currentRange[0].getMonth()) ){
             sunSquares.push([sd,ed,event.node]);
           }
-          if(sd.getTime() < currentRange[1].getTime() && ed.getTime() > currentRange[1].getTime() ){
+          if((sd.getDate() == currentRange[1].getDate() && sd.getMonth() == currentRange[1].getMonth()) || (ed.getDate() == currentRange[1].getDate() && ed.getMonth() == currentRange[1].getMonth()) ){
             monSquares.push([sd,ed,event.node]);
           }
-          if(sd.getTime() < currentRange[2].getTime() && ed.getTime() > currentRange[2].getTime() ){
+          if((sd.getDate() == currentRange[2].getDate() && sd.getMonth() == currentRange[2].getMonth()) || (ed.getDate() == currentRange[2].getDate() && ed.getMonth() == currentRange[2].getMonth()) ){
             tuesSquares.push([sd,ed,event.node]);
           }
-          if(sd.getTime() < currentRange[3].getTime() && ed.getTime() > currentRange[3].getTime() ){
+          if((sd.getDate() == currentRange[3].getDate() && sd.getMonth() == currentRange[3].getMonth()) || (ed.getDate() == currentRange[3].getDate() && ed.getMonth() == currentRange[3].getMonth()) ){
             wedSquares.push([sd,ed,event.node]);
           }
-          if(sd.getTime() < currentRange[4].getTime() && ed.getTime() > currentRange[4].getTime() ){
+          if((sd.getDate() == currentRange[4].getDate() && sd.getMonth() == currentRange[4].getMonth()) || (ed.getDate() == currentRange[4].getDate() && ed.getMonth() == currentRange[4].getMonth()) ){
             thursSquares.push([sd,ed,event.node]);
           }
-          if(sd.getTime() < currentRange[5].getTime() && ed.getTime() > currentRange[5].getTime() ){
+          if((sd.getDate() == currentRange[5].getDate() && sd.getMonth() == currentRange[5].getMonth()) || (ed.getDate() == currentRange[5].getDate() && ed.getMonth() == currentRange[5].getMonth()) ){
             friSquares.push([sd,ed,event.node]);
           }
-          if(sd.getTime() < currentRange[6].getTime() && ed.getTime() > currentRange[6].getTime() ){
+          if((sd.getDate() == currentRange[6].getDate() && sd.getMonth() == currentRange[6].getMonth()) || (ed.getDate() == currentRange[6].getDate() && ed.getMonth() == currentRange[6].getMonth()) ){
             satSquares.push([sd,ed,event.node]);
+          }
+          if(sd.getDate() < ed.getDate()){
+            if(sd.getTime() < currentRange[0].getTime() && (ed.getTime() > currentRange[0].getTime()) ){
+              sunSquares.push([sd,ed,event.node]);
+            }
+            if(sd.getTime() < currentRange[1].getTime() && ed.getTime() > currentRange[1].getTime() ){
+              monSquares.push([sd,ed,event.node]);
+            }
+            if(sd.getTime() < currentRange[2].getTime() && ed.getTime() > currentRange[2].getTime() ){
+              tuesSquares.push([sd,ed,event.node]);
+            }
+            if(sd.getTime() < currentRange[3].getTime() && ed.getTime() > currentRange[3].getTime() ){
+              wedSquares.push([sd,ed,event.node]);
+            }
+            if(sd.getTime() < currentRange[4].getTime() && ed.getTime() > currentRange[4].getTime() ){
+              thursSquares.push([sd,ed,event.node]);
+            }
+            if(sd.getTime() < currentRange[5].getTime() && ed.getTime() > currentRange[5].getTime() ){
+              friSquares.push([sd,ed,event.node]);
+            }
+            if(sd.getTime() < currentRange[6].getTime() && ed.getTime() > currentRange[6].getTime() ){
+              satSquares.push([sd,ed,event.node]);
+            }
           }
         }
       }

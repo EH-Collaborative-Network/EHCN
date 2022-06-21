@@ -20,13 +20,15 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
     let currentEvents = [];
     //only dealing with events for this month
     events.forEach(function(event){
-      let start = event.node.startDate
-      let end = event.node.endDate
-      let sd = createDateTime(start.date, start.time, event.node.timeZone.offset);
-      let ed = createDateTime(end.date, end.time, event.node.timeZone.offset);
-      if(sd.getMonth() == mon || ed.getMonth() == mon){
-        currentEvents.push([sd,ed,event.node]);
+      if(event.node.startDate && event.node.timeZone){
+        let start = event.node.startDate
+        let end = event.node.endDate || event.node.startDate
+        let sd = createDateTime(start.date, start.time, event.node.timeZone.offset);
+        let ed = createDateTime(end.date, end.time, event.node.timeZone.offset);
+        if(sd.getMonth() == mon || ed.getMonth() == mon){
+          currentEvents.push([sd,ed,event.node]);
 
+        }
       }
     })
 

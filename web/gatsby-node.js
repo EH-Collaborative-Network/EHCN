@@ -32,7 +32,7 @@ async function createProjectPages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/project/${slug}/`
+      const path = `/project/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -67,7 +67,7 @@ async function createCoursePages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/course/${slug}/`
+      const path = `/course/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -103,7 +103,7 @@ async function createEventPages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/event/${slug}/`
+      const path = `/event/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -140,7 +140,7 @@ async function createLearningResourcePages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/learning-resource/${slug}/`
+      const path = `/learning-resource/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -177,7 +177,7 @@ async function createNewsItemPages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/news-item/${slug}/`
+      const path = `/news-item/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -213,7 +213,7 @@ async function createDefaultPages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/${slug}/`
+      const path = `/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -249,7 +249,7 @@ async function createPartnerPages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/partner/${slug}/`
+      const path = `/partner/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -287,7 +287,7 @@ async function createResearchThreadPages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/research-thread/${slug}/`
+      const path = `/research-thread/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,
@@ -325,7 +325,7 @@ async function createWorkingGroupPages (graphql, actions) {
     .forEach(edge => {
       const id = edge.node.id
       const slug = edge.node.slug.current
-      const path = `/working-group/${slug}/`
+      const path = `/working-group/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
 
       createPage({
         path,

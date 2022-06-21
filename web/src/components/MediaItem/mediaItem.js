@@ -23,6 +23,9 @@ function lightboxed(e){
   if(!media){
      media = e.target.closest(".masonry-inner > div")?.cloneNode(true);
   }
+  if(!media){
+    media = e.target.closest(".wrapper")?.cloneNode(true);
+  }
   document.querySelector("#light-box .inner").innerHTML = ""
   document.querySelector("#light-box .inner").append(media)
   document.getElementById("light-box").classList.add("show");

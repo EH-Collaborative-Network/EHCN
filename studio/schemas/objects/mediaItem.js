@@ -1,3 +1,5 @@
+import mediaRender from '../components/mediaRender'
+
 export default{
     title: 'Media Item',
     name: 'mediaItem',
@@ -6,6 +8,10 @@ export default{
     options: {
         collapsible: true,
         collapsed: true,
+    },
+    blockEditor: {
+      icon: () => '🏞',
+      render: mediaRender
     },
     fields: [
         {name: 'image', 

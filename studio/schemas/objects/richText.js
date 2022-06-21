@@ -1,4 +1,5 @@
-import { MdInsertLink, MdImage, MdPerson } from "react-icons/md";
+import { MdInsertLink } from "react-icons/md";
+import mediaRender from '../components/mediaRender'
 
 export default {
   name: 'richText',
@@ -36,11 +37,12 @@ export default {
             ]
           },
           {
-            title: 'Image',
-            name: 'image',
-            type: 'image',
+            title: 'Media Item',
+            name: 'media',
+            type: 'mediaItem',
             blockEditor: {
-              icon: MdImage,
+              icon: () => '🏞',
+              render: mediaRender
             }
           },
           {
@@ -48,7 +50,7 @@ export default {
             type: 'object',
             title: 'EHCN Personnel',
             blockEditor: {
-              icon: () => MdPerson
+              icon: () => '👤'
             },
             fields: [
               {

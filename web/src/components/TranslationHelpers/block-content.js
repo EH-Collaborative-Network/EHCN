@@ -2,6 +2,7 @@ import { PortableText } from "@portabletext/react";
 import React, { useState } from "react";
 import LangContext from '../context/lang.js'
 import { Figure } from "../Figure/figure";
+import MediaItem from "../MediaItem/mediaItem"
 import { Link } from "gatsby";
 import TranslatedPhrase from "./translatedPhrase.js";
 import Person from "../Person/person"
@@ -29,22 +30,6 @@ const serializers = {
         </a>
       );
     },
-    internalLink: ({ mark, children }) => {
-      const { slug = {} } = mark;
-      const href = `/${slug.current}`;
-      return (
-        <a href={href} style={{ textDecoration: 'underline' }}>
-          {children}
-        </a>
-      );
-    },
-    person: ({ mark, children }) => {
-      const { slug = {} } = mark;
-      const href = `/${slug.current}`;
-      return (
-        <span className={styles.blockPerson}><Person node={mark} key={""}/></span>
-      );
-    },
   },
 };
 
@@ -64,6 +49,12 @@ const components = {
       return (
         <span className={styles.blockPerson}><Person blue={true} person={person} key={""}/></span>
       );
+    },
+    media: ({ value, children }) => {
+      
+      if(value) { 
+        return (<div className="wrapper"><MediaItem media={value}/></div>)
+      } else { return null }
     },
   }
 }

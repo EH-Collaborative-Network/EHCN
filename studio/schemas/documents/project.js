@@ -96,7 +96,7 @@ export default {
         name: 'partners',
         type: 'array',
         description: 'Partner Institutions associated with this project (if any)',
-        title: 'Associated Partners',
+        title: 'EHCN Partners involved',
         of:[{type:'reference', title:'Associated Partner', to: [{type: 'partner'}]}]
     },
     {

@@ -227,3 +227,11 @@ li.alice-carousel__stage-item {
 .masonry-inner .gatsby-image-wrapper, .masonry-inner figure, .masonry-inner div{
   height: auto;
 }
+
+.subtitle{
+  display: block;
+  font-size: var(--font-base-size);
+  font-weight: bold;
+  margin-top:0;
+  margin-bottom:0.5em;
+}

@@ -47,7 +47,7 @@ const components = {
       let person = {};
       person.node = value.reference;
       return (
-        <span className={styles.blockPerson}><Person blue={true} person={person} key={""}/></span>
+        <span className={styles.blockPerson}><Person blue={true} hideArrow={true} person={person} key={""}/></span>
       );
     },
     media: ({ value, children }) => {

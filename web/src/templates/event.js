@@ -353,13 +353,14 @@ const EventTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : event.titles}/></h1>
-        <div className={styles.timeWrapper}>
         <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : event.subtitles}/></div>
+        <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/></div>
+        <div className={styles.timeWrapper}>
           <div>
             {(event.timeZone && event.startDate) &&
               <DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/>
             }
-            <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/>
+            
           </div>
           <div>
             <label for="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>

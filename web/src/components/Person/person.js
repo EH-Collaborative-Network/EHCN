@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/layout.css";
 import Modal from "../Modal/modal";
 import * as styles from "./person.module.css";
-const Person = ({ person, index, blue }) =>{
+const Person = ({ person, index, blue, hideArrow }) =>{
   function handler(e){
     let el = e.target.closest("span");
     
@@ -14,7 +14,7 @@ const Person = ({ person, index, blue }) =>{
 
   return(
       <span className={styles.person}>
-          <div onClick={handler} className={`${blue ? "blue-button": "button"}`}>{person.node.name + "→"}</div>
+          <div onClick={handler} className={`${blue ? "blue-button": "button"}`}>{person.node.name }{hideArrow ? "" : "→"}</div>
           <Modal name={person.node.name} content={person.node.bios} />
       </span> 
   );

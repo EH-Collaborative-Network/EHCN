@@ -32,3 +32,6 @@
 .root > div > section{
   break-inside: avoid;
 }
+.root li:first-child a{
+  margin-top:0;
+}

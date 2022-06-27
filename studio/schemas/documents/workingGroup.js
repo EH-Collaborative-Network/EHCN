@@ -25,6 +25,12 @@ export default {
       type: 'figure',
     },
     {
+      name:'studentLed',
+      type: 'boolean',
+      title: 'Is this working group student-lead?',
+      description: 'If this thread is faculty-led, set to false',
+      },
+    {
        name:'slug',
        type: 'slug',
        title: 'Slug (what should the link to this page look like)',

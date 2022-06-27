@@ -77,6 +77,12 @@ export default {
         description:"select add item to add a description in any language (including English)",
         of: [{type: 'translation'}],
     },
+    {
+      name:'studentLed',
+      type: 'boolean',
+      title: 'Is this event student-lead?',
+      description: 'If this thread is faculty-led, set to false',
+      },
       {
         name: 'descriptions',
         title: 'Description',

@@ -40,12 +40,6 @@ export default {
       }
     },
     {
-        name:'studentLed',
-        type: 'boolean',
-        title: 'Is this research thread student-lead?',
-        description: 'If this thread is faculty-led, set to false',
-    },
-    {
         name: 'mainLink',
         title: 'Link to Research Thread website (if any)',
         type: 'link'

@@ -105,3 +105,11 @@
 .root figcaption{
   display: none;
 }
+.simpleImage{
+  height:auto;
+  margin:0;
+  max-width: 50%;
+  @media (--media-min-medium) {
+    max-width: 25%;
+  }
+}

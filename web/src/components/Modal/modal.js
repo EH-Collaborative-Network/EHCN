@@ -3,7 +3,8 @@ import "../../styles/layout.css";
 import * as styles from "./modal.module.css";
 import BlockContent from "../TranslationHelpers/block-content";
 import TranslatedTitle from "../TranslationHelpers/translatedTitle";
-const Modal = ({ content,name }) =>{
+import { Figure } from "../Figure/figure";
+const Modal = ({ content,name,image }) =>{
     function handler(e){
         let el = e.target.closest(".modal")
         el.classList.remove("show");
@@ -19,6 +20,9 @@ const Modal = ({ content,name }) =>{
             <div className={styles.inner}>
    
                 <h4>{name}</h4>
+                {image &&
+                    <Figure simple={true} node={image}/>
+                }
                 {content &&
                     <BlockContent blocks={content}/>
                 }

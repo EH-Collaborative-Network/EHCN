@@ -15,7 +15,7 @@ const Person = ({ person, index, blue, hideArrow }) =>{
   return(
       <span className={styles.person}>
           <div onClick={handler} className={`${blue ? "blue-button": "button"}`}>{person.node.name }{hideArrow ? "" : "→"}</div>
-          <Modal name={person.node.name} content={person.node.bios} />
+          <Modal name={person.node.name} image={person.node.image} content={person.node.bios} />
       </span> 
   );
 }

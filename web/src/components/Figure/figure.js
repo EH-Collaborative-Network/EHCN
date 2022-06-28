@@ -4,7 +4,7 @@ import { getGatsbyImageData } from "gatsby-source-sanity";
 import clientConfig from "../../../client-config";
 import * as styles from "../Carousel/carousel.module.css";
 
-export function Figure({ node }) {
+export function Figure({ node, simple }) {
 
   if (!node.asset) {
     return null;
@@ -14,7 +14,7 @@ export function Figure({ node }) {
   const imageData = getGatsbyImageData(node.asset, { maxWidth: 675 }, clientConfig.sanity);
 
   return (
-    <figure className={styles.figure}>
+    <figure className={simple ? styles.simpleImage : styles.figure}>
       <GatsbyImage image={imageData} alt={node.altText} />
       {node.caption && <figcaption>{node.caption}</figcaption>}
     </figure>

@@ -10,12 +10,16 @@ import { Link } from "@reach/router";
 const Carousel = ({ media, imageOnly }) => {
   let medias = media.map(function(node, index){
     if(imageOnly){
+      if(node[0]){
       return(
         <Link to={node[2]}>
-        <Figure key={index} node={node[0]} />
+            <Figure key={index} node={node[0]} />
         <h4><TranslatedTitle translations={node[1]}/>→</h4>
         </Link>
       )
+      }else{
+        return(<></>)
+      }
     }else{
       return <MediaItem key={index} media={node}></MediaItem>;
     }

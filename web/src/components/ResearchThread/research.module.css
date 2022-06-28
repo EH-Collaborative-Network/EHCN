@@ -80,4 +80,8 @@
 }
 .wrapper{
     flex-basis: 60%;
+    max-width: 100%;
+    @media (--media-min-medium) {
+        max-width: 70%;  
+    }
 }

@@ -6,6 +6,7 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
+import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import Carousel from "../components/Carousel/carousel";

@@ -11,7 +11,7 @@ let image = media.image;
 let pdf = media.pdf;
 let embedCode;
 
-if(embed?.embed?.length){
+if(embed?.embed?.length > 1){
   if(embed.embed.includes("iframe")){
     embedCode = embed.embed.split("<iframe")[0] + "<iframe title='"+embed.altText+"' "+embed.embed.split("<iframe")[1];
   }else{

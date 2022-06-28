@@ -5,7 +5,6 @@
 .timeWrapper{
   display:flex;
   justify-content: space-between;
-  margin-bottom:2em;
   flex-direction: column-reverse;
   @media (--media-min-medium) {
       flex-direction:row;

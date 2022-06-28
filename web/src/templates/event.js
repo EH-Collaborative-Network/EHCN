@@ -68,6 +68,8 @@ export const query = graphql`
           relatedNews
           locale
           timezone
+          studentLed
+          facultyLed
         }
       }
     }
@@ -75,6 +77,7 @@ export const query = graphql`
       id
       _id
       name
+      studentLed
       titles{
         text
         language{
@@ -369,6 +372,7 @@ const EventTemplate = props => {
             </select>
           </div>
         </div>
+        <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={event.studentLed ? 'studentLed' : 'facultyLed'}/></div>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : event.descriptions}/></div>
         {media.length > 1 &&
            <Masonry media={(preview && previewData) ? previewData.media : event.media}/>

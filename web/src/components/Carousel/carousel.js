@@ -11,7 +11,7 @@ const Carousel = ({ media, imageOnly }) => {
   let medias = media.map(function(node, index){
     if(imageOnly){
       return(
-        <Link to={"project/"+node[2]}>
+        <Link to={node[2]}>
         <Figure key={index} node={node[0]} />
         <h4><TranslatedTitle translations={node[1]}/>→</h4>
         </Link>

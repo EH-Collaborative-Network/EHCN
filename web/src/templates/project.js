@@ -59,6 +59,8 @@ export const query = graphql`
           relatedLearningResources
           relatedPartners
           relatedNews
+          studentLed
+          facultyLed
         }
       }
     }
@@ -66,6 +68,7 @@ export const query = graphql`
       id
       _id
       name
+      studentLed
       titles{
         text
         language{
@@ -299,6 +302,7 @@ const ProjectTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : project.titles}/></h1>
         <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : project.subtitles}/></div>
+        <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={project.studentLed ? 'studentLed' : 'facultyLed'}/></div>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : project.descriptions}/></div>
         {media.length > 1 &&
            <Carousel media={(preview && previewData) ? previewData.media : project.media}/>

@@ -5,9 +5,11 @@ import clientConfig from "../../../client-config";
 import * as styles from "../Carousel/carousel.module.css";
 
 export function Figure({ node }) {
+
   if (!node.asset) {
     return null;
   }
+
 
   const imageData = getGatsbyImageData(node.asset, { maxWidth: 675 }, clientConfig.sanity);
 

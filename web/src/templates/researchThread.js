@@ -59,6 +59,8 @@ export const query = graphql`
           relatedLearningResources
           relatedPartners
           relatedNews
+          studentLed
+          facultyLed
         }
       }
     }
@@ -66,7 +68,6 @@ export const query = graphql`
       id
       _id
       name
-      studentLed
       titles{
         text
         language{
@@ -100,6 +101,379 @@ export const query = graphql`
           _id
         }
         altText
+      }
+      events{
+        id
+        name
+        studentLed
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+          }
+          altText
+        }
+        media{
+          embed{
+            embed
+            altText
+            caption
+          }
+          pdf{
+            altText
+            caption
+            asset {
+              url
+              _id
+            }
+          }
+          image{
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            altText
+          }
+        }
+      }
+      workingGroups{
+        id
+        name
+        studentLed
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+          }
+          altText
+        }
+        media{
+          embed{
+            embed
+            altText
+            caption
+          }
+          pdf{
+            altText
+            caption
+            asset {
+              url
+              _id
+            }
+          }
+          image{
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            altText
+          }
+        }
+      }
+      projects{
+        id
+        name
+        studentLed
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+          }
+          altText
+        }
+        media{
+          embed{
+            embed
+            altText
+            caption
+          }
+          pdf{
+            altText
+            caption
+            asset {
+              url
+              _id
+            }
+          }
+          image{
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            altText
+          }
+        }
+      }
+      courses{
+        id
+        name
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+          }
+          altText
+        }
+        media{
+          embed{
+            embed
+            altText
+            caption
+          }
+          pdf{
+            altText
+            caption
+            asset {
+              url
+              _id
+            }
+          }
+          image{
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            altText
+          }
+        }
+      }
+      learningResources{
+        id
+        name
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            _key
+            _type
+            x
+            y
+            height
+            width
+          }
+          asset {
+            _id
+          }
+          altText
+        }
+        media{
+          embed{
+            embed
+            altText
+            caption
+          }
+          pdf{
+            altText
+            caption
+            asset {
+              url
+              _id
+            }
+          }
+          image{
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            altText
+          }
+        }
       }
       descriptions{
         _rawText

@@ -49,6 +49,8 @@ export const query = graphql`
           researchThreads
           availableIn
           search
+          studentLed
+          facultyLed
         }
       }
     }
@@ -90,7 +92,6 @@ export const query = graphql`
           slug{
             current
           }
-          studentLed
           titles{
             text
             language{
@@ -99,7 +100,306 @@ export const query = graphql`
               code
             }
           }
+          events{
+            id
+            name
+            studentLed
+            titles{
+              text
+              language{
+                id
+                name
+                code
+              }
+            }
+            slug{
+              current
+            }
+            mainImage {
+              crop {
+                _key
+                _type
+                top
+                bottom
+                left
+                right
+              }
+              hotspot {
+                _key
+                _type
+                x
+                y
+                height
+                width
+              }
+              asset {
+                _id
+              }
+              altText
+            }
+            media{
+              embed{
+                embed
+                altText
+                caption
+              }
+              pdf{
+                altText
+                caption
+                asset {
+                  url
+                  _id
+                }
+              }
+              image{
+                crop {
+                  _key
+                  _type
+                  top
+                  bottom
+                  left
+                  right
+                }
+                hotspot {
+                  _key
+                  _type
+                  x
+                  y
+                  height
+                  width
+                }
+                asset {
+                  _id
+                }
+                altText
+              }
+            }
+          }
+          workingGroups{
+            id
+            name
+            studentLed
+            titles{
+              text
+              language{
+                id
+                name
+                code
+              }
+            }
+            slug{
+              current
+            }
+            mainImage {
+              crop {
+                _key
+                _type
+                top
+                bottom
+                left
+                right
+              }
+              hotspot {
+                _key
+                _type
+                x
+                y
+                height
+                width
+              }
+              asset {
+                _id
+              }
+              altText
+            }
+            media{
+              embed{
+                embed
+                altText
+                caption
+              }
+              pdf{
+                altText
+                caption
+                asset {
+                  url
+                  _id
+                }
+              }
+              image{
+                crop {
+                  _key
+                  _type
+                  top
+                  bottom
+                  left
+                  right
+                }
+                hotspot {
+                  _key
+                  _type
+                  x
+                  y
+                  height
+                  width
+                }
+                asset {
+                  _id
+                }
+                altText
+              }
+            }
+          }
           projects{
+            id
+            name
+            studentLed
+            titles{
+              text
+              language{
+                id
+                name
+                code
+              }
+            }
+            slug{
+              current
+            }
+            mainImage {
+              crop {
+                _key
+                _type
+                top
+                bottom
+                left
+                right
+              }
+              hotspot {
+                _key
+                _type
+                x
+                y
+                height
+                width
+              }
+              asset {
+                _id
+              }
+              altText
+            }
+            media{
+              embed{
+                embed
+                altText
+                caption
+              }
+              pdf{
+                altText
+                caption
+                asset {
+                  url
+                  _id
+                }
+              }
+              image{
+                crop {
+                  _key
+                  _type
+                  top
+                  bottom
+                  left
+                  right
+                }
+                hotspot {
+                  _key
+                  _type
+                  x
+                  y
+                  height
+                  width
+                }
+                asset {
+                  _id
+                }
+                altText
+              }
+            }
+          }
+          courses{
+            id
+            name
+            titles{
+              text
+              language{
+                id
+                name
+                code
+              }
+            }
+            slug{
+              current
+            }
+            mainImage {
+              crop {
+                _key
+                _type
+                top
+                bottom
+                left
+                right
+              }
+              hotspot {
+                _key
+                _type
+                x
+                y
+                height
+                width
+              }
+              asset {
+                _id
+              }
+              altText
+            }
+            media{
+              embed{
+                embed
+                altText
+                caption
+              }
+              pdf{
+                altText
+                caption
+                asset {
+                  url
+                  _id
+                }
+              }
+              image{
+                crop {
+                  _key
+                  _type
+                  top
+                  bottom
+                  left
+                  right
+                }
+                hotspot {
+                  _key
+                  _type
+                  x
+                  y
+                  height
+                  width
+                }
+                asset {
+                  _id
+                }
+                altText
+              }
+            }
+          }
+          learningResources{
             id
             name
             titles{
@@ -213,14 +513,17 @@ const ResearchThreads = props => {
   function handleCheck(e){
     let els;
     if(e.target.checked){
-      els = document.querySelectorAll("." + e.target.value);
-      for(let i = 0; i < els.length; i++){
-        els[i].classList.add("show-thread");
+
+      if( e.target.value == 'student-led'){
+        setStudentLed(true)
+      }else{
+        setFacultyLed(true)
       }
     }else{
-      els = document.querySelectorAll("." + e.target.value);
-      for(let i = 0; i < els.length; i++){
-        els[i].classList.remove("show-thread");
+      if( e.target.value == 'student-led'){
+        setStudentLed(false)
+      }else{
+        setFacultyLed(false)
       }
     }
   }
@@ -233,21 +536,60 @@ const ResearchThreads = props => {
           <h1><TranslatedPhrase translations={languagePhrases} phrase={"researchThreads"}/></h1>
           <div className={styles.facultyStudent}>
             <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
-            <label for="student-led"><em>Show Student-led Research Threads</em></label><br></br>
+            <label for="student-led"><em><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></em></label><br></br>
             <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>
-            <label for="faculty-led"><em>Show Faculty-led Research Threads</em></label>
+            <label for="faculty-led"><em><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></em></label>
           </div>
         {threads.map(function(thread,index){
           let media = []
 
-          thread.node.projects.map(function(project,index){
+          thread.node.projects?.map(function(project,index){
             let x = []
             x.push(project.mainImage)
             x.push(project.titles)
-            x.push(project.slug.current)
-            media.push(x)
+            x.push("/project/"+project.slug.current)
+            if(studentLed && project.studentLed){
+              media.push(x)
+            } else if(facultyLed && !project.studentLed){
+              media.push(x)
+            }
+          })
+          thread.node.events?.map(function(project,index){
+            let x = []
+            x.push(project.mainImage)
+            x.push(project.titles)
+            x.push("/event/"+project.slug.current)
+            if(studentLed && project.studentLed){
+              media.push(x)
+            } else if(facultyLed && !project.studentLed){
+              media.push(x)
+            }
+          })
+          thread.node.workingGroups?.map(function(project,index){
+            let x = []
+            x.push(project.mainImage)
+            x.push(project.titles)
+            x.push("/working-group/"+project.slug.current)
+            if(studentLed && project.studentLed){
+              media.push(x)
+            } else if(facultyLed && !project.studentLed){
+              media.push(x)
+            }
+          })
+          thread.node.courses?.map(function(project,index){
+            let x = []
+            x.push(project.mainImage)
+            x.push(project.titles)
+            x.push("/course/"+project.slug.current)
+            if(studentLed && project.studentLed){
+              media.push(x)
+            } else if(facultyLed && !project.studentLed){
+              media.push(x)
+            }
           })
           return(
+            <>
+            {media.length > 0 && 
             <div className={styles.root + " show-thread " + (thread.node.studentLed ? "student-led" : "faculty-led")}>
                 <div className={styles.main}>
                   <Link to={"research-thread/"+thread.node.slug?.current}>
@@ -259,6 +601,8 @@ const ResearchThreads = props => {
                  <div className={styles.wrapper}> <Carousel media={media} imageOnly={true}/></div>
                 }
             </div>
+              }
+              </>
           )
         })}
         </Container>

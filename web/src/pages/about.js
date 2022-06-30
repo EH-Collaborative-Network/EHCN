@@ -95,14 +95,6 @@ export const query = graphql`
                         left
                         right
                     }
-                    hotspot {
-                        _key
-                        _type
-                        x
-                        y
-                        height
-                        width
-                    }
                     asset {
                         _id
                     }
@@ -132,17 +124,6 @@ export const query = graphql`
               code
             }
           }
-        }
-      }
-    }
-    projects: allSanityProject(
-      limit: 6
-      filter: { slug: { current: { ne: null } }}
-    ) {
-      edges {
-        node {
-          id
-          name
         }
       }
     }
@@ -183,11 +164,7 @@ const AboutPage = props => {
   const partners = (data || {}).partners?.edges;
   const languagePhrases = (data || {}).languagePhrases?.edges;
 
-  const projectNodes = (data || {}).projects
-    ? mapEdgesToNodes(data.projects)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : [];
+
 
   const steeringPeople = [];
   const staffPeople = [];

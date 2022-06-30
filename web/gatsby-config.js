@@ -9,6 +9,9 @@ const token = process.env.SANITY_READ_TOKEN
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  flags:{
+    PARALLEL_QUERY_RUNNING: false
+  },
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',

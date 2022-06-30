@@ -76,7 +76,6 @@ export const query = graphql`
     sampleEvent: sanityEvent(id: { eq: $id }) {
       id
       _id
-      name
       studentLed
       titles{
         text
@@ -106,10 +105,6 @@ export const query = graphql`
         date
         time
       }
-      mainLink{
-        url
-        text
-      }
       mainImage {
         crop {
           _key
@@ -118,14 +113,6 @@ export const query = graphql`
           bottom
           left
           right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
         }
         asset {
           _id
@@ -192,7 +179,6 @@ export const query = graphql`
       }
       events {
         id
-        name
         timeZone{
           name
           offset
@@ -219,7 +205,6 @@ export const query = graphql`
       }
       learningResources{
         id
-        name
         slug{
           current
         }
@@ -235,7 +220,6 @@ export const query = graphql`
       newsItems{
         id
         date
-        name
         slug{
           current
         }
@@ -257,7 +241,6 @@ export const query = graphql`
       }
       projects{
         id
-        name
         slug{
           current
         }
@@ -272,7 +255,6 @@ export const query = graphql`
       }
       researchThreads{
         id
-        name
         slug{
           current
         }
@@ -287,7 +269,6 @@ export const query = graphql`
       }
       workingGroups{
         id
-        name
         slug{
           current
         }
@@ -302,7 +283,6 @@ export const query = graphql`
       }
       courses{
         id
-        name
         slug{
           current
         }

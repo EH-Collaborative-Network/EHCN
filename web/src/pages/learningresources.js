@@ -54,33 +54,6 @@ export const query = graphql`
         }
       }
     }
-    opps: allSanityOpportunity{
-        edges{
-            node {
-                applications {
-                  text
-                  url
-                  partner {
-                    name
-                    slug {
-                      current
-                    }
-                  }
-                }
-                institution
-                title
-                id
-                descriptions{
-                  _rawText
-                  language{
-                    id
-                    code
-                    name
-                  }
-                }
-              }
-        }
-    }
     items: localSearchItems {
       store
       index

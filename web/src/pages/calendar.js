@@ -76,41 +76,13 @@ export const query = graphql`
         }
       }
     }
-    opps: allSanityOpportunity{
-        edges{
-            node {
-                applications {
-                  text
-                  url
-                  partner {
-                    name
-                    slug {
-                      current
-                    }
-                  }
-                }
-                institution
-                title
-                id
-                descriptions{
-                  _rawText
-                  language{
-                    id
-                    code
-                    name
-                  }
-                }
-              }
-        }
-    }
     events: allSanityEvent(
-      limit: 60
+      limit: 1000
       filter: { slug: { current: { ne: null } }}
     ) {
       edges {
         node {
           id
-          name
           slug{
             current
           }
@@ -120,14 +92,6 @@ export const query = graphql`
               id
               name
               code
-            }
-          }
-          descriptions{
-            _rawText(resolveReferences: { maxDepth: 20 })
-            language{
-              id
-              code
-              name
             }
           }
           timeZone{

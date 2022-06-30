@@ -67,7 +67,6 @@ export const query = graphql`
     sampleResearchThread: sanityResearchThread(id: { eq: $id }) {
       id
       _id
-      name
       titles{
         text
         language{
@@ -144,7 +143,6 @@ export const query = graphql`
       }
       events{
         id
-        name
         studentLed
         titles{
           text
@@ -160,7 +158,6 @@ export const query = graphql`
       }
       workingGroups{
         id
-        name
         studentLed
         titles{
           text
@@ -192,7 +189,6 @@ export const query = graphql`
       }
       courses{
         id
-        name
         titles{
           text
           language{
@@ -207,7 +203,6 @@ export const query = graphql`
       }
       learningResources{
         id
-        name
         titles{
           text
           language{
@@ -223,7 +218,6 @@ export const query = graphql`
       newsItems{
         id
         date
-        name
         slug{
           current
         }

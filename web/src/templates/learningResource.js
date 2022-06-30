@@ -64,7 +64,6 @@ export const query = graphql`
     }
     sampleLearningResource: sanityLearningResource(id: { eq: $id }) {
       id
-      name
       titles{
         text
         language{
@@ -177,7 +176,6 @@ export const query = graphql`
       newsItems{
         id
         date
-        name
         slug{
           current
         }
@@ -199,7 +197,6 @@ export const query = graphql`
       }
       projects{
         id
-        name
         slug{
           current
         }
@@ -214,7 +211,6 @@ export const query = graphql`
       }
       researchThreads{
         id
-        name
         slug{
           current
         }
@@ -229,7 +225,6 @@ export const query = graphql`
       }
       workingGroups{
         id
-        name
         slug{
           current
         }
@@ -244,7 +239,6 @@ export const query = graphql`
       }
       courses{
         id
-        name
         slug{
           current
         }

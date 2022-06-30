@@ -111,17 +111,6 @@ export const query = graphql`
         }
       }
     }
-    projects: allSanityProject(
-      limit: 6
-      filter: { slug: { current: { ne: null } }}
-    ) {
-      edges {
-        node {
-          id
-          name
-        }
-      }
-    }
   }
 `;
 

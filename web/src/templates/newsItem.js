@@ -63,7 +63,6 @@ export const query = graphql`
     }
     sampleNewsItem: sanityNewsItem(id: { eq: $id }) {
       id
-      name
       titles{
         text
         language{
@@ -85,7 +84,6 @@ export const query = graphql`
       }
       events {
         id
-        name
         timeZone{
           name
           offset
@@ -119,7 +117,6 @@ export const query = graphql`
       }
       projects{
         id
-        name
         slug{
           current
         }
@@ -127,14 +124,12 @@ export const query = graphql`
           text
           language{
             id
-            name
             code
           }
         }
       }
       researchThreads{
         id
-        name
         slug{
           current
         }
@@ -149,7 +144,6 @@ export const query = graphql`
       }
       workingGroups{
         id
-        name
         slug{
           current
         }
@@ -164,7 +158,6 @@ export const query = graphql`
       }
       courses{
         id
-        name
         slug{
           current
         }

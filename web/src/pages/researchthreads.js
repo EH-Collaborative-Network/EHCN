@@ -54,33 +54,6 @@ export const query = graphql`
         }
       }
     }
-    opps: allSanityOpportunity{
-        edges{
-            node {
-                applications {
-                  text
-                  url
-                  partner {
-                    name
-                    slug {
-                      current
-                    }
-                  }
-                }
-                institution
-                title
-                id
-                descriptions{
-                  _rawText
-                  language{
-                    id
-                    name
-                    code
-                  }
-                }
-              }
-        }
-    }
     researchThreads: allSanityResearchThread(
       limit: 60
       filter: { slug: { current: { ne: null } }}
@@ -102,7 +75,6 @@ export const query = graphql`
           }
           events{
             id
-            name
             studentLed
             titles{
               text
@@ -161,7 +133,6 @@ export const query = graphql`
           }
           workingGroups{
             id
-            name
             studentLed
             titles{
               text
@@ -220,7 +191,6 @@ export const query = graphql`
           }
           projects{
             id
-            name
             studentLed
             titles{
               text
@@ -279,7 +249,6 @@ export const query = graphql`
           }
           courses{
             id
-            name
             titles{
               text
               language{
@@ -337,7 +306,6 @@ export const query = graphql`
           }
           learningResources{
             id
-            name
             titles{
               text
               language{

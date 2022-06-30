@@ -73,7 +73,6 @@ export const query = graphql`
                 text
                 url
                 partner {
-                  name
                   id
                   slug {
                     current
@@ -110,7 +109,6 @@ export const query = graphql`
   partner: sanityPartner(id: { eq: $id }) {
       id
       _id
-      name
       mainLink{
         url
         text
@@ -174,7 +172,6 @@ export const query = graphql`
       }
       events {
         id
-        name
         timeZone{
           name
           offset
@@ -201,7 +198,6 @@ export const query = graphql`
       }
       learningResources{
         id
-        name
         slug{
           current
         }
@@ -217,7 +213,6 @@ export const query = graphql`
       newsItems{
         id
         date
-        name
         slug{
           current
         }
@@ -232,7 +227,6 @@ export const query = graphql`
       }
       projects{
         id
-        name
         slug{
           current
         }
@@ -247,7 +241,6 @@ export const query = graphql`
       }
       researchThreads{
         id
-        name
         slug{
           current
         }
@@ -262,7 +255,6 @@ export const query = graphql`
       }
       workingGroups{
         id
-        name
         slug{
           current
         }
@@ -277,7 +269,6 @@ export const query = graphql`
       }
       courses{
         id
-        name
         slug{
           current
         }

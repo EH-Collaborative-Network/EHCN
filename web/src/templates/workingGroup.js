@@ -68,7 +68,6 @@ export const query = graphql`
     sampleWorkingGroup: sanityWorkingGroup(id: { eq: $id }) {
       id
       _id
-      name
       studentLed
       titles{
         text
@@ -138,7 +137,6 @@ export const query = graphql`
       }
       events {
         id
-        name
         timeZone{
           name
           offset
@@ -165,7 +163,6 @@ export const query = graphql`
       }
       learningResources{
         id
-        name
         slug{
           current
         }
@@ -203,7 +200,6 @@ export const query = graphql`
       }
       projects{
         id
-        name
         slug{
           current
         }
@@ -218,7 +214,6 @@ export const query = graphql`
       }
       researchThreads{
         id
-        name
         slug{
           current
         }
@@ -233,7 +228,6 @@ export const query = graphql`
       }
       courses{
         id
-        name
         slug{
           current
         }

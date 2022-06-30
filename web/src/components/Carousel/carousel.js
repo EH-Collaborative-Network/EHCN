@@ -14,7 +14,7 @@ const Carousel = ({ media, imageOnly }) => {
       return(
         <Link to={node[2]}>
             <Figure key={index} node={node[0]} />
-        <h4><TranslatedTitle translations={node[1]}/>→</h4>
+        <h4><TranslatedTitle translations={node[1]}/></h4>
         </Link>
       )
       }else{

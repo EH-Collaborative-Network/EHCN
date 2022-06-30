@@ -45,6 +45,13 @@ export default {
       }
     },
     {
+      name: 'excerpts',
+      title: 'Excerpt * Max 2 sentences',
+      type: 'array',
+      description:"select add item to add an excerpt in any language (including English)",
+      of: [{type: 'translation'}],
+  },
+    {
       name: 'descriptions',
       title: 'Description',
       type: 'array',

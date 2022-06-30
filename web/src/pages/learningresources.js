@@ -78,7 +78,7 @@ export const query = graphql`
               code
             }
           }
-          descriptions{
+          excerpts{
             _rawText
             language{
               id
@@ -171,8 +171,8 @@ const LearningResources = props => {
               return(
                 <div className={styles.root}>
                   <Link to={"learning-resource/"+node.node.slug?.current}>
-                    <TranslatedTitle translations={node.node.titles}/>
-                    <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.node.descriptions}/>
+                    <h4><TranslatedTitle translations={node.node.titles}/></h4>
+                    <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.node.excerpts}/>
                     <Link className="button" to={"learning-resource/"+node.node.slug?.current}>See More→</Link>
                   </Link>
                 </div>

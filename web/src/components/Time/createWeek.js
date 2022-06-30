@@ -8,7 +8,7 @@ import * as styles from "./time.module.css"
 import { Link } from 'gatsby';
 import translateTime from "./translateTime";
 import createDateTime from './createDateTime';
-import DisplayStartTime from './dispalyStartTime';
+import DisplayStartTime from './displayStartTime';
 const CreateWeek = ({globalLanguages, translations, year, week, theme, events, offset = null }) => {
   console.log(week, ":)")
     function getDay(date) { // get day number from 0 (monday) to 6 (sunday)

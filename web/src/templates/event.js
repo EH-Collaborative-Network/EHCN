@@ -70,6 +70,8 @@ export const query = graphql`
           timezone
           studentLed
           facultyLed
+          pastEvents
+          upcomingEvents
         }
       }
     }

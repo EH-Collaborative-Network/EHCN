@@ -7,7 +7,7 @@ import TranslatedTitle from '../TranslationHelpers/translatedTitle';
 import * as styles from "./time.module.css"
 import { Link } from 'gatsby';
 import createDateTime from './createDateTime';
-import DisplayStartTime from './dispalyStartTime';
+import DisplayStartTime from './displayStartTime';
 const CreateCalendar = ({globalLanguages, translations, year, month, theme, events, offset = null }) => {
     function getDay(date) { // get day number from 0 (monday) to 6 (sunday)
       let day = date.getDay();

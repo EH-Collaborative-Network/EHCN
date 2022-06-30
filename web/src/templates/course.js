@@ -59,6 +59,8 @@ export const query = graphql`
           relatedLearningResources
           relatedPartners
           relatedNews
+          pastEvents
+          upcomingEvents
         }
       }
     }

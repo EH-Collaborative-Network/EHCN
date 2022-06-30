@@ -61,6 +61,8 @@ export const query = graphql`
           relatedNews
           studentLed
           facultyLed
+          pastEvents
+          upcomingEvents
         }
       }
     }

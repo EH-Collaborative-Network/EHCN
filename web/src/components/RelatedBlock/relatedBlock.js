@@ -4,11 +4,15 @@ import { Link } from "@reach/router";
 import * as styles from "./related.module.css";
 import TranslatedTitle from "../TranslationHelpers/translatedTitle";
 import TranslatedPhrase from "../TranslationHelpers/translatedPhrase";
+import createDateTime from "../Time/createDateTime";
+import translateTime from "../Time/translateTime";
+import LangContext from "../context/lang";
 // import { FundingOpportunity } from "./fundingOpportunity"
 const RelatedBlock = ({node, languagePhrases, opps}) => {
 if(node){
-     
-
+    let locale = 'en-GB';
+    let offset = null;
+      
   return(
     <div aria-hidden="true" className={styles.root}>
         <div className="two-column">
@@ -41,18 +45,73 @@ if(node){
             </section>
         }
         {(node.events?.length > 0) &&
+            <LangContext.Consumer>
+            {theme => {
+               let lang = theme.lang
+               
+               let sortedEvents = node.events.sort((a,b) => createDateTime(b.startDate.date, b.startDate.time, b.timeZone.offset).getDate() - createDateTime(a.startDate.date, a.startDate.time, a.timeZone.offset).getDate()); 
+        
+               if(languagePhrases){
+                if(lang){
+                  languagePhrases.forEach(element => {
+                    element = element.node
+                    if(element.code == lang){
+                      
+        
+                        locale = element.locale
+              
+                      
+                    }
+                  });
+                } else {
+                  languagePhrases.forEach(element => {
+                    element = element.node
+                    if(element.name == "English"){
+                      locale = element.locale
+                    }
+                  });
+                }
+                
+        
+              }
+                return(
             <section>
             <h4><TranslatedPhrase phrase={"relatedEvents"} translations={languagePhrases}/></h4>
             <ul>
                {
-                   node.events.map(function(node,index){
+                   sortedEvents.map(function(node,index){
+                    let start = node.startDate
+                    let end = node.endDate || node.startDate;
+                    
+                    let sd = createDateTime(start.date, start.time, node.timeZone.offset);
+                    let ed = createDateTime(end.date, end.time, node.timeZone.offset);
+                    let multi = false;
+                    let today = new Date();
+                    let upcoming = false;
+                    if(sd.getDate() == today.getDate() || sd.getDate() > today.getDate()){
+                        upcoming = true;
+                    }
+                    if(sd.getDate() != ed.getDate()){
+                        multi = true
+                    }
+
                        return(
-                           <li className="blue-button" key={index}><Link to={"/event/"+node.slug?.current}><TranslatedTitle translations={node.titles}/>→</Link></li>
+                           <li className="blue-button" key={index}><Link to={"/event/"+node.slug?.current}>
+                           {(multi && upcoming)  &&
+                             <sup className={styles.date}>*<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)} - { translateTime(ed, locale, offset, true, false, true)}</sup>
+                           }
+                           {(!multi && upcoming) &&
+                             <sup className={styles.date}>*<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
+                           }
+                           <sup className={styles.date}><TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/></sup><TranslatedTitle translations={node.titles}/>→
+                           </Link></li>
                        )
                    })
                 }            
             </ul>
             </section>
+                )}}
+            </LangContext.Consumer>
         }
         {(node.newsItems?.length > 0) &&
             <section>

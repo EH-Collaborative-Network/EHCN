@@ -136,19 +136,19 @@ export default {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'upcomingEvents',
       type: 'string',
-      title: 'Upcoming Events'
+      title: 'Upcoming'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'pastEvents',
       type: 'string',
-      title: 'Past Events'
+      title: 'Past'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'currentEvents',
       type: 'string',
-      title: 'Current Events'
+      title: 'Current'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',

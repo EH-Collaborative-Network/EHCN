@@ -76,6 +76,14 @@ export const query = graphql`
           code
         }
       }
+      descriptions{
+        _rawText
+        language{
+          id
+          code
+          name
+        }
+      }
       mainLink{
         url
         text
@@ -89,399 +97,10 @@ export const query = graphql`
           left
           right
         }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
         asset {
           _id
         }
         altText
-      }
-      events{
-        id
-        name
-        studentLed
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-        slug{
-          current
-        }
-        mainImage {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
-        media{
-          embed{
-            embed
-            altText
-            caption
-          }
-          pdf{
-            altText
-            caption
-            asset {
-              url
-              _id
-            }
-          }
-          image{
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            altText
-          }
-        }
-      }
-      workingGroups{
-        id
-        name
-        studentLed
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-        slug{
-          current
-        }
-        mainImage {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
-        media{
-          embed{
-            embed
-            altText
-            caption
-          }
-          pdf{
-            altText
-            caption
-            asset {
-              url
-              _id
-            }
-          }
-          image{
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            altText
-          }
-        }
-      }
-      projects{
-        id
-        name
-        studentLed
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-        slug{
-          current
-        }
-        mainImage {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
-        media{
-          embed{
-            embed
-            altText
-            caption
-          }
-          pdf{
-            altText
-            caption
-            asset {
-              url
-              _id
-            }
-          }
-          image{
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            altText
-          }
-        }
-      }
-      courses{
-        id
-        name
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-        slug{
-          current
-        }
-        mainImage {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
-        media{
-          embed{
-            embed
-            altText
-            caption
-          }
-          pdf{
-            altText
-            caption
-            asset {
-              url
-              _id
-            }
-          }
-          image{
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            altText
-          }
-        }
-      }
-      learningResources{
-        id
-        name
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-        slug{
-          current
-        }
-        mainImage {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-        }
-        media{
-          embed{
-            embed
-            altText
-            caption
-          }
-          pdf{
-            altText
-            caption
-            asset {
-              url
-              _id
-            }
-          }
-          image{
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            altText
-          }
-        }
-      }
-      descriptions{
-        _rawText
-        language{
-          id
-          code
-          name
-        }
       }
       media{
         embed{
@@ -523,24 +142,10 @@ export const query = graphql`
       slug {
         current
       }
-      events {
+      events{
         id
         name
-        timeZone{
-          name
-          offset
-        }
-        startDate{
-          date
-          time
-        }
-        endDate{
-          date
-          time
-        }
-        slug{
-          current
-        }
+        studentLed
         titles{
           text
           language{
@@ -548,14 +153,61 @@ export const query = graphql`
             name
             code
           }
+        }
+        slug{
+          current
+        }
+      }
+      workingGroups{
+        id
+        name
+        studentLed
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+      }
+      projects{
+        id
+        name
+        studentLed
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+      }
+      courses{
+        id
+        name
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
         }
       }
       learningResources{
         id
         name
-        slug{
-          current
-        }
         titles{
           text
           language{
@@ -563,6 +215,9 @@ export const query = graphql`
             name
             code
           }
+        }
+        slug{
+          current
         }
       }
       newsItems{
@@ -586,51 +241,6 @@ export const query = graphql`
         name
         slug{
           current
-        }
-      }
-      projects{
-        id
-        name
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      workingGroups{
-        id
-        name
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      courses{
-        id
-        name
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
         }
       }
     }

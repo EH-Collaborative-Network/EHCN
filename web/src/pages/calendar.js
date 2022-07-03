@@ -94,6 +94,14 @@ export const query = graphql`
               code
             }
           }
+          locations{
+            _rawText(resolveReferences: { maxDepth: 20 })
+            language{
+              id
+              name
+              code
+            }
+          }
           timeZone{
             name
             offset

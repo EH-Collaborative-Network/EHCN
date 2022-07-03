@@ -176,6 +176,9 @@ select:focus{
 #light-box.show, .modal.show{
   z-index: 9;
 }
+.modal.show{
+  opacity: 1;
+}
 #light-box > *{
   display: none;
 }

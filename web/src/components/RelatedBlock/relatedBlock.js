@@ -49,7 +49,7 @@ if(node){
             {theme => {
                let lang = theme.lang
                
-               let sortedEvents = node.events.sort((a,b) => createDateTime(b.startDate.date, b.startDate.time, b.timeZone.offset).getDate() - createDateTime(a.startDate.date, a.startDate.time, a.timeZone.offset).getDate()); 
+               let sortedEvents = node.events.sort((a,b) => createDateTime(b.startDate?.date, b.startDate?.time, b.timeZone?.offset).getDate() - createDateTime(a.startDate?.date, a.startDate?.time, a.timeZone?.offset).getDate()); 
         
                if(languagePhrases){
                 if(lang){

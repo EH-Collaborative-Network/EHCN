@@ -146,6 +146,18 @@ export const query = graphql`
       events{
         id
         studentLed
+        timeZone{
+          name
+          offset
+        }
+        startDate{
+          date
+          time
+        }
+        endDate{
+          date
+          time
+        }
         titles{
           text
           language{

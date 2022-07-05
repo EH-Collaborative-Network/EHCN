@@ -62,6 +62,7 @@ export const query = graphql`
           studentLed
           facultyLed
           pastEvents
+          currentEvents
           upcomingEvents
         }
       }
@@ -84,10 +85,6 @@ export const query = graphql`
           code
           name
         }
-      }
-      mainLink{
-        url
-        text
       }
       mainImage {
         crop {

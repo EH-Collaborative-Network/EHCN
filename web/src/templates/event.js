@@ -16,6 +16,7 @@ import TimeZoneList from "../components/Time/timeZoneList";
 import * as styles from "../components/Time/time.module.css";
 import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import sanityClient from "@sanity/client";
+import { Link } from "@reach/router";
 const client = sanityClient({
   projectId: '46orb7yp',
   dataset: 'production',
@@ -71,6 +72,7 @@ export const query = graphql`
           studentLed
           facultyLed
           pastEvents
+          currentEvents
           upcomingEvents
         }
       }
@@ -86,6 +88,10 @@ export const query = graphql`
           name
           code
         }
+      }
+      mainLink{
+        url
+        text
       }
       subtitles{
         text
@@ -340,6 +346,9 @@ const EventTemplate = props => {
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : event.titles}/></h1>
         <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : event.subtitles}/></div>
         <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/></div>
+        {event.mainLink?.text?.length > 0 &&
+                  <div className={'main-link'}><Link to={event.mainLink.url}>{event.mainLink.text}</Link></div>
+        }
         <div className={styles.timeWrapper}>
           <div>
             {(event.timeZone && event.startDate) &&
@@ -356,7 +365,7 @@ const EventTemplate = props => {
         </div>
         <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={event.studentLed ? 'studentLed' : 'facultyLed'}/></div>
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : event.descriptions}/></div>
-        {media.length > 1 &&
+        {media.length > 0 &&
            <Masonry media={(preview && previewData) ? previewData.media : event.media}/>
         }
         <RelatedBlock opps={""} languagePhrases={languagePhrases} node={event}/>

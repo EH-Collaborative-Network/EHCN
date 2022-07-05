@@ -11,6 +11,8 @@ import Carousel from "../components/Carousel/carousel";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
 import sanityClient from "@sanity/client";
+import { Link } from "@reach/router";
+
 const client = sanityClient({
   projectId: '46orb7yp',
   dataset: 'production',
@@ -60,6 +62,7 @@ export const query = graphql`
           relatedPartners
           relatedNews
           pastEvents
+          currentEvents
           upcomingEvents
         }
       }
@@ -99,6 +102,10 @@ export const query = graphql`
           _id
         }
         altText
+      }
+      mainLink{
+        url
+        text
       }
       descriptions{
         _rawText(resolveReferences: { maxDepth: 20 })
@@ -285,6 +292,9 @@ const LearningResourceTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : learningResource.titles}/></h1>
+        {learningResource.mainLink?.text?.length > 0 &&
+                  <div className={'main-link'}><Link to={learningResource.mainLink.url}>{learningResource.mainLink.text}</Link></div>
+        }
         <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : learningResource.descriptions}/></div>
         {media.length > 1 &&
           <Carousel media={(preview && previewData) ? previewData.media : learningResource.media}/>

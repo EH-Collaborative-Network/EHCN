@@ -36,7 +36,7 @@ const serializers = {
 const components = {
   marks:{
     internalLink: ({value, children}) => {
-      const target = "/" + value?.reference?.slug.current
+      const target = "/" + value?.reference?.slug?.current
       return (
         <Link to={target}>
           {children}

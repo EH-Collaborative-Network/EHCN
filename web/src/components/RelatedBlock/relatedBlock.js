@@ -88,8 +88,12 @@ if(node){
                     let multi = false;
                     let today = new Date();
                     let upcoming = false;
-                    if(sd.getDate() == today.getDate() || sd.getDate() > today.getDate()){
+                    let current = false;
+                    if((sd.getDate() == today.getDate() || sd.getDate() > today.getDate()) && sd.getFullYear() == today.getFullYear()){
                         upcoming = true;
+                    }
+                    if(((sd.getDate() == today.getDate() || sd.getDate() < today.getDate()) && (ed.getDate() > today.getDate())) && sd.getFullYear() == today.getFullYear()){
+                        current = true;
                     }
                     if(sd.getDate() != ed.getDate()){
                         multi = true
@@ -102,6 +106,9 @@ if(node){
                            }
                            {(!multi && upcoming) &&
                              <sup className={styles.date}>*<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
+                           }
+                           {(!multi && !upcoming && current) &&
+                             <sup className={styles.date}>*<TranslatedPhrase phrase={"currentEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
                            }
                            <sup className={styles.date}><TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/></sup><TranslatedTitle translations={node.titles}/>→
                            </Link></li>

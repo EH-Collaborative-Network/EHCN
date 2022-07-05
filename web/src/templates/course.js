@@ -11,6 +11,8 @@ import Carousel from "../components/Carousel/carousel";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
 import sanityClient from "@sanity/client";
+import { Link } from "@reach/router";
+
 const client = sanityClient({
   projectId: '46orb7yp',
   dataset: 'production',
@@ -61,6 +63,7 @@ export const query = graphql`
           relatedNews
           pastEvents
           upcomingEvents
+          currentEvents
         }
       }
     }

@@ -70,24 +70,7 @@ const components = {
       if(value) { 
         return (<div className="wrapper"><MediaItem media={value}/></div>)
       } else { return null }
-    },
-    link: ({ mark, children }) => {
-      const { blank, href } = mark;
-      return blank ? (
-        <a
-          href={href}
-          target="_blank"
-          rel="noreferrer noopener"
-          style={{ textDecoration: 'underline' }}
-        >
-          {children}
-        </a>
-      ) : (
-        <a href={href} style={{ textDecoration: 'underline' }}>
-          {children}
-        </a>
-      );
-    },
+    }
   }
 }
 

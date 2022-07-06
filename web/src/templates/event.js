@@ -16,7 +16,7 @@ import TimeZoneList from "../components/Time/timeZoneList";
 import * as styles from "../components/Time/time.module.css";
 import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import sanityClient from "@sanity/client";
-import { Link } from "@reach/router";
+
 const client = sanityClient({
   projectId: '46orb7yp',
   dataset: 'production',
@@ -347,7 +347,7 @@ const EventTemplate = props => {
         <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : event.subtitles}/></div>
         <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/></div>
         {event.mainLink?.text?.length > 0 &&
-                  <div className={'main-link'}><Link to={event.mainLink.url}>{event.mainLink.text}</Link></div>
+                  <div className={'main-link'}><a target="_blank" href={event.mainLink.url}>{event.mainLink.text}</a></div>
         }
         <div className={styles.timeWrapper}>
           <div>

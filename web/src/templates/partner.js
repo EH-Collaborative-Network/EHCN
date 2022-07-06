@@ -11,7 +11,7 @@ import Carousel from "../components/Carousel/carousel";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
 import sanityClient from "@sanity/client";
-import { Link } from "@reach/router";
+
 
 const client = sanityClient({
   projectId: '46orb7yp',
@@ -324,7 +324,7 @@ const PartnerTemplate = props => {
         <h1>{(preview && previewData) ? previewData.name : partner.name}</h1>
         <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : partner.locations}/></div>
         {partner.mainLink?.text?.length > 0 &&
-                  <div className={'main-link'}><Link to={partner.mainLink.url}>{partner.mainLink.text}</Link></div>
+                  <div className={'main-link'}><a target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
         }
         <div className="top-text two-column"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.descriptions : descriptions}/></div>
         {media.length > 1 &&

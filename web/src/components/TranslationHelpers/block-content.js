@@ -37,8 +37,23 @@ const components = {
   marks:{
     internalLink: ({value, children}) => {
       const target = "/" + value?.reference?.slug?.current
+      let middle = value?.reference?._type
+      if(middle == "newsItem"){
+        middle = "news"
+      }else if(middle == "learningResource"){
+        middle = "learning-resource"
+      }else if(middle == "workingGroup"){
+        middle = "working-group"
+      }else if(middle == "researchThread"){
+        middle = "research-thread"
+      } 
+      middle = "/"+middle;
+      if(middle == "/page"){
+        middle = ""
+      }
+      
       return (
-        <Link to={target}>
+        <Link to={middle +target}>
           {children}
         </Link>
       )
@@ -55,6 +70,23 @@ const components = {
       if(value) { 
         return (<div className="wrapper"><MediaItem media={value}/></div>)
       } else { return null }
+    },
+    link: ({ mark, children }) => {
+      const { blank, href } = mark;
+      return blank ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer noopener"
+          style={{ textDecoration: 'underline' }}
+        >
+          {children}
+        </a>
+      ) : (
+        <a href={href} style={{ textDecoration: 'underline' }}>
+          {children}
+        </a>
+      );
     },
   }
 }

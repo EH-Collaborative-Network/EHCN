@@ -95,6 +95,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
       if(blocks){
         let unfilteredLangs = []
         /*Adhoc translations */
+
         blocks.forEach(element => {
           if(!defaultLangs.includes(element.language.code)){
             unfilteredLangs.push(element)
@@ -105,6 +106,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
             adhocLangs.push(node)
           }
         })
+        console.log(unfilteredLangs)
         if(lang){
           blocks.forEach(element => {
             if(element.language.code == lang){
@@ -126,6 +128,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
             if(element.language.name == "English"){
               language = "English"
               translation = element._rawText
+
             }
             
           });
@@ -140,7 +143,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
             }
 
           });
-        }
+        } 
       }
     
       function handler(code){

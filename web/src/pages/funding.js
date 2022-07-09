@@ -182,7 +182,7 @@ const FundingPage = props => {
             <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Institution-specific</em> Opportunities instead→</div>
             <div className={styles.institution}>
                   {networkOpps.map(function(node, index){
-                    return <FundingOpportunity key={index} node={node}></FundingOpportunity>;
+                    return <FundingOpportunity languagePhrases={languagePhrases} globalLanguages={globalLanguages} key={index} node={node}></FundingOpportunity>;
                   })}
             </div>
             </div>
@@ -194,7 +194,7 @@ const FundingPage = props => {
            
               <div className={styles.wrapper}>
                   {institutionOpps.map(function(node, index){
-                    return <FundingOpportunity key={index} node={node}></FundingOpportunity>;
+                    return <FundingOpportunity languagePhrases={languagePhrases} globalLanguages={globalLanguages} key={index} node={node}></FundingOpportunity>;
                   })}
               </div>
             </div>

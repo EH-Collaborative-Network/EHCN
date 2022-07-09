@@ -19,11 +19,6 @@ export default{
          title: 'Image', 
          description: 'upload image if your media item is an image', 
          },
-        {name: 'pdf', 
-         type: 'pdf', 
-         title: 'PDF', 
-         description: 'upload pdf if your media item is a pdf', 
-         },
         {name: 'embed', 
          type: 'embed', 
          title: 'Embed', 
@@ -31,7 +26,12 @@ export default{
          options: {
             collapsible: true,
           }
-        }
+        },
+        {name: 'pdf', 
+         type: 'pdf', 
+         title: 'PDF', 
+         description: 'upload pdf if your media item is a pdf', 
+         }
       ],
       preview: {
         select: {

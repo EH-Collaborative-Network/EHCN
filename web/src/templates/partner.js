@@ -114,6 +114,7 @@ export const query = graphql`
   partner: sanityPartner(id: { eq: $id }) {
       id
       _id
+      name
       mainLink{
         url
         text

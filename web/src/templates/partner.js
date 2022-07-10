@@ -325,7 +325,7 @@ const PartnerTemplate = props => {
         <h1>{(preview && previewData) ? previewData.name : partner.name}</h1>
         <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : partner.locations}/></div>
         {partner.mainLink?.text?.length > 0 &&
-                  <div className={'main-link'}><a target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
+                  <div className={'main-link top-link'}><a target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
         }
         <div className="top-text two-column"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.descriptions : descriptions}/></div>
         {media.length > 1 &&

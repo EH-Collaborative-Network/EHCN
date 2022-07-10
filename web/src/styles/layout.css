@@ -278,11 +278,21 @@ li.alice-carousel__stage-item {
   top:-0.5em;
   margin-bottom:2em;
 }
+.main-link.top-link{
+  margin-bottom:0;
+}
+.main-link.top-link a{
+  padding-left:0;
+  margin-left:0;
+}
 @media(max-width:675px){
   .top-text.two-column{
     column-count:1;
   }
   .main-link{
     top:-1em;
+  }
+  .main-link.top-link{
+    top:0;
   }
 }

@@ -18,7 +18,7 @@ export default {
       name: 'description',
       type: 'text',
       title: 'Description',
-      description: 'Describe your portfolio for search engines and social media.'
+      description: 'Describe your website for search engines and social media.'
     },
     {
       name: 'languages',
@@ -43,7 +43,7 @@ export default {
       name: 'keywords',
       type: 'array',
       title: 'Keywords',
-      description: 'Add keywords that describes your portfolio.',
+      description: 'Add keywords that describes your website.',
       of: [{type: 'string'}],
       options: {
         layout: 'tags'

@@ -4,7 +4,7 @@ import Layout from "../components/Layout/layout";
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import LangContext from '../components/context/lang.js'
-
+import SEO from "../components/seo";
 const query = graphql`
   query SiteTitleQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -42,6 +42,7 @@ function LayoutContainer(props) {
                   lang={lang}
                   siteTitle={data.site.title}
                 />
+                <SEO></SEO>
                 </div>
               )}}
           </LangContext.Consumer>

@@ -8,9 +8,9 @@ function SEO({ description, lang, meta, keywords, title }) {
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        const metaDescription = description || (data.site && data.site.description) || "";
-        const siteTitle = (data.site && data.site.title) || "";
-        const siteAuthor = (data.site && data.site.author && data.site.author.name) || "";
+        const metaDescription = description || (data.site && data.site.description) || "The Experimental Humanities Collaborative Network is a global network rethinking the humanities in the light of changing technologies, our increasingly connected planet, the ongoing ecological crisis, and the need to create more inclusive institutions.";
+        const siteTitle = (data.site && data.site.title) || "EHCN";
+        const siteAuthor = (data.site && data.site.author && data.site.author.name) || "EHCN";
         return (
           <Helmet
             htmlAttributes={{ lang }}

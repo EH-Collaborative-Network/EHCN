@@ -241,13 +241,6 @@ export const query = graphql`
           }
         }
       }
-      partners{
-        id
-        name
-        slug{
-          current
-        }
-      }
     }
   }
 `;

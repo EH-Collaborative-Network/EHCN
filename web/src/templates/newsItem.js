@@ -113,68 +113,6 @@ export const query = graphql`
           }
         }
       }
-      partners{
-        id
-        name
-        slug{
-          current
-        }
-      }
-      projects{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            code
-          }
-        }
-      }
-      researchThreads{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      workingGroups{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      courses{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
     }
   }
 `;

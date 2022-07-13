@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
+
 
 function SEO({lang}) {
   let keywords = ["EHCN", "The Experimental Humanities Collaborative Network", "Open Society University Network", "OSUN","Open Society"]

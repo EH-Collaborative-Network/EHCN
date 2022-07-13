@@ -89,10 +89,10 @@ if(node){
                     let today = new Date();
                     let upcoming = false;
                     let current = false;
-                    if((sd.getDate() == today.getDate() || sd.getDate() > today.getDate()) && sd.getFullYear() == today.getFullYear()){
+                    if((sd.getDate() == today.getDate() || sd.getDate() > today.getDate()) && sd.getFullYear() == today.getFullYear() && sd.getMonth() == today.getMonth()){
                         upcoming = true;
                     }
-                    if(((sd.getDate() == today.getDate() || sd.getDate() < today.getDate()) && (ed.getDate() > today.getDate())) && sd.getFullYear() == today.getFullYear()){
+                    if(((sd.getDate() == today.getDate() || sd.getDate() < today.getDate()) && (ed.getDate() > today.getDate())) && sd.getFullYear() == today.getFullYear() && sd.getMonth() == today.getMonth()){
                         current = true;
                     }
                     if(sd.getDate() != ed.getDate()){
@@ -110,7 +110,10 @@ if(node){
                            {(!multi && !upcoming && current) &&
                              <sup className={styles.date}>*<TranslatedPhrase phrase={"currentEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
                            }
-                           <sup className={styles.date}><TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/></sup><TranslatedTitle translations={node.titles}/>→
+                           {(!multi && !upcoming && !current) &&
+                            <sup className={styles.date}><TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/></sup>
+                            }
+                           <TranslatedTitle translations={node.titles}/>→
                            </Link></li>
                        )
                    })

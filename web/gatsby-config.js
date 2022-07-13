@@ -12,6 +12,14 @@ module.exports = {
   flags:{
     PARALLEL_QUERY_RUNNING: false
   },
+  siteMetadata: {
+    title: "Experimental Humanities Collaborative Network",
+    titleTemplate: "%s · EHCN",
+    description:
+      "The Experimental Humanities Collaborative Network is a global network rethinking the humanities in the light of changing technologies, our increasingly connected planet, the ongoing ecological crisis, and the need to create more inclusive institutions.",
+    url: "https://ehcn.bard.edu", // No trailing slash allowed!
+    image: 'src/assets/logo.png', // Path to the image placed in the 'static' folder, in the project's root directory.
+  },
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',

@@ -25,11 +25,13 @@
     "gatsby-cli": "^4.17.1",
     "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-manifest": "^4.13.0",
+    "gatsby-plugin-react-helmet": "^5.18.0",
     "gatsby-plugin-remove-fingerprints": "^0.0.2",
     "p5": "^1.4.1",
     "prop-types": "^15.8.1",
     "query-string": "^7.1.1",
     "react-alice-carousel": "^2.6.0",
+    "react-helmet": "^6.1.0",
     "react-html-parser": "^2.0.2",
     "react-p5-wrapper": "^3.3.0",
     "react-use-flexsearch": "^0.1.1"

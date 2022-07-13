@@ -8,7 +8,7 @@ import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
-import Carousel from "../components/Carousel/carousel";
+import Masonry from "../components/Masonry/Masonry";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
 import sanityClient from "@sanity/client";
@@ -306,8 +306,10 @@ const ProjectTemplate = props => {
         {project.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={project.mainLink.url}>{project.mainLink.text}</a></div>
         }
-        {media.length > 1 &&
-           <Carousel media={(preview && previewData) ? previewData.media : project.media}/>
+
+ 
+        {media.length > 0 &&
+           <Masonry media={(preview && previewData) ? previewData.media : project.media}/>
         }
         <RelatedBlock opps={""} languagePhrases={languagePhrases} node={project}/>
       </Container>

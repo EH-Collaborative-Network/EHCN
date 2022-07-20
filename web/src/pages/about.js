@@ -178,6 +178,16 @@ const AboutPage = props => {
       staffPeople.push(node);
     }
   })
+  staffPeople.sort(function(a, b) {
+    var textA = a.node.name.split(' ')[1].toUpperCase();
+    var textB = b.node.name.split(' ')[1].toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
+  steeringPeople.sort(function(a, b) {
+    var textA = a.node.name.split(' ')[1].toUpperCase();
+    var textB = b.node.name.split(' ')[1].toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
 
   if (!site) {
     throw new Error(

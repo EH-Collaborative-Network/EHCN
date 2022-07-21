@@ -9,6 +9,9 @@
   }
 
 }
+.root canvas{
+  cursor: pointer;
+}
 
 .partners {
     margin:0;

@@ -106,7 +106,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
             adhocLangs.push(node)
           }
         })
-        console.log(unfilteredLangs)
+    
         if(lang){
           blocks.forEach(element => {
             if(element.language.code == lang){

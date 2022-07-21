@@ -92,7 +92,7 @@ h4{
   width: 100%;
 }
 
-.blue-button{
+.blue-button, .hp-text a{
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -107,7 +107,7 @@ h4{
   border-radius: 0px;
   text-decoration: none;
 }
-.blue-button::after{
+.blue-button::after, .hp-text a::after{
  position: absolute;
   top: 0;
   z-index: -1;
@@ -121,7 +121,7 @@ h4{
   transition: 0.5s;
   
 }
-.blue-button:hover::after{
+.blue-button:hover::after, .hp-text a:hover::after{
 opacity: 1;
 width: 100%;
 }
@@ -295,4 +295,8 @@ li.alice-carousel__stage-item {
   .main-link.top-link{
     top:0;
   }
+}
+
+.hp-text p{
+  margin-top:0;
 }

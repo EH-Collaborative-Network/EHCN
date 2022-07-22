@@ -447,18 +447,21 @@ function sketch (p) {
                 if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 12){
                     p.ellipse(p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25, 5, 5)
                     p.emissiveMaterial(0, 130, 151, 255)
-                    let a = document?.querySelector("a[href='"+ locations[i][4] +"']");
-                    console.log(locations[i][4])
-                    a?.style.background = "rgb(191, 13, 62)"
-                    a?.style.color = "#D4EAED"
-                    a?.style.fontWeight = "bold"
+                    if(typeof document `undefined`){
+                        let a = document.querySelector("a[href='"+ locations[i][4] +"']");
+                        console.log(locations[i][4])
+                        a.style.background = "rgb(191, 13, 62)"
+                        a.style.color = "#D4EAED"
+                        a.style.fontWeight = "bold"
+                    }
                 }else{
-                    p.emissiveMaterial(191, 13, 62, 255)
-                    let a = document?.querySelector("a[href='"+ locations[i][4] +"']");
-                    a?.style.background = "none"
-                    a?.style.color = "rgb(191, 13, 62)"
-                    a?.style.fontWeight = "normal"
-
+                    if(typeof document `undefined`){
+                        p.emissiveMaterial(191, 13, 62, 255)
+                        let a = document.querySelector("a[href='"+ locations[i][4] +"']");
+                        a.style.background = "none"
+                        a.style.color = "rgb(191, 13, 62)"
+                        a.style.fontWeight = "normal"
+                    }
                 }                
                 p.sphere(diam)
                 p.pop()

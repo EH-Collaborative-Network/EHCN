@@ -291,7 +291,7 @@ const CourseTemplate = props => {
         {course.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={course.mainLink.url}>{course.mainLink.text}</a></div>
         }
-        {media.length > 1 &&
+        {media.length > 0 &&
            <Carousel media={(preview && previewData) ? previewData.media : course.media}/>
         }
         <RelatedBlock opps={""} languagePhrases={languagePhrases} node={course}/>

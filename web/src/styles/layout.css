@@ -142,7 +142,15 @@ width: 100%;
 .top-text.two-column > p:first-child{
   margin-top:0;
 }
-
+.top-text.two-column.partner-page figure,.top-text.two-column.partner-page img {
+  max-width: 200px;
+  height:auto;
+}
+.top-text.two-column.partner-page .wrapper ,.top-text.two-column.partner-page .wrapper div{
+  width:auto;
+  height:auto;
+  pointer-events: none;
+}
 select{
 	border-radius: 0;
 	font-family: inherit;

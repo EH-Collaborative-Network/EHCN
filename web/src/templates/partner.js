@@ -318,8 +318,8 @@ const PartnerTemplate = props => {
         {partner.mainLink?.text?.length > 0 &&
                   <div className={'main-link top-link'}><a target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
         }
-        <div className="top-text two-column"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.descriptions : descriptions}/></div>
-        {media.length > 1 &&
+        <div className="top-text two-column partner-page"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.descriptions : descriptions}/></div>
+        {media.length > 0 &&
            <Carousel media={(preview && previewData) ? previewData.media : media}/>
         }
         <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={partner}/>

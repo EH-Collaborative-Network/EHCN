@@ -273,7 +273,7 @@ const WorkingGroupTemplate = props => {
         {workingGroup.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={workingGroup.mainLink.url}>{workingGroup.mainLink.text}</a></div>
         }
-        {media.length > 1 &&
+        {media.length > 0 &&
           <Carousel media={(preview && previewData) ? previewData.media : workingGroup.media}/>
         }
         <RelatedBlock opps={""} languagePhrases={languagePhrases} node={workingGroup}/>

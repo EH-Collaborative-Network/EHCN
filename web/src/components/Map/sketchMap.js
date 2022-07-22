@@ -1,6 +1,5 @@
 import map from "./map.png"
 import * as p5 from "p5";
-import fonts from "../../fonts/SharpSansDispNo1-Medium.otf"
 /* SCREEN POSITION FUNCTION FROM BOHNACKER */
 // Acknowledgement to Thibault Coppex (@tcoppex) for the 3d-modelview-projection-math.
 // Had to adjust it a bit maybe because p5js changed the way webgl is handled since 2016.
@@ -387,7 +386,6 @@ function sketch (p) {
     }
     
     p.preload = function() {
-        font = p.loadFont(fonts)
         img = p.loadImage(map);
     }
 
@@ -447,7 +445,7 @@ function sketch (p) {
                 if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 12){
                     p.ellipse(p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25, 5, 5)
                     p.emissiveMaterial(0, 130, 151, 255)
-                    if(typeof document != `undefined`){
+                    if(typeof window != `undefined`){
                         let a = document.querySelector("a[href='"+ locations[i][4] +"']");
                         console.log(locations[i][4])
                         a.style.background = "rgb(191, 13, 62)"
@@ -455,7 +453,7 @@ function sketch (p) {
                         a.style.fontWeight = "bold"
                     }
                 }else{
-                    if(typeof document != `undefined`){
+                    if(typeof window != `undefined`){
                         p.emissiveMaterial(191, 13, 62, 255)
                         let a = document.querySelector("a[href='"+ locations[i][4] +"']");
                         a.style.background = "none"

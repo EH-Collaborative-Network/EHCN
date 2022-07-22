@@ -4,7 +4,8 @@ Website for The Experimental Humanities Collaborative Network
 ## Dev Stack
 - Sanity.io - our CMS which is queried via GraphQL
 - GraphQL - to query our CMS
-- Gatsby.js - React-based static site builder.
+- Gatsby.js - React-based static site builder. 
+   - **A special quirk of gatsby that has caused many deploy failures is that you can't access the document or window object during builds. So you have to check if window is undefined before using it anywhere. This also goes for any external libraries, like p5js that uses the window object. In order to implement p5js I had to follow these directions --> https://www.gatsbyjs.com/docs/debugging-html-builds/#fixing-third-party-modules**
 - flexsearch - for search functionality on website
 - Netlify - for hosting and continuous deployment
 

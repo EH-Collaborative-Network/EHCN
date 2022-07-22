@@ -30,16 +30,6 @@ export const query = graphql`
       title
       description
       keywords
-      showMarquee
-      marqueeText{
-        _rawText(resolveReferences: { maxDepth: 20 })
-        language{
-          id
-          code
-          locale
-          name
-        }
-      }
       languages {
         name
         code
@@ -339,7 +329,7 @@ const EventTemplate = props => {
     setOffset(value);
   }
   return (
-    <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={site.showMarquee} marqueeContent={site.marqueeText}>
+    <Layout extra='' navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={false} marqueeContent={null}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>

@@ -63,6 +63,9 @@
   height: 40vh;
   cursor: pointer;
 }
+.noCarousel{
+  display:flex;
+}
 .root .pdf:hover{
   filter:blur(3px);
 }
@@ -72,7 +75,7 @@
 .embed > div{
   padding:0 !important;
 }
-.root .embed,.root .pdf,.root .figure, .root .embed *,.root .pdf *,.root .figure *{
+.root .embed,.root .pdf,.root .figure, .root .embed *,.root .pdf *,.root .figure *, .root a{
   -webkit-user-drag: none;
   user-select: none;
 }

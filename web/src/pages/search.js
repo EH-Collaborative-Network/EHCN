@@ -23,15 +23,6 @@ export const query = graphql`
         title
         description
         keywords
-        showMarquee
-        marqueeText{
-          _rawText(resolveReferences: { maxDepth: 20 })
-          language{
-            id
-            code
-            name
-          }
-        }
         languages {
           name
           code
@@ -119,7 +110,7 @@ const Search = props => {
   }
   return (
       <>  
-      <Layout navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={site.showMarquee} marqueeContent={site.marqueeText}>
+      <Layout navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={false} marqueeContent={null}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>

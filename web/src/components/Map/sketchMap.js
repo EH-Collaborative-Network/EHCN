@@ -398,6 +398,7 @@ function sketch (p) {
     
     
         p.draw = function() {
+            if(typeof window != `undefined`){
             p.background(255);
             let diam = baseDiameter + p.sin(theta) * pulseAmplitude;
             graphics.image(img, 0, 0, 1000, 500);
@@ -509,9 +510,11 @@ function sketch (p) {
 
             p.fill(255)
             theta += speed;
+        }
     
     }
     p.mouseReleased = function(){
+        if(typeof window != `undefined`){
         for(let i = 0; i < locations.length; i++){
             let current = locations[i][3]
             let pos = p.screenPosition(current);
@@ -520,6 +523,7 @@ function sketch (p) {
                         window.location.href = locations[i][4]
                     }
                 }
+        }
         }
     }
     p.windowResized = function() {

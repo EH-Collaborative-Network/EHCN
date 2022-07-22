@@ -447,7 +447,7 @@ function sketch (p) {
                 if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 12){
                     p.ellipse(p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25, 5, 5)
                     p.emissiveMaterial(0, 130, 151, 255)
-                    if(typeof document `undefined`){
+                    if(typeof document != `undefined`){
                         let a = document.querySelector("a[href='"+ locations[i][4] +"']");
                         console.log(locations[i][4])
                         a.style.background = "rgb(191, 13, 62)"
@@ -455,7 +455,7 @@ function sketch (p) {
                         a.style.fontWeight = "bold"
                     }
                 }else{
-                    if(typeof document `undefined`){
+                    if(typeof document != `undefined`){
                         p.emissiveMaterial(191, 13, 62, 255)
                         let a = document.querySelector("a[href='"+ locations[i][4] +"']");
                         a.style.background = "none"
@@ -521,7 +521,7 @@ function sketch (p) {
         for(let i = 0; i < locations.length; i++){
             let current = locations[i][3]
             let pos = p.screenPosition(current);
-            if(p.dist(pos.x, pos.y, p.mouseX - window?.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 15){
+            if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 15){
                     if(typeof window != `undefined`){
                         window.location.href = locations[i][4]
                     }

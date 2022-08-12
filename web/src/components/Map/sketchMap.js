@@ -448,7 +448,7 @@ function sketch (p) {
                     if(typeof window != `undefined`){
                         let a = document.querySelector("a[href='"+ locations[i][4] +"']");
                         console.log(locations[i][4])
-                        a.style.background = "rgb(191, 13, 62)"
+                        a.style.background = "rgb(0, 130, 151)"
                         a.style.color = "#D4EAED"
                         a.style.fontWeight = "bold"
                     }

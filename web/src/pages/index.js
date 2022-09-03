@@ -62,6 +62,7 @@ export const query = graphql`
           calendar
           fundingOpportunities
           ehcnSupported
+          newsletter
           learningResources
           researchThreads
           availableIn

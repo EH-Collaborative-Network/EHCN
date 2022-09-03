@@ -48,6 +48,7 @@ export const query = graphql`
           relatedProjects
           relatedResearchThreads
           relatedLearningResources
+          newsletter
           relatedPartners
           relatedNews
           studentLed

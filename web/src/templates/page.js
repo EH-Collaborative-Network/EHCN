@@ -31,6 +31,7 @@ export const query = graphql`
       edges {
         node {
           name
+          newsletter
           code
           aboutEHCN
           calendar

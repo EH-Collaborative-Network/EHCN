@@ -439,6 +439,12 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'newsletter',
+      type: 'string',
+      title: 'newsletter'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'relatedEvents',
       type: 'string',
       title: 'Related Events'
@@ -448,7 +454,7 @@ export default {
       name:'ehcnSupported',
       type: 'string',
       title: 'EHCN is supported by the <a href="https://opensocietyuniversitynetwork.org/">Open Society University Network</a>.'
-    },
+    }
   ],
   preview: {
     select: {

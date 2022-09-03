@@ -37,6 +37,7 @@ export const query = graphql`
           learningResources
           researchThreads
           availableIn
+          newsletter
           learningResource
           featured
           search

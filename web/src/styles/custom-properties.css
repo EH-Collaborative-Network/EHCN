@@ -18,8 +18,8 @@
   --light-blue-gradient-ms: -ms-linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
   --blue-link-gradient: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
   /* Typography */
-  --font-small-size: 0.82rem; /* 14px */
-  --font-base-size: clamp(14px, 1.2vw, 40px); /* 16px */
+  --font-small-size: clamp(16px, 0.82em, 40px); /* 14px */
+  --font-base-size: clamp(16px, 1.2vw, 40px); /* 16px */
   --font-base-letter-spacing: 0.03rem;
   --font-base-line-height: 1.5; /* 24px */
   --font-medium-size: 1.2rem; 

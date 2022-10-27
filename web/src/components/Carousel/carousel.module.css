@@ -13,23 +13,42 @@
   overflow-x:auto;
   
 }
+.slide-track {
+
+  display: inline-flex;
+  width: auto;
+  transition:1s;
+  transition-timing-function:linear;
+
+}
 .inner{
   background-color: var(--color-light-blue);
   height:40vh;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y:hidden;
+  cursor: grab;
   /* height:40vh;
   overflow: visible;
   white-space:nowrap; */
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.inner::-webkit-scrollbar {
+  display: none;
+}
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.inner {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 .root h4{
   bottom:-1em;
-  padding:0 5px;
   position: absolute;
   text-overflow: ellipsis;
-  max-width: calc(100% - 20px);
+  max-width: 100%;
   width: calc(100% - 20px);
-  padding-right:20px;
+  padding:5px 10px;
+  /* padding-right:20px; */
   overflow: hidden;
   white-space: nowrap;
   background-color: var(--color-light-blue);
@@ -38,6 +57,16 @@
   text-decoration: none;
 }
 
+.root .inner > *{
+  position: relative;
+  color:var(--color--black);
+  width: -moz-max-content;
+  width: max-content;
+  text-decoration: none;
+}
+.root a{
+  color:var(--color--black);
+}
 .root li > a{
   color:var(--color--black);
   text-decoration: none;

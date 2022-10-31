@@ -121,7 +121,6 @@ const Carousel = ({ media, imageOnly }) => {
       if(a){
         window.location.href = a
       }else if(el){
-        console.log(el)
         lightboxed(el)
       }
       

@@ -473,7 +473,7 @@ const ResearchThreads = props => {
             <div className={styles.root + " show-thread " + (thread.node.studentLed ? "student-led" : "faculty-led")}>
                 <div className={styles.main}>
                   <Link to={"research-thread/"+thread.node.slug?.current}>
-                  <h4><TranslatedTitle translations={thread.node.titles}/>→</h4>
+                  <h4><TranslatedTitle translations={thread.node.titles}/></h4>
                   <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={thread.node.descriptions}/>
                   </Link>
                 </div>

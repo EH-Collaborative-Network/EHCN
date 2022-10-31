@@ -171,12 +171,12 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         <PortableText value={adhoc ? adhoc : translation} components={components} serializers={serializers} />
         { adhocLangs.map(function(node, index){
           if(status != node.language.code){
-          return(<div className="blue-button red-color" onClick={()=>handler(node.language.code)}><TranslatedPhrase override={node.language.code} translations={languagePhrases} phrase={"availableIn"}/>{" " + node.language.name+"→"}</div>)
+          return(<div className="blue-button red-color" onClick={()=>handler(node.language.code)}><TranslatedPhrase override={node.language.code} translations={languagePhrases} phrase={"availableIn"}/>{" " + node.language.name+""}</div>)
           }
         })
         }
         {((adhocLangs.length > 0) && status != lang && (special && (status !== "en"))) &&
-          <div className="blue-button red-color" onClick={()=>handler(lang)}><TranslatedPhrase override={lang} translations={languagePhrases} phrase={"availableIn"}/>{" "+language+"→"}</div>
+          <div className="blue-button red-color" onClick={()=>handler(lang)}><TranslatedPhrase override={lang} translations={languagePhrases} phrase={"availableIn"}/>{" "+language+""}</div>
         }
         </>
       )

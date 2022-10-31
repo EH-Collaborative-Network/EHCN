@@ -165,7 +165,7 @@ const LearningResources = props => {
                   <Link to={"learning-resource/"+node.node.slug?.current}>
                     <h4><TranslatedTitle translations={node.node.titles}/></h4>
                     <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.node.excerpts}/>
-                    <Link className="button" to={"learning-resource/"+node.node.slug?.current}>See More→</Link>
+                    <Link className="button" to={"learning-resource/"+node.node.slug?.current}>See More</Link>
                   </Link>
                 </div>
               )
@@ -184,7 +184,7 @@ const LearningResources = props => {
                   <Link to={"learning-resource/"+node.slug?.current}>
                     <TranslatedTitle translations={node.titles}/>
                     <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.descriptions}/>
-                    <Link className="button" to={"learning-resource/"+node.slug?.current}>See More→</Link>
+                    <Link className="button" to={"learning-resource/"+node.slug?.current}>See More</Link>
                   </Link>
                 </div>
               )

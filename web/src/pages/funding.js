@@ -8,6 +8,9 @@ import {
 import Container from "../components/Container/container";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
+import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
+import translate from "../components/TranslationHelpers/translate";
+import LangContext from "../components/context/lang";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import { useLocation } from '@reach/router';
@@ -35,6 +38,17 @@ export const query = graphql`
         code
       }
     }
+    partners: allSanityPartner{
+      edges{
+        node{
+          id
+          name
+          slug{
+            current
+          }
+        }
+      }
+    }
     languagePhrases: allSanityLanguage {
       edges {
         node {
@@ -47,8 +61,11 @@ export const query = graphql`
           ehcnSupported
           learningResources
           researchThreads
+          selectInstitution
           availableIn
           search
+          availableOpps
+          networkWide
         }
       }
     }
@@ -117,8 +134,9 @@ const FundingPage = props => {
     );
   }
   const [networkWide, setNetworkWide] = useState(true);
-  
+  const [institution, setInstitution] = useState('all');
   const site = (data || {}).site;
+  const partners = (data || {}).partners.edges;
   const globalLanguages = site.languages;
   const fp = (data || {}).fp.edges[0]?.node?.bodies;
   let previewQuery = '*[_id == "drafts.'+ (data || {}).fp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
@@ -143,21 +161,45 @@ const FundingPage = props => {
   let networkOpps = [];
   oppNodes.forEach(node => {
     if(node.node.institution){
-      institutionOpps.push(node.node);
+      if(institution != "all"){
+        let includedInsts = []
+        node.node.applications?.forEach((app)=>{
+          includedInsts.push(app.partner?.name)
+        })
+        if(includedInsts?.includes(institution)){
+          institutionOpps.push(node.node);
+        }
+      }else{
+        institutionOpps.push(node.node);
+      }
+
     }else{
       networkOpps.push(node.node)
     }
   });
+  let partnerNames =  [];
+  partners.forEach(node =>{
+    partnerNames.push(<option value={node.node.name}>{node.node.name}</option>)
+  })
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
-  function handler(){
-    console.log('hi')
-    let nw = !networkWide;
-    setNetworkWide(nw)
-    console.log('ran')
+
+  function switchInstitution(e){
+    let things = document.querySelectorAll(".institution-wrapper > *");
+    things.forEach((node) =>{
+      node.classList.add("fadey");
+      console.log(node.classList)
+      setTimeout(function(){
+       
+        node.classList.remove("fadey")
+        setInstitution(e.target.value)
+        console.log(node.classList)
+      },200)
+    })
+    
   }
   return (
       <>  
@@ -168,29 +210,49 @@ const FundingPage = props => {
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
           <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
           <div className="funding-opportunities">
-          { networkWide &&
+          <LangContext.Consumer>
+              { theme => {
+                  return(
+            <label for='institutionFilter'>{translate(languagePhrases,'selectInstitution',theme)}:</label>
+                  )}}
+            </LangContext.Consumer>
+            <LangContext.Consumer>
+              { theme => {
+                  return(
+                    <select className={styles.instFilter} onChange={switchInstitution} id='institutionFilter'>
+                    <option value='all'>
+                                      {translate(languagePhrases,'networkWide',theme)}
+
+                                  </option>
+                                  {partnerNames}
+
+                    </select>
+                  )}} 
+              </LangContext.Consumer>
+            
+            <p style={{'margin-bottom':'0'}}><TranslatedPhrase translations={languagePhrases} phrase={"availableOpps"}/>:</p>
+
             <div className={styles.network}>
-            <h5>Showing <em>Network-wide</em> Opportunities below.  &nbsp;</h5>
-            <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Institution-specific</em> Opportunities instead→</div>
-            <div className={styles.institution}>
+            {/* <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Institution-specific</em> Opportunities instead</div> */}
+            <div className={styles.institution + ' institution-wrapper'}>
                   {networkOpps.map(function(node, index){
                     return <FundingOpportunity languagePhrases={languagePhrases} globalLanguages={globalLanguages} key={index} node={node}></FundingOpportunity>;
                   })}
             </div>
             </div>
-            }
-            { !networkWide && 
-            <div className={styles.institution}>
-              <h5>Showing <em>Institution-specific</em> Opportunities below.  &nbsp;</h5>
-              <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Network-wide</em> Opportunities instead→</div>
-           
-              <div className={styles.wrapper}>
-                  {institutionOpps.map(function(node, index){
-                    return <FundingOpportunity languagePhrases={languagePhrases} globalLanguages={globalLanguages} key={index} node={node}></FundingOpportunity>;
-                  })}
-              </div>
-            </div>
-            }
+              {institution != 'all' ?
+
+                    <div className={styles.institution + ' institution-wrapper'}>
+                            {/* <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Network-wide</em> Opportunities instead</div> */}
+                            <div className={styles.wrapper}>
+                                {institutionOpps.map(function(node, index){
+                                  return <FundingOpportunity languagePhrases={languagePhrases} globalLanguages={globalLanguages} key={index} node={node} institute={institution}></FundingOpportunity>;
+                                })}
+                            </div>
+                          </div>
+              : ""}
+            
+
           </div>
         </Container>
       </Layout>

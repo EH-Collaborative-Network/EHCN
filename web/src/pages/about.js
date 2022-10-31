@@ -201,7 +201,7 @@ const AboutPage = props => {
           <div className="">
             <div className={styles.partners}>
             {partners.map(function(node, index){
-                return <Link to={"/partner/"+node.node.slug.current} key={index}><div className="button">{node.node.name + "→"}</div></Link>;
+                return <Link to={"/partner/"+node.node.slug.current} key={index}><div className="button">{node.node.name + ""}</div></Link>;
             })}
             </div>
           </div>

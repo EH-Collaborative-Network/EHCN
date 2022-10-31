@@ -13,7 +13,7 @@ const Map = ({partners,phrase, translations}) => {
           <ul>
           {partners?.map(function(partner, index){
             return(
-              <li className="map-link"><Link to={"/partner/"+partner.node.slug.current}>{partner.node.name + "→"}</Link></li>
+              <li className="map-link"><Link to={"/partner/"+partner.node.slug.current}>{partner.node.name + ""}</Link></li>
             )
           })}
           </ul>

@@ -64,7 +64,7 @@ h4{
     vertical-align: top;
     padding: 5px 10px;
     z-index: 0;
-    padding-right: 0;
+    padding-right: 10px;
     padding-left: 5px;
     margin-top: 8px;
     margin-right:12px;
@@ -91,14 +91,16 @@ h4{
   opacity: 1;
   width: 100%;
 }
-
+.fadey{
+  opacity: 0;
+}
 .blue-button, .hp-text a{
   position: relative;
   display: inline-block;
   vertical-align: top;
   padding: 5px 10px;
   z-index: 0;
-  padding-right: 0;
+  padding-right: 10px;
   padding-left: 5px;
   margin-top: 8px;
   margin-right:12px;

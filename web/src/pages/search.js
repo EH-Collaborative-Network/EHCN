@@ -181,7 +181,7 @@ const Search = props => {
                               node.type == "partner" ? 
                               (<>{node.name}</>)
                               :
-                              (<><TranslatedTitle translations={node.titles}/>→</>)
+                              (<><TranslatedTitle translations={node.titles}/></>)
                             }</h4>
                             <div><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.descriptions}/></div>
                           </Link>

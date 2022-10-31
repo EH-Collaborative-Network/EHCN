@@ -218,6 +218,18 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'selectInstitution',
+      type: 'string',
+      title: 'Select your institution'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'availableOpps',
+      type: 'string',
+      title: 'Available opportunities'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'institutionSpecific',
       type: 'string',
       title: 'Institution-Specific'

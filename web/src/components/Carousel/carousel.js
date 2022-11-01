@@ -22,36 +22,50 @@ const Carousel = ({ media, imageOnly }) => {
     let tracks = document.getElementsByClassName(styles.slideTrack);
     for(let j = 0; j < tracks.length; j++){
      let track = tracks[j];
-     let as = track.querySelectorAll('a');
+     let as = track.querySelectorAll('figure');
      let totalWidth = 0;
+    
+    
      for(let i = 0; i < as.length; i++){
+        
        totalWidth = totalWidth + as[i].offsetWidth + 5;
      }
+      track.style.width = Math.round(totalWidth) + "px"
     }
     
     // track.style.width = totalWidth + "px"
     let interval = setInterval(() => {
+     
       let tracks = document.getElementsByClassName(styles.slideTrack);
       for(let j = 0; j < tracks.length; j++){
         let track = tracks[j];
         let inner = track.closest('.inner');
+        
         let t = track.style.transform;
         t = t.split("%")[0];
         t = t.split("(-")[1];
         t = parseFloat(t)
+        let valToScroll = 0;
         if(track.classList.contains('paused')){
-          inner.scrollLeft += 0;
-        }else if(track.classList.contains('rtl') && inner.scrollLeft >= (inner.scrollWidth - inner.offsetWidth)){
-          inner.scrollLeft -= 0.5;
+          // inner.scrollLeft += 0;
+         
+        }else if(track.classList.contains('rtl') && inner.scrollLeft >= (inner.scrollWidth - inner.offsetWidth - 1)){
+          // inner.scrollLeft -= 1;
+          valToScroll -= 3;
           setDir(dir => 1);
         }else if(track.classList.contains('ltr') && inner.scrollLeft <= 0){
-          inner.scrollLeft += 0.5;
+          // inner.scrollLeft += 1;
+          valToScroll += 3
           setDir(dir => 0);
         }else if(track.classList.contains('ltr')){
-          inner.scrollLeft -= 0.5;
+          // inner.scrollLeft -= 1;
+          valToScroll -= 3
         }else{
-          inner.scrollLeft += 0.5;
+          // inner.scrollLeft += 1;
+          valToScroll += 3;
+
         }
+        inner.scrollBy({left: valToScroll, behavior: "smooth"})
       } 
     }, 50);
 
@@ -132,13 +146,13 @@ const Carousel = ({ media, imageOnly }) => {
     if(imageOnly){
       if(node[0]){
       return(
-        <Link onMouseDown={handleDown} onMouseUp={handleUp} to={node[2]}>
+        <Link key={index} onMouseDown={handleDown} onMouseUp={handleUp} to={node[2]}>
             <Figure key={index} node={node[0]} />
             <h4><TranslatedTitle translations={node[1]}/></h4>
         </Link>
       )
       }else{
-        return(<></>)
+       return null
       }
     }else{
       return <MediaItem key={index} media={node}></MediaItem>;

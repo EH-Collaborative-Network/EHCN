@@ -14,7 +14,7 @@
   
 }
 .slide-track {
-
+  overflow: hidden;
   display: inline-flex;
   width: auto;
   transition:1s;

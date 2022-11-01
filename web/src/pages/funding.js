@@ -213,7 +213,7 @@ const FundingPage = props => {
           <LangContext.Consumer>
               { theme => {
                   return(
-            <label for='institutionFilter'>{translate(languagePhrases,'selectInstitution',theme)}:</label>
+            <label htmlFor='institutionFilter'>{translate(languagePhrases,'selectInstitution',theme)}:</label>
                   )}}
             </LangContext.Consumer>
             <LangContext.Consumer>

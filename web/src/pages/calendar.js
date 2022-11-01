@@ -241,7 +241,7 @@ const CalendarPage = props => {
           </button>
           <div>
             <div className={styles.selectWrapper}>
-              <label className={styles.label} for="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
+              <label className={styles.label} htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
               <select className={styles.select} id="change-tz" onChange={handleTime}>
                 <TimeZoneList />
               </select>

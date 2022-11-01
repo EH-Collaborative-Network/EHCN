@@ -1,7 +1,4 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { getGatsbyImageData } from "gatsby-source-sanity";
-import clientConfig from "../../../client-config";
 import BlockContent from "../TranslationHelpers/block-content";
 import * as styles from "./fundingopp.module.css";
 

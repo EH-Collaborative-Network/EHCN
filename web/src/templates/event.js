@@ -348,7 +348,7 @@ const EventTemplate = props => {
             
           </div>
           <div>
-            <label for="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
+            <label htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
             <select id="change-tz" onChange={handleTime}>
               <TimeZoneList />
             </select>

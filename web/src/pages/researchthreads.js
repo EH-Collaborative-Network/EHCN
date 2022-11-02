@@ -401,9 +401,18 @@ const ResearchThreads = props => {
       }
     }else{
       if( e.target.value == 'student-led'){
-        setStudentLed(false)
+        if(facultyLed){
+          setStudentLed(false)
+        }else{
+          e.target.checked = true;
+        }
+        
       }else{
-        setFacultyLed(false)
+        if(studentLed){
+          setFacultyLed(false)
+        }else{
+          e.target.checked = true;
+        }
       }
     }
   }
@@ -481,7 +490,13 @@ const ResearchThreads = props => {
                   </Link>
                 </div>
                 {media.length > 0 && 
-                 <div className={styles.wrapper}> <Carousel media={media} imageOnly={true}/></div>
+                
+                 <div className={styles.wrapper}>
+      
+                  <Carousel media={media} imageOnly={true}/>
+                
+                   
+                 </div>
                 }
             </div>
      

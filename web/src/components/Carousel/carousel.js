@@ -19,10 +19,11 @@ const Carousel = ({ media, imageOnly }) => {
   const [isDragging, setIsDragging] = useState(false)
   
   useEffect(() => {
+
     let tracks = document.getElementsByClassName(styles.slideTrack);
     for(let j = 0; j < tracks.length; j++){
      let track = tracks[j];
-     let as = track.querySelectorAll('figure');
+     let as = track.querySelectorAll('a');
      let totalWidth = 0;
     
     
@@ -30,10 +31,10 @@ const Carousel = ({ media, imageOnly }) => {
         
        totalWidth = totalWidth + as[i].offsetWidth + 5;
      }
-      track.style.width = Math.round(totalWidth) + "px"
+      track.style.maxWidth = Math.round(totalWidth) + "px"
     }
-    
-    // track.style.width = totalWidth + "px"
+  
+
     let interval = setInterval(() => {
      
       let tracks = document.getElementsByClassName(styles.slideTrack);
@@ -46,10 +47,12 @@ const Carousel = ({ media, imageOnly }) => {
         t = t.split("(-")[1];
         t = parseFloat(t)
         let valToScroll = 0;
+
+    
         if(track.classList.contains('paused')){
           // inner.scrollLeft += 0;
          
-        }else if(track.classList.contains('rtl') && inner.scrollLeft >= (inner.scrollWidth - inner.offsetWidth - 1)){
+        }else if(track.classList.contains('rtl') && inner.scrollLeft >= (inner.scrollWidth - inner.offsetWidth - 1) && (inner.scrollWidth - inner.offsetWidth - 1) > 0){
           // inner.scrollLeft -= 1;
           valToScroll -= 3;
           setDir(dir => 1);
@@ -97,6 +100,7 @@ const Carousel = ({ media, imageOnly }) => {
     setScrollLeft(inner.scrollLeft)
     setStart([event.pageX, event.pageY])
   }
+  
   const handleMove = function(e){
     let track = e.target;
     if(!track.classList.contains("slide-track")){

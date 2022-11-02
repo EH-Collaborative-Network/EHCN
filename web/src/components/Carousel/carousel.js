@@ -19,8 +19,8 @@ const Carousel = ({ media, imageOnly }) => {
   const [isDragging, setIsDragging] = useState(false)
   
   useEffect(() => {
-
-    let tracks = document.getElementsByClassName(styles.slideTrack);
+setTimeout(function(){
+  let tracks = document.getElementsByClassName(styles.slideTrack);
     for(let j = 0; j < tracks.length; j++){
      let track = tracks[j];
      let as = track.querySelectorAll('a');
@@ -33,6 +33,8 @@ const Carousel = ({ media, imageOnly }) => {
      }
       track.style.maxWidth = Math.round(totalWidth) + "px"
     }
+},500)
+  
   
 
     let interval = setInterval(() => {

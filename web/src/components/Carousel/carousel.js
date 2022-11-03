@@ -24,6 +24,9 @@ setTimeout(function(){
     for(let j = 0; j < tracks.length; j++){
      let track = tracks[j];
      let as = track.querySelectorAll('a');
+     if(!as){
+      let as =  track.querySelectorAll('figure');
+     }
      let totalWidth = 0;
     
     
@@ -31,7 +34,10 @@ setTimeout(function(){
         
        totalWidth = totalWidth + as[i].offsetWidth + 5;
      }
+     if(totalWidth > 50){
       track.style.maxWidth = Math.round(totalWidth) + "px"
+     }
+      
     }
 },500)
   

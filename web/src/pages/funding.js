@@ -64,6 +64,7 @@ export const query = graphql`
           selectInstitution
           availableIn
           search
+          application
           availableOpps
           networkWide
         }
@@ -72,8 +73,15 @@ export const query = graphql`
     opps: allSanityOpportunity{
         edges{
             node {
-                applications {
+                titles{
                   text
+                  language{
+                    id
+                    name
+                    code
+                  }
+                }
+                applications {
                   url
                   partner {
                     name

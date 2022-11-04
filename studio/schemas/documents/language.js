@@ -269,6 +269,12 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'application',
+      type: 'string',
+      title: 'Application'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'timezone',
       type: 'string',
       title: 'timezone',

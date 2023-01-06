@@ -16,14 +16,14 @@ import Person from "../components/Person/person";
 import * as styles from "../components/Modal/modal.module.css";
 import { Link } from "@reach/router";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
-import sanityClient from "@sanity/client";
-const client = sanityClient({
-  projectId: '46orb7yp',
-  dataset: 'production',
-  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
-  token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
-  useCdn: true, // `false` if you want to ensure fresh data
-})
+// import sanityClient from "@sanity/client";
+// const client = sanityClient({
+//   projectId: '46orb7yp',
+//   dataset: 'production',
+//   apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
+//   token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
+//   useCdn: true, // `false` if you want to ensure fresh data
+// })
 export const query = graphql`
   query AboutPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {

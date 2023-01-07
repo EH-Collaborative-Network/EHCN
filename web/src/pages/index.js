@@ -118,7 +118,7 @@ const IndexPage = props => {
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const partners = (data || {}).partners.edges;
   // let previewQuery = '*[_id == "drafts.'+ (data || {}).hp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
-  const location = useLocation();
+  // const location = useLocation();
   let preview = null;
   // let preview = false;
   // const [previewData, setPreviewData] = useState(false)

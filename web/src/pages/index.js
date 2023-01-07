@@ -117,21 +117,22 @@ const IndexPage = props => {
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const partners = (data || {}).partners.edges;
-  let previewQuery = '*[_id == "drafts.'+ (data || {}).hp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
+  // let previewQuery = '*[_id == "drafts.'+ (data || {}).hp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
   const location = useLocation();
-  let preview = false;
-  const [previewData, setPreviewData] = useState(false)
-  if(location?.search){
-    preview = queryString.parse(location.search).preview;
-  }
-  if(preview && !previewData){
-    const fetchData = async () => {
-      setPreviewData(await client.fetch(previewQuery).then((data) => {
-        return(data[0]);
-      }))
-    }
-    fetchData()
-  }
+  let preview = null;
+  // let preview = false;
+  // const [previewData, setPreviewData] = useState(false)
+  // if(location?.search){
+  //   preview = queryString.parse(location.search).preview;
+  // }
+  // if(preview && !previewData){
+  //   const fetchData = async () => {
+  //     setPreviewData(await client.fetch(previewQuery).then((data) => {
+  //       return(data[0]);
+  //     }))
+  //   }
+  //   fetchData()
+  // }
 
   if (!site) {
     throw new Error(
@@ -150,8 +151,6 @@ const IndexPage = props => {
             typeof window != `undefined` &&
             <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
           }
-          
-          
         </Container>
       </Layout>
       

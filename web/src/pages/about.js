@@ -16,14 +16,14 @@ import Person from "../components/Person/person";
 import * as styles from "../components/Modal/modal.module.css";
 import { Link } from "@reach/router";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
-// import sanityClient from "@sanity/client";
-// const client = sanityClient({
-//   projectId: '46orb7yp',
-//   dataset: 'production',
-//   apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
-//   token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
-//   useCdn: true, // `false` if you want to ensure fresh data
-// })
+import sanityClient from "@sanity/client";
+const client = sanityClient({
+  projectId: '46orb7yp',
+  dataset: 'production',
+  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
+  token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
+  useCdn: true, // `false` if you want to ensure fresh data
+})
 export const query = graphql`
   query AboutPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -140,9 +140,11 @@ const AboutPage = props => {
   const location = useLocation();
   let preview = false;
   const [previewData, setPreviewData] = useState(false)
+  
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
+
   if(preview && !previewData){
     const fetchData = async () => {
       setPreviewData(await client.fetch(previewQuery).then((data) => {
@@ -156,36 +158,26 @@ const AboutPage = props => {
   const partners = (data || {}).partners?.edges;
   const languagePhrases = (data || {}).languagePhrases?.edges;
 
-
-
   const steeringPeople = [];
   const staffPeople = [];
 
-  people.map(function(node,index){
-    if(node.node.steering){
-      steeringPeople.push(node);
-    }
-   
-    if(node.node.staff){
-      staffPeople.push(node);
-    }
-  })
-  staffPeople.sort(function(a, b) {
+
+  people.sort(function(a, b) {
     var textA = a.node.name.split(' ')[1].toUpperCase();
     var textB = b.node.name.split(' ')[1].toUpperCase();
     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
   });
-  steeringPeople.sort(function(a, b) {
-    var textA = a.node.name.split(' ')[1].toUpperCase();
-    var textB = b.node.name.split(' ')[1].toUpperCase();
-    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-  });
+ 
 
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
+
+
+
+
 
 
   return (
@@ -208,16 +200,20 @@ const AboutPage = props => {
           <h4>Steering Committee</h4>
           <div className="">
             <ul className={styles.steering + " two-column"}>
-            {steeringPeople.map(function(node, index){
+            {people.map(function(node, index){
+              if(node.node.steering){
                 return <li key={index}><Person person={node}></Person></li>;
+              }
             })}
             </ul>
           </div>
           <h4>Staff</h4>
           <div className="staff-no-column">
             <ul className={styles.steering}>
-            {staffPeople.map(function(node, index){
+            {people.map(function(node, index){
+              if(node.node.staff){
                 return <li key={index}><Person person={node}></Person></li>;
+              }
             })}
             </ul>
           </div>

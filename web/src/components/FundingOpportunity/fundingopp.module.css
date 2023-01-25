@@ -7,7 +7,7 @@
   flex-basis: calc(100% - 50px);
   padding: 20px;
   margin: 5px 0;
-  font-size: 0.82em;
+  /* font-size: 0.82em; */
   @media (--media-min-medium) {
     margin: 5px;
   }

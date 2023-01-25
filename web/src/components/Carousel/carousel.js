@@ -55,26 +55,17 @@ setTimeout(function(){
         t = t.split("(-")[1];
         t = parseFloat(t)
         let valToScroll = 0;
-
-    
-        if(track.classList.contains('paused')){
-          // inner.scrollLeft += 0;
-         
+        if(track.classList.contains('paused')){ 
         }else if(track.classList.contains('rtl') && inner.scrollLeft >= (inner.scrollWidth - inner.offsetWidth - 1) && (inner.scrollWidth - inner.offsetWidth - 1) > 0){
-          // inner.scrollLeft -= 1;
           valToScroll -= 3;
           setDir(dir => 1);
         }else if(track.classList.contains('ltr') && inner.scrollLeft <= 0){
-          // inner.scrollLeft += 1;
           valToScroll += 3
           setDir(dir => 0);
         }else if(track.classList.contains('ltr')){
-          // inner.scrollLeft -= 1;
           valToScroll -= 3
         }else{
-          // inner.scrollLeft += 1;
           valToScroll += 3;
-
         }
         inner.scrollBy({left: valToScroll, behavior: "smooth"})
       } 
@@ -149,7 +140,6 @@ setTimeout(function(){
       }else if(el){
         lightboxed(el)
       }
-      
     }
   }
 
@@ -187,11 +177,9 @@ let resp = {
               :
     <div className={styles.root}>
         <div className={styles.inner + " inner"}>
-      
         <div onMouseDown={imageOnly ? null: handleDown} onMouseUp={imageOnly ? null :  handleUp} onMouseMove={handleMove} onMouseOver={handleOver} onMouseLeave={handleOut} className={`${dir ? 'ltr' : 'rtl'}` +" " + styles.slideTrack + " "+"slide-track " + `${paused ? 'paused' : ''}`}>
           {medias}
         </div>
-            {/* <AliceCarousel autoPlayStrategy={"default"} autoPlayInterval={0} animationEasingFunction={"linear"} animationDuration={10000} autoPlay infinite keyboardNavigation responsive={resp} disableButtonsControls disableDotsControls mouseTracking items={medias}/> */}
         </div>
       <div className={styles.wrapper}></div>
     </div>

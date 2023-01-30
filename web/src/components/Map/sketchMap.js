@@ -198,11 +198,9 @@ function addScreenPositionFunction(p5Instance) {
 		if (context == R_2D) {
 			let m = last(p._renderer.matrixStack);
 			// probably not needed:
-			// let mInv = (new p5.Matrix()).invert(m);
 
 			let v = p.createVector(x, y, z);
 			let vCanvas = multMatrixVector(m, v);
-			// console.log(vCanvas);
 			return vCanvas;
 
 		} else {
@@ -289,7 +287,6 @@ function sketch (p) {
     
     p.orbitControl = function(sensitivityX, sensitivityY) {
         this._assert3d('orbitControl');
-        // p.prototype._validateParameters('orbitControl', arguments);
     
         const mouseInCanvas =
             this.mouseX < this.width &&
@@ -376,13 +373,10 @@ function sketch (p) {
             }else{
               c = p.createCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 62), p.WEBGL); 
             }
-            // c.parent(el)
             p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
             graphics = p.createGraphics(1000, 500);
             addScreenPositionFunction( p );
         }
-       
-    
     }
     
     p.preload = function() {
@@ -421,7 +415,6 @@ function sketch (p) {
             }
             
             for (let i = 0; i < locations.length; i++) {
-                // graphics.ellipse(locations[i][1], locations[i][2], diam, diam)
                 let current = locations[i][3]
                 let pos = p.screenPosition(current);
                 
@@ -429,24 +422,22 @@ function sketch (p) {
                 p.noStroke()
                 if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 15){
                     p.fill(191, 13, 62, 100)
-                    
                 }else{
                     p.fill(0, 130, 151, 100)
                 }
                 p.translate(current[0], current[1],current[2])
-               
-                
                 p.shininess(500);
                 let locX = p.mouseX - p.width / 2;
                 let locY = p.mouseY - p.height / 2;
                 p.ambientLight(100);
-                // p.pointLight(0, 130, 151, locX, locY, 500);
-                // p.specularMaterial(0, 130, 151, 150)
-                if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 12){
+                let a = document.querySelector("a[href='"+ locations[i][4] +"']");
+                if(a.matches(':hover')){
+                    p.ellipse(p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25, 5, 5)
+                    p.emissiveMaterial(0, 130, 151, 255)                   
+                }else if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 12){
                     p.ellipse(p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25, 5, 5)
                     p.emissiveMaterial(0, 130, 151, 255)
                     if(typeof window != `undefined`){
-                        let a = document.querySelector("a[href='"+ locations[i][4] +"']");
                         console.log(locations[i][4])
                         a.style.background = "rgb(0, 130, 151)"
                         a.style.color = "#D4EAED"
@@ -464,51 +455,16 @@ function sketch (p) {
                 p.sphere(diam)
                 p.pop()
             }
-    
-          
-       
             p.noStroke();
             p.texture(graphics);
-    
-            // p.orbitControl();
-    
-    
             p.push()
-           
-    
             p.sphere(200);
             p.fill(255)
             p.strokeWeight(2)
             p.stroke("#008297") 
-    
             p.pop()
             p.fill(0,255,0);
             p.texture("");
-            // for(let i = 0; i < 900; i++){
-            //     let lon = p.map(i, 0, 900, -p.PI, p.PI);
-              
-            //     for(let j = 0; j < 400; j++){
-            //         let lat = p.map(j, 0, 400, -p.HALF_PI, p.HALF_PI)
-            //         let x = 200 * p.sin(lon) * p.cos(lat)
-            //         let y = 200 * p.sin(lon) * p.sin(lat)
-            //         let z = 200 * p.cos(lon);
-            //         let pos = p.screenPosition(x, y, z);
-                    
-            //         p.push()
-            //         if(p.dist(pos.x, pos.y, p.mouseX - window.innerWidth/2.65, p.mouseY - window.innerHeight/3.25) < 10){
-            //             p.fill(255,0,0)
-            //             if(p.mouseIsPressed){
-            //                 console.log(x,y,z)
-            //             }
-            //         }else{
-            //             p.fill(0,255,0);
-            //         }
-            //         p.translate(x,y,z);
-            //         // p.sphere(2)
-            //         p.pop()
-            //     }
-            // }
-
             p.fill(255)
             theta += speed;
         }

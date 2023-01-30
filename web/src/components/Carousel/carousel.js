@@ -1,5 +1,4 @@
 import React, {useState,useEffect}  from "react";
-// import AliceCarousel from "react-alice-carousel";
 import * as styles from "./carousel.module.css";
 import MediaItem from "../MediaItem/mediaItem";
 import 'react-alice-carousel/lib/alice-carousel.css';
@@ -19,37 +18,28 @@ const Carousel = ({ media, imageOnly }) => {
   const [isDragging, setIsDragging] = useState(false)
   
   useEffect(() => {
-setTimeout(function(){
-  let tracks = document.getElementsByClassName(styles.slideTrack);
-    for(let j = 0; j < tracks.length; j++){
-     let track = tracks[j];
-     let as = track.querySelectorAll('a');
-     if(!as){
-      let as =  track.querySelectorAll('figure');
-     }
-     let totalWidth = 0;
-    
-    
-     for(let i = 0; i < as.length; i++){
-        
-       totalWidth = totalWidth + as[i].offsetWidth + 5;
-     }
-     if(totalWidth > 50){
-      track.style.maxWidth = Math.round(totalWidth) + "px"
-     }
-      
-    }
-},500)
-  
-  
-
+    setTimeout(function(){
+      let tracks = document.getElementsByClassName(styles.slideTrack);
+        for(let j = 0; j < tracks.length; j++){
+          let track = tracks[j];
+          let as = track.querySelectorAll('a');
+          if(!as){
+            let as =  track.querySelectorAll('figure');
+          }
+          let totalWidth = 0;
+          for(let i = 0; i < as.length; i++){  
+            totalWidth = totalWidth + as[i].offsetWidth + 5;
+          }
+          if(totalWidth > 50){
+            track.style.maxWidth = Math.round(totalWidth) + "px"
+          }
+        }
+    },500)
     let interval = setInterval(() => {
-     
       let tracks = document.getElementsByClassName(styles.slideTrack);
       for(let j = 0; j < tracks.length; j++){
         let track = tracks[j];
         let inner = track.closest('.inner');
-        
         let t = track.style.transform;
         t = t.split("%")[0];
         t = t.split("(-")[1];
@@ -70,9 +60,7 @@ setTimeout(function(){
         inner.scrollBy({left: valToScroll, behavior: "smooth"})
       } 
     }, 50);
-
     return () => clearInterval(interval);
-
   }, []);
   const handleOver = function(event){
     setPaused(true)
@@ -175,14 +163,14 @@ let resp = {
     {(media.length <= 2 && !imageOnly) ?
       <Masonry media={media}/>
               :
-    <div className={styles.root}>
-        <div className={styles.inner + " inner"}>
-        <div onMouseDown={imageOnly ? null: handleDown} onMouseUp={imageOnly ? null :  handleUp} onMouseMove={handleMove} onMouseOver={handleOver} onMouseLeave={handleOut} className={`${dir ? 'ltr' : 'rtl'}` +" " + styles.slideTrack + " "+"slide-track " + `${paused ? 'paused' : ''}`}>
-          {medias}
-        </div>
-        </div>
-      <div className={styles.wrapper}></div>
-    </div>
+      <div className={styles.root}>
+          <div className={styles.inner + " inner"}>
+          <div onMouseDown={imageOnly ? null: handleDown} onMouseUp={imageOnly ? null :  handleUp} onMouseMove={handleMove} onMouseOver={handleOver} onMouseLeave={handleOut} className={`${dir ? 'ltr' : 'rtl'}` +" " + styles.slideTrack + " "+"slide-track " + `${paused ? 'paused' : ''}`}>
+            {medias}
+          </div>
+          </div>
+        <div className={styles.wrapper}></div>
+      </div>
     }
     </>
   ) 

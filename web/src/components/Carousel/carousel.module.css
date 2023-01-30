@@ -117,7 +117,7 @@
 .embed p{
   display: none;
 }
-.figure, .figure  div{
+.figure, .figure  div, .figure  image{
   height: 40vh;
   display: inline-block;
 }

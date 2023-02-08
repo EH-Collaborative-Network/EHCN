@@ -355,7 +355,7 @@ const EventTemplate = props => {
           </div>
         </div>
         <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={event.studentLed ? 'studentLed' : 'facultyLed'}/></div>
-        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : event.descriptions}/></div>
+        <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : event.descriptions}/></div>
         {media.length > 0 &&
            <Masonry media={(preview && previewData) ? previewData.media : event.media}/>
         }

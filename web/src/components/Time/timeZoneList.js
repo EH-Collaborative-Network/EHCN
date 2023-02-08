@@ -2,16 +2,45 @@ import React from "react";
 
 
 
-const TimeZoneList = () => {
+const TimeZoneList = ({val=false, txt=false}) => {
   
-
     
   return(
     <>
+    {(val && txt) &&
+      <option value={val}>{txt}</option>
+    }
     <option value="null" >{Intl.DateTimeFormat().resolvedOptions().timeZone.split("_").join(" ")}</option>
-  <option value='9.5' >ACST</option>
-  <option value='-3' >ADT</option>
-  <option value='0' >ADT</option>
+    <option value='6'>KGZ Asia/Bishkek </option>
+    <option value='-5'>EST America/New York (Standard Time) </option>
+    <option value='-4'>EDT America/New York (Daylight Savings Time) </option>
+    <option value='-5'>EST America/Washington D.C. (Standard Time) </option>
+    <option value='-4'>EDT America/Washington D.C. (Daylight Savings Time) </option>
+    <option value='-5'>EST America/Hampton, VA (Standard Time) </option>
+    <option value='-4'>EDT America/Hampton, VA (Daylight Savings Time) </option>
+    <option value='-7'>MST America/Tempe </option>
+    <option value='-5'>CST America/Bogotá (Standard Time) </option>
+    <option value='0'>GMT Europe/London </option>
+    <option value='1'>BST Europe/London (British Summer Time) </option>
+    <option value='1'>CEST Europe/Berlin (Standard Time) </option>
+    <option value='2'>CEST Europe/Berlin (Summer Time) </option>
+    <option value='1'>CEST Europe/Vienna (Standard Time) </option>
+    <option value='2'>CEST Europe/Vienna (Summer Time) </option>
+    <option value='2'>EET Europe/Vilnius (Standard Time) </option>
+    <option value='3'>EEST Europe/Vilnius (Summer Time) </option>
+    <option value='2'>EET Europe/Volos (Standard Time) </option>
+    <option value='3'>EEST Europe/Volos (Summer Time) </option>
+    <option value='2'>EET Middle East/Abu Dis, Palestine (Standard Time) </option>
+    <option value='3'>EEST Middle East/Abu Dis, Palestine (Summer Time) </option>
+{/* 
+
+
+    
+  <option value="null" >{Intl.DateTimeFormat().resolvedOptions().timeZone.split("_").join(" ")}</option>
+  <option value='10.5' >ACST (Australian Central Daylight Time)</option>
+  <option value='9.5' >ACST (Australian Central Standard Time)</option>
+  <option value='-3' >ADT (Atlantic Daylight Time)</option>
+  <option value='0' >ADT </option>
   <option value='5' >ADT</option>
   <option value='10' >AEST</option>
   <option value='-8' >AKDT</option>
@@ -110,7 +139,7 @@ const TimeZoneList = () => {
   <option value='2' >WEDT</option>
   <option value='10' >WPST</option>
   <option value='5' >YEKT</option>
-  <option value='9' >YST</option>
+  <option value='9' >YST</option> */}
 </>)
 };
 

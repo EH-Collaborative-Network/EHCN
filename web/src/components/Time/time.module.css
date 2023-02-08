@@ -7,8 +7,8 @@
   justify-content: space-between;
   flex-direction: column-reverse;
   @media (--media-min-medium) {
-      flex-direction:row;
-  }
+    flex-direction: row;
+ }
 }
 .calendar{
     width: 100%;
@@ -293,11 +293,16 @@
     white-space: nowrap;
 }
 .timeWrapper select{
-    max-width: 200px;
+    max-width: 275px;
     margin:0;
     top:0px;
     font-size:var(--font-small-size);
     position:relative;
     margin-left:10px;
+    margin-bottom:5px;
     vertical-align: top;
+}
+
+.ml a{
+    padding-left:0;
 }

@@ -303,10 +303,19 @@ const EventTemplate = props => {
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const event = data && data.sampleEvent;
-  let previewQuery = '*[_id == "drafts.'+ event._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}, startDate, endDate, timeZone->}'
+  const languagePhrases = (data || {}).languagePhrases?.edges;
   const location = useLocation();
-  let preview = false;
+  const media = event.media;
   const [previewData, setPreviewData] = useState(false)
+  let preview = false;
+  let previewQuery = '*[_id == "drafts.'+ event._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}, startDate, endDate, timeZone->}'
+  let currentOffset = null;
+  currentOffset = parseInt(event.timeZone?.offset)
+  const [offset, setOffset] = useState(currentOffset);
+  let showTz = false;
+  if(event.startDate.date == event.endDate.date){
+    showTz = true;
+  }
   if(location?.search){
     preview = queryString.parse(location.search).preview;
   }
@@ -319,9 +328,10 @@ const EventTemplate = props => {
     }
     fetchData()
   }
-  const media = event.media;
-  const languagePhrases = (data || {}).languagePhrases?.edges;
-  const [offset, setOffset] = useState(null);
+  
+  
+  
+  
   function handleTime(e){
     let value = e.target.value;
     if(value){
@@ -336,25 +346,40 @@ const EventTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : event.titles}/></h1>
         <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : event.subtitles}/></div>
-        <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/></div>
-        {event.mainLink?.text?.length > 0 &&
-                  <div className={'main-link'}><a target="_blank" href={event.mainLink.url}>{event.mainLink.text}</a></div>
-        }
-        <div className={styles.timeWrapper}>
-          <div>
+          {showTz ?
+          <>
+          <div className={styles.timeWrapper}>
+            <div className={'subtitle'}>
+              <label htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
+              <select id="change-tz" onChange={handleTime}>
+                <TimeZoneList val={currentOffset} txt={event.timeZone?.name}/>
+              </select>
+            </div>
+            <div><TranslatedPhrase translations={languagePhrases} phrase={event.studentLed ? 'studentLed' : 'facultyLed'}/></div>
+          </div>
+          <div class={'subtitle'}>
             {(event.timeZone && event.startDate) &&
               <DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/>
             }
-            
           </div>
-          <div>
-            <label htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
-            <select id="change-tz" onChange={handleTime}>
-              <TimeZoneList />
-            </select>
-          </div>
-        </div>
-        <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={event.studentLed ? 'studentLed' : 'facultyLed'}/></div>
+            </> :
+            <>
+            <div className={styles.timeWrapper}>
+              <div className={'subtitle'}>
+              {(event.timeZone && event.startDate) &&
+                <DisplayTime event={(preview && previewData) ? event : event} offset={offset} languagePhrases={languagePhrases}/>
+              }</div>
+              <div><TranslatedPhrase translations={languagePhrases} phrase={event.studentLed ? 'studentLed' : 'facultyLed'}/></div>
+            </div>
+       
+              </>
+
+            }
+   
+        <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/></div>
+        {event.mainLink?.text?.length > 0 &&
+                  <div className={'main-link '+ styles.ml}><a target="_blank" href={event.mainLink.url}>{event.mainLink.text}</a></div>
+        }
         <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : event.descriptions}/></div>
         {media.length > 0 &&
            <Masonry media={(preview && previewData) ? previewData.media : event.media}/>

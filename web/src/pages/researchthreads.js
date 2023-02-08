@@ -430,6 +430,7 @@ const ResearchThreads = props => {
             <label htmlFor="faculty-led"><em><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></em></label>
           </div>
         {threads.map(function(thread,index){
+
           let media = []
 
           thread.node.projects?.map(function(project,index){

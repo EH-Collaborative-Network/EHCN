@@ -30,6 +30,7 @@ const Carousel = ({ media, imageOnly }) => {
           for(let i = 0; i < as.length; i++){  
             totalWidth = totalWidth + as[i].offsetWidth + 5;
           }
+         
           if(totalWidth > 50){
             track.style.maxWidth = Math.round(totalWidth) + "px"
           }
@@ -45,21 +46,23 @@ const Carousel = ({ media, imageOnly }) => {
         t = t.split("(-")[1];
         t = parseFloat(t)
         let valToScroll = 0;
-        if(track.classList.contains('paused')){ 
-        }else if(track.classList.contains('rtl') && inner.scrollLeft >= (inner.scrollWidth - inner.offsetWidth - 1) && (inner.scrollWidth - inner.offsetWidth - 1) > 0){
-          valToScroll -= 3;
-          setDir(dir => 1);
-        }else if(track.classList.contains('ltr') && inner.scrollLeft <= 0){
-          valToScroll += 3
-          setDir(dir => 0);
+
+        if(track.classList.contains('rtl') && Math.floor(inner.scrollLeft) >= (inner.scrollWidth - inner.offsetWidth - 1) && (inner.scrollWidth - inner.offsetWidth - 1) > 0){
+          valToScroll -= 2;
+          track.classList.remove('rtl')
+          track.classList.add('ltr')
+        }else if(track.classList.contains('ltr') && Math.floor(inner.scrollLeft) <= 0){
+          valToScroll += 2
+          track.classList.remove('ltr')
+          track.classList.add('rtl')
         }else if(track.classList.contains('ltr')){
-          valToScroll -= 3
-        }else{
-          valToScroll += 3;
+          valToScroll -= 2
+        }else if(!track.classList.contains('paused') && track.classList.contains('rtl')){
+          valToScroll += 2;
         }
         inner.scrollBy({left: valToScroll, behavior: "smooth"})
       } 
-    }, 50);
+    }, 30);
     return () => clearInterval(interval);
   }, []);
   const handleOver = function(event){

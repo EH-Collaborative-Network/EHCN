@@ -44,9 +44,13 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
       
     }
     function modalRemove(e){
+      
       let el = e.target.closest("div");
       if(el.querySelector(".modal").classList.contains("show")){
+
           el.querySelector(".modal").classList.remove('show');
+   
+          
       }
       
     }

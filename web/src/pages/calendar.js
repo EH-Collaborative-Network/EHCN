@@ -149,7 +149,7 @@ const CalendarPage = props => {
   }
 
   const [offset, setOffset] = useState(null);
-  const [monthView, setMonthView] = useState(false);
+  const [monthView, setMonthView] = useState(true);
   const [month, setMonth] = useState(new Date().getMonth());
   const [sunday, setSunday] = useState(getSunday());
   const [year, setYear] = useState(new Date().getFullYear())

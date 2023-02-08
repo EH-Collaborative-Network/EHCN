@@ -126,7 +126,7 @@
 .embed p{
   display: none;
 }
-.figure, .figure  div, .figure  image{
+.figure, .figure  div, .figure  img{
   height: 30vh;
   display: inline-block;
   @media (--media-min-medium) {

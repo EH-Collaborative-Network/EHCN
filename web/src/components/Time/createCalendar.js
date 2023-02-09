@@ -27,7 +27,6 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
         let ed = createDateTime(end.date, end.time, event.node.timeZone.offset);
         if(( sd.getMonth() == mon || ed.getMonth() == mon ) && (sd.getFullYear() == year || ed.getFullYear() == year)){
           currentEvents.push([sd,ed,event.node]);
-
         }
       }
     })
@@ -38,25 +37,36 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
 
     function modalHandler(e){
       let el = e.target.closest("div");
+      let posX = e.clientX;
+      let posY = e.clientY;
+      let windX = 600;
+      let windY = 300;
+      let newX = posX;
+      let newY = posY;
+      if(typeof window != `undefined`){
+        windX = window.outerWidth/2
+        windY = window.outerHeight/2
+      }
+      if(posX > windX){
+        newX = posX - 500;
+      }
+      if(posY > windY){
+        newY = posY - 200;
+      }
+      
       if(!el.querySelector(".modal").classList.contains("show")){
           el.querySelector(".modal").classList.add('show');
+          el.querySelector(".modal").style.left = newX + 10 + "px";
+          el.querySelector(".modal").style.top = newY + "px";
       }
-      
     }
     function modalRemove(e){
-      
       let el = e.target.closest("div");
       if(el.querySelector(".modal").classList.contains("show")){
-
           el.querySelector(".modal").classList.remove('show');
-   
-          
       }
-      
     }
 
-    
-    
     let daySquares = [];
     let currentRow = 0;
     let prevRow = 0;

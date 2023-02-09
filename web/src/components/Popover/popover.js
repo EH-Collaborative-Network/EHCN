@@ -12,7 +12,6 @@ const Popover = ({ event,languagePhrases, globalLanguages, offset, multiday }) =
         }
         el.classList.remove("show");
     }
-    console.log(event, "hi")
    
     return(
         <div onMouseOut={handler} className={styles.modal + " " + "modal"}>

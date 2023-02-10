@@ -86,9 +86,6 @@
   }
 }
 .root .embed iframe{
-  /* max-width: calc(177.778vh);
-    height: calc(56.25vw
-); */
   height: calc(23vh * (100/56.25)) !important;
   width: calc(129vh * (100/177.778)) !important;
   margin:0;
@@ -126,7 +123,7 @@
 .embed p{
   display: none;
 }
-.figure, .figure  div, .figure  img{
+.figure, .figure  div, .root figure  img{
   height: 30vh;
   display: inline-block;
   @media (--media-min-medium) {

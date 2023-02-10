@@ -51,7 +51,8 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
         newX = posX - 500;
       }
       if(posY > windY){
-        newY = posY - 200;
+        let m = el.querySelector(".modal")?.offsetHeight
+        newY = posY - m;
       }
       
       if(!el.querySelector(".modal").classList.contains("show")){

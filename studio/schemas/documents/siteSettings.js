@@ -40,6 +40,27 @@ export default {
       of: [{type: 'translation'}],
     },
     {
+      name: 'aboutTechnology',
+      title: 'Technology (About Page)',
+      type: 'array',
+      description:"select add item to add text in any language (including English)",
+      of: [{type: 'translation'}],
+    },
+    {
+      name: 'aboutJustice',
+      title: 'Justice (About Page)',
+      type: 'array',
+      description:"select add item to add text in any language (including English)",
+      of: [{type: 'translation'}],
+    },
+    {
+      name: 'aboutCreativePractice',
+      title: 'Creative Practice (About Page)',
+      type: 'array',
+      description:"select add item to add text in any language (including English)",
+      of: [{type: 'translation'}],
+    },
+    {
       name: 'keywords',
       type: 'array',
       title: 'Keywords',

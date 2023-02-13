@@ -282,6 +282,27 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'technology',
+      type: 'string',
+      title: 'technology',
+      description: '(technology)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'justice',
+      type: 'string',
+      title: 'justice',
+      description: '(justice)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'creativepractice',
+      type: 'string',
+      title: 'creative practice',
+      description: '(creative practice)'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'sunday',
       type: 'string',
       title: 'Sunday'

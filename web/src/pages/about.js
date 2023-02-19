@@ -14,7 +14,9 @@ import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import Person from "../components/Person/person";
 import * as styles from "../components/Modal/modal.module.css";
+import * as aboutStyles from "../components/AboutToggle/aboutToggle.module.css";
 import { Link } from "@reach/router";
+import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import sanityClient from "@sanity/client";
 const client = sanityClient({
@@ -34,6 +36,30 @@ export const query = graphql`
         name
         code
       }
+      aboutJustice{
+        _rawText(resolveReferences: { maxDepth: 20 })
+        language{
+          id
+          name
+          code
+        }
+      }
+      aboutCreativePractice{
+        _rawText(resolveReferences: { maxDepth: 20 })
+        language{
+          id
+          name
+          code
+        }
+      }
+      aboutTechnology{
+        _rawText(resolveReferences: { maxDepth: 20 })
+        language{
+          id
+          name
+          code
+        }
+      }
     }
     languagePhrases: allSanityLanguage {
       edges {
@@ -45,6 +71,9 @@ export const query = graphql`
           fundingOpportunities
           ehcnSupported
           newsletter
+          technology
+          justice
+          creativepractice
           learningResources
           researchThreads
           availableIn
@@ -135,6 +164,7 @@ const AboutPage = props => {
 
   const site = (data || {}).site;
   const globalLanguages = site.languages;
+  const [toggle, setToggle] = useState("technology");
   const ap = (data || {}).ap.edges[0]?.node?.bodies;
   let previewQuery = '*[_id == "drafts.'+ (data || {}).ap.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
   const location = useLocation();
@@ -187,7 +217,28 @@ const AboutPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
+          {toggle == "justice" &&
+          <div className={aboutStyles.bubble +" top-text one-column"}>
+            <BlockContent languagePhrases={languagePhrases} blocks={site.aboutJustice} globalLanguages={globalLanguages}/>
+          </div>
+          }
+           {toggle == "creative practice" &&
+            <div className={aboutStyles.bubble +" top-text one-column"}>
+              <BlockContent languagePhrases={languagePhrases} blocks={site.aboutCreativePractice} globalLanguages={globalLanguages}/>
+            </div>
+          }
+          {toggle == "technology" &&
+            <div className={aboutStyles.bubble +" top-text one-column"}>
+              <BlockContent languagePhrases={languagePhrases} blocks={site.aboutTechnology} globalLanguages={globalLanguages}/>
+            </div>
+          }
+           <h1><span onMouseOver={() => setToggle("technology")} className={`${toggle == "technology" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"technology"}/></span>, <span onMouseOver={() => setToggle("justice")} className={`${toggle == "justice" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"justice"}/></span> & <span onMouseOver={() => setToggle("creative practice")} className={`${toggle == "creative practice" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"creativepractice"}/></span></h1>
+          
           <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.bodies : ap} globalLanguages={globalLanguages}/></div>
+          <h1>
+          
+          </h1>
+          
           <br/>
           <h4>Partner Institutions</h4> 
           <div className="">

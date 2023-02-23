@@ -47,6 +47,9 @@ h1{
   font-size: var(--font-large-size);
   margin:25px 0;
 }
+#featured .blue-button.red-color{
+  display: none;
+}
 h1,h2,h3,h4,h5,h6{
   font-weight:normal;
 }

@@ -154,15 +154,18 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         if(code == lang){
           setAdhoc(null)
           setStatus(lang)
+          localStorage.setItem("lang", JSON.stringify("en"))
+          theme.setLang("en")
         }
-        
-        blocks.map(function(node,index){
+        localStorage.setItem("lang", JSON.stringify(code))
+        theme.setLang(code)
+        // blocks.map(function(node,index){
       
-          if(node.language.code == code){
-            setAdhoc(node._rawText)
-            setStatus(node.language.code)
-          }
-        })
+        //   if(node.language.code == code){
+        //     setAdhoc(node._rawText)
+        //     setStatus(node.language.code)
+        //   }
+        // })
       }
 
 

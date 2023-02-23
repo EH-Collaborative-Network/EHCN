@@ -17,7 +17,7 @@
 }
 .toggle.on::after{
     content:"";
-    display: block;
+    display: none;
     position: absolute;
     width: 0; 
     left:1em;
@@ -26,6 +26,9 @@
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
     border-top: 30px solid #D6EAEC;
+    @media (--media-min-medium) {
+        display: block; 
+    }
 }
 .bubble p{
     margin:0;

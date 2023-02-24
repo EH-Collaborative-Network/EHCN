@@ -294,7 +294,7 @@ const ProjectTemplate = props => {
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : project.titles}/></h1>
         <div className={'subtitle'}><TranslatedTitle translations={(preview && previewData) ? previewData.subtitles : project.subtitles}/></div>
         <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={project.studentLed ? 'studentLed' : 'facultyLed'}/></div>
-        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : project.descriptions}/></div>
+        <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : project.descriptions}/></div>
         {project.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={project.mainLink.url}>{project.mainLink.text}</a></div>
         }

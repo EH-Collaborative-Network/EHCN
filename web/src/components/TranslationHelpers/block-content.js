@@ -177,12 +177,14 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         <>
         <PortableText value={adhoc ? adhoc : translation} components={components} serializers={serializers} />
         { adhocLangs.map(function(node, index){
-          if(status != node.language.code && JSON.parse(localStorage.getItem("lang")) != node.language.code){
-          return(<div className="blue-button red-color" onClick={()=>handler(node.language.code)}><TranslatedPhrase override={node.language.code} translations={languagePhrases} phrase={"availableIn"}/>{" " + node.language.name+""}</div>)
-          }else if(JSON.parse(localStorage.getItem("prevlang"))){
-            let prevlang = JSON.parse(localStorage.getItem("prevlang"))
-            let prevlangname = JSON.parse(localStorage.getItem("prevlangname"))
-            return(<div className="blue-button red-color" onClick={()=>handler(prevlang)}><TranslatedPhrase override={prevlang} translations={languagePhrases} phrase={"availableIn"}/>{" " + prevlangname+""}</div>)
+          if(typeof localStorage != `undefined`){
+            if(status != node.language.code && JSON.parse(localStorage.getItem("lang")) != node.language.code){
+              return(<div className="blue-button red-color" onClick={()=>handler(node.language.code)}><TranslatedPhrase override={node.language.code} translations={languagePhrases} phrase={"availableIn"}/>{" " + node.language.name+""}</div>)
+            }else if(JSON.parse(localStorage.getItem("prevlang"))){
+              let prevlang = JSON.parse(localStorage.getItem("prevlang"))
+              let prevlangname = JSON.parse(localStorage.getItem("prevlangname"))
+              return(<div className="blue-button red-color" onClick={()=>handler(prevlang)}><TranslatedPhrase override={prevlang} translations={languagePhrases} phrase={"availableIn"}/>{" " + prevlangname+""}</div>)
+            }
           }
         })
         }

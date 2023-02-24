@@ -151,16 +151,18 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
           setAdhoc(null)
           setStatus(lang)
         }
-        if(code == lang){
-          setAdhoc(null)
-          setStatus(lang)
-          localStorage.setItem("lang", JSON.stringify("en"))
-          theme.setLang("en")
+        if(typeof localStorage != `undefined`){
+          if(code == lang){
+            setAdhoc(null)
+            setStatus(lang)
+            localStorage.setItem("lang", JSON.stringify("en"))
+            theme.setLang("en")
+          }
+          localStorage.setItem("prevlang", JSON.stringify(lang))
+          localStorage.setItem("prevlangname", JSON.stringify(language))
+          localStorage.setItem("lang", JSON.stringify(code))
+          theme.setLang(code)
         }
-        localStorage.setItem("prevlang", JSON.stringify(lang))
-        localStorage.setItem("prevlangname", JSON.stringify(language))
-        localStorage.setItem("lang", JSON.stringify(code))
-        theme.setLang(code)
         // blocks.map(function(node,index){
       
         //   if(node.language.code == code){

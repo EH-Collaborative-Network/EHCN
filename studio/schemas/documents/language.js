@@ -212,6 +212,12 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'listview',
+      type: 'string',
+      title: 'List View'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'networkWide',
       type: 'string',
       title: 'Network-Wide'

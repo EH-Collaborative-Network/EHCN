@@ -13,6 +13,7 @@ import Layout from "../containers/layout";
 import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import Carousel from "../components/Carousel/carousel";
+import List from "../components/List/list";
 import * as styles from "../components/ResearchThread/research.module.css";
 import { useState } from 'react';
 import { Link } from "@reach/router";
@@ -371,6 +372,7 @@ const ResearchThreads = props => {
   const { data, errors } = props;
   const [studentLed, setStudentLed] = useState(true);
   const [facultyLed, setFacultyLed] = useState(true);
+  const [list, setList] = useState(false);
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const threads = (data || {}).researchThreads.edges;
   if (errors) {
@@ -389,6 +391,14 @@ const ResearchThreads = props => {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
+  }
+  function handleList(e){
+    if(e.target.checked){
+      setList(true)
+    }else{
+      setList(false)
+    }
+    
   }
   function handleCheck(e){
     let els;
@@ -423,7 +433,10 @@ const ResearchThreads = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedPhrase translations={languagePhrases} phrase={"researchThreads"}/></h1>
+         
           <div className={styles.facultyStudent}>
+            <input onChange={handleList} type="checkbox" id="list-led" name="list-led" value="list-led" defaultChecked={false}/>
+            <label htmlFor="list-led"><em>List View</em></label><br></br>
             <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
             <label htmlFor="student-led"><em><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></em></label><br></br>
             <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>
@@ -493,10 +506,12 @@ const ResearchThreads = props => {
                 {media.length > 0 && 
                 
                  <div className={styles.wrapper}>
-      
+                  {list ?
+                  <List media={media} />
+                  :
                   <Carousel media={media} imageOnly={true}/>
                 
-                   
+                  }
                  </div>
                 }
             </div>

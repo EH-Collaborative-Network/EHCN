@@ -38,6 +38,7 @@ export const query = graphql`
           fundingOpportunities
           ehcnSupported
           newsletter
+          listview
           learningResources
           researchThreads
           availableIn
@@ -436,7 +437,7 @@ const ResearchThreads = props => {
          
           <div className={styles.facultyStudent}>
             <input onChange={handleList} type="checkbox" id="list-led" name="list-led" value="list-led" defaultChecked={false}/>
-            <label htmlFor="list-led"><em>List View</em></label><br></br>
+            <label htmlFor="list-led"><em><TranslatedPhrase translations={languagePhrases} phrase={'listview'}/></em></label><br></br>
             <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
             <label htmlFor="student-led"><em><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></em></label><br></br>
             <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>

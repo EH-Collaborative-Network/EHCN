@@ -115,7 +115,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
       )}}
      </LangContext.Consumer>
         <ul className={styles.menu}>
-          <li><a className={styles.email} href="mailto:ehcn@opensocietyuniversitynetwork.org">ehcn@opensociety<br/>universitynetwork.org</a></li>
+          <li><a className={styles.email} href="mailto:ehcn@bard.edu">ehcn@bard.edu</a></li>
           <li><a target="_blank" href="http://eepurl.com/h-fqiv"><TranslatedPhrase translations={translations} phrase={"newsletter"}/></a></li>
           <li><TranslatedPhrase translations={translations} phrase={"ehcnSupported"}/></li>
           <li><img className={styles.osun} alt="dark green text reads Open Society University Network with red semicircles encircling 'open'" src={osun}/></li>

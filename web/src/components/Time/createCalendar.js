@@ -78,8 +78,12 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
         //if event falls, place it otherwise just date....
         let dayEvents = [];
         let multiEvents = [];
+      
         currentEvents.forEach(function(event){
-           if(event[0].getDate() == d.getDate() || event[1].getDate() == d.getDate()){
+     
+          if(event[0].getMonth() < event[1].getMonth()) {
+            multiEvents.push(event);
+          } else if(event[0].getDate() == d.getDate() || event[1].getDate() == d.getDate()){
              dayEvents.push(event)
            }else if(event[0].getDate() < d.getDate() && event[1].getDate() > d.getDate()){
              multiEvents.push(event);
@@ -110,8 +114,38 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
             
         })
         multiEvents.forEach(function(event,i){
-          console.log(i)
-          if((event[1].getDate() - event[0].getDate()) >= 3 && (d.getDate() - event[0].getDate()) == Math.floor((event[1].getDate() - event[0].getDate())/2)){
+          if(event[0].getMonth() < event[1].getMonth()){
+            if((d.getMonth() == event[0].getMonth() && d.getDate() > event[0].getDate()) ) {
+              dayContent.push(
+                <div>
+                <Link onMouseOut={modalRemove} onMouseOver={modalHandler} className={styles.multiDay} to={'/event/'+ event[2].slug.current}><span></span></Link>
+                <Popover globalLanguages={globalLanguages} multi={true} offset={offset} languagePhrases={translations} event={event[2]}  />
+               </div>
+              )
+            }else if((d.getMonth() == event[0].getMonth() && d.getDate() == event[0].getDate()) ){
+              dayContent.push(
+                <div>
+                <Link onMouseOut={modalRemove} onMouseOver={modalHandler} className={styles.multiDay + " " + styles.mid} to={'/event/'+ event[2].slug.current}><TranslatedTitle translations={event[2].titles}/></Link>
+                <Popover globalLanguages={globalLanguages} multi={true} offset={offset} languagePhrases={translations} event={event[2]}  />
+               </div>
+              )
+            }else if((d.getMonth() == event[1].getMonth() && d.getDate() < event[1].getDate()) ) {
+              dayContent.push(
+                <div>
+                <Link onMouseOut={modalRemove} onMouseOver={modalHandler} className={styles.multiDay} to={'/event/'+ event[2].slug.current}><span></span></Link>
+                <Popover globalLanguages={globalLanguages} multi={true} offset={offset} languagePhrases={translations} event={event[2]}  />
+               </div>
+              )
+            }else if((d.getMonth() == event[1].getMonth() && d.getDate() == event[1].getDate()) ){
+              dayContent.push(
+                <div>
+                <Link onMouseOut={modalRemove} onMouseOver={modalHandler} className={styles.multiDay + " " + styles.mid} to={'/event/'+ event[2].slug.current}><TranslatedTitle translations={event[2].titles}/></Link>
+                <Popover globalLanguages={globalLanguages} multi={true} offset={offset} languagePhrases={translations} event={event[2]}  />
+               </div>
+              )
+            }
+
+          } else if((event[1].getDate() - event[0].getDate()) >= 3 && (d.getDate() - event[0].getDate()) == Math.floor((event[1].getDate() - event[0].getDate())/2)){
             dayContent.push(
               <div>
               <Link onMouseOut={modalRemove} onMouseOver={modalHandler} className={styles.multiDay + " " + styles.mid} to={'/event/'+ event[2].slug.current}><TranslatedTitle translations={event[2].titles}/></Link>

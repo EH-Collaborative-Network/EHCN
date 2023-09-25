@@ -22,6 +22,11 @@ export default {
         type: 'boolean',
         title: 'Is this person on the Steering Committee?'
      },
+     {
+      name:'fellow',
+      type: 'boolean',
+      title: 'Is this person a fellow?'
+    },
     {
       name: 'image',
       title: 'Image',

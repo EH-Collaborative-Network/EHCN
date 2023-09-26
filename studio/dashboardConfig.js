@@ -13,7 +13,7 @@ export default {
               sites: [
                 {
                   buildHookId: '623cde2af1d31b47c1c4471e',
-                  title: 'Portfolio Website',
+                  title: 'EHCN',
                   name: 'ehcn',
                   apiId: 'c9fbc94a-26c5-4712-9ec0-0175ee0a4e04'
                 }

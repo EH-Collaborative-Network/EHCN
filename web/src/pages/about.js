@@ -98,6 +98,7 @@ export const query = graphql`
                 id
                 name
                 staff
+                fellow
                 steering
                 bios{
                   _rawText(resolveReferences: { maxDepth: 20 })
@@ -263,6 +264,16 @@ const AboutPage = props => {
             <ul className={styles.steering}>
             {people.map(function(node, index){
               if(node.node.staff){
+                return <li key={index}><Person person={node}></Person></li>;
+              }
+            })}
+            </ul>
+          </div>
+          <h4>Fellows</h4>
+          <div className="staff-no-column">
+            <ul className={styles.steering}>
+            {people.map(function(node, index){
+              if(node.node.fellow){
                 return <li key={index}><Person person={node}></Person></li>;
               }
             })}

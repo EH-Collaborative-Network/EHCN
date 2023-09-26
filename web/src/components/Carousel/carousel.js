@@ -1,7 +1,6 @@
 import React, {useState,useEffect}  from "react";
 import * as styles from "./carousel.module.css";
 import MediaItem from "../MediaItem/mediaItem";
-import 'react-alice-carousel/lib/alice-carousel.css';
 import { Figure } from "../Figure/figure";
 import TranslatedTitle from "../TranslationHelpers/translatedTitle";
 import { Link } from "@reach/router";

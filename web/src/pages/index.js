@@ -151,6 +151,8 @@ const IndexPage = props => {
             typeof window != `undefined` &&
             <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
           }
+              <div className="hidden-sanity">Structured content powered by <a href="https://sanity.io">Sanity.io</a></div>      
+
         </Container>
       </Layout>
       

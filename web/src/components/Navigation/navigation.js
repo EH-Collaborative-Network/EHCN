@@ -42,11 +42,11 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
       { theme => {
         return(
           <ul className={styles.menu}>
-              <li><Link to="/about/"><TranslatedPhrase translations={translations} phrase={"aboutEHCN"}/>→</Link></li>
-              <li><Link to="/funding"><TranslatedPhrase translations={translations} phrase={"fundingOpportunities"}/>→</Link></li>
-              <li><Link to="/researchthreads/"><TranslatedPhrase translations={translations} phrase={"researchThreads"}/>→</Link></li>
-              <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"calendar"}/>→</Link></li>
-              <li><Link to="/learningresources/"><TranslatedPhrase translations={translations} phrase={"learningResources"}/>→</Link></li>
+              <li><Link to="/about/"><TranslatedPhrase translations={translations} phrase={"aboutEHCN"}/></Link></li>
+              <li><Link to="/funding"><TranslatedPhrase translations={translations} phrase={"fundingOpportunities"}/></Link></li>
+              <li><Link to="/researchthreads/"><TranslatedPhrase translations={translations} phrase={"researchThreads"}/></Link></li>
+              <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"calendar"}/></Link></li>
+              <li><Link to="/learningresources/"><TranslatedPhrase translations={translations} phrase={"learningResources"}/></Link></li>
           </ul>
           )
       }}
@@ -117,9 +117,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
         <ul className={styles.menu}>
           <li><a className={styles.email} href="mailto:ehcn@bard.edu">ehcn@bard.edu</a></li>
           <li><a target="_blank" href="http://eepurl.com/h-fqiv"><TranslatedPhrase translations={translations} phrase={"newsletter"}/></a></li>
-          <li><TranslatedPhrase translations={translations} phrase={"ehcnSupported"}/></li>
-          <li><img className={styles.osun} alt="dark green text reads Open Society University Network with red semicircles encircling 'open'" src={osun}/></li>
-          <li className={styles.sanity}>Structured content powered by <a href="https://sanity.io">Sanity.io</a></li>
+          <li><a href="https://opensocietyuniversitynetwork.org/"><img className={styles.osun} alt="dark green text reads Open Society University Network with red semicircles encircling 'open'" src={osun}/></a></li>
         </ul>
       </div>
     </div>

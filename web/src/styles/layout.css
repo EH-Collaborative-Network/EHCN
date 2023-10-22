@@ -313,3 +313,11 @@ li.alice-carousel__stage-item {
 .hp-text p{
   margin-top:0;
 }
+.hidden-sanity {
+  position: absolute;
+  bottom:-2em;
+  font-size: 0.8em;
+}
+.hidden-sanity a{
+color:inherit;
+}

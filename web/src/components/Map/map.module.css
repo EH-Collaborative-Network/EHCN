@@ -2,6 +2,8 @@
 
 .root {
     margin:0;
+    display: flex;
+    background-color: var(--color-light-blue);
     position:relative;
 
   @media (--media-min-small) {
@@ -15,9 +17,7 @@
 
 .partners {
     margin:0;
-    position:absolute;
-    right:25px;
-    top:15px;
+    position:relative;
     padding:10px;
     background:var(--light-blue-gradient-solid);
     max-width: calc(100% - 70px);

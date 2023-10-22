@@ -369,11 +369,11 @@ function sketch (p) {
         let c;
         if(typeof window != `undefined`){
             if(window.innerWidth <= 768){
-              c = p.createCanvas((window.innerWidth / 100 * 100 - 20), (window.innerHeight / 100 * 72), p.WEBGL); 
+              c = p.createCanvas((window.innerWidth / 100 * 70 - 20), (window.innerHeight / 100 * 72), p.WEBGL); 
             }else{
-              c = p.createCanvas((window.innerWidth / 100 * 82 - 100), (window.innerHeight / 100 * 62), p.WEBGL); 
+              c = p.createCanvas((window.innerWidth / 100 * 52 - 100), (window.innerHeight / 100 * 62), p.WEBGL); 
             }
-            p.camera(0, 0, 200 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
+            p.camera(60, 100, 190 + p.sin(p.frameCount * 0.01) * 5, 0, 0, 0, 0, 1, 0);
             graphics = p.createGraphics(1000, 500);
             addScreenPositionFunction( p );
         }
@@ -397,8 +397,8 @@ function sketch (p) {
             graphics.fill(0, 130, 151, 200)
             
             graphics.noStroke()
-            p.rotateY(p.millis() / 10000);
-            p.rotateZ(p.millis() / 15000);
+            // p.rotateY(p.millis() / 10000);
+            // p.rotateZ(p.millis() / 15000);
             p.push()
             p.stroke(191, 13, 62, 100)
             p.strokeWeight(0.5);

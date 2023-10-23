@@ -29,7 +29,7 @@ body {
   margin: 0;
 }
 #global-wrapper{
-  background:var(--blue-gradient);
+  background:var(--color-white);
 }
 #global-wrapper.white{
   background: var(--color-white);

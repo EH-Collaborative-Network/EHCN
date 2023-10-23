@@ -245,7 +245,7 @@ const AboutPage = props => {
           <div className="">
             <div className={styles.partners}>
             {partners.map(function(node, index){
-                return <Link to={"/partner/"+node.node.slug.current} key={index}><div className="button">{node.node.name + ""}</div></Link>;
+                return <Link to={"/partner/"+node.node.slug.current} key={index}><div className="blue-button">{node.node.name + ""}</div></Link>;
             })}
             </div>
           </div>
@@ -254,7 +254,7 @@ const AboutPage = props => {
             <ul className={styles.steering + " two-column"}>
             {people.map(function(node, index){
               if(node.node.steering){
-                return <li key={index}><Person person={node}></Person></li>;
+                return <li key={index}><Person blue={true} person={node}></Person></li>;
               }
             })}
             </ul>
@@ -265,7 +265,7 @@ const AboutPage = props => {
               <ul className={styles.steering}>
               {people.map(function(node, index){
                 if(node.node.staff){
-                  return <li key={index}><Person person={node}></Person></li>;
+                  return <li key={index}><Person blue={true} person={node}></Person></li>;
                 }
               })}
               </ul>
@@ -276,7 +276,7 @@ const AboutPage = props => {
               <ul className={styles.steering}>
               {people.map(function(node, index){
                 if(node.node.fellow){
-                  return <li key={index}><Person person={node}></Person></li>;
+                  return <li key={index}><Person blue={true} person={node}></Person></li>;
                 }
               })}
               </ul>

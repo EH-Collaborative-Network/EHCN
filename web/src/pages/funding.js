@@ -216,7 +216,7 @@ const FundingPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
-          <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
+          <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
           <div className="funding-opportunities">
           <LangContext.Consumer>
               { theme => {
@@ -239,7 +239,10 @@ const FundingPage = props => {
               </LangContext.Consumer>
             
             <p style={{'margin-bottom':'0'}}><TranslatedPhrase translations={languagePhrases} phrase={"availableOpps"}/>:</p>
-
+             {
+              networkOpps.length == 0 &&
+              <em>currently no available opportunities</em>
+             }
             <div className={styles.network}>
             {/* <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Institution-specific</em> Opportunities instead</div> */}
             <div className={styles.institution + ' institution-wrapper'}>

@@ -195,7 +195,7 @@ if(node){
             </ul>
             </section>
         }
-         {(opps?.length > 0) &&
+         {/* {(opps?.length > 0) &&
             <section>
             <h4><TranslatedPhrase phrase={"fundingOpportunities"} translations={languagePhrases}/></h4>
             <ul>
@@ -208,7 +208,7 @@ if(node){
             }            
             </ul>
             </section>
-        }
+        } */}
         </div>
        
     </div>

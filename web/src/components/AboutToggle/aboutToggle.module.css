@@ -24,7 +24,7 @@
     height: 0; 
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
-    border-top: 30px solid #D6EAEC;
+    border-top: 30px solid var(--color-light-blue);
     @media (--media-min-medium) {
         display: block; 
     }

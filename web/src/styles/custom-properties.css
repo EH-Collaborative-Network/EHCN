@@ -2,11 +2,12 @@
 @import './custom-media.css';
 :root {
   --font-family-sans:"Sharp Sans", sans-serif;
-  --font-family-bold: "Sharp Sans Bold", sans-serif;
+  --font-family-bold: "Sharp Sans SemiBold", sans-serif;
   --color-black: #333;
-  --color-light-blue:#D4EAED;
+  --color-light-blue:#E9EFF0;
+  --color-blue:#84CFDE;
   --color-red:#BF0D3E;
-  --color-dark-blue: #006074;
+  --color-dark-blue: #045867;
   --color-white: rgba(245,245,245,1);
   --clear: rgba(245,245,245,0);
   --white-gradient-after: linear-gradient(90deg, rgba(245,245,245,0.9) 0%, rgba(245,245,245,0.9) 5%, rgba(245,245,245,0.5088629201680672) 95%, rgba(245,245,245,0) 100%);

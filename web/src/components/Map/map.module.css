@@ -38,7 +38,7 @@
 }
 .partners li a{
     font-size: var(--font-small-size);
-    color: var(--color-red);
+    color: var(--color-black);
     text-decoration: none;
     position:relative;
 }

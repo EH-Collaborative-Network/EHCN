@@ -65,7 +65,7 @@
     position:absolute;
     vertical-align: top;
     @media (--media-min-medium) {
-        right:50px;
+        right:65px;
     }
 }
 .searchWrapper button:hover svg{

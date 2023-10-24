@@ -36,7 +36,6 @@
   z-index: -2;
   opacity: 0;
   min-height: none;
-  box-shadow: 0 0 5px 15px #d4eaed;
 }
 
 .modal .inner a{

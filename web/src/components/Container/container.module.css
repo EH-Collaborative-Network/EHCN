@@ -47,7 +47,7 @@
   width: 80%;
   height: 100%;
   content: " ";
-  background: var(--blue-link-gradient);
+  background: var(--color-light-blue);
   opacity: 0;
   transition: 0.5s;
 }

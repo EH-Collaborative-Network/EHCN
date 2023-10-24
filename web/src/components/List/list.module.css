@@ -18,26 +18,12 @@
     margin-top: 8px;
     margin-right: 12px;
     color: var(--color-black);
-    background: var(--white-gradient);
+    background: var(--color-light-blue);
     border-radius: 0px;
     text-decoration: none;
 }
-.root a::after{
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    content: " ";
-    background: rgb(245, 245, 245);
-    background: linear-gradient(90deg, rgba(245,245,245,0.9) 0%, rgba(245,245,245,0.9) 5%, rgba(245,245,245,0.5088629201680672) 95%, rgba(245,245,245,0) 100%);
-    background: var(--white-gradient-after);
-    opacity: 0;
-    transition: 0.5s;
-}
 
-.root a:hover::after{
-    width: 100%;
-    opacity: 1;
+
+.root a:hover{
+    color:var(--color-red)
 }

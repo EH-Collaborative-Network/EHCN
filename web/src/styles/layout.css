@@ -72,27 +72,13 @@ h4{
     margin-top: 8px;
     margin-right:12px;
     color: var(--color-black);
-    background: var(--white-gradient);
+    background: var(--color-light-blue);
     border-radius: 0px;
     text-decoration: none;
 }
-.button::after{
-   position: absolute;
-    top: 0;
-    z-index: -1;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    content: " ";
-    background: rgb(245,245,245);
-    background: var(--white-gradient-after);
-    opacity: 0;
-    transition: 0.5s;
-    
-}
-.button:hover::after{
-  opacity: 1;
-  width: 100%;
+
+.button:hover{
+  color:var(--color-red);
 }
 .fadey{
   opacity: 0;
@@ -108,27 +94,13 @@ h4{
   margin-top: 8px;
   margin-right:12px;
   color: var(--color-black);
-  background: var(--light-blue-gradient);
+  background: var(--color-light-blue);
   border-radius: 0px;
   text-decoration: none;
 }
-.blue-button::after, .hp-text a::after{
- position: absolute;
-  top: 0;
-  z-index: -1;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  content: " ";
-  background: rgb(245,245,245);
-  background: var(--light-blue-gradient);
-  opacity: 0;
-  transition: 0.5s;
-  
-}
-.blue-button:hover::after, .hp-text a:hover::after{
-opacity: 1;
-width: 100%;
+
+.blue-button:hover, .hp-text a:hover{
+  color: var(--color-red);
 }
 
 #query-on-demand-indicator-element{
@@ -163,17 +135,13 @@ select{
   width:90%;
 	border: 0px solid var(--color-black);
 	background: var(--color-white);
-	background: var(--blue-link-gradient);
-	background:  -ms-linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
-	background: -moz-linear-gradient(0deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
+	background: var(--color-light-blue);
 	padding: 2px 8px;
 	-webkit-appearance: menulist;
   margin:  10px 2px;
 }
 input[type=text]{
-  background: var(--blue-link-gradient);
-	background:  -ms-linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
-	background: -moz-linear-gradient(0deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
+  background: var(--color-light-blue);
 	padding: 8px 8px;
   outline:none;
   border:none;
@@ -264,26 +232,13 @@ li.alice-carousel__stage-item {
   padding-left: 5px;
   margin-top: 8px;
   margin-right:12px;
-  background: var(--white-gradient);
+  background: var(--color-light-blue);
   border-radius: 0px;
   text-decoration: none;
 }
-.main-link a::after{
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    content: " ";
-    background: rgb(245,245,245);
-    background: var(--white-gradient-after);
-    opacity: 0;
-    transition: 0.5s;
-}
-.main-link a:hover::after{
-  opacity: 1;
-  width: 100%;
+
+.main-link a:hover{
+  color:var(--color-red)
 }
 .main-link{
   margin: 5px 0;

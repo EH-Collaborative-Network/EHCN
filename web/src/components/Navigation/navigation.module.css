@@ -13,7 +13,7 @@
     @media (--media-min-medium) {
         width: 18%;
         display:block;
-        background: var(--light-blue-gradient);
+        background: var(--color-light-blue);
     }
 
 }
@@ -64,20 +64,25 @@
 }
 .searchWrapper input{
     width:83%;
+    background-color: var(--color-white);
     font-size: var(--font-small-size)
+}
+
+.langWrapper select{
+   background-color: var(--color-white);
 }
 .searchWrapper button{
     outline:none;
     border:none;
     cursor: pointer;
     padding:0;
-    right:20px;
-    top:4px;
+    right:10px;
+    top:12px;
     position:absolute;
     vertical-align: top;
     background-color: transparent;
     @media (--media-min-medium){
-        right: 5px;
+        right: 25px;
     }
 }
 .searchWrapper button:hover svg{
@@ -157,19 +162,6 @@
 .menu li a{
     position:relative;
 }
-.menu li a:hover::after{
-    opacity: 1;
-    width: 100%;
-}
-.menu li a::after{
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    left: 0;
-    width: 80%;
-    height: 100%;
-    content: " ";
-    background: var(--blue-link-gradient);
-    opacity: 0;
-    transition: 0.5s;
+.menu li a:hover{
+    color: var(--color-red);
 }

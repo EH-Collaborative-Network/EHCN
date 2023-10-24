@@ -19,7 +19,7 @@
     right:25px;
     top:15px;
     padding:10px;
-    background:var(--light-blue-gradient-solid);
+    background:var(--color-light-blue);
     max-width: calc(100% - 70px);
   @media (--media-min-small) {
     margin:0;
@@ -42,19 +42,6 @@
     text-decoration: none;
     position:relative;
 }
-.partners li a:hover::after{
-  opacity: 1;
-  width: 100%;
-}
-.partners li a::after{
-  position: absolute;
-  top: 0;
-  z-index: 0;
-  left: 0;
-  width: 80%;
-  height: 100%;
-  content: " ";
-  background: var(--blue-link-gradient);
-  opacity: 0;
-  transition: 0.5s;
+.partners li a:hover{
+  color:var(--color-red)
 }

@@ -3,7 +3,7 @@
 
 .root {
   /* background: var(--color-white); */
-  background: var(--blue-link-gradient);
+  background: var(--color-light-blue);
   color: var(--color-black);
   padding:20px;
   margin-top:1em;
@@ -12,7 +12,6 @@
 
 }
 .root:hover{
-    background: var(--light-blue-gradient);
     top:3px;
     left:3px;
 }

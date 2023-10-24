@@ -9,6 +9,6 @@
     color:var(--color-red);
 }
 
-.blockPerson > span > div:first-child:hover::after{
-    background:var(--blue-link-gradient);
+.blockPerson > span > div:first-child:hover{
+   color: var(--color-red)
 }

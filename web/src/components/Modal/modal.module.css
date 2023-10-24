@@ -47,7 +47,6 @@
   overflow: scroll;
   position:fixed;
   z-index: -2;
-  box-shadow: 0 0 5px 15px #d4eaed;
   @media (--media-min-medium) {
     height: 70vh;
     width:60vw;

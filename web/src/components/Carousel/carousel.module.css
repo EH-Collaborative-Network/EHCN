@@ -34,6 +34,22 @@
     height: 40vh;
   }
 }
+.arrowButtonLeft, .arrowButtonRight{
+  position: absolute;
+  top: 40%;
+  padding:5px;
+  padding-top:12px;
+  cursor: pointer;
+  left:0;
+  background-color: var(--color-light-blue);
+  @media (--media-min-medium) {
+    top: 40%;
+  }
+}
+.arrowButtonRight{
+  left:auto;
+  right:0;
+}
 /* Hide scrollbar for Chrome, Safari and Opera */
 .inner::-webkit-scrollbar {
   display: none;

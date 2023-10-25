@@ -89,21 +89,9 @@
     position:relative;
     display: inline-block;
 }
-.main a h4::after{
-    position: absolute;
-    top: 0;
-    z-index: 0;
-    left: 0;
-    width: 80%;
-    height: 100%;
-    content: " ";
-    background: var(--color-light-blue);
-    opacity: 0;
-    transition: 0.5s;
-}
-.main a:hover h4::after{
-    opacity: 1;
-    width: 100%;
+
+.main a:hover h4{
+    color:var(--color-red);
 }
 .main a{
     text-decoration: none;

@@ -5,6 +5,7 @@
   background: var(--clear);
   min-height: calc(100vh - 50px);
   margin-left: 0;
+  position:relative;
   width: calc(100% - 24px);
   margin: 0 auto;
   padding-bottom:4em;

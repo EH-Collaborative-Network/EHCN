@@ -81,7 +81,7 @@ h4{
 
 
 .button:hover{
-  color:var(--color-red);
+  color:var(--color-white);
 }
 .fadey{
   opacity: 0;
@@ -94,9 +94,9 @@ h4{
   z-index: 0;
   font-family: var(--font-family-bold);
   padding-top:8px;
-  margin-top: 8px;
+  margin-top: 15px;
   background-color: var(--color-blue);
-  clip-path: polygon(0% 3px, 100% 0%, 100% calc(100% - 1px), 2px 100%);
+  clip-path: polygon(0% 6px, 100% 0%, 100% calc(100% - 1px), 2px 100%);
   margin-right:12px;
   color: var(--color-black);
   border-radius: 0px;
@@ -104,8 +104,8 @@ h4{
   color:var(--color-black);
 }
 
-.blue-button:hover, .hp-text a:hover{
-  color: var(--color-red);
+.blue-button:hover, .hp-text p a:hover{
+  color: var(--color-white);
 }
 
 #query-on-demand-indicator-element{
@@ -160,7 +160,10 @@ select:focus{
   outline:none;
 }
 #light-box.show, .modal.show{
-  z-index: 9;
+  z-index: 99;
+}
+.modal-bg.show{
+  display: block;
 }
 .modal.show{
   opacity: 1;

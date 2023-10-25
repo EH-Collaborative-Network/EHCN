@@ -12,7 +12,10 @@ import SEO from "../components/seo";
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import Layout from "../containers/layout";
+import { Link } from "@reach/router";
 import Map from "../components/Map/map";
+import Modal from "../components/Modal/modal";
+import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import sanityClient from "@sanity/client";
 const client = sanityClient({
   projectId: '46orb7yp',
@@ -59,6 +62,9 @@ export const query = graphql`
           name
           code
           aboutEHCN
+          justice
+          technology
+          creativepractice
           calendar
           fundingOpportunities
           ehcnSupported
@@ -139,13 +145,17 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
-
+  const statement = (<div><p>
+    <Link to={"/aqb-voices"}>Al-Quds Bard College (AQB)</Link> in Palestine is a vital partner in The Experimental Humanities Collaborative Network. We reaffirm our admiration and support for the work our AQB colleagues and students do everyday in their efforts for freedom. Much of this work contends with the longstanding and ongoing dehumanization, misrepresentation and subjugation of the Palestinian people by Israel and its allies. Linked below are some of their recent EHCN projects and activities. Please listen to their voices and learn from their stories.
+    </p><Link className="blue-button" to={"/aqb-voices"}>Voices of Al-Quds Bard College</Link>
+    </div>)
   return (
       <>  
       <Layout extra='white' navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={site.showMarquee} marqueeContent={site.marqueeText}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
+          <h1 style={{"textTransform":"capitalize"}}><TranslatedPhrase translations={languagePhrases} phrase={"technology"}/>, <TranslatedPhrase translations={languagePhrases} phrase={"justice"}/>, & <TranslatedPhrase translations={languagePhrases} phrase={"creativepractice"}/></h1>
           <div className="hp-text"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : hp}/></div>
           {
             typeof window != `undefined` &&
@@ -156,6 +166,7 @@ const IndexPage = props => {
               </span>      
 
         </Container>
+        <Modal start={true} raw={statement}></Modal>
       </Layout>
       
     </>

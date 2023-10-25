@@ -54,6 +54,7 @@
 .logo h4{
     padding:0 20px;
     margin:0;
+    font-size: var(--font-small-size);
     text-transform: none;
 }
 .osun{

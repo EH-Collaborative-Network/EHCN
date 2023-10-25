@@ -47,7 +47,7 @@
       display:inline-block;
   }
   .listInline a{
-      color: var(--color-red);
+      color: var(--color-dark-blue);
   }
   
   @keyframes marquee {

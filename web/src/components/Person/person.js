@@ -8,6 +8,7 @@ const Person = ({ person, index, blue, hideArrow }) =>{
     
     if(!el.querySelector(".modal").classList.contains("show")){
         el.querySelector(".modal").classList.add('show');
+        el.querySelector(".modal-bg").classList.add('show');
     }
     
   }

@@ -11,8 +11,9 @@
         max-width: calc(60%);
     }
 }
-.toggle.on{
-    text-decoration: underline;
+
+.keyWords{
+    margin-top:0;
 }
 .toggle.on::after{
     content:"";
@@ -20,11 +21,11 @@
     position: absolute;
     width: 0; 
     left:1em;
-    bottom:1.5em;
+    top:1.5em;
     height: 0; 
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
-    border-top: 30px solid var(--color-light-blue);
+    border-bottom: 30px solid var(--color-light-blue);
     @media (--media-min-medium) {
         display: block; 
     }
@@ -35,12 +36,9 @@
 .toggle{
     position: relative;
     text-transform: capitalize;
-    font-style: italic;
     cursor: pointer;
 }
-.toggle:hover{
-    text-decoration: underline;
-}
+
 .toggle:nth-child(2){
     color: var(--color-dark-blue);
 }

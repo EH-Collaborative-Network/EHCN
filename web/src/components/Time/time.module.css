@@ -111,7 +111,7 @@
     text-overflow: unset; */
 }
 .week a{
-    color: var(--color-red);
+    color: var(--color-black);
     text-decoration: none;
 }
 .week > h4:first-child{
@@ -126,7 +126,7 @@
     pointer-events: none;
 }
 .week a:hover{
-    text-decoration: underline;
+    color: var(--color-red);
 }
 .multiDayWeek{
     background: rgba(248,248,248,0.5);
@@ -209,24 +209,24 @@
     color:var(--color-black);
 }
 .dayRow > div > * > a:hover p a{
-    text-decoration: underline;
+    color:var(--color-red);
 }
 .dayRow a:hover p a{
-    text-decoration: underline;
+    color:var(--color-red);
 }
 
 .calendar a{
     font-size: var(--font-extra-small-size);
     display: inline-block;
     text-decoration: none;
-    color:var(--color-red);
+    color:var(--color-black);
     white-space:nowrap;
     text-overflow: ellipsis;
     max-width: calc(100% - 2em);
     overflow: hidden;
 }
 .calendar a:hover{
-    text-decoration: underline;
+    color:var(--color-red);
 }
 .buttonWrapper{
     display: flex;

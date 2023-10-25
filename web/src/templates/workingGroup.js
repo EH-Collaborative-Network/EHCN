@@ -270,7 +270,7 @@ const WorkingGroupTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : workingGroup.titles}/></h1>
         <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={workingGroup.studentLed ? 'studentLed' : 'facultyLed'}/></div>
-        <div className="top-text two-column"><BlockContent blocks={(preview && previewData) ? previewData.descriptions : workingGroup.descriptions}/></div>
+        <div className="top-text one-column"><BlockContent blocks={(preview && previewData) ? previewData.descriptions : workingGroup.descriptions}/></div>
         {workingGroup.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={workingGroup.mainLink.url}>{workingGroup.mainLink.text}</a></div>
         }

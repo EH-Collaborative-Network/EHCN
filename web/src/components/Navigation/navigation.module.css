@@ -68,13 +68,15 @@
     position:relative;
 }
 .searchWrapper input{
-    width:83%;
+    width:82%;
     background-color: var(--color-white);
-    font-size: var(--font-small-size)
+    font-size: var(--font-small-size);
+    border: 1px solid var(--color-black);
 }
 
 .langWrapper select{
    background-color: var(--color-white);
+   border: 1px solid var(--color-black);
 }
 .searchWrapper button{
     outline:none;

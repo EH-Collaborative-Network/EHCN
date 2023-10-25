@@ -287,7 +287,7 @@ const LearningResourceTemplate = props => {
         {learningResource.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={learningResource.mainLink.url}>{learningResource.mainLink.text}</a></div>
         }
-        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : learningResource.descriptions}/></div>
+        <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : learningResource.descriptions}/></div>
         {media.length > 0 &&
           <Carousel media={(preview && previewData) ? previewData.media : learningResource.media}/>
         }

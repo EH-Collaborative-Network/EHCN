@@ -72,7 +72,7 @@ h4{
     padding-top:8px;
     margin-top: 8px;
     background-color: var(--color-blue);
-    clip-path: polygon(0% 8%, 100% 0%, 100% 97%, 1.5% 100%);
+    clip-path: polygon(0% 3px, 100% 0%, 100% calc(100% - 1px), 2px 100%);
     margin-right:12px;
     color: var(--color-black);
     border-radius: 0px;
@@ -96,7 +96,7 @@ h4{
   padding-top:8px;
   margin-top: 8px;
   background-color: var(--color-blue);
-  clip-path: polygon(0% 8%, 100% 0%, 100% 97%, 1.5% 100%);
+  clip-path: polygon(0% 3px, 100% 0%, 100% calc(100% - 1px), 2px 100%);
   margin-right:12px;
   color: var(--color-black);
   border-radius: 0px;
@@ -124,11 +124,16 @@ h4{
 .top-text.two-column > p:first-child{
   margin-top:0;
 }
-.top-text.two-column.partner-page figure,.top-text.two-column.partner-page img {
+.top-text.one-column.partner-page figure,.top-text.one-column.partner-page img {
   max-width: 200px;
   height:auto;
 }
-.top-text.two-column.partner-page .wrapper ,.top-text.two-column.partner-page .wrapper div{
+.top-text.one-column.about-page .wrapper  figure,.top-text.one-column.about-page .wrapper  figure div{
+  height: auto;
+  margin:0;
+  margin-bottom:1em;
+}
+.top-text.one-column.partner-page .wrapper ,.top-text.one-column.partner-page .wrapper div{
   width:auto;
   height:auto;
   pointer-events: none;
@@ -138,10 +143,9 @@ select{
 	font-family: inherit;
 	color: var(--color-black);
   width:90%;
-	border: 0px solid var(--color-black);
-	background: var(--color-white);
+	border: 1px solid var(--color-black);
 	background: var(--color-light-blue);
-	padding: 2px 8px;
+	padding: 2px 5px;
 	-webkit-appearance: menulist;
   margin:  10px 2px;
 }
@@ -237,9 +241,9 @@ li.alice-carousel__stage-item {
   padding-left: 5px;
   margin-top: 8px;
   margin-right:12px;
-  background: var(--color-light-blue);
   border-radius: 0px;
   text-decoration: none;
+  font-family:var(--font-family-bold);
 }
 
 .main-link a:hover{

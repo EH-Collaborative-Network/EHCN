@@ -24,12 +24,15 @@
 .root p a{
   color: var(--color-dark-blue);
   text-decoration: none;
-}
-/* blue hover effect */
-.root p a{
   position:relative;
   display: inline-block;
   z-index: 0;
+  font-family:var(--font-family-bold);
+}
+/* blue hover effect */
+
+.root p a:hover{
+  color:var(--color-red);
 }
 
 .root > h1:nth-child(2){

@@ -100,20 +100,20 @@ if(node){
                     }
 
                        return(
-                           <li className="blue-button" key={index}><Link to={"/event/"+node.slug?.current}>
+                           <li key={index}><Link className="blue-button" to={"/event/"+node.slug?.current}>
+                           <TranslatedTitle translations={node.titles}/>
                            {(multi && upcoming)  &&
-                             <sup className={styles.date}>*<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)} - { translateTime(ed, locale, offset, true, false, true)}</sup>
+                             <span className={styles.date}>(<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)} - { translateTime(ed, locale, offset, true, false, true)})</span>
                            }
                            {(!multi && upcoming) &&
-                             <sup className={styles.date}>*<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
+                             <span className={styles.date}>(<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)})</span>
                            }
                            {(!multi && !upcoming && current) &&
-                             <sup className={styles.date}>*<TranslatedPhrase phrase={"currentEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
+                             <span className={styles.date}>(<TranslatedPhrase phrase={"currentEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)})</span>
                            }
                            {(!multi && !upcoming && !current) &&
-                            <sup className={styles.date}><TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/></sup>
+                            <span className={styles.date}>(<TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/>)</span>
                             }
-                           <TranslatedTitle translations={node.titles}/>
                            </Link></li>
                        )
                    })

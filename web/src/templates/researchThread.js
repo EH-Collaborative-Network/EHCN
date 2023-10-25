@@ -265,7 +265,7 @@ const ResearchThreadTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : researchThread.titles}/></h1>
-        <div className="top-text two-column"><BlockContent blocks={(preview && previewData) ? previewData.descriptions : researchThread.descriptions}/></div>
+        <div className="top-text one-column"><BlockContent blocks={(preview && previewData) ? previewData.descriptions : researchThread.descriptions}/></div>
         {media.length > 0 &&
            <Carousel media={(preview && previewData) ? previewData.media : researchThread.media}/>
         }

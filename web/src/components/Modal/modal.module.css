@@ -7,6 +7,7 @@
   padding-top:0;
   position: relative;
 }
+
 .steering{
   list-style: none;
   padding-left: 0;
@@ -25,6 +26,7 @@
 .twoColumnStaff > div:nth-child(2){
   padding-left:10px;
 }
+
 .steering li{
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
@@ -36,7 +38,17 @@
   top: -1em;
   position: relative;
 }
-
+.partners a{
+  text-decoration: none;
+}
+.partner:hover{
+  color: var(--color-red);
+}
+.partner{
+  display: inline-block;
+  color:var(--color-dark-blue);
+  font-family: var(--font-family-bold);
+}
 .modal{
   background: var(--color-light-blue);
   height: 94vh;
@@ -63,7 +75,7 @@
   right: 0;
   width: 35px;
   @media (--media-min-medium) {
-    width: 50px;
+    width: 25px;
   }
 }
 .close svg{

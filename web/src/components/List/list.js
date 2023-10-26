@@ -9,7 +9,7 @@ const List = ({ media }) => {
     let medias = media.map(function(node, index){
         let title = node[1];
         let url = node[2]
-        return <Link to={url}><h4><TranslatedTitle translations={title}/></h4></Link>;
+        return <Link to={url}><span><TranslatedTitle translations={title}/></span></Link>;
     })
 return(
     <div className={styles.root}>{medias}</div>

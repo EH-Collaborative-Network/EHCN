@@ -2,13 +2,11 @@
 @import '../../styles/custom-properties.css';
 
 .root {
-  /* background: var(--color-white); */
   background: var(--color-light-blue);
   color: var(--color-black);
-  padding:20px;
-  margin-top:1em;
+  padding:var(--space);
+  margin-top:var(--space);
   position:relative;
-  /* padding-bottom:50px; */
 
 }
 .root:hover{
@@ -33,7 +31,7 @@
     flex-wrap: wrap;
     width:100%;
     flex-direction: column;
-    margin-top:1em;
+    margin-top:var(--space);
     justify-content: space-between;
 }
 .wrapper > em{
@@ -46,7 +44,7 @@
 .searchWrapper{
     position:relative;
     width:100%;
-    margin:1em 0;
+    margin:var(--space) 0;
     @media (--media-min-medium) {
         width:70%;
     }

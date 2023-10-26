@@ -218,6 +218,7 @@ const AboutPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
+         <div>
           <h1 className={aboutStyles.keyWords}><span onMouseOver={() => setToggle("technology")} className={`${toggle == "technology" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"technology"}/></span>, <span onMouseOver={() => setToggle("justice")} className={`${toggle == "justice" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"justice"}/></span> & <span onMouseOver={() => setToggle("creative practice")} className={`${toggle == "creative practice" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"creativepractice"}/></span></h1>
           
           {toggle == "justice" &&
@@ -235,7 +236,7 @@ const AboutPage = props => {
               <BlockContent languagePhrases={languagePhrases} blocks={site.aboutTechnology} globalLanguages={globalLanguages}/>
             </div>
           }
-           
+         </div>  
           <div className="top-text about-page one-column"><BlockContent languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.bodies : ap} globalLanguages={globalLanguages}/></div>
  
           

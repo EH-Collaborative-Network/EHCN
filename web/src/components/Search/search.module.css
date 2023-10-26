@@ -89,7 +89,7 @@
     text-decoration: none;
     position: relative;
     display: block;
-    padding:20px;
+    padding:var(--space);
     background-color: var(--color-light-blue);
     background: var(--color-light-blue);
     

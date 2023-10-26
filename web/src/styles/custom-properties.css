@@ -1,6 +1,8 @@
 
 @import './custom-media.css';
 :root {
+  /*SPACING*/
+  --space: 30px;
   --font-family-sans:"Sharp Sans", sans-serif;
   --font-family-bold: "Sharp Sans SemiBold", sans-serif;
   --color-black: #333;
@@ -10,16 +12,7 @@
   --color-dark-blue: #045867cc;
   --color-white: rgba(245,245,245,1);
   --clear: rgba(245,245,245,0);
-  --white-gradient-after: linear-gradient(90deg, rgba(245,245,245,0.9) 0%, rgba(245,245,245,0.9) 5%, rgba(245,245,245,0.5088629201680672) 95%, rgba(245,245,245,0) 100%);
-  --white-gradient:linear-gradient(90deg, rgba(245,245,245,0.5) 0%, rgba(245,245,245,0.5) 10%, rgba(245,245,245,0.5088629201680672) 90%, rgba(245,245,245,0) 100%);
-  --blue-hover-gradient: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 50%, rgba(212,234,237,0.9) 99%, rgba(245,245,245, 0) 100%);
-  --light-blue-gradient-solid: linear-gradient(90deg, rgba(212,234,237,0.9) 0%, rgba(212,234,237,0.9) 5%, rgba(212,234,237,0.9) 99%, rgba(245,245,245, 0) 100%);
-  --blue-gradient:linear-gradient(-180deg, rgba(245,245,245,1) 0%, rgba(245,245,245,1) 35%, rgba(0,130,151,0.5) 100%);
-  --light-blue-gradient: linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
-  --light-blue-gradient-moz: -moz-linear-gradient(0deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
-  --light-blue-gradient-ms: -ms-linear-gradient(90deg, #d4eaed7a 0%, #d4eaed7a 10%, #d4eaed7a 90%, rgba(245,245,245,0) 100%);
-  --blue-link-gradient: linear-gradient(90deg, rgba(0,130,151,0.1) 0%, rgba(0,130,151,0.1) 5%, rgba(0,130,151,0.1) 95%, rgba(245,245,245, 0) 100%);
-  /* Typography */
+ /* Typography */
   --font-extra-small-size: clamp(14px, 0.82em, 40px);
   --font-small-size: clamp(17px, 0.82em, 40px); /* 14px */
   --font-base-size: clamp(17px, 1.4vw, 40px); /* 16px */
@@ -27,13 +20,16 @@
   --font-base-line-height: 1.5; /* 24px */
   --font-medium-size: clamp(17px, 2vw, 40px);
   --font-medium-line-height: calc(30 / 21); /* 30px */
+  --font-h4-size: clamp(17px, 1.7vw, 40px);
   --font-large-size: 2.4rem;
   --font-large-line-height: calc(57 / 49); /* 57px */
   @media (--media-max-medium) {
     --font-large-size: 2rem;
+    --space: 12px;
     --font-extra-small-size: clamp(15px, 0.82em, 40px);
     --font-medium-size: clamp(16px, 1.2rem, 40px);
     --font-small-size: clamp(16px, 0.82em, 40px); /* 14px */
     --font-base-size: clamp(16px, 1.2vw, 40px); /* 16px */
+    --font-h4-size: clamp(16px, 1.4vw, 40px); /* 16px */
   }
 }

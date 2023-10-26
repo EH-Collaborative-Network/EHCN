@@ -10,17 +10,13 @@
   top:0;
   overflow: hidden;
   z-index: -2;
-  @media (--media-min-medium) {
-    /* margin-left:16vw;
-    padding:50px;
-    padding-left:75px; */
-  }
+
 
 }
 
 .close{
     text-align: right;
-    padding: 15px;
+    padding: var(--space);
     cursor: pointer;
     position: absolute;
     right:0;
@@ -29,7 +25,7 @@
     max-width: 35px;
     @media (--media-min-small) {
       max-width: 50px;
-      padding: 25px 30px;
+      padding: var(--space);
     }
 }
 .close svg{
@@ -52,7 +48,7 @@
     }
 }
 .inner > div{
-  margin-bottom:3em;
+  margin-bottom:calc(var(--space) * 3);
 }
 
 

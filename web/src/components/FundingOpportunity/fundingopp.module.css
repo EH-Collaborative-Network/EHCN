@@ -5,7 +5,7 @@
   transition: 0.2s;
   position: relative;
   flex-basis: calc(100% - 50px);
-  padding: 20px;
+  padding: var(--space);
   margin: 5px 0;
   /* font-size: 0.82em; */
   @media (--media-min-medium) {
@@ -58,7 +58,7 @@
 }
 
 .institution > h5, .network > h5{
-  margin-bottom:1em;
+  margin-bottom:var(--space);
   display: inline-block;
   padding-left:5px;
 }

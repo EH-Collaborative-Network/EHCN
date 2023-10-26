@@ -33,6 +33,7 @@ const previousCP = () => {
   }
 }
   return (
+    <div>
       <div className={styles.root}>
         <h4>Featured Cross-Network Projects</h4>
         <div className={styles.inner}>
@@ -107,6 +108,7 @@ const previousCP = () => {
           <path d="M1 20L12 10.12L1 1" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
+      </div>
       </div>
   )
 };

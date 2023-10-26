@@ -126,7 +126,7 @@ const Carousel = ({ media, imageOnly }) => {
       return(
         <Link key={index} onMouseDown={handleDown} onMouseUp={handleUp} to={node[2]}>
             <Figure key={index} node={node[0]} />
-            <h4><TranslatedTitle translations={node[1]}/></h4>
+            <span><TranslatedTitle translations={node[1]}/></span>
         </Link>
       )
       }else{

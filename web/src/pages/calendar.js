@@ -209,6 +209,7 @@ const CalendarPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/></h1>
+          <div>
           <button className={styles.bubbleButton} disabled={monthView ? true : false} onClick={showMonth} aria-labelled-by="switch-to-month">
             <span id='switch-to-month' hidden>switch to month view</span>
             <svg  viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -239,6 +240,7 @@ const CalendarPage = props => {
             <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 32)" fill="#D4EAED"/>
             </svg>
           </button>
+          </div>
           <div>
             <div className={styles.selectWrapper}>
               <label className={styles.label} htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>

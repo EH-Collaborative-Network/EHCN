@@ -2,23 +2,20 @@
 @import '../../styles/custom-properties.css';
 
 .root {
-  background: var(--clear);
+  background: var(--color-white);
   min-height: calc(100vh - 50px);
   margin-left: 0;
   position:relative;
   width: calc(100% - 24px);
   margin: 0 auto;
-  padding-bottom:4em;
   @media (--media-min-medium) {
     margin-left:16vw;
-    padding:27px;
-    padding-left:57px;
-    /* padding-left:75px; */
     width: auto;
-    padding-bottom:3em;
+    padding-bottom:0;
   }
 
 }
+
 .root.fullBleed{
   padding:0;
 }

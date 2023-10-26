@@ -443,6 +443,7 @@ const ResearchThreads = props => {
             <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>
             <label htmlFor="faculty-led"><em><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></em></label>
           </div>
+
         {threads.map(function(thread,index){
 
           let media = []
@@ -496,8 +497,8 @@ const ResearchThreads = props => {
           
           return(
           
-     
-            <div key={index} className={styles.root + " show-thread " + (thread.node.studentLed ? "student-led" : "faculty-led")}>
+            <div key={index}>
+            <div className={styles.root + " show-thread " + (thread.node.studentLed ? "student-led" : "faculty-led")}>
                 <div className={styles.main}>
                   <Link to={"research-thread/"+thread.node.slug?.current}>
                   <h4><TranslatedTitle translations={thread.node.titles}/></h4>
@@ -515,6 +516,7 @@ const ResearchThreads = props => {
                   }
                  </div>
                 }
+            </div>
             </div>
      
           )

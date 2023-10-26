@@ -4,24 +4,21 @@
 .bawhWrapper{
    display: block;
    position: relative;
+   padding-bottom: calc(var(--space));
 }
-.h1{
-    margin:0;
-    @media (--media-min-medium) {
-        padding:27px;
-        padding-left:57px;
-        padding-bottom:0;
-      }
+.bawhWrapper .chapter:first-child{
+    margin-top: calc(var(--space) * 2);
 }
 .chapter{
     position: relative;   
-    margin-top:50px;
-    @media (--media-min-medium) {
-        padding:27px;
-        padding-left:57px;
+    margin-top:calc(var(--space) * 4);
+    /* @media (--media-min-medium) {
+        padding:var(--space);
+        padding-left:calc(var(--space)*2);
         padding-bottom:0;
-      }
+      } */
 }
+
 
 .twoUp{
     display: flex;
@@ -37,15 +34,16 @@
 }
 
 .twoUp .textBox{
-    padding-left: 25px;
+    padding-left: var(--space);
 }
 .twoUp.left .textBox{
     padding-left:0;
-    padding-right: 25px;
+    padding-right: var(--space);
 }
 .oneUp img{
     width: 100%;
 }
+
 .yomWrapper .textBox .button{
     color: var(--color-black);
   }
@@ -55,8 +53,9 @@
 .yomWrapper{
     background-color: var(--color-black);
     color: var(--color-white);
-    margin-top:50px;
-    padding: 50px 0;
+    margin-top:calc(var(--space) * 2);
+    padding-bottom: calc(var(--space) * 3);
+    padding-top: calc(var(--space) * 3);
 }
 .yomWrapper .textBox a{
     color: var(--color-blue);
@@ -70,7 +69,12 @@
 }
 .resourceWrapper{
     background-color: var(--color-light-blue);
-    padding-bottom: 50px;
+    padding-bottom: calc(var(--space)*2);
+    padding-top: calc(var(--space) * 3);
+    margin-top: calc(var(--space) * 3);
+}
+.resourceWrapper .chapter{
+    margin-top:0;
 }
 .resourceWrapper a{
     color:var(--color-dark-blue);
@@ -80,6 +84,9 @@
 .resourceWrapper ul{
     list-style: none;
     padding:0;
+}
+.resourceWrapper h4{
+    margin:0;
 }
 .resourceWrapper a:hover{
     color:var(--color-red);

@@ -2,9 +2,10 @@
 @import '../../styles/custom-properties.css';
 
 .root {
-  /* background: var(--color-white); */
-  margin-top:1.5em;
-  padding-bottom:25px;
+  background: var(--color-light-blue);
+  margin-top:calc(var(--space)*3);
+  padding-bottom:calc(var(--space)*2);
+  padding-top: calc(var(--space)*3);
 }
 .root .special li{
   display: block;

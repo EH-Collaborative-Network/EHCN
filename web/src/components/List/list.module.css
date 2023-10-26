@@ -4,20 +4,20 @@
     /* max-height:200px;
     overflow: scroll; */
 }
-.root a h4{
+.root a span{
     margin:0;
 }
 .root a{
     position: relative;
+    color: var(--color-dark-blue);
+    font-family: var(--font-family-bold);
     display: block;
-    vertical-align: top;
     padding: 5px 10px;
     z-index: 0;
     padding-right: 10px;
     padding-left: 5px;
     margin-top: 8px;
     margin-right: 12px;
-    color: var(--color-black);
     background: var(--color-light-blue);
     border-radius: 0px;
     text-decoration: none;

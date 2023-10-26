@@ -162,6 +162,7 @@
 .bubbleButton svg{
     height: 25px;
     width: 25px;
+    margin-right: 5px;
     @media (--media-min-medium) {
         height: 35px;
         width: 35px;

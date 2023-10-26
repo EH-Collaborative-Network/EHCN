@@ -53,7 +53,6 @@
     display: inline-block;
 }
 .resultsWrapper > div > a > sup{
-    background: var(--color-white);
     margin-left:5px;
     font-size: var(--font-small-size);
     text-transform: none;
@@ -61,7 +60,7 @@
     position: absolute;
     top:5px;
     right:15px;
-    color:var(--color-red);
+    color:var(--color-black);
     @media (--media-min-medium) {
         top:10px;
         right:20px; 

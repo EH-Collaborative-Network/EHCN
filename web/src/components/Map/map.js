@@ -87,14 +87,14 @@ const previousCP = () => {
           <div className={styles.projectInner}>
             <Link className="blue-button" to={"/project/to-be-named"}>View Project</Link>
             <div className={styles.imgWrapper}><img src={tbn}/></div>
-            <h4>To Be—Named is a multi-site, new media art exhibition & edited volume.</h4>
+            <span><strong>To Be—Named</strong> is a multi-site, new media art exhibition & edited volume.</span>
           </div>
           }
           {cp == 1 &&
           <div className={styles.projectInner}>
             <Link className="blue-button" to={"/project/generator"}>View Project</Link>
             <div className={styles.imgWrapper}><img src={generator}/></div>
-            <h4>The Generator Project: Imagining a More Just Future for Energy Creation</h4>
+            <span><strong>The Generator Project:</strong> Imagining a More Just Future for Energy Creation</span>
           </div>
           }
           

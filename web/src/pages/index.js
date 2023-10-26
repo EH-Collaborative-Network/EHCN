@@ -165,7 +165,7 @@ const IndexPage = props => {
                 Structured content powered by <a href="https://sanity.io">Sanity.io</a>
               </span>    
               </div>  
-
+ 
         </Container>
         <Modal start={true} raw={statement}></Modal>
       </Layout>

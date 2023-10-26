@@ -28,6 +28,13 @@ export default {
       of:[{type:'reference', title:'Language', to: [{type: 'language'}]}]
     },
     {
+      name: 'highlightTitle',
+      title: 'Title to Display over Highlight Carousel',
+      type: 'array',
+      description:"select add item to add a title in any language (including English)",
+      of: [{type: 'titleTranslation'}],
+    },
+    {
       name: 'projectHighlights',
       type: 'array',
       description: 'projects to highlight',

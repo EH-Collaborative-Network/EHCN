@@ -288,3 +288,7 @@ li.alice-carousel__stage-item {
 .hidden-sanity a{
 color:inherit;
 }
+
+.full-bleed{
+  padding: 0;
+}

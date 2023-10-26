@@ -5,6 +5,21 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
+import bawh1 from "../components/AQB/bawh1.png"
+import bawh2 from "../components/AQB/bawh2.png"
+import bawh3 from "../components/AQB/bawh3.png"
+import { Link } from "@reach/router";
+import yom from "../components/AQB/yom.png"
+import yom1 from "../components/AQB/yom1.png"
+import yom2 from "../components/AQB/yom2.png"
+import yom3 from "../components/AQB/yom3.png"
+import yom4 from "../components/AQB/yom4.png"
+import olive from "../components/AQB/olive.png"
+import hike from "../components/AQB/hike.png"
+import showcase from "../components/AQB/showcase.png"
+import land from "../components/AQB/land.png"
+import exhibition from "../components/AQB/exhibition.png"
+import pear from "../components/AQB/pear.png"
 import Container from "../components/Container/container";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
@@ -17,7 +32,7 @@ import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import Layout from "../containers/layout";
 import { FundingOpportunity } from "../components/FundingOpportunity/fundingOpportunity";
-import * as styles from "../components/FundingOpportunity/fundingopp.module.css";
+import * as styles from "../components/AQB/aqb.module.css";
 import sanityClient from "@sanity/client";
 const client = sanityClient({
   projectId: '46orb7yp',
@@ -141,130 +156,181 @@ const AQBVoicesPage = props => {
       </Layout>
     );
   }
-  const [networkWide, setNetworkWide] = useState(true);
-  const [institution, setInstitution] = useState('all');
-  const site = (data || {}).site;
-  const partners = (data || {}).partners.edges;
-  const globalLanguages = site.languages;
-  const fp = (data || {}).fp.edges[0]?.node?.bodies;
-  let previewQuery = '*[_id == "drafts.'+ (data || {}).fp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
-  const location = useLocation();
-  let preview = false;
-  const [previewData, setPreviewData] = useState(false)
-  if(location?.search){
-    preview = queryString.parse(location.search).preview;
-  }
-  if(preview && !previewData){
-    const fetchData = async () => {
-      setPreviewData(await client.fetch(previewQuery).then((data) => {
-        return(data[0]);
-      }))
-    }
-    fetchData()
-  }
-  const titles = (data || {}).fp.edges[0]?.node?.titles;
-  const oppNodes = (data || {}).opps?.edges;
-  const languagePhrases = (data || {}).languagePhrases?.edges;
-  let institutionOpps = [];
-  let networkOpps = [];
-  oppNodes.forEach(node => {
-    if(node.node.institution){
-      if(institution != "all"){
-        let includedInsts = []
-        node.node.applications?.forEach((app)=>{
-          includedInsts.push(app.partner?.name)
-        })
-        if(includedInsts?.includes(institution)){
-          institutionOpps.push(node.node);
-        }
-      }else{
-        institutionOpps.push(node.node);
-      }
 
-    }else{
-      networkOpps.push(node.node)
-    }
-  });
-  let partnerNames =  [];
-  partners.forEach(node =>{
-    partnerNames.push(<option value={node.node.name}>{node.node.name}</option>)
-  })
+  const site = (data || {}).site;
+  const globalLanguages = site.languages;
+ 
+  const languagePhrases = (data || {}).languagePhrases?.edges;
+
+
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
 
-  function switchInstitution(e){
-    let things = document.querySelectorAll(".institution-wrapper > *");
-    things.forEach((node) =>{
-      node.classList.add("fadey");
-      console.log(node.classList)
-      setTimeout(function(){
-       
-        node.classList.remove("fadey")
-        setInstitution(e.target.value)
-        console.log(node.classList)
-      },200)
-    })
-    
-  }
+  
   return (
       <>  
       <Layout extra="" navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={false} marqueeContent={null}>
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
-        <Container>
+        <Container extra={"full-bleed"}>
           <h1 hidden>Welcome to {site.title}</h1>
-          <h1>Voices from Al-Quds</h1>
-          <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
-          <div className="funding-opportunities">
-          <LangContext.Consumer>
-              { theme => {
-                  return(
-            <label htmlFor='institutionFilter'>{translate(languagePhrases,'selectInstitution',theme)}:</label>
-                  )}}
-            </LangContext.Consumer>
-            <LangContext.Consumer>
-              { theme => {
-                  return(
-                    <select className={styles.instFilter} onChange={switchInstitution} id='institutionFilter'>
-                    <option value='all'>
-                                      {translate(languagePhrases,'networkWide',theme)}
-
-                                  </option>
-                                  {partnerNames}
-
-                    </select>
-                  )}} 
-              </LangContext.Consumer>
-            
-            <p style={{'margin-bottom':'0'}}><TranslatedPhrase translations={languagePhrases} phrase={"availableOpps"}/>:</p>
-             {
-              networkOpps.length == 0 &&
-              <em>currently no available opportunities</em>
-             }
-            <div className={styles.network}>
-            {/* <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Institution-specific</em> Opportunities instead</div> */}
-            <div className={styles.institution + ' institution-wrapper'}>
-                  {networkOpps.map(function(node, index){
-                    return <FundingOpportunity languagePhrases={languagePhrases} globalLanguages={globalLanguages} key={index} node={node}></FundingOpportunity>;
-                  })}
+          <h1 className={styles.h1}>Voices from Al-Quds</h1>
+          <div className={styles.bawhWrapper}>
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={bawh1}/></div>
+                <div className={styles.textBox}>
+                    <h4>BAWH  بوح PODCAST</h4>
+                    <p>Bawh بوح is a student-produced podcast based at Al-Quds Bard College in Palestine that  taps into the transformative power of everyday people and their life stories. Every week, the podcast  tunes into Palestine in all its shapes, sizes, sounds and textures..</p>
+                    <a className="blue-button" href={"https://bawh.org/"}>Bawh بوح Website</a>
+                </div>
             </div>
+            <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
+                <div className={styles.textBox}>
+                    <h4>EP 12: The Dream of the Core</h4>
+                    <p>Maya Hrizat offers a love letter to Palestine that seeks to turn a dream into a proposed reality.
+<br></br>
+مايا حريزات تقدم رسالة حب لفلسطين تسعى لتحويل حلم إلى واقع مقترح.</p>
+                    <a className="blue-button" href={"https://bawh.org/episode/12"}>Listen on Bawh بوح</a>
+                </div>
+                <div><img src={bawh2}/></div>
             </div>
-              {institution != 'all' ?
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={bawh3}/></div>
+                <div className={styles.textBox}>
+                    <h4>EP 8: Just Beyond the Checkpoint</h4>
+                    <p>When Mariam Salah ended up on the wrong side of the checkpoint decades ago, she wasn't able to say a final goodbye to her parents or her daughter. Years later, she shares her story with her granddaughter, and together, they begin to heal the wounds of the past.
+A warning for our listeners that this episode discusses death and dying.<br></br>
+عندما انتهى الأمر بمريم صلاح على الجانب الخطأ من الحاجز منذ عقود ، لم تكن قادرة على توديع والديها أو ابنتها نهائيًا. بعد سنوات ، شاركت قصتها مع حفيدتها ، وبدأوا معًا في تضميد جراح الماضي.
+تحذير لمستمعيننا أن هذه الحلقة تناقش الموت والاحتضار.</p>
+                    <a className="blue-button" href={"https://bawh.org/episode/8"}>Listen on Bawh بوح</a>
+                </div>
+            </div>
+          </div>
+          <div className={styles.yomWrapper}>
+            <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
+                <div className={styles.textBox}>
+                <h1>Land Day / Yom al-Ard / يوم الأرض</h1>
+                <p>In commemoration of Yom al-Ard (Land Day), the Division of Humanities and Practicing Arts at Al-Quds Bard College, with support from the Experimental Humanities Collaborative Network (EHCN), hosted events across the month of March 2022 and March 2023 that honored the many shapes and forms in which Palestinians have sustained a powerful counternarrative over and against the Zionist narrative. The events explored how Palestinian experiences and histories have been communicated through creative practices as diverse as oral storytelling, fine arts, photography, digital media, social media, citizen journalism, filmmaking and literature. The symposium builds on the momentum of the Palestinians’ determination to narrate their own lives and experiences across platforms despite ongoing attempts at silencing.</p>
+                
+                </div>
+                <div><img src={yom}/></div> 
+            </div>
+         
+            <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={olive}/></div> 
+                <div className={styles.textBox}>
+                <h4>Olive Tree Planting and Biopolitics Lecture</h4>
+                <p>Participants learned about the many ways in which Israeli settler colonialism threatens local and longstanding Palestinian olive groves and farms, as well as how Palestinian farmers and their allies are advocating for their rights. Students planted olive trees in support of local farmers, and joined farmers for an outdoor lunch. Facilitated by the <a target="_blank" href="https://www.jai-pal.org/en/">Joint-Advocacy Initiative.</a></p>
+                
+                </div>
+                
+            </div>
 
-                    <div className={styles.institution + ' institution-wrapper'}>
-                            {/* <div onClick={handler} className={styles.toggle + " " + "button"}>Show <em>Network-wide</em> Opportunities instead</div> */}
-                            <div className={styles.wrapper}>
-                                {institutionOpps.map(function(node, index){
-                                  return <FundingOpportunity languagePhrases={languagePhrases} globalLanguages={globalLanguages} key={index} node={node} institute={institution}></FundingOpportunity>;
-                                })}
-                            </div>
-                          </div>
-              : ""}
+            <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
+                <div className={styles.textBox}>
+                <h4>Citizen Journalism & the Poetics of Future Palestine / اعلامو شاعرية الجيل الرابع</h4>
+                <p>Activist and Poet Mohammad El-Kurd discussed the role of poetics and citizen journalism in advocating for justice and truth-telling amidst a climate of mis- and dis-information about Palestine. His activism envisions the future at the same time that it intervenes in the present. Q&A moderated by AQB alum, Dalia Alayassa. The featured speaker joined from abroad via video call.</p>
+                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
+                </div>
+                <div><img src={yom1}/></div> 
+            </div>
+
+
+            <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={hike}/></div> 
+                <div className={styles.textBox}>
+                <h4>Eco-Hike in Battir/Makhrour and Biodiversity Lecture</h4>
+                <p>Participants learned about Palestine's biodiversity and the challenges of conducting environmental research as well as conducting conservation work in the context of the Israeli occupation. Students hiked in a UNESCO world heritage site, and learned about Palestinian farming practices past and present. Facilitated by the Palestine Institute for Biodiversity & Sustainability.</p>
+                </div>
+                
+            </div>
+
+
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={yom2}/></div> 
+                <div className={styles.textBox}>
+                <h4>Resistance and the Arts / الفن المقاوم</h4>
+                <p>World renowed artist, Sliman Mansour, discussed the role of the arts in shedding light on the Palestinian movement for liberation as well as inspiring people to keep hope alive. He discussed the narrative arc of his own work from the 1970s until today. Q&A moderated by Rawan Sharaf.</p>
+                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
+                </div>     
+            </div>
+
+
+            <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={exhibition}/></div> 
+                <div className={styles.textBox}>
+                <h4>Exhibition of Palestinian Resistance</h4>
+                <p>Student-curated exhibtion that celebrates Palestinian arts and culture. Hosted by Toqa Jawabreh, Urjwan Najjar, Samar Abedrabo, and Hana Ishkirat (AQB Art Committee), Recipients of Student Initiatives Grant.</p>
+                </div>
+                
+            </div>
+
+            <div className={styles.chapter + " " + styles.twoUp + " " + styles.left}>
+                <div className={styles.textBox}>
+                <h4>Palestinian Identity Through Dance</h4>
+                <p>Noora Baker, Head of Production at <a href="https://www.el-funoun.org/" target="_blank">El-Funoun Palestinian Popular Dance Troupe</a>, and member since 1987, discussed the history, vision and mission of El-Funoun, charting its role in reviving Palestinian dance and music folklore since its inception in 1979, as well as in creating new forms of movement and dance that are unique to Palestine.</p>
+                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
+                </div>     
+                <div><img src={yom3}/></div> 
+            </div>
+
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={yom4}/></div> 
+                <div className={styles.textBox}>
+                <h4>Rooted /متجذرون: Photography Panel and Exhibition</h4>
+                <p>Acclaimed photographers Tanya Habjouqa and Wahaj Bani Muflih discussed how they use photography to tell the stories of Palestine and its people. The artists’ work was on exhibition from Sunday, March 27th - Sunday, April 2nd, 2022 at <a target="_blank" href="https://bard.alquds.edu/">Al-Quds Bard College</a>. Tanya Habjouqa joined from abroad via video call.</p>
+                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
+                </div>     
+            </div>
+            <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={pear}/></div> 
+                <div className={styles.textBox}>
+                <h4>Sakiya Field trip & perky pear workshop</h4>
+                <p> Students and professor Mary Diek gathered and went to Sakiya mountain in Ramallah to learn about local agrarian traditions of self- sufficiency, food production, tour the exhibition hall, and explore the intersections of art, science and agriculture. Students also attended a workshop that studies plants specifically the perky pear and how we can use dead perky pear leaves to make shelters and study how we can use the perky pear insect to our benefit since it is commonly spread. While doing that Students enjoyed the company of the Sakiya team and the useful information given by them.</p>
+                </div>
+                
+            </div>
+
             
 
           </div>
+          <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={land}/></div> 
+                <div className={styles.textBox}>
+                <h4>Creative Expression Initiative with  Rami Almufreh & Sara Ayoub</h4>
+                <p> The Creative Expression Initiative focuses on catering to the mental health crisis in Palestine through the use of Art Therapy, Meditation, Self-expressive painting, Self-reflection, and the use of connecting nature to the many aspects of our daily lives. The Creative Expression Initiative celebrated Earth Day through a special 2-day event under the title of Resistance through Art Expression and Media Coverage, the first day took place in the AQU garden around the campus area where students gathered natural elements like rocks, sticks, and leaves and showed their appreciation to the Palestinian Earth by reflecting their identities through painting on the natural elements and creating unique are pieces that involve the Palestinian flag colors.</p>
+                </div>
+            </div>
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={showcase}/></div> 
+                <div className={styles.textBox}>
+                <h4>AQB Arts Showcase : Kamanjati</h4>
+                <p> Al-Quds Bard College Art Showcase at the Kamandjati venue in Ramallah was a vibrant and engaging event that celebrated the artistic talents of students from Al-Quds Bard College. The showcase provided a platform for students to exhibit their diverse range of artworks, including pictures, drawings, </p>
+                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
+                </div>     
+            </div>
+
+            <div className={styles.resourceWrapper}>
+                <div className={styles.chapter}>
+                <h4>Resources</h4>
+                <ul className={"two-column"}>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="">Lorem Ipsum</a></li>
+                </ul>
+                </div>
+            </div>
         </Container>
       </Layout>
       

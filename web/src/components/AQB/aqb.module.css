@@ -22,6 +22,10 @@
 
 .twoUp{
     display: flex;
+    flex-direction: column;
+    @media (--media-min-medium) {
+        flex-direction: row;
+    }
 }
 .twoUp > *{
     flex-basis: 50%;
@@ -30,7 +34,10 @@
   width: 100%;
 }
 .twoUp .textBox h4{
-    margin-top:0;
+    margin-top:var(--space);
+    @media (--media-min-medium) {
+        margin-top: 0;
+    }
 }
 
 .twoUp .textBox{
@@ -39,6 +46,12 @@
 .twoUp.left .textBox{
     padding-left:0;
     padding-right: var(--space);
+}
+.twoUp.left{
+    flex-direction: column-reverse;
+    @media (--media-min-medium) {
+        flex-direction: row;
+    }
 }
 .oneUp img{
     width: 100%;

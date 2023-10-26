@@ -275,6 +275,8 @@ li.alice-carousel__stage-item {
 }
 
 .container > *{
+  padding-right:calc(var(--space)*2);
+  padding-left:calc(var(--space)*2);
   @media (--media-min-medium) {
     padding-right:calc(var(--space)*2);
     padding-left:calc(var(--space)*4); 

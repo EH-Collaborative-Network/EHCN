@@ -6,7 +6,7 @@
   min-height: calc(100vh - 50px);
   margin-left: 0;
   position:relative;
-  width: calc(100% - 24px);
+  width: auto;
   margin: 0 auto;
   @media (--media-min-medium) {
     margin-left:16vw;

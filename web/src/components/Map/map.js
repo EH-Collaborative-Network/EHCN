@@ -1,4 +1,3 @@
-import sketch from "./sketchMap";
 import React from "react";
 import map from "./map.png"
 import tbn from "./tbn.png"
@@ -92,7 +91,7 @@ const previousCP = () => {
           }
           {cp == 1 &&
           <div className={styles.projectInner}>
-            <Link className="blue-button" to={"/project/generator"}>View Project</Link>
+            <Link className="blue-button" to={"/project/generator-project"}>View Project</Link>
             <div className={styles.imgWrapper}><img src={generator}/></div>
             <span><strong>The Generator Project:</strong> Imagining a More Just Future for Energy Creation</span>
           </div>

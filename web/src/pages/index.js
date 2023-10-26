@@ -245,7 +245,8 @@ const IndexPage = props => {
             <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
           }
           <div className="hp-highlights">
-            <h4><TranslatedTitle translations={site.highlightTitle}/>
+            <h4>
+              <span><TranslatedTitle translations={site.highlightTitle}/></span>
             <Link className={"blue-button"} to={"/aqb-voices"}>See More</Link>
             </h4>
             <Carousel media={media} imageOnly={true}/>

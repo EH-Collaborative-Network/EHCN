@@ -93,8 +93,12 @@
 .projectInner span{
   text-transform: none;
   margin: 0;
+  margin-bottom:var(--space);
   display: inline-block;
   padding:0 calc(var(--small-space) * 2);
+  @media (--media-min-medium) {
+    margin:0;
+  }
 }
 .projectInner .imgWrapper img{
   position: relative;
@@ -103,7 +107,7 @@
   width: 100%;
 }
 .projectInner .imgWrapper{
-  max-height: calc(50vw - 1em);
+  max-height: calc(70vw - 1em);
   width: 100%;
   margin-bottom:10px;
   position: relative;
@@ -170,7 +174,7 @@
 
 .arrowButtonLeft, .arrowButtonRight{
   position: absolute;
-  top: 30%;
+  top: 70%;
   padding:5px;
   padding-top:12px;
   cursor: pointer;

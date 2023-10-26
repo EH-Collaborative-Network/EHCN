@@ -303,11 +303,23 @@ li.alice-carousel__stage-item {
   padding-top: calc(var(--small-space) *3);
   background-color: var(--color-light-blue);
 }
+.hp-highlights h4 span{
+  display: block;
+  @media (--media-min-medium) {
+    display: inline;
+  }
+}
 .hp-highlights > h4 .blue-button{
-  position: absolute;
-  right:0;
+  position: relative;
+  display: inline-block;
+  margin-bottom:var(--space);
   font-size: var(--font-base-size);
-  top: 0;
+  @media (--media-min-medium) {
+    position: absolute;
+    right:0;
+    top:0;
+    margin-bottom:0;
+  }
 }
 .hidden-sanity {
   position: absolute;

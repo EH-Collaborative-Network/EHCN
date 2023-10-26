@@ -293,6 +293,11 @@ li.alice-carousel__stage-item {
   margin-top:calc(var(--space) * 2);
   margin-bottom:calc(var(--space) * 2);
 }
+.hp-highlights > h4{
+  margin:0;
+  padding: 12px;
+  background-color: var(--color-light-blue);
+}
 .hidden-sanity {
   position: absolute;
   bottom:-2em;

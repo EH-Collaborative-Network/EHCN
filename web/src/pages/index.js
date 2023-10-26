@@ -7,6 +7,7 @@ import {
 } from "../lib/helpers";
 import Carousel from "../components/Carousel/carousel";
 import Container from "../components/Container/container";
+import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
@@ -33,6 +34,14 @@ export const query = graphql`
       description
       keywords
       showMarquee
+      highlightTitle{
+        text
+        language{
+          id
+          name
+          code
+        }
+      }
       marqueeText{
         _rawText(resolveReferences: { maxDepth: 20 })
         language{
@@ -236,6 +245,7 @@ const IndexPage = props => {
             <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
           }
           <div className="hp-highlights">
+            <h4><TranslatedTitle translations={site.highlightTitle}/></h4>
             <Carousel media={media} imageOnly={true}/>
           </div>
               <br></br><div><span className="hidden-sanity">

@@ -289,6 +289,10 @@ li.alice-carousel__stage-item {
 .hp-text p{
   margin-top:0;
 }
+.hp-highlights{
+  margin-top:calc(var(--space) * 2);
+  margin-bottom:calc(var(--space) * 2);
+}
 .hidden-sanity {
   position: absolute;
   bottom:-2em;

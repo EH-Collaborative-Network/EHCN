@@ -5,6 +5,7 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
+import Carousel from "../components/Carousel/carousel";
 import Container from "../components/Container/container";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
@@ -43,6 +44,62 @@ export const query = graphql`
       languages {
         name
         code
+      }
+      eventHighlights {
+        name
+        slug{
+          current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          asset {
+            _id
+          }
+          altText
+        }
+      }
+      projectHighlights {
+        name
+        slug{
+          current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          asset {
+            _id
+          }
+          altText
+        }
       }
     }
     partners: allSanityPartner{
@@ -117,7 +174,7 @@ const IndexPage = props => {
       </Layout>
     );
   }
-
+  
   const site = (data || {}).site;
   const globalLanguages = site.languages;
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
@@ -140,6 +197,23 @@ const IndexPage = props => {
   //   fetchData()
   // }
 
+  let media = []
+
+  site.projectHighlights?.map(function(project,index){
+    let x = []
+    x.push(project.mainImage)
+    x.push(project.titles)
+    x.push("/project/"+project.slug.current)
+    media.push(x)
+  })
+  site.eventtHighlights?.map(function(event,index){
+    let x = []
+    x.push(event.mainImage)
+    x.push(event.titles)
+    x.push("/event/"+event.slug.current)
+    media.push(x)
+  })
+
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -161,12 +235,17 @@ const IndexPage = props => {
             typeof window != `undefined` &&
             <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
           }
+          <div className="hp-highlights">
+            <Carousel media={media} imageOnly={true}/>
+          </div>
               <br></br><div><span className="hidden-sanity">
                 Structured content powered by <a href="https://sanity.io">Sanity.io</a>
               </span>    
               </div>  
  
         </Container>
+
+
         <Modal start={true} raw={statement}></Modal>
       </Layout>
       

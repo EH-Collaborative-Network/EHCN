@@ -28,6 +28,20 @@ export default {
       of:[{type:'reference', title:'Language', to: [{type: 'language'}]}]
     },
     {
+      name: 'projectHighlights',
+      type: 'array',
+      description: 'projects to highlight',
+      title: 'Project Highlights',
+      of:[{type:'reference', title:'Project', to: [{type: 'project'}]}]
+    },
+    {
+      name: 'eventHighlights',
+      type: 'array',
+      description: 'events to highlight',
+      title: 'Event Highlights',
+      of:[{type:'reference', title:'Event', to: [{type: 'event'}]}]
+    },
+    {
       name:'showMarquee',
       type: 'boolean',
       title: 'Do you want to show the marquee?'

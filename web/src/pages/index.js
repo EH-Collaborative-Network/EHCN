@@ -215,7 +215,7 @@ const IndexPage = props => {
     x.push("/project/"+project.slug.current)
     media.push(x)
   })
-  site.eventtHighlights?.map(function(event,index){
+  site.eventHighlights?.map(function(event,index){
     let x = []
     x.push(event.mainImage)
     x.push(event.titles)
@@ -245,7 +245,9 @@ const IndexPage = props => {
             <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
           }
           <div className="hp-highlights">
-            <h4><TranslatedTitle translations={site.highlightTitle}/></h4>
+            <h4><TranslatedTitle translations={site.highlightTitle}/>
+            <Link className={"blue-button"} to={"/aqb-voices"}>See More</Link>
+            </h4>
             <Carousel media={media} imageOnly={true}/>
           </div>
               <br></br><div><span className="hidden-sanity">
@@ -256,7 +258,7 @@ const IndexPage = props => {
         </Container>
 
 
-        <Modal start={true} raw={statement}></Modal>
+        {/* <Modal start={true} raw={statement}></Modal> */}
       </Layout>
       
     </>

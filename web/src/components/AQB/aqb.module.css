@@ -85,6 +85,9 @@
     list-style: none;
     padding:0;
 }
+.resourceWrapper ul li{
+    margin-bottom: calc(var(--small-space) * 3);
+}
 .resourceWrapper h4{
     margin:0;
 }

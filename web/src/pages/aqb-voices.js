@@ -18,7 +18,7 @@ import olive from "../components/AQB/olive.png"
 import hike from "../components/AQB/hike.png"
 import showcase from "../components/AQB/showcase.png"
 import land from "../components/AQB/land.png"
-import exhibition from "../components/AQB/exhibition.png"
+import film from "../components/AQB/film.jpeg"
 import pear from "../components/AQB/pear.png"
 import Container from "../components/Container/container";
 import BlockContent from "../components/TranslationHelpers/block-content";
@@ -232,7 +232,6 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <div className={styles.textBox}>
                 <h4>Citizen Journalism & the Poetics of Future Palestine / اعلامو شاعرية الجيل الرابع</h4>
                 <p>Activist and Poet Mohammad El-Kurd discussed the role of poetics and citizen journalism in advocating for justice and truth-telling amidst a climate of mis- and dis-information about Palestine. His activism envisions the future at the same time that it intervenes in the present. Q&A moderated by AQB alum, Dalia Alayassa. The featured speaker joined from abroad via video call.</p>
-                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
                 </div>
                 <div><img src={yom1}/></div> 
             </div>
@@ -253,16 +252,23 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <div className={styles.textBox}>
                 <h4>Resistance and the Arts / الفن المقاوم</h4>
                 <p>World renowed artist, Sliman Mansour, discussed the role of the arts in shedding light on the Palestinian movement for liberation as well as inspiring people to keep hope alive. He discussed the narrative arc of his own work from the 1970s until today. Q&A moderated by Rawan Sharaf.</p>
-                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
                 </div>     
             </div>
 
 
             <div className={styles.chapter + " " + styles.oneUp}>
-                <div><img src={exhibition}/></div> 
+                <div><img src={film}/></div> 
                 <div className={styles.textBox}>
-                <h4>Exhibition of Palestinian Resistance</h4>
-                <p>Student-curated exhibtion that celebrates Palestinian arts and culture. Hosted by Toqa Jawabreh, Urjwan Najjar, Samar Abedrabo, and Hana Ishkirat (AQB Art Committee), Recipients of Student Initiatives Grant.</p>
+                <h4>Inaugural Shireen Abu Akleh Senior Project Grant</h4>
+                <p>In memory of Shireen Abu Akleh’s life and work, the Humanities and Practicing Arts Division at Al-Quds Bard College inaugurated the first annual “Shireen Abu Akleh Senior Project Grant.” The grant provides awardees with modest financial support to complete SP projects that are in the spirit of Ms. Abu Akleh’s commitment to “boldly tell the story of the diversity and magnitude of the human experience.”
+                  <ul>
+                    <li>“Colonized Nightmares” by Layan Dajani (Hybrid Live Action/Animated Film)</li>
+                    <li>“Breaking Barriers: A Palestinian Hip-Hop Story” by Miral Abualia (Non-Fiction Film)</li>
+                    <li>“Cultural Norms, Legal Prosecution, and Sexual Assault in Palestine” by Omayma Sbeih (Narrative Podcast Series)</li>
+                    <li>“Tip of My Tongue” by Zaina al-Khatib (Poetry Collection & Film Essay)</li>
+
+                  </ul>
+                </p>
                 </div>
                 
             </div>
@@ -271,7 +277,6 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <div className={styles.textBox}>
                 <h4>Palestinian Identity Through Dance</h4>
                 <p>Noora Baker, Head of Production at <a href="https://www.el-funoun.org/" target="_blank">El-Funoun Palestinian Popular Dance Troupe</a>, and member since 1987, discussed the history, vision and mission of El-Funoun, charting its role in reviving Palestinian dance and music folklore since its inception in 1979, as well as in creating new forms of movement and dance that are unique to Palestine.</p>
-                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
                 </div>     
                 <div><img src={yom3}/></div> 
             </div>
@@ -281,7 +286,6 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <div className={styles.textBox}>
                 <h4>Rooted /متجذرون: Photography Panel and Exhibition</h4>
                 <p>Acclaimed photographers Tanya Habjouqa and Wahaj Bani Muflih discussed how they use photography to tell the stories of Palestine and its people. The artists’ work was on exhibition from Sunday, March 27th - Sunday, April 2nd, 2022 at <a target="_blank" href="https://bard.alquds.edu/">Al-Quds Bard College</a>. Tanya Habjouqa joined from abroad via video call.</p>
-                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
                 </div>     
             </div>
             <div className={styles.chapter + " " + styles.oneUp}>
@@ -308,7 +312,7 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <div className={styles.textBox}>
                 <h4>AQB Arts Showcase : Kamanjati</h4>
                 <p> Al-Quds Bard College Art Showcase at the Kamandjati venue in Ramallah was a vibrant and engaging event that celebrated the artistic talents of students from Al-Quds Bard College. The showcase provided a platform for students to exhibit their diverse range of artworks, including pictures, drawings, </p>
-                <Link className={"blue-button " + styles.button} to={'/'}>More Info</Link>
+                <a className={"blue-button " + styles.button} target="_blank" href={'https://aqbarts.ps/?id=3'}>See More</a>
                 </div>     
             </div>
 
@@ -316,18 +320,12 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <div className={styles.chapter}>
                 <h4>Resources</h4>
                 <ul className={"two-column"}>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
-                    <li><a href="">Lorem Ipsum</a></li>
+                    <li><a href="https://www.palestinefilminstitute.org/en/unprovoked-narratives"> Palestine Film Institute's <em>Unprovoked Narratives</em>: “A series of films celebrating the beauty of Gaza, its people, its struggle and its survival. The program aims to resist the demonisation of this beautiful place.” </a></li>
+                    <li><a href="https://www.youtube.com/watch?v=HnZSaKYmP2s">Film: “Gaza Fights for Freedom (2019)”</a></li>
+                    <li><a href="https://buildpalestine.com/2021/05/15/trusted-organizations-to-donate-to-palestine/">Trusted Organizations to Donate to Palestine</a></li>
+                    <li><a href="https://fitzcarraldoeditions.com/books/minor-detail">Novel: Minor Detail by Adania Shibli</a></li>
+                    <li><a href="https://www.tandfonline.com/journals/rpal20/collections/GazaTwoDecades">Journal of Palestinian Studies, <em>Gaza: Nearly Two Decades of Israeli Incursions, Siege, and Blockade</em></a></li>
+                    <li><a href="https://twitter.com/m7mdkurd">Mohammed El-Kurd: Writer from occupied Jerusalem. Palestine Correspondent at The Nation. Culture Editor at Mondoweiss. </a></li>
                 </ul>
                 </div>
             </div>

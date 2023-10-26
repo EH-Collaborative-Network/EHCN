@@ -90,10 +90,11 @@
   right:0;
   top:0;
 }
-.projectInner h4{
+.projectInner span{
   text-transform: none;
   margin: 0;
-  padding:0 15px;
+  display: inline-block;
+  padding:0 calc(var(--small-space) * 2);
 }
 .projectInner .imgWrapper img{
   position: relative;

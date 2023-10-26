@@ -2,8 +2,9 @@
 @import '../../styles/custom-properties.css';
 
 .root {
-  background: var(--clear);
+  background: var(--color-light-blue);
   position: relative;
+  padding:calc(var(--small-space) * 2);
 }
 
 

@@ -295,8 +295,17 @@ li.alice-carousel__stage-item {
 }
 .hp-highlights > h4{
   margin:0;
-  padding: 12px;
+  position:relative;
+  z-index: 1;
+  padding:0 calc(var(--small-space)*3);
+  padding-top: calc(var(--small-space) *3);
   background-color: var(--color-light-blue);
+}
+.hp-highlights > h4 .blue-button{
+  position: absolute;
+  right:0;
+  font-size: var(--font-base-size);
+  top: 0;
 }
 .hidden-sanity {
   position: absolute;

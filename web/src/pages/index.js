@@ -111,13 +111,68 @@ export const query = graphql`
         }
       }
     }
-    partners: allSanityPartner{
-      edges{
-        node{
+    events: allSanityEvent(
+      limit: 40
+      filter: { slug: { current: { ne: null } }}
+    ) {
+      edges {
+        node {
           id
           name
           slug{
             current
+          }
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+        }
+      }
+    }
+    projects: allSanityProject(
+      limit: 40
+      filter: { slug: { current: { ne: null } }}
+    ) {
+      edges {
+        node {
+          id
+          name
+          slug{
+            current
+          }
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+        }
+      }
+    }
+    resources: allSanityLearningResource(
+      limit: 40
+      filter: { slug: { current: { ne: null } }}
+    ) {
+      edges {
+        node {
+          id
+          name
+          slug{
+            current
+          }
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
           }
         }
       }
@@ -188,23 +243,47 @@ const IndexPage = props => {
   const globalLanguages = site.languages;
   const hp = (data || {}).hp.edges[0]?.node?.bodies;
   const languagePhrases = (data || {}).languagePhrases?.edges;
-  const partners = (data || {}).partners.edges;
-  // let previewQuery = '*[_id == "drafts.'+ (data || {}).hp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
-  // const location = useLocation();
-  let preview = null;
-  // let preview = false;
-  // const [previewData, setPreviewData] = useState(false)
-  // if(location?.search){
-  //   preview = queryString.parse(location.search).preview;
-  // }
-  // if(preview && !previewData){
-  //   const fetchData = async () => {
-  //     setPreviewData(await client.fetch(previewQuery).then((data) => {
-  //       return(data[0]);
-  //     }))
-  //   }
-  //   fetchData()
-  // }
+  const events = (data || {}).events?.edges
+  const resources = (data || {}).resources?.edges
+  const projects = (data || {}).projects?.edges
+  // declare the function 
+  const shuffle = (array) => { 
+    for (let i = array.length - 1; i > 0; i--) { 
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]]; 
+    } 
+    return array; 
+  }; 
+
+  const sliceIntoChunks = (arr, chunkSize) => {
+      const res = [];
+      for (let i = 0; i < arr.length; i += chunkSize) {
+          const chunk = arr.slice(i, i + chunkSize);
+          res.push(chunk);
+      }
+      return res;
+  }
+  let scrollTitles = [];
+
+  events.map(function(event,index){
+    scrollTitles.push(
+      <div className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/events/'+ event.node.slug.current}><TranslatedTitle translations={event.node.titles}/></Link></div>
+    )
+  })
+  projects.map(function(project,index){
+    scrollTitles.push(
+      <div className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/projects/'+ project.node.slug.current}><TranslatedTitle translations={project.node.titles}/></Link></div>
+    )
+  })
+  resources.map(function(resource,index){
+    scrollTitles.push(
+      <div className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/learningResource/'+ resource.node.slug.current}><TranslatedTitle translations={resource.node.titles}/></Link></div>
+    )
+  })
+  
+  scrollTitles = shuffle(scrollTitles)
+  scrollTitles = sliceIntoChunks(scrollTitles, Math.floor(scrollTitles.length/3))
+
 
   let media = []
 
@@ -239,10 +318,10 @@ const IndexPage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1 style={{"textTransform":"capitalize"}}><TranslatedPhrase translations={languagePhrases} phrase={"technology"}/>, <TranslatedPhrase translations={languagePhrases} phrase={"justice"}/>, & <TranslatedPhrase translations={languagePhrases} phrase={"creativepractice"}/></h1>
-          <div className="hp-text"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : hp}/></div>
+          <div className="hp-text"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/></div>
           {
             typeof window != `undefined` &&
-            <Map translations={languagePhrases} phrase={"ourPartners"} partners={partners}/>
+            <Map/>
           }
           <div className="hp-highlights">
             <h4>
@@ -251,11 +330,24 @@ const IndexPage = props => {
             </h4>
             <Carousel media={media} imageOnly={true}/>
           </div>
-              <br></br><div><span className="hidden-sanity">
-                Structured content powered by <a href="https://sanity.io">Sanity.io</a>
+
+          <div className="hp-scrollText">
+            <div className="inner">
+            {scrollTitles[0]}
+            </div>
+            <div className="inner">
+            {scrollTitles[1]}
+            </div>
+            <div className="inner">
+            {scrollTitles[2]}
+            </div>
+          </div>
+
+              <div className="hidden-sanity">
+               <span> Structured content powered by <a href="https://sanity.io">Sanity.io</a>
               </span>    
               </div>  
- 
+          
         </Container>
 
 

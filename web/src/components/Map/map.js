@@ -6,7 +6,7 @@ import { useState } from 'react';
 import * as styles from "./map.module.css";
 import { Link } from "@reach/router";
 import TranslatedPhrase from "../TranslationHelpers/translatedPhrase";
-const Map = ({partners,phrase, translations}) => {
+const Map = ({}) => {
   const [cp, setCP] = useState(0);
 const hoverLabel = (label) =>{
   let el = document.querySelector("."+label);

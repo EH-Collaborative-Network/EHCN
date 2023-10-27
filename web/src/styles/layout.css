@@ -83,6 +83,7 @@ h4{
 .fadey{
   opacity: 0;
 }
+
 .blue-button, .hp-text p a{
   position: relative;
   display: inline-block;
@@ -292,8 +293,8 @@ li.alice-carousel__stage-item {
   margin-top:0;
 }
 .hp-highlights{
-  margin-top:calc(var(--space) * 2);
-  margin-bottom:calc(var(--space) * 2);
+  margin-top:calc(var(--space) * 3);
+  margin-bottom:calc(var(--space) * 3);
 }
 .hp-highlights > h4{
   margin:0;
@@ -321,15 +322,82 @@ li.alice-carousel__stage-item {
     margin-bottom:0;
   }
 }
-.hidden-sanity {
-  position: absolute;
-  bottom:-2em;
+.container .hidden-sanity{
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  margin:0;
+  padding:0;
+  padding-bottom:0;
+  /* padding-top: calc(var(--space)); */
+  background-color: var(--color-light-blue);
+}
+.hidden-sanity span {
+  position: fixed;
+  bottom:0em;
+  opacity: 1;
+  z-index: -1;
+  pointer-events: none;
   font-size: 0.8em;
+  right:5px;
 }
 .hidden-sanity a{
 color:inherit;
 }
 
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+.hp-scrollText{
+  margin:0;
+  padding:0;
+  background-color: var(--color-light-blue);
+  width: 100%;
+  overflow:scroll;
+
+}
+
+.hp-scrollText .inner{
+  width: auto;
+  display: flex;
+  animation: scrollText 100s linear 0s infinite alternate forwards;
+  flex-wrap: nowrap;
+  gap: calc(var(--small-space) * 6);
+  align-items: center;
+}
+.hp-scrollText .inner:nth-child(2){
+  animation-direction: alternate-reverse;
+}
+.hp-scrollText > div{
+  display: inline-block;
+  margin: calc(var(--small-space)* 4);
+  white-space: nowrap;
+}
+.hp-scrollText a{
+  text-decoration: none;
+  color: var(--color-dark-blue);
+  font-family: var(--font-family-bold);
+}
+.hp-scrollText div.large-title a{
+  font-size: var(--font-h4-size);
+}
+.hp-scrollText a:hover{
+  color: var(--color-red);
+}
+.hp-text{
+  margin-top: var(--space);
+}
+.hp-text p a{
+  margin-top: var(--space)
+}
 /* .full-bleed{
   padding: 0;
 } */

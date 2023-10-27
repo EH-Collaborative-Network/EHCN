@@ -240,10 +240,26 @@ A warning for our listeners that this episode discusses death and dying.<br></br
             <div className={styles.chapter + " " + styles.oneUp}>
                 <div><img src={hike}/></div> 
                 <div className={styles.textBox}>
-                <h4>Eco-Hike in Battir/Makhrour and Biodiversity Lecture</h4>
-                <p>Participants learned about Palestine's biodiversity and the challenges of conducting environmental research as well as conducting conservation work in the context of the Israeli occupation. Students hiked in a UNESCO world heritage site, and learned about Palestinian farming practices past and present. Facilitated by the Palestine Institute for Biodiversity & Sustainability.</p>
+                <h4>Eco Hikes:</h4>
+                <p>As of 2021, 61% of Palestinian land in the West Bank is “off limits” for Palestinian use. This does not include the 150 illegal Israeli settlements and 128 illegal Israeli outposts that have been established in the West Bank since 1967. Furthermore, there are 593 Israeli roadblocks and checkpoints obstructing Palestinian movement in the West Bank, most of them aimed to protect illegal Israeli settlers. These realities on the ground make it very difficult for Palestinians to enjoy and learn about their local ecology. Many young Palestinians would never venture out on a hike alone, since they could be attacked at any time by Israeli settlers or detained by Israeli Forces. Every year, AQB “takes back” these ecological spaces by offering guided group hikes that allow students to learn about the flora and fauna of their homeland safely. (Sources: UN OCHA Area C, 2021; “Report on UNCTAD Assistance to the Palestinian People: Developments in the Economy of the Occupied Palestinian Territory” Aug 2020; UN OCHA “Occupied Palestinian Territory (oPt) Humanitarian Needs Overview 2021” Dec 2020).</p>
                 </div>
                 
+            </div>
+
+            <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={hike}/></div> 
+                <div className={styles.textBox}>
+                <h4>Hike in Battir & Visit to Palestine Heirloom Seed Library and Dar Yusif Nasri Jacir for Art and Research</h4>
+                <p>March 16th, 2023<br></br>Students learned about Palestine’s biodiversity and the struggle to protect and cultivate Palestine’s heirloom seeds and olive groves. Participants hiked (6 km) in a UNESCO world heritage site, and learned about Palestinian farming practices, past and present. Facilitated by the Palestine Heirloom Seed Library and Dar Yusuf Nasri Jacir for Art and Research.</p>
+                </div>
+                
+            </div>
+            <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={hike}/></div> 
+                <div className={styles.textBox}>
+                <h4>Hike from Jericho to Sea Level</h4>
+                <p>March 21st, 2023<br></br>Students embarked on a beautiful 16 kilometer hike through Wadi Qelt, where they had a chance to learn about the ruins of King Herod’s winter palace, the rocky canyon Deir al-Qelt (St. George’s Monastery), the Roman aqueduct, the Jordan Valley, and the historic road from Jericho to Jerusalem and back to sea level. Students not only get a chance to bask in Palestine’s nature, but also learned about how the Palestine Heritage Trail is supporting Palestinian heritage, arts and culture along the trail. Students also had a chance to view Jericho’s agricultural diversity from above on the cable car. Hosted by Palestine Heritage Trail.</p>
+                </div>
             </div>
 
 
@@ -263,7 +279,7 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <p>In memory of Shireen Abu Akleh’s life and work, the Humanities and Practicing Arts Division at Al-Quds Bard College inaugurated the first annual “Shireen Abu Akleh Senior Project Grant.” The grant provides awardees with modest financial support to complete SP projects that are in the spirit of Ms. Abu Akleh’s commitment to “boldly tell the story of the diversity and magnitude of the human experience.”
                   <ul>
                     <li>“Colonized Nightmares” by Layan Dajani (Hybrid Live Action/Animated Film)</li>
-                    <li>“Breaking Barriers: A Palestinian Hip-Hop Story” by Miral Abualia (Non-Fiction Film)</li>
+                    <li>“Rhythm of Resilience” by Miral Abualia (Non-fiction Film)</li>
                     <li>“Cultural Norms, Legal Prosecution, and Sexual Assault in Palestine” by Omayma Sbeih (Narrative Podcast Series)</li>
                     <li>“Tip of My Tongue” by Zaina al-Khatib (Poetry Collection & Film Essay)</li>
 
@@ -291,8 +307,8 @@ A warning for our listeners that this episode discusses death and dying.<br></br
             <div className={styles.chapter + " " + styles.oneUp}>
                 <div><img src={pear}/></div> 
                 <div className={styles.textBox}>
-                <h4>Sakiya Field trip & perky pear workshop</h4>
-                <p> Students and professor Mary Diek gathered and went to Sakiya mountain in Ramallah to learn about local agrarian traditions of self- sufficiency, food production, tour the exhibition hall, and explore the intersections of art, science and agriculture. Students also attended a workshop that studies plants specifically the perky pear and how we can use dead perky pear leaves to make shelters and study how we can use the perky pear insect to our benefit since it is commonly spread. While doing that Students enjoyed the company of the Sakiya team and the useful information given by them.</p>
+                <h4>Sakiya Field Trip & Prickly Pear Workshop</h4>
+                <p> Students visited the Sakiya nature reserve and academy with agronomist and community educator, Mary Diek. During their field visit, students learned how to make shelters out of prickly pear leaves, and in general, learned about local agrarian traditions of self-sufficiency and food production, toured the exhibition hall, and explored the intersections of art, science and permaculture.</p>
                 </div>
                 
             </div>
@@ -311,7 +327,7 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 <div><img src={showcase}/></div> 
                 <div className={styles.textBox}>
                 <h4>AQB Arts Showcase : Kamanjati</h4>
-                <p> Al-Quds Bard College Art Showcase at the Kamandjati venue in Ramallah was a vibrant and engaging event that celebrated the artistic talents of students from Al-Quds Bard College. The showcase provided a platform for students to exhibit their diverse range of artworks, including pictures, drawings, </p>
+                <p> In May 2023, we held our 4th annual AQB Arts Showcase in Ramallah's Old City for an action-packed program of films, creative writing, multimedia, music and fine arts produced by our students, staff and faculty at AQB. We had over 80 people attend the arts crawl across three venues, and featured over 30 artists from AQB. This event has become a cherished AQB tradition that allows our community’s creativity to shine. </p>
                 <a className={"blue-button " + styles.button} target="_blank" href={'https://aqbarts.ps/?id=3'}>See More</a>
                 </div>     
             </div>

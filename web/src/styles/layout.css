@@ -78,7 +78,8 @@ h4{
 
 
 .button:hover{
-  color:var(--color-white);
+  /* color:var(--color-white); */
+
 }
 .fadey{
   opacity: 0;
@@ -100,10 +101,12 @@ h4{
   border-radius: 0px;
   text-decoration: none;
   color:var(--color-black);
+  transition: clip-path 0.2s;
 }
 
 .blue-button:hover, .hp-text p a:hover{
-  color: var(--color-white);
+  color: var(--color-black);
+  clip-path: polygon(0% 0px, 100% 7%, 100% calc(100% - 0px), 2px 99%);
 }
 
 #query-on-demand-indicator-element{

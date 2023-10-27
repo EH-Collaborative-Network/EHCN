@@ -73,9 +73,9 @@
 .yomWrapper .textBox a{
     color: var(--color-blue);
 }
-.yomWrapper .textBox .button:hover{
+/* .yomWrapper .textBox .button:hover{
     color: var(--color-white);
-  }
+  } */
 .yomWrapper .chapter:nth-child(1){
     padding-top:0;
     margin-top:0;

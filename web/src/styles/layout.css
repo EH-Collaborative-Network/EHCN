@@ -71,16 +71,14 @@ h4{
     background-color: var(--color-blue);
     clip-path: polygon(0% 3px, 100% 0%, 100% calc(100% - 1px), 2px 100%);
     margin-right:12px;
+    transition: clip-path 0.2s;
     color: var(--color-black);
     border-radius: 0px;
     text-decoration: none;
 }
 
 
-.button:hover{
-  /* color:var(--color-white); */
 
-}
 .fadey{
   opacity: 0;
 }
@@ -104,7 +102,7 @@ h4{
   transition: clip-path 0.2s;
 }
 
-.blue-button:hover, .hp-text p a:hover{
+.blue-button:hover, .hp-text p a:hover, .button:hover{
   color: var(--color-black);
   clip-path: polygon(0% 0px, 100% 7%, 100% calc(100% - 0px), 2px 99%);
 }

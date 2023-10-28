@@ -308,7 +308,7 @@ const IndexPage = props => {
     );
   }
   const statement = (<div><p>
-    <Link to={"/aqb-voices"}>Al-Quds Bard College (AQB)</Link> in Palestine is a vital partner in The Experimental Humanities Collaborative Network. We reaffirm our admiration and support for the work our AQB colleagues and students do everyday in their efforts for freedom. Much of this work contends with the longstanding and ongoing dehumanization, misrepresentation and subjugation of the Palestinian people by Israel and its allies. Linked below are some of their recent EHCN projects and activities. Please listen to their voices and learn from their stories.
+    <Link to={"/aqb-voices"}>Al-Quds Bard College (AQB)</Link> in Palestine is a vital partner in The Experimental Humanities Collaborative Network. We reaffirm our admiration and support for the work our AQB colleagues and students do everyday in their aspiration for freedom. Much of this work contends with the longstanding and ongoing dehumanization, misrepresentation and subjugation of the Palestinian people by Israel and its allies. Linked below are some of their recent EHCN projects and activities. Please listen to their voices and learn from their stories.
     </p><Link className="blue-button" to={"/aqb-voices"}>Voices of Al-Quds Bard College</Link>
     </div>)
   return (

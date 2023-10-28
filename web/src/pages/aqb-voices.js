@@ -5,6 +5,7 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
+import mansour from "../components/AQB/mansour.mp3"
 import bawh1 from "../components/AQB/bawh1.png"
 import bawh2 from "../components/AQB/bawh2.png"
 import bawh3 from "../components/AQB/bawh3.png"
@@ -16,10 +17,12 @@ import yom3 from "../components/AQB/yom3.png"
 import yom4 from "../components/AQB/yom4.png"
 import olive from "../components/AQB/olive.png"
 import hike from "../components/AQB/hike.png"
-import showcase from "../components/AQB/showcase.png"
+import showcase from "../components/AQB/showcase.jpg"
 import land from "../components/AQB/land.png"
 import film from "../components/AQB/film.jpeg"
-import pear from "../components/AQB/pear.png"
+import sakiye from "../components/AQB/sakiye.jpg"
+import jericho from "../components/AQB/jericho.jpg"
+import heirloom from "../components/AQB/heirloom.jpg"
 import Container from "../components/Container/container";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
@@ -188,26 +191,57 @@ const AQBVoicesPage = props => {
             </div>
             <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
                 <div className={styles.textBox}>
-                    <h4>EP 12: The Dream of the Core</h4>
-                    <p>Maya Hrizat offers a love letter to Palestine that seeks to turn a dream into a proposed reality.
-<br></br>
-مايا حريزات تقدم رسالة حب لفلسطين تسعى لتحويل حلم إلى واقع مقترح.</p>
-                    <a className="blue-button" href={"https://bawh.org/episode/12"}>Listen on Bawh بوح</a>
+                    <h4>The Awakening (2021, 22min) dir. Elias Amro, Omayma Sbeih, Yazan Oweineh, Tala Salem, Amir Al Qadi</h4>
+                    <p>
+Amidst the uprising of 2021 when the Israeli government attempted to evict six families from occupied East Jerusalem, five students express what it means to strive for freedom.</p>
                 </div>
                 <div><img src={bawh2}/></div>
             </div>
             <div className={styles.chapter + " " + styles.twoUp}>
                 <div><img src={bawh3}/></div>
                 <div className={styles.textBox}>
-                    <h4>EP 8: Just Beyond the Checkpoint</h4>
-                    <p>When Mariam Salah ended up on the wrong side of the checkpoint decades ago, she wasn't able to say a final goodbye to her parents or her daughter. Years later, she shares her story with her granddaughter, and together, they begin to heal the wounds of the past.
-A warning for our listeners that this episode discusses death and dying.<br></br>
-عندما انتهى الأمر بمريم صلاح على الجانب الخطأ من الحاجز منذ عقود ، لم تكن قادرة على توديع والديها أو ابنتها نهائيًا. بعد سنوات ، شاركت قصتها مع حفيدتها ، وبدأوا معًا في تضميد جراح الماضي.
-تحذير لمستمعيننا أن هذه الحلقة تناقش الموت والاحتضار.</p>
-                    <a className="blue-button" href={"https://bawh.org/episode/8"}>Listen on Bawh بوح</a>
+                    <h4>Freedom is Worth Everything (2022, 14min) dir. Hazar Alatrash & Amr Hussein</h4>
+                    <p>Two young women share their experiences after their education is cut short by
+political imprisonment.</p>
                 </div>
             </div>
           </div>
+
+          <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
+                <div className={styles.textBox}>
+                    <h4>The Unwanted Path (2021, 40min) dir. Yazan Iwaina</h4>
+                    <p>
+                    Through the intertwined, but polar perspectives of a Palestinian worker and his son, the film immerses viewers into the physical and emotional realities of laboring in Israel. </p>
+                </div>
+                <div><img src={bawh2}/></div>
+            </div>
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={bawh3}/></div>
+                <div className={styles.textBox}>
+                    <h4>Occupied Workers (2022, 10min) dir. Layan Dajani & Rana Hadieh</h4>
+                    <p>This is the story of two Palestinians who cross occupation checkpoints every day
+to make ends meet. How do they survive the daily hardships? What makes them
+persevere?</p>
+                </div>
+            </div>
+            <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
+                <div className={styles.textBox}>
+                    <h4>The Struggle of an ID Card (2022, 8min) dir. Hind al-Kassis, Zaina al-Khatib, Razan Hamdan</h4>
+                    <p>
+                    A Palestinian couple holding two different occupation IDs marry and give birth to
+a child who is rendered stateless as a result. Twenty-six years later, she still has
+no identity. This is her story.</p>
+                </div>
+                <div><img src={bawh2}/></div>
+            </div>
+
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={bawh3}/></div>
+                <div className={styles.textBox}>
+                    <h4>حب أزرق و أخضر / The Highway (2020, 26min) dir. Afnan Abassi</h4>
+                    <p>Love, loss and resilience.</p>
+                </div>
+            </div>
           <div className={styles.yomWrapper}>
             <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
                 <div className={styles.textBox}>
@@ -246,8 +280,8 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 
             </div>
 
-            <div className={styles.chapter + " " + styles.oneUp}>
-                <div><img src={hike}/></div> 
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><img src={heirloom}/></div> 
                 <div className={styles.textBox}>
                 <h4>Hike in Battir & Visit to Palestine Heirloom Seed Library and Dar Yusif Nasri Jacir for Art and Research</h4>
                 <p>March 16th, 2023<br></br>Students learned about Palestine’s biodiversity and the struggle to protect and cultivate Palestine’s heirloom seeds and olive groves. Participants hiked (6 km) in a UNESCO world heritage site, and learned about Palestinian farming practices, past and present. Facilitated by the Palestine Heirloom Seed Library and Dar Yusuf Nasri Jacir for Art and Research.</p>
@@ -255,7 +289,7 @@ A warning for our listeners that this episode discusses death and dying.<br></br
                 
             </div>
             <div className={styles.chapter + " " + styles.oneUp}>
-                <div><img src={hike}/></div> 
+                <div><img src={jericho}/></div> 
                 <div className={styles.textBox}>
                 <h4>Hike from Jericho to Sea Level</h4>
                 <p>March 21st, 2023<br></br>Students embarked on a beautiful 16 kilometer hike through Wadi Qelt, where they had a chance to learn about the ruins of King Herod’s winter palace, the rocky canyon Deir al-Qelt (St. George’s Monastery), the Roman aqueduct, the Jordan Valley, and the historic road from Jericho to Jerusalem and back to sea level. Students not only get a chance to bask in Palestine’s nature, but also learned about how the Palestine Heritage Trail is supporting Palestinian heritage, arts and culture along the trail. Students also had a chance to view Jericho’s agricultural diversity from above on the cable car. Hosted by Palestine Heritage Trail.</p>
@@ -264,16 +298,24 @@ A warning for our listeners that this episode discusses death and dying.<br></br
 
 
             <div className={styles.chapter + " " + styles.twoUp}>
-                <div><img src={yom2}/></div> 
+                <div>
+                <figcaption>Sliman Mansour interviewed by Noor Sada:</figcaption>
+                <audio controls>
+                  <source src={mansour} type="audio/mpeg"/>
+                Your browser does not support the audio element.
+                </audio>
+                
+                </div> 
                 <div className={styles.textBox}>
                 <h4>Resistance and the Arts / الفن المقاوم</h4>
                 <p>World renowed artist, Sliman Mansour, discussed the role of the arts in shedding light on the Palestinian movement for liberation as well as inspiring people to keep hope alive. He discussed the narrative arc of his own work from the 1970s until today. Q&A moderated by Rawan Sharaf.</p>
                 </div>     
+
             </div>
 
 
             <div className={styles.chapter + " " + styles.oneUp}>
-                <div><img src={film}/></div> 
+                <div></div> 
                 <div className={styles.textBox}>
                 <h4>Inaugural Shireen Abu Akleh Senior Project Grant</h4>
                 <p>In memory of Shireen Abu Akleh’s life and work, the Humanities and Practicing Arts Division at Al-Quds Bard College inaugurated the first annual “Shireen Abu Akleh Senior Project Grant.” The grant provides awardees with modest financial support to complete SP projects that are in the spirit of Ms. Abu Akleh’s commitment to “boldly tell the story of the diversity and magnitude of the human experience.”
@@ -298,14 +340,14 @@ A warning for our listeners that this episode discusses death and dying.<br></br
             </div>
 
             <div className={styles.chapter + " " + styles.twoUp}>
-                <div><img src={yom4}/></div> 
+                <div><img src={yom2}/></div> 
                 <div className={styles.textBox}>
                 <h4>Rooted /متجذرون: Photography Panel and Exhibition</h4>
                 <p>Acclaimed photographers Tanya Habjouqa and Wahaj Bani Muflih discussed how they use photography to tell the stories of Palestine and its people. The artists’ work was on exhibition from Sunday, March 27th - Sunday, April 2nd, 2022 at <a target="_blank" href="https://bard.alquds.edu/">Al-Quds Bard College</a>. Tanya Habjouqa joined from abroad via video call.</p>
                 </div>     
             </div>
             <div className={styles.chapter + " " + styles.oneUp}>
-                <div><img src={pear}/></div> 
+                <div><img src={sakiye}/></div> 
                 <div className={styles.textBox}>
                 <h4>Sakiya Field Trip & Prickly Pear Workshop</h4>
                 <p> Students visited the Sakiya nature reserve and academy with agronomist and community educator, Mary Diek. During their field visit, students learned how to make shelters out of prickly pear leaves, and in general, learned about local agrarian traditions of self-sufficiency and food production, toured the exhibition hall, and explored the intersections of art, science and permaculture.</p>

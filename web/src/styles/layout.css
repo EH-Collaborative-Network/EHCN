@@ -394,11 +394,14 @@ color:inherit;
   color: var(--color-red);
 }
 .hp-text{
+  font-size: var(--font-h4-size);
   margin-top: var(--space);
 }
 .hp-text p a{
-  margin-top: var(--space)
+  margin-top: var(--space);
+  font-size: var(--font-base-size);
 }
 /* .full-bleed{
   padding: 0;
 } */
+

@@ -69,6 +69,9 @@ export const query = graphql`
           aboutEHCN
           EHCN
           calendar
+          aboutP1
+          aboutP2
+          archive
           fundingOpportunities
           ehcnSupported
           newsletter
@@ -222,8 +225,7 @@ const AboutPage = props => {
           
                 
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
-          
-          <div className={aboutStyles.overwrapper}> 
+          <div><div className={aboutStyles.overwrapper}> 
               <div className={aboutStyles.wrapper}>
                 <div>
                 <div className={aboutStyles.bubble +" "}>
@@ -237,8 +239,8 @@ const AboutPage = props => {
                   </div>
                   </div>
               </div>
-              <p>How does technology mediate what it means to be human? How have scientific, intellectual, and artistic experiments reshaped human experience in diverse historical and cultural contexts, and how might they shape our shared futures?</p>
-            </div> 
+              <div><div className={aboutStyles.aboveWrapper}><TranslatedPhrase translations={languagePhrases} phrase={"aboutP2"}/><p><TranslatedPhrase translations={languagePhrases} phrase={"aboutP1"}/></p></div></div>
+            </div> </div>
 
           <div className="top-text about-page one-column"><BlockContent languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.bodies : ap} globalLanguages={globalLanguages}/></div>
  

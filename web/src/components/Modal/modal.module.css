@@ -20,7 +20,7 @@
   display: flex;
   width:auto;
   @media (--media-min-medium) {
-    width:100%;
+    width:auto;
   }
 }
 .twoColumnStaff > div{

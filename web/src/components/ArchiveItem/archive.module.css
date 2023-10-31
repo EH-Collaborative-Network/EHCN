@@ -1,0 +1,107 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    @media (--media-min-medium) {
+        flex-direction: row;
+    }
+}
+.filterWrapper{
+    background-color: var(--color-light-blue);
+    position: fixed;
+    font-size:var(--font-small-size);
+    top: var(--space);
+    right:var(--space);
+    flex-basis: 17%;
+    padding-bottom: var(--small-space);
+}
+.filterWrapper h4{
+    font-size: var(--font-small-size);
+    font-family: var(--font-family-sans);
+    margin:0 var(--small-space);
+    width: 100%;
+}
+.filterWrapper select{
+    margin:var(--small-space);
+    margin-top:0;
+}
+.filterWrapper h4 svg{
+    width: var(--space);
+    float: right;
+    top: calc(var(--small-space) * 2);
+    position:relative;
+    margin-left: var(--small-space);
+}
+.filterWrapper > *{
+    padding: 0 var(--small-space);
+}
+.filterWrapper h1{
+    font-size: var(--font-small-size);
+    text-transform: uppercase;
+    margin:var(--small-space);
+    font-family: var(--font-family-bold);
+}
+.accordion{
+    border-top: 1px solid var(--color-dark-blue);
+    padding: var(--small-space);
+    cursor: pointer;
+}
+.accordion:nth-child(5){
+    border-bottom: 1px solid var(--color-dark-blue);
+}
+.accordion:nth-child(3){
+    margin-top: var(--small-space);
+}
+
+.accordion > div{
+    display: none;
+}
+
+.resultsWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    @media (--media-min-medium) {
+        flex-basis: 80%;
+    }
+}
+.root a:hover{
+    position: relative;
+    top:1px;
+    left:1px;
+}
+.root span{
+    padding: var(--small-space);
+    font-size: var(--font-small-size);
+    font-family: var(--font-family-bold);
+}
+.root figure{
+    min-width: 100%;
+    width: auto;
+    height: 20vh;
+    overflow:hidden;
+    margin:0;
+}
+.root figure div{
+    height: 20vh;
+    min-width: 100%;
+}
+.root{
+    background-color: var(--color-light-blue);
+    margin: calc(var(--small-space) * 2) 0;
+    padding: var(--small-space);
+    flex-basis: calc(50% - (var(--small-space) * 8));
+    @media (--media-min-medium) {
+        flex-basis: calc(33% - (var(--small-space) * 8));
+        margin-left:0;
+        margin-right: calc(var(--small-space) * 4);
+    }
+}
+.root a{
+    text-decoration: none;
+    color:var(--color-black);
+    display: flex;
+    flex-direction: column;
+}

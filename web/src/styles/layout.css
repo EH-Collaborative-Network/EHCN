@@ -405,3 +405,9 @@ color:inherit;
   padding: 0;
 } */
 
+.accordion.open > div{
+  display: block;
+}
+.accordion.open svg path:last-child{
+  display: none;
+}

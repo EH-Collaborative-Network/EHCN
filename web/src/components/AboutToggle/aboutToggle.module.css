@@ -2,48 +2,55 @@
 @import '../../styles/custom-properties.css';
 
 .bubble{
-    background: var(--color-light-blue);
-    border-radius: 5px;
-    padding: var(--space);
-    margin:calc(var(--space)/2) 0 var(--space);
+    background: var(--color-blue);
+    border-radius: 0;
+    padding: calc(var(--space)/2);
+    margin:calc(var(--small-space) * 2) var(--small-space);
+    font-family: var(--font-family-bold);
+    clip-path: polygon(0% 3px, 100% 0%, 100% calc(100% - 1px), 2px 100%);
     font-size: var(--font-base-size);
+    width: calc(100% - var(--space));
     @media (--media-min-medium) {
-        max-width: calc(60%);
+        /* max-width: calc(60%); */
     }
 }
-
-.keyWords{
-    margin-top:0;
-    font-size: var(--font-medium-size);
-    font-family:var(--font-family-bold);
+.bubble:first-child{
+    left: var(--space);
+    position:relative;
+    clip-path: polygon(0% 8px, 100% 0%, calc(100% - 2px) calc(100% - 5px), 1px 100%);
 }
-.toggle.on::after{
-    content:"";
-    display: none;
-    position: absolute;
-    width: 0; 
-    left:1em;
-    top:1.5em;
-    height: 0; 
-    border-left: 35px solid transparent;
-    border-right: 35px solid transparent;
-    border-bottom: 30px solid var(--color-light-blue);
-    @media (--media-min-medium) {
-        display: block; 
-    }
+.bubble:last-child{
+    left: var(--space);
+    position:relative;
+   clip-path: polygon(0% 0px, calc(100% - 3px) 4%, calc(100% - 2px) calc(100% - 5px), 1px 100%)
 }
 .bubble p{
     margin:0;
-}
-.toggle{
-    position: relative;
-    text-transform: capitalize;
-    cursor: pointer;
+
 }
 
-.toggle:nth-child(2){
-    color: var(--color-dark-blue);
+
+.bubble p strong{
+  color:var(--color-red);
 }
-.toggle:nth-child(3){
-    color: var(--color-red);
+
+.overwrapper > *{
+    flex-basis: 60%;
+    margin-bottom: var(--space);
 }
+.wrapper{
+    display: flex;
+    padding-right: var(--space);
+    flex-direction: row-reverse;
+    flex-basis: 40%;
+    /* background-color: var(--color-light-blue); */
+}
+.overwrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    /* padding: var(--space); */
+}
+
+

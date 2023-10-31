@@ -378,9 +378,10 @@ no identity. This is her story.</p>
                 <div className={styles.chapter}>
                 <h4>Resources</h4>
                 <ul className={"two-column"}>
+                    <li><a href="https://buildpalestine.com/2021/05/15/trusted-organizations-to-donate-to-palestine/">Trusted Organizations to Donate to Palestine</a></li>
                     <li><a href="https://www.palestinefilminstitute.org/en/unprovoked-narratives"> Palestine Film Institute's <em>Unprovoked Narratives</em>: “A series of films celebrating the beauty of Gaza, its people, its struggle and its survival. The program aims to resist the demonisation of this beautiful place.” </a></li>
                     <li><a href="https://www.youtube.com/watch?v=HnZSaKYmP2s">Film: “Gaza Fights for Freedom (2019)”</a></li>
-                    <li><a href="https://buildpalestine.com/2021/05/15/trusted-organizations-to-donate-to-palestine/">Trusted Organizations to Donate to Palestine</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=TKZy5df_Juk">The War on Palestine Podcast</a></li>
                     <li><a href="https://fitzcarraldoeditions.com/books/minor-detail">Novel: Minor Detail by Adania Shibli</a></li>
                     <li><a href="https://www.tandfonline.com/journals/rpal20/collections/GazaTwoDecades">Journal of Palestinian Studies, <em>Gaza: Nearly Two Decades of Israeli Incursions, Siege, and Blockade</em></a></li>
                     <li><a href="https://twitter.com/m7mdkurd">Mohammed El-Kurd: Writer from occupied Jerusalem. Palestine Correspondent at The Nation. Culture Editor at Mondoweiss. </a></li>

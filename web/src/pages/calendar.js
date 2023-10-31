@@ -52,6 +52,7 @@ export const query = graphql`
           researchThreads
           availableIn
           search
+          archive
           timezone
           sunday
           monday

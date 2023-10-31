@@ -28,6 +28,7 @@ export const query = graphql`
           name
           code
           aboutEHCN
+          archive
           calendar
           fundingOpportunities
           ehcnSupported

@@ -33,6 +33,7 @@ export const query = graphql`
           name
           newsletter
           code
+          archive
           aboutEHCN
           calendar
           fundingOpportunities

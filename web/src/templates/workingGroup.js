@@ -50,6 +50,7 @@ export const query = graphql`
           relatedEvents
           relatedWorkingGroups
           relatedProjects
+          archive
           relatedResearchThreads
           relatedLearningResources
           relatedPartners

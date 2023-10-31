@@ -38,6 +38,7 @@ export const query = graphql`
           aboutEHCN
           newsletter
           calendar
+          archive
           fundingOpportunities
           ehcnSupported
           learningResources

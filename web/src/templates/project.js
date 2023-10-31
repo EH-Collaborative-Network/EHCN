@@ -56,6 +56,7 @@ export const query = graphql`
           studentLed
           facultyLed
           pastEvents
+          archive
           currentEvents
           upcomingEvents
         }

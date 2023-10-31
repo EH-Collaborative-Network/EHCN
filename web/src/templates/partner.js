@@ -55,6 +55,7 @@ export const query = graphql`
           relatedLearningResources
           relatedPartners
           relatedNews
+          archive
           currentEvents
           pastEvents
           upcomingEvents

@@ -62,6 +62,7 @@ export const query = graphql`
           learningResources
           researchThreads
           selectInstitution
+          archive
           availableIn
           search
           application

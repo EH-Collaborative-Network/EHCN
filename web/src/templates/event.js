@@ -51,6 +51,7 @@ export const query = graphql`
           availableIn
           search
           relatedCourses
+          archive
           relatedEvents
           relatedWorkingGroups
           relatedProjects

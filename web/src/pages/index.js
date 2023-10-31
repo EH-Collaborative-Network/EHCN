@@ -183,6 +183,7 @@ export const query = graphql`
           name
           code
           aboutEHCN
+          archive
           justice
           technology
           creativepractice

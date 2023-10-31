@@ -48,6 +48,7 @@ export const query = graphql`
                 researchThread
                 event
                 partner
+                archive
                 news
                 fundingOpportunity
                 project

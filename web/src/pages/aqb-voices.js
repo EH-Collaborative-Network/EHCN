@@ -74,6 +74,7 @@ export const query = graphql`
           code
           aboutEHCN
           calendar
+          archive
           newsletter
           fundingOpportunities
           ehcnSupported

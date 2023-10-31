@@ -45,6 +45,7 @@ export const query = graphql`
           search
           studentLed
           facultyLed
+          archive
         }
       }
     }

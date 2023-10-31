@@ -37,6 +37,24 @@ export default {
         title: 'About EHCN'
     },
     {
+        description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+        name:'archive',
+        type: 'string',
+        title: 'Archive'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'aboutP2',
+      type: 'string',
+      title: 'About Page text that goes with three pillars'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'aboutP1',
+      type: 'string',
+      title: 'About Page text that goes above three pillars'
+    },
+    {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'calendar',
       type: 'string',

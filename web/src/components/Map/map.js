@@ -41,12 +41,12 @@ const previousCP = () => {
           <div className={styles.nodes}>
             {cp == 0 &&
             <svg viewBox="0 0 599 413" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M411.5 156L457 168.5L139.5 125.5L148.5 124H362L519.5 45.5L411.5 156Z" stroke="#BF0B3E" stroke-width="3"/>
+            <path d="M411.5 156L457 168.5L139.5 125.5L148.5 124H362L519.5 45.5L411.5 156Z" stroke="#BF0B3E" strokeWidth="3"/>
             </svg>   
             }
             {cp == 1 &&
             <svg viewBox="0 0 599 413" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M135 131.5L39 37L387.5 111L362.5 124.5L135 131.5Z" stroke="#BF0B3E" stroke-width="3"/>
+            <path d="M135 131.5L39 37L387.5 111L362.5 124.5L135 131.5Z" stroke="#BF0B3E" strokeWidth="3"/>
             </svg>
             
             }
@@ -100,11 +100,11 @@ const previousCP = () => {
         </div>
         </div>
         <div onClick={previousCP} className={styles.arrowButtonLeft}><svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13 1L2 10.88L13 20" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 1L2 10.88L13 20" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </div>
         <div onClick={nextCP} className={styles.arrowButtonRight}><svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 20L12 10.12L1 1" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"/>
+          <path d="M1 20L12 10.12L1 1" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </div>
       </div>

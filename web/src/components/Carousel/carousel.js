@@ -158,11 +158,11 @@ let resp = {
           </div>
           </div>
         <div onClick={reverseCarousel} className={styles.arrowButtonLeft}><svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13 1L2 10.88L13 20" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 1L2 10.88L13 20" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </div>
         <div onClick={advanceCarousel} className={styles.arrowButtonRight}><svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 20L12 10.12L1 1" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"/>
+          <path d="M1 20L12 10.12L1 1" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         </div>
       </div>

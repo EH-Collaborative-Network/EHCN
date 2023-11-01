@@ -268,17 +268,17 @@ const IndexPage = props => {
 
   events.map(function(event,index){
     scrollTitles.push(
-      <div className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/events/'+ event.node.slug.current}><TranslatedTitle translations={event.node.titles}/></Link></div>
+      <div key={"01"+index} className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/events/'+ event.node.slug.current}><TranslatedTitle translations={event.node.titles}/></Link></div>
     )
   })
   projects.map(function(project,index){
     scrollTitles.push(
-      <div className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/projects/'+ project.node.slug.current}><TranslatedTitle translations={project.node.titles}/></Link></div>
+      <div key={"02"+index} className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/projects/'+ project.node.slug.current}><TranslatedTitle translations={project.node.titles}/></Link></div>
     )
   })
   resources.map(function(resource,index){
     scrollTitles.push(
-      <div className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/learningResource/'+ resource.node.slug.current}><TranslatedTitle translations={resource.node.titles}/></Link></div>
+      <div key={"03"+index} className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/learningResource/'+ resource.node.slug.current}><TranslatedTitle translations={resource.node.titles}/></Link></div>
     )
   })
   

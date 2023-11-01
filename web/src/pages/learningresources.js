@@ -491,7 +491,7 @@ useEffect(() => {
           <button onClick={handleSearch} aria-labelledby="search-label">
               <span id="search-label" hidden>Search</span>
               <svg width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.0023 11.2C22.0023 16.4901 17.4814 20.9 11.7511 20.9C6.02087 20.9 1.5 16.4901 1.5 11.2C1.5 5.90992 6.02087 1.5 11.7511 1.5C17.4814 1.5 22.0023 5.90992 22.0023 11.2Z" stroke="#333333" stroke-width="3"/>
+              <path d="M22.0023 11.2C22.0023 16.4901 17.4814 20.9 11.7511 20.9C6.02087 20.9 1.5 16.4901 1.5 11.2C1.5 5.90992 6.02087 1.5 11.7511 1.5C17.4814 1.5 22.0023 5.90992 22.0023 11.2Z" stroke="#333333" strokeWidth="3"/>
               <path d="M27.9786 27.9995C28.5976 28.5501 29.5453 28.4943 30.0955 27.8749C30.6456 27.2556 30.5898 26.3071 29.9709 25.7565L27.9786 27.9995ZM17.9062 19.0395L27.9786 27.9995L29.9709 25.7565L19.8985 16.7965L17.9062 19.0395Z" fill="#333333"/>
               </svg>
           </button>
@@ -593,16 +593,16 @@ useEffect(() => {
               <h1 onClick={(e) => bigAccordion(e)}>Filters
 
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
-                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
                     </svg>
               </h1>
               
               <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
                 <h4>EHCN Partners Involved
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
-                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
                     </svg>
                 </h4>
                 <div>{partnerDivs}</div>
@@ -610,8 +610,8 @@ useEffect(() => {
               <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
                 <h4>Medium/Format
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
-                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
                     </svg>
                   </h4>
                 <div>
@@ -621,8 +621,8 @@ useEffect(() => {
               <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
                 <h4>Theme/Topic
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
-                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
                     </svg>
                 </h4>
                 <div>

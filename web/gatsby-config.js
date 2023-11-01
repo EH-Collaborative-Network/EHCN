@@ -151,6 +151,13 @@ module.exports = {
                       name
                     }
                   }
+                  excerpts {
+                    _rawText(resolveReferences: {maxDepth: 10})
+                    language {
+                      code
+                      name
+                    }
+                  }
                   id
                   keywords
                   titles {
@@ -410,6 +417,7 @@ module.exports = {
           let resources = data.allSanityLearningResource.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
+            excerpts:  edge.node.excerpts,
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "learningResource"

@@ -8,11 +8,12 @@ import BlockContent from "../components/TranslationHelpers/block-content";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import { Link } from "@reach/router";
 import * as styles from "../components/LearningResource/resource.module.css";
+import * as archiveStyles from "../components/ArchiveItem/archive.module.css";
 
 export const query = graphql`
   query ResourcesPageQuery {
@@ -47,6 +48,49 @@ export const query = graphql`
         }
       }
     }
+    partners: allSanityPartner{
+      edges{
+        node{
+          id
+          name
+          slug{
+            current
+          }
+        }
+      }
+    }
+    themes: allSanityTheme{
+      edges{
+        node{
+          id
+          name
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+        }
+      }
+    }
+    mediums: allSanityMedium{
+      edges{
+        node{
+          id
+          name
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+        }
+      }
+    }
     items: localSearchItems {
       store
       index
@@ -70,6 +114,18 @@ export const query = graphql`
               name
               code
             }
+          }
+          partners{
+            id
+            name
+          }
+          themes{
+            id
+            name
+          }
+          mediums{
+            id
+            name
           }
           excerpts{
             _rawText
@@ -123,12 +179,300 @@ const LearningResources = props => {
 
   const site = (data || {}).site;
   const globalLanguages = site.languages;
-
+  const [partnerFilter, setPartnerFilter] = useState([]);
+  const [mediumFilter, setMediumFilter] = useState([]);
+  const [themeFilter, setThemeFilter] = useState([]);
+  const partners = (data || {}).partners?.edges;
+  const themes = (data || {}).themes?.edges;
+  const mediums = (data || {}).mediums?.edges;
+  const accordion = (e) => {
+    let el = e.target;
+    if(!el.classList.contains("accordion")){
+      el = el.closest(".accordion")
+    }
+    if(el.classList.contains("open")){
+      el.classList.remove("open")
+    }else{
+      el.classList.add("open")
+    }
+  }
+  const bigAccordion = (e) => {
+    let el = e.target;
+    
+    if(!el.classList.contains("filterwrapper")){
+      el = el.closest(".filterwrapper")
+    }
+    if(el.classList.contains("open")){
+      el.classList.remove("open")
+    }else{
+      el.classList.add("open")
+    }
+  }
+  let params = [];
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
+/* Set currentFilter, currentMediums, currentLocation based on url params */
+useEffect(() => {
+
+  if(location?.search){
+    if(location.search.split("?").length > 1 ){
+      params = location.search.split("?")[1].split("&");
+    }
+    params.forEach((param) => {
+      let p = param.split("=")[0];
+      let v = param.split("=")[1];
+      if(p == "mediums" ){
+        let ve = v.split("%20").join(" ") //handle spaces
+        ve.split(",").forEach((t,i)=>{
+          let id = t.split(" ").join("-");
+          document.querySelector("#medium-" + id).checked = true;
+        })
+        setMediumFilter(ve.split(','))
+      }else if(p == "themes" ){
+        let ve = v.split("%20").join(" ") //handle spaces
+        ve.split(",").forEach((t,i)=>{
+          let id = t.split(" ").join("-");
+          document.querySelector("#theme-" + id).checked = true;
+        })
+        setThemeFilter(ve.split(','))
+      }else if(p == "partners"){
+        let ve = v.split("%20").join(" ") //handle spaces
+        ve.split(",").forEach((t,i)=>{
+          let id = t.split(" ").join("-");
+          document.querySelector("#partner-" + id).checked = true;
+        })
+        setPartnerFilter(ve.split(','))
+      }
+    })
+  }
+    }, []);
+
+    let partnerDivs = [] 
+    partners.forEach((node,i) => {
+          partnerDivs.push(
+              <div key={i}>
+                <input onChange={handlePartner} value={node.node.name} id={"partner-"+ node.node.name.split(" ").join("-")} type={"checkbox"}></input>
+                <label for={"partner-"+ node.node.name.split(" ").join("-")}>{node.node.name}</label>
+              </div> 
+          )
+    })
+
+    let themeDivs = [] 
+  themes.forEach((node,i) => {
+        themeDivs.push(
+            <div key={i}>
+              <input onChange={handleTheme} value={node.node.name} id={"theme-"+node.node.name.split(" ").join("-")} type={"checkbox"}></input>
+              <label for={"theme-"+node.node.name.split(" ").join("-")}><TranslatedTitle translations={node.node.titles}/></label>
+            </div> 
+        )
+  })
+
+  let mediumDivs = [] 
+  mediums.forEach((node,i) => {
+        mediumDivs.push(
+            <div key={i}>
+              <input onChange={handleMedium} value={node.node.name} id={"medium-"+ node.node.name.split(" ").join("-")} type={"checkbox"}></input>
+              <label for={"medium-"+ node.node.name.split(" ").join("-")}><TranslatedTitle translations={node.node.titles}/></label>
+            </div> 
+        )
+  })
+
+  /* CHECK PARTNER */ 
+  function handlePartner(e){
+    if(typeof window != `undefined`){
+
+      let searchstring = window.location.search?.split("?")[1]
+      let currentPartner = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="partners"){
+            searchParams.push(newk.join("="))
+          }else{
+            currentPartner = newk[1].split(",")
+          }
+          
+        })
+      }
+      if(currentPartner){
+        const index = currentPartner.indexOf(e.target.value.split(" ").join("%20"));
+        if (index > -1) { // only splice array when item is found
+          currentPartner.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }else{
+        currentPartner = []
+      }
+      
+
+
+    let newSearchString;
+    let arr = partnerFilter.slice(0);
+    if(e.target.checked){
+      newSearchString = "?" + searchParams.join("&");
+      currentPartner.push(e.target.value.split(" ").join("%20"));
+      if(currentPartner.length == 1){
+        currentPartner = currentPartner[0]
+      }else{
+        currentPartner = currentPartner.join(",")
+      } 
+      newSearchString = newSearchString + "&partners=" + currentPartner;
+      arr.push(e.target.value);
+    }else{
+      if(currentPartner.length == 1){
+        currentPartner = currentPartner[0]
+      }else{
+        currentPartner = currentPartner.join(",")
+      } 
+      newSearchString = "?" + searchParams.join("&");
+      if(currentPartner.length == 0){
+        newSearchString = newSearchString;
+      }else{
+        newSearchString = newSearchString + "&partners=" + currentPartner;
+      }
+      const index = arr.indexOf(e.target.value);
+      if (index > -1) { // only splice array when item is found
+        arr.splice(index, 1); // 2nd parameter means remove one item only
+      }
+    }
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
+    setPartnerFilter(arr);
+    }
+  }
+/** CHECK MEDIUM */
+  function handleMedium(e){
+    if(typeof window != `undefined`){
+      let searchstring = window.location.search?.split("?")[1]
+      let currentMedium = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="mediums"){
+            searchParams.push(newk.join("="))
+          }else{
+            currentMedium = newk[1].split(",")
+          }
+          
+        })
+      }
+      if(currentMedium){
+        const index = currentMedium.indexOf(e.target.value.split(" ").join("%20"));
+        if (index > -1) { // only splice array when item is found
+          currentMedium.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }else{
+        currentMedium = []
+      }
+    let newSearchString;
+
+    let arr = mediumFilter.slice(0);
+    if(e.target.checked){
+      newSearchString = "?" + searchParams.join("&");
+      currentMedium.push(e.target.value.split(" ").join("%20"));
+      if(currentMedium.length == 1){
+        currentMedium = currentMedium[0]
+      }else{
+        currentMedium = currentMedium.join(",")
+      } 
+      newSearchString = newSearchString + "&mediums=" + currentMedium;
+      arr.push(e.target.value);
+    }else{
+      if(currentMedium.length == 1){
+        currentMedium = currentMedium[0]
+      }else{
+        currentMedium = currentMedium.join(",")
+      } 
+      newSearchString = "?" + searchParams.join("&");
+      if(currentMedium.length == 0){
+        newSearchString = newSearchString;
+      }else{
+        newSearchString = newSearchString + "&mediums=" + currentMedium;
+      }
+
+      const index = arr.indexOf(e.target.value);
+      if (index > -1) { // only splice array when item is found
+        arr.splice(index, 1); // 2nd parameter means remove one item only
+      }
+    }
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
+    setMediumFilter(arr);
+    }
+  }
+/* CHECK THEME */
+  function handleTheme(e){
+    if(typeof window != `undefined`){
+      let searchstring = window.location.search?.split("?")[1]
+      let currentTheme = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="themes"){
+            searchParams.push(newk.join("="))
+          }else{
+            currentTheme = newk[1].split(",")
+          }
+          
+        })
+      }
+      if(currentTheme){
+        const index = currentTheme.indexOf(e.target.value.split(" ").join("%20"));
+        if (index > -1) { // only splice array when item is found
+          currentTheme.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }else{
+        currentTheme = []
+      }
+    let newSearchString;
+    let arr = themeFilter.slice(0);
+    if(e.target.checked){
+      newSearchString = "?" + searchParams.join("&");
+      currentTheme.push(e.target.value.split(" ").join("%20"));
+      if(currentTheme.length == 1){
+        currentTheme = currentTheme[0]
+      }else{
+        currentTheme = currentTheme.join(",")
+      } 
+      newSearchString = newSearchString + "&themes=" + currentTheme;
+      arr.push(e.target.value);
+    }else{
+
+      if(currentTheme.length == 1){
+        currentTheme = currentTheme[0]
+      }else{
+        currentTheme = currentTheme.join(",")
+      } 
+      newSearchString = "?" + searchParams.join("&");
+      if(currentTheme.length == 0){
+        newSearchString = newSearchString;
+      }else{
+        newSearchString = newSearchString + "&themes=" + currentTheme;
+      }
+     
+      const index = arr.indexOf(e.target.value);
+      if (index > -1) { // only splice array when item is found
+        arr.splice(index, 1); // 2nd parameter means remove one item only
+      }
+    }
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
+    setThemeFilter(arr);
+    }
+  }
+
+
 
   return (
       <>  
@@ -152,16 +496,63 @@ const LearningResources = props => {
               </svg>
           </button>
           </div></div>
-          <div>
+          <div className={archiveStyles.wrapper}>
           {filteredResults.length == 0 &&
           <div id="featured" className={styles.wrapper + " show"}>
           {(query?.length > 0 && filteredResults.length == 0) &&
             <em id="no-results"><TranslatedPhrase translations={languagePhrases} phrase={"noResults"}/> "{query}"</em>
           }
-          <em><TranslatedPhrase translations={languagePhrases} phrase={"featured"}/> <TranslatedPhrase translations={languagePhrases} phrase={"learningResources"}/>:</em>
+       
           {resources.map(function(node, index){
 
-            if(node.node.featured){
+              let slug = "/learningresources/" + node.node.slug?.current || "";
+              
+              let institutionNames = []
+              let instituteFound = false;
+
+              let mediumNames = []
+              let mediumFound = false;
+
+              let themeNames = []
+              let themeFound = false;
+
+              let show = true;
+
+              node.node.partners.forEach((p,i) => {
+                institutionNames.push(p.name)
+              })
+              node.node.themes.forEach((p,i) => {
+                themeNames.push(p.name)
+              })
+              node.node.mediums.forEach((p,i) => {
+                mediumNames.push(p.name)
+              })
+
+
+              if(partnerFilter.length > 0){
+                instituteFound = partnerFilter.some( ai => institutionNames.includes(ai) );
+              }
+              if(mediumFilter.length > 0){
+                mediumFound = mediumFilter.some( ai => mediumNames.includes(ai) );
+              }
+              if(themeFilter.length > 0){
+                themeFound = themeFilter.some( ai => themeNames.includes(ai) );
+              }
+
+              if(mediumFilter.length > 0 && !mediumFound){
+                show = false;
+              }
+
+              if(themeFilter.length > 0 && !themeFound){
+                show = false;
+              }
+
+              if(partnerFilter.length > 0 && !instituteFound){
+                show = false;
+              }
+
+
+            if(show){
               return(
                 <div className={styles.root}>
                   <Link to={"learning-resource/"+node.node.slug?.current}>
@@ -184,8 +575,8 @@ const LearningResources = props => {
               return(
                 <div className={styles.root}>
                   <Link to={"learning-resource/"+node.slug?.current}>
-                    <TranslatedTitle translations={node.titles}/>
-                    <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.descriptions}/>
+                  <h4><TranslatedTitle translations={node.titles}/></h4>
+                    <BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.excerpts}/>
                     <Link className="button" to={"learning-resource/"+node.slug?.current}>See More</Link>
                   </Link>
                 </div>
@@ -194,6 +585,55 @@ const LearningResources = props => {
           })}
           </div>
           }
+
+
+
+
+          <div className={archiveStyles.filterWrapper + ' filterwrapper'}>
+              <h1 onClick={(e) => bigAccordion(e)}>Filters
+
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    </svg>
+              </h1>
+              
+              <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
+                <h4>EHCN Partners Involved
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    </svg>
+                </h4>
+                <div>{partnerDivs}</div>
+              </div>
+              <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
+                <h4>Medium/Format
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    </svg>
+                  </h4>
+                <div>
+                  {mediumDivs}
+                </div>
+              </div>
+              <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
+                <h4>Theme/Topic
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    </svg>
+                </h4>
+                <div>
+                  {themeDivs}
+                </div>
+              </div>
+              
+             
+             </div>
+
+
           </div>
         </Container>
       </Layout>

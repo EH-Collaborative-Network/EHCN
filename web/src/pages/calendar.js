@@ -207,12 +207,13 @@ const CalendarPage = props => {
   }
 
   let currentEvents = [];
-  events?.toReversed().forEach((event, i) => {
+  events.forEach((event, i) => {
     let d = event.node.endDate.date.split("-")
     if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
       currentEvents.push(event)
     }
   })
+
   function getSunday() {
     // Copy date so don't modify original
     let d = new Date();
@@ -337,7 +338,7 @@ const CalendarPage = props => {
             
             <div className={styles.cardWrapper}>
             {
-              currentEvents.map((event, i) => {
+              currentEvents.toReversed().map((event, i) => {
                   return(
                     <Link to={"/events/"+ event.node.slug.current}>
                       {event.node.mainImage &&

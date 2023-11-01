@@ -309,3 +309,29 @@
 .ml a{
     padding-left:0;
 }
+
+.cardWrapper{
+    display: flex;
+    gap: var(--space);
+    flex-wrap: wrap;
+}
+.cardWrapper > a{
+    background-color: var(--color-light-blue);
+    display: flex;
+    padding: var(--space);
+    flex-basis: 100%;
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.cardWrapper a figure{
+    flex-basis: 25%;
+    margin:0;
+}
+.cardWrapper a > div{
+    padding:0 var(--space);
+}
+
+.cardWrapper a a{
+    margin-top: var(--space);
+}

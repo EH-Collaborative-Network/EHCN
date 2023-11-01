@@ -288,7 +288,10 @@ li.alice-carousel__stage-item {
   padding-bottom: 3em;
 }
 .container > *:nth-child(2){
-  padding-top:var(--space);
+  padding-top:var(--small-space);
+  @media (--media-min-medium) {
+    padding-top:var(--space);
+  }
 }
 .hp-text p{
   margin-top:0;
@@ -412,5 +415,25 @@ color:inherit;
   border-bottom: 1px solid var(--color-dark-blue);
 }
 .accordion.open svg path:last-child{
+  display: none;
+}
+
+.accordion.open > div{
+  display: block;
+}
+.accordion.open h4{
+  border-bottom: 1px solid var(--color-dark-blue);
+}
+.accordion.open svg path:last-child{
+  display: none;
+}
+
+.filterwrapper.open > div{
+  display: block;
+  @media (--media-min-medium) {
+      display: block;
+  }
+}
+.filterwrapper.open h1 svg path:last-child{
   display: none;
 }

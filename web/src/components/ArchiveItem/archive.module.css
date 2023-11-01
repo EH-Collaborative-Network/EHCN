@@ -4,25 +4,38 @@
 
 .wrapper{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     @media (--media-min-medium) {
         flex-direction: row;
     }
 }
 .filterWrapper{
     background-color: var(--color-light-blue);
-    position: fixed;
     font-size:var(--font-small-size);
     top: var(--space);
     right:var(--space);
-    flex-basis: 17%;
-    max-width: 17%;
+    max-width: 100%;
+    max-height: 60vh;
+    overflow: scroll;
     padding-bottom: var(--small-space);
+    @media (--media-min-medium) {
+        flex-basis: 17%;
+        max-width: 17%;
+        position: fixed;
+    }
 }
 .filterWrapper h4{
     font-size: var(--font-small-size);
     margin:0;
     padding:var(--small-space);
+}
+.filterWrapper h1 svg{
+    float:right;
+    position:relative;
+    top: calc(var(--small-space) * 2);
+    @media (--media-min-medium) {
+        display: none;
+    }
 }
 .filterWrapper .accordion h4{
     padding:var(--small-space) calc(var(--small-space)*2);
@@ -81,9 +94,14 @@
 }
 .resultsWrapper{
     display: flex;
+    max-height: 60vh;
+    overflow: scroll;
+    margin-top: var(--space);
     flex-wrap: wrap;
     @media (--media-min-medium) {
         flex-basis: 80%;
+        max-height: none;
+        margin-top:0;
     }
 }
 .root a:hover{
@@ -109,13 +127,19 @@
 }
 .root{
     background-color: var(--color-light-blue);
-    margin: calc(var(--small-space) * 2) 0;
+    margin: calc(var(--small-space)) 0;
     padding: var(--small-space);
-    flex-basis: calc(50% - (var(--small-space) * 8));
+    flex-basis: calc(50% - (var(--small-space) * 3));
     @media (--media-min-medium) {
         flex-basis: calc(33% - (var(--small-space) * 8));
         margin-left:0;
         margin-right: calc(var(--small-space) * 4);
+    }
+}
+.root:nth-child(even){
+    margin-left: calc(var(--small-space)*2);
+    @media (--media-min-medium) {
+        margin-left:0;
     }
 }
 .root a{
@@ -128,13 +152,17 @@
 .searchWrapper{
     position:relative;
     width:100%;
-    margin:var(--space) 0;
+    margin:var(--small-space) 0;
     @media (--media-min-medium) {
         width:70%;
+        margin:var(--space) 0;
     }
 }
 .searchWrapper input{
-    width:90%;
+    width:calc(100% - (var(--small-space)*4));
+    @media (--media-min-medium) {
+        width:90%;
+    }
 }
 .searchWrapper button{
     outline:none;
@@ -160,4 +188,11 @@
     vertical-align: top;
     position:relative;
     top:-5px;
+}
+
+.filterWrapper > div{
+    display: none;
+    @media (--media-min-medium) {
+        display: block;
+    }
 }

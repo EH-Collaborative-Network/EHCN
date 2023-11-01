@@ -9,7 +9,10 @@
     }
 }
 .searchWrapper input{
-    width:90%;
+    width:calc(100% - (var(--small-space)*4));
+    @media (--media-min-medium) {
+        width:90%;
+    }
 }
 .searchWrapper button{
     outline:none;

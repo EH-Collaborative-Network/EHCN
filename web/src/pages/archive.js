@@ -415,6 +415,19 @@ const ArchivePage = props => {
       el.classList.add("open")
     }
   }
+
+  const bigAccordion = (e) => {
+    let el = e.target;
+    
+    if(!el.classList.contains("filterwrapper")){
+      el = el.closest(".filterwrapper")
+    }
+    if(el.classList.contains("open")){
+      el.classList.remove("open")
+    }else{
+      el.classList.add("open")
+    }
+  }
   let params = [];
 
   /* Set currentFilter, currentMediums, currentLocation based on url params */
@@ -1025,8 +1038,14 @@ all.sort(function (a, b) {
 
 
              </div>
-             <div className={styles.filterWrapper}>
-              <h1>Filters</h1>
+             <div className={styles.filterWrapper + ' filterwrapper'}>
+              <h1 onClick={(e) => bigAccordion(e)}>Filters
+
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
+                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
+                    </svg>
+              </h1>
               <div>
                 <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
                 <label htmlFor="student-led"><span><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></span></label><br></br>

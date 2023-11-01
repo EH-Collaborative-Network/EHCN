@@ -23,6 +23,7 @@ import Layout from "../containers/layout";
 import * as styles from "../components/ArchiveItem/archive.module.css";
 
 
+
 export const query = graphql`
   query ArchivePageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -430,17 +431,31 @@ const ArchivePage = props => {
           setCurrentFilter(v)
         }else if(p == "mediums" ){
           let ve = v.split("%20").join(" ") //handle spaces
+          ve.split(",").forEach((t,i)=>{
+            let id = t.split(" ").join("-");
+            document.querySelector("#medium-" + id).checked = true;
+          })
           setMediumFilter(ve.split(','))
         }else if(p == "themes" ){
           let ve = v.split("%20").join(" ") //handle spaces
+          ve.split(",").forEach((t,i)=>{
+            let id = t.split(" ").join("-");
+            document.querySelector("#theme-" + id).checked = true;
+          })
           setThemeFilter(ve.split(','))
         }else if(p == "partners"){
           let ve = v.split("%20").join(" ") //handle spaces
+          ve.split(",").forEach((t,i)=>{
+            let id = t.split(" ").join("-");
+            document.querySelector("#partner-" + id).checked = true;
+          })
           setPartnerFilter(ve.split(','))
         }else if(p == "student-led"){
           if(v == "true"){
+
             setStudentLed(true)
           }else{
+            document.querySelector("#student-led").checked = false;
             setStudentLed(false)
           }
           
@@ -448,6 +463,7 @@ const ArchivePage = props => {
           if(v == "true"){
             setFacultyLed(true)
           }else{
+            document.querySelector("#faculty-led").checked = false;
             setFacultyLed(false)
           }
           
@@ -494,8 +510,8 @@ all.sort(function (a, b) {
   partners.forEach((node,i) => {
         partnerDivs.push(
             <div key={i}>
-              <input onChange={handlePartner} value={node.node.name} id={node.node.id} type={"checkbox"}></input>
-              <label for={node.node.id}>{node.node.name}</label>
+              <input onChange={handlePartner} value={node.node.name} id={"partner-"+ node.node.name.split(" ").join("-")} type={"checkbox"}></input>
+              <label for={"partner-"+ node.node.name.split(" ").join("-")}>{node.node.name}</label>
             </div> 
         )
   })
@@ -504,8 +520,8 @@ all.sort(function (a, b) {
   themes.forEach((node,i) => {
         themeDivs.push(
             <div key={i}>
-              <input onChange={handleTheme} value={node.node.name} id={node.node.id} type={"checkbox"}></input>
-              <label for={node.node.id}><TranslatedTitle translations={node.node.titles}/></label>
+              <input onChange={handleTheme} value={node.node.name} id={"theme-"+node.node.name.split(" ").join("-")} type={"checkbox"}></input>
+              <label for={"theme-"+node.node.name.split(" ").join("-")}><TranslatedTitle translations={node.node.titles}/></label>
             </div> 
         )
   })
@@ -514,8 +530,8 @@ all.sort(function (a, b) {
   mediums.forEach((node,i) => {
         mediumDivs.push(
             <div key={i}>
-              <input onChange={handleMedium} value={node.node.name} id={node.node.id} type={"checkbox"}></input>
-              <label for={node.node.id}><TranslatedTitle translations={node.node.titles}/></label>
+              <input onChange={handleMedium} value={node.node.name} id={"medium-"+ node.node.name.split(" ").join("-")} type={"checkbox"}></input>
+              <label for={"medium-"+ node.node.name.split(" ").join("-")}><TranslatedTitle translations={node.node.titles}/></label>
             </div> 
         )
   })
@@ -800,6 +816,7 @@ all.sort(function (a, b) {
       newSearchString = newSearchString + "&themes=" + currentTheme;
       arr.push(e.target.value);
     }else{
+
       if(currentTheme.length == 1){
         currentTheme = currentTheme[0]
       }else{
@@ -1011,9 +1028,9 @@ all.sort(function (a, b) {
              <div className={styles.filterWrapper}>
               <h1>Filters</h1>
               <div>
-                <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={studentLed ? true : false}/>
+                <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
                 <label htmlFor="student-led"><span><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></span></label><br></br>
-                <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={facultyLed ? true : false}/>
+                <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>
                 <label htmlFor="faculty-led"><span><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></span></label>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>

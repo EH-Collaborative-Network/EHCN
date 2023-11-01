@@ -30,15 +30,23 @@
 }
 
 
-
+.overwrapper > div{
+    align-self: stretch;
+}
 
 .aboveWrapper{
     font-size: var(--font-h4-size);
     padding-top:var(--space);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     @media (--media-min-medium) {
        padding-left: var(--space); 
        padding-top:0;
     }
+}
+.aboveWrapper p{
+    /* margin-bottom: 0; */
 }
 .wrapper{
     display: flex;

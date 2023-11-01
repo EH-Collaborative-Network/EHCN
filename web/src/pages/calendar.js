@@ -207,7 +207,7 @@ const CalendarPage = props => {
   }
 
   let currentEvents = [];
-  events.toReversed().forEach((event, i) => {
+  events?.toReversed().forEach((event, i) => {
     let d = event.node.endDate.date.split("-")
     if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
       currentEvents.push(event)

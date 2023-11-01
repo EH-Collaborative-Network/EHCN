@@ -60,7 +60,7 @@
     }
 }
 .searchWrapper input{
-    width:calc(100% - (var(--space)*4));
+    width:calc(100% - (var(--space)*1.5));
     @media (--media-min-medium) {
         width:90%;
     }

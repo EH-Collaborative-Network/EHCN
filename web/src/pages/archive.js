@@ -414,7 +414,29 @@ const ArchivePage = props => {
       el.classList.add("open")
     }
   }
-  let all = [].concat(projects).concat(events).concat(workingGroups).concat(courses);
+  
+  let all = [];
+  projects.forEach((node,i) => {
+        all.push(
+            [node, "project"]
+        )
+  })
+  events.forEach((node,i) => {
+    all.push(
+        [node, "event"]
+    )
+})
+courses.forEach((node,i) => {
+  all.push(
+      [node, "course"]
+  )
+})
+workingGroups.forEach((node,i) => {
+  all.push(
+      [node, "workingGroup"]
+  )
+})
+
 
   let partnerDivs = [] 
   partners.forEach((node,i) => {
@@ -592,7 +614,7 @@ const ArchivePage = props => {
               default:
                 slug = slug;
             }
-console.log(node.mainImage, node)
+
               return(
                 <ArchiveItem titles={node.titles} key={index} image={node.mainImage} link={slug}/>
 
@@ -604,7 +626,41 @@ console.log(node.mainImage, node)
           }
 { filteredResults.length < 1 &&
 <>
-             { all.map(function(node, i){
+             { all.map(function(n, i){
+                  let node = n[0]
+
+                  let slug = node.node.slug?.current || "";
+                  switch (node[1]) {
+                    case 'learningResource':
+                      slug = "/learning-resource/"+slug;
+                      break;
+                    case 'course':
+                      slug = "/course/"+slug;
+                      break
+                    case 'fundingOpportunity':
+                      slug = "/funding/"+slug;
+                      break;
+                    case 'news':
+                      slug = "/news/"+slug;
+                      break;
+                    case 'event':
+                      slug = "/event/"+slug;
+                      break;
+                    case 'project':
+                      slug = "/project/"+slug;
+                      break;
+                    case 'workingGroup':
+                      slug = "/working-group/"+slug;
+                      break;
+                    case 'researchThread':
+                      slug = "/research-thread/"+slug;
+                      break;
+                    case 'partner':
+                      slug = "/partner/"+slug;
+                      break;
+                    default:
+                      slug = slug;
+                  }
                   let institutionNames = []
                   let instituteFound = false;
 
@@ -662,7 +718,7 @@ console.log(node.mainImage, node)
 
                   if(show){
                     return(
-                        <ArchiveItem titles={node.node.titles} key={i} image={node.node.mainImage} link={'/projects/'+node.node.slug.current}/>
+                        <ArchiveItem titles={node.node.titles} key={i} image={node.node.mainImage} link={slug}/>
                     )
                   }
                     

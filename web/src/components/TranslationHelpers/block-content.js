@@ -172,7 +172,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         // })
       }
 
-      console.log(translation)
+    
       return(
         <>
         <PortableText value={adhoc ? adhoc : translation} components={components} serializers={serializers} />

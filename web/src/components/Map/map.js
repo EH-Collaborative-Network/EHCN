@@ -32,7 +32,7 @@ const previousCP = () => {
   }
 }
   return (
-    <div>
+
       <div className={styles.root}>
         <h4>Featured Cross-Network Projects</h4>
         <div className={styles.inner}>
@@ -108,7 +108,7 @@ const previousCP = () => {
           </svg>
         </div>
       </div>
-      </div>
+
   )
 };
 

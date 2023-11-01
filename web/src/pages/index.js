@@ -320,10 +320,11 @@ const IndexPage = props => {
           <h1 hidden>Welcome to {site.title}</h1>
           <h1 style={{"textTransform":"capitalize"}}><TranslatedPhrase translations={languagePhrases} phrase={"technology"}/>, <TranslatedPhrase translations={languagePhrases} phrase={"justice"}/>, & <TranslatedPhrase translations={languagePhrases} phrase={"creativepractice"}/></h1>
           <div className="hp-text"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={hp}/></div>
-          {
+          
+          <div>{
             typeof window != `undefined` &&
             <Map/>
-          }
+          }</div>
           <div className="hp-highlights">
             <h4>
               <span><TranslatedTitle translations={site.highlightTitle}/></span>

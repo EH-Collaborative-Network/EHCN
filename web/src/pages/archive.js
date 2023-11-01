@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { graphql } from "gatsby";
 import {
   mapEdgesToNodes,
@@ -414,7 +414,51 @@ const ArchivePage = props => {
       el.classList.add("open")
     }
   }
-  
+  let params = [];
+
+  /* Set currentFilter, currentMediums, currentLocation based on url params */
+  useEffect(() => {
+
+    if(location?.search){
+      if(location.search.split("?").length > 1 ){
+        params = location.search.split("?")[1].split("&");
+      }
+      params.forEach((param) => {
+        let p = param.split("=")[0];
+        let v = param.split("=")[1];
+        if(p == "filter"){
+          setCurrentFilter(v)
+        }else if(p == "mediums" ){
+          let ve = v.split("%20").join(" ") //handle spaces
+          setMediumFilter(ve.split(','))
+        }else if(p == "themes" ){
+          let ve = v.split("%20").join(" ") //handle spaces
+          setThemeFilter(ve.split(','))
+        }else if(p == "partners"){
+          let ve = v.split("%20").join(" ") //handle spaces
+          setPartnerFilter(ve.split(','))
+        }else if(p == "student-led"){
+          if(v == "true"){
+            setStudentLed(true)
+          }else{
+            setStudentLed(false)
+          }
+          
+        }else if(p == "faculty-led"){
+          if(v == "true"){
+            setFacultyLed(true)
+          }else{
+            setFacultyLed(false)
+          }
+          
+        }else if(p == "year"){
+          setYearFilter(v)
+        }
+      })
+    }
+      }, []);
+
+
   let all = [];
   projects.forEach((node,i) => {
         all.push(
@@ -436,7 +480,15 @@ workingGroups.forEach((node,i) => {
       [node, "workingGroup"]
   )
 })
-
+all.sort(function (a, b) {
+  if (a[0].node.name < b[0].node.name) {
+    return -1;
+  }
+  if (a[0].node.name > b[0].node.name) {
+    return 1;
+  }
+  return 0;
+});
 
   let partnerDivs = [] 
   partners.forEach((node,i) => {
@@ -474,18 +526,60 @@ workingGroups.forEach((node,i) => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     );
   }
+
+
+  /* STUDENT LED CHECK */
   function handleCheck(e){
-    let els;
+    if(typeof window != `undefined`){
+      let searchstring = window.location.search?.split("?")[1]
+      let currentYear = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if((newk[0]!="student-led" && e.target.value == "student-led") || (newk[0]!="faculty-led" && e.target.value == "faculty-led")){
+            searchParams.push(newk.join("="))
+          }
+          
+        })
+      }
+      
+      let newSearchString = "?" + searchParams.join("&");
+      
+      
+
+      
+    
+    
     if(e.target.checked){
 
       if( e.target.value == 'student-led'){
+        
+        
+        newSearchString = newSearchString + "&student-led=" + true;
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+        window.history.pushState({path:newurl},'',newurl);
+
+
         setStudentLed(true)
       }else{
+
+        newSearchString = newSearchString + "&faculty-led=" + true;
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+        window.history.pushState({path:newurl},'',newurl);
+
+
+
         setFacultyLed(true)
       }
     }else{
       if( e.target.value == 'student-led'){
         if(facultyLed){
+          newSearchString = newSearchString + "&student-led=" + false;;
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+          window.history.pushState({path:newurl},'',newurl);
           setStudentLed(false)
         }else{
           e.target.checked = true;
@@ -493,56 +587,240 @@ workingGroups.forEach((node,i) => {
         
       }else{
         if(studentLed){
+          newSearchString = newSearchString + "&faculty-led=" + false;
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+          window.history.pushState({path:newurl},'',newurl);
+
           setFacultyLed(false)
         }else{
           e.target.checked = true;
         }
       }
     }
+
+
+
+    
+    }
   }
+
+/* CHECK YEAR */ 
+
   function handleYear(e){
+    if(typeof window != `undefined`){
+      let searchstring = window.location.search?.split("?")[1]
+      let currentYear = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="year"){
+            searchParams.push(newk.join("="))
+          }
+          
+        })
+      }
+      
+      let newSearchString = "?" + searchParams.join("&");
+      newSearchString = newSearchString + "&year=" + e.target.value;
+      
+
+      var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+      window.history.pushState({path:newurl},'',newurl);
+    }
     setYearFilter(e.target.value);
   }
+  /* CHECK PARTNER */ 
   function handlePartner(e){
-    let els;
+    if(typeof window != `undefined`){
+
+      let searchstring = window.location.search?.split("?")[1]
+      let currentPartner = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="partners"){
+            searchParams.push(newk.join("="))
+          }else{
+            currentPartner = newk[1].split(",")
+          }
+          
+        })
+      }
+      if(currentPartner){
+        const index = currentPartner.indexOf(e.target.value.split(" ").join("%20"));
+        if (index > -1) { // only splice array when item is found
+          currentPartner.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }else{
+        currentPartner = []
+      }
+      
+
+
+    let newSearchString;
     let arr = partnerFilter.slice(0);
     if(e.target.checked){
+      newSearchString = "?" + searchParams.join("&");
+      currentPartner.push(e.target.value.split(" ").join("%20"));
+      if(currentPartner.length == 1){
+        currentPartner = currentPartner[0]
+      }else{
+        currentPartner = currentPartner.join(",")
+      } 
+      newSearchString = newSearchString + "&partners=" + currentPartner;
       arr.push(e.target.value);
     }else{
+      if(currentPartner.length == 1){
+        currentPartner = currentPartner[0]
+      }else{
+        currentPartner = currentPartner.join(",")
+      } 
+      newSearchString = "?" + searchParams.join("&");
+      if(currentPartner.length == 0){
+        newSearchString = newSearchString;
+      }else{
+        newSearchString = newSearchString + "&partners=" + currentPartner;
+      }
       const index = arr.indexOf(e.target.value);
       if (index > -1) { // only splice array when item is found
         arr.splice(index, 1); // 2nd parameter means remove one item only
       }
     }
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
     setPartnerFilter(arr);
+    }
   }
-
+/** CHECK MEDIUM */
   function handleMedium(e){
-    let els;
-    let arr = partnerFilter.slice(0);
+    if(typeof window != `undefined`){
+      let searchstring = window.location.search?.split("?")[1]
+      let currentMedium = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="mediums"){
+            searchParams.push(newk.join("="))
+          }else{
+            currentMedium = newk[1].split(",")
+          }
+          
+        })
+      }
+      if(currentMedium){
+        const index = currentMedium.indexOf(e.target.value.split(" ").join("%20"));
+        if (index > -1) { // only splice array when item is found
+          currentMedium.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }else{
+        currentMedium = []
+      }
+    let newSearchString;
+
+    let arr = mediumFilter.slice(0);
     if(e.target.checked){
+      newSearchString = "?" + searchParams.join("&");
+      currentMedium.push(e.target.value.split(" ").join("%20"));
+      if(currentMedium.length == 1){
+        currentMedium = currentMedium[0]
+      }else{
+        currentMedium = currentMedium.join(",")
+      } 
+      newSearchString = newSearchString + "&mediums=" + currentMedium;
       arr.push(e.target.value);
     }else{
+      if(currentMedium.length == 1){
+        currentMedium = currentMedium[0]
+      }else{
+        currentMedium = currentMedium.join(",")
+      } 
+      newSearchString = "?" + searchParams.join("&");
+      if(currentMedium.length == 0){
+        newSearchString = newSearchString;
+      }else{
+        newSearchString = newSearchString + "&mediums=" + currentMedium;
+      }
+
       const index = arr.indexOf(e.target.value);
       if (index > -1) { // only splice array when item is found
         arr.splice(index, 1); // 2nd parameter means remove one item only
       }
     }
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
     setMediumFilter(arr);
+    }
   }
-
+/* CHECK THEME */
   function handleTheme(e){
-    let els;
+    if(typeof window != `undefined`){
+      let searchstring = window.location.search?.split("?")[1]
+      let currentTheme = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="themes"){
+            searchParams.push(newk.join("="))
+          }else{
+            currentTheme = newk[1].split(",")
+          }
+          
+        })
+      }
+      if(currentTheme){
+        const index = currentTheme.indexOf(e.target.value.split(" ").join("%20"));
+        if (index > -1) { // only splice array when item is found
+          currentTheme.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }else{
+        currentTheme = []
+      }
+    let newSearchString;
     let arr = themeFilter.slice(0);
     if(e.target.checked){
+      newSearchString = "?" + searchParams.join("&");
+      currentTheme.push(e.target.value.split(" ").join("%20"));
+      if(currentTheme.length == 1){
+        currentTheme = currentTheme[0]
+      }else{
+        currentTheme = currentTheme.join(",")
+      } 
+      newSearchString = newSearchString + "&themes=" + currentTheme;
       arr.push(e.target.value);
     }else{
+      if(currentTheme.length == 1){
+        currentTheme = currentTheme[0]
+      }else{
+        currentTheme = currentTheme.join(",")
+      } 
+      newSearchString = "?" + searchParams.join("&");
+      if(currentTheme.length == 0){
+        newSearchString = newSearchString;
+      }else{
+        newSearchString = newSearchString + "&themes=" + currentTheme;
+      }
+     
       const index = arr.indexOf(e.target.value);
       if (index > -1) { // only splice array when item is found
         arr.splice(index, 1); // 2nd parameter means remove one item only
       }
     }
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
     setThemeFilter(arr);
+    }
   }
 
   return (
@@ -733,9 +1011,9 @@ workingGroups.forEach((node,i) => {
              <div className={styles.filterWrapper}>
               <h1>Filters</h1>
               <div>
-                <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
+                <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={studentLed ? true : false}/>
                 <label htmlFor="student-led"><span><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></span></label><br></br>
-                <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>
+                <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={facultyLed ? true : false}/>
                 <label htmlFor="faculty-led"><span><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></span></label>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>

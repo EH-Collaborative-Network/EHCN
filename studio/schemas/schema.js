@@ -10,6 +10,8 @@ import learningResource from './documents/learningResource'
 import newsItem from './documents/newsItem'
 import opportunity from './documents/opportunity'
 import page from './documents/page'
+import theme from './documents/theme'
+import medium from './documents/medium'
 import person from './documents/person'
 import partner from './documents/partner'
 import project from './documents/project'
@@ -43,6 +45,8 @@ export default createSchema({
     link,
     mediaItem,
     pdf,
+    medium,
+    theme,
     richText,
     translation,
     titleTranslation,

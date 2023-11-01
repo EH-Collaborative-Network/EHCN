@@ -864,7 +864,7 @@ all.sort(function (a, b) {
           <LangContext.Consumer>
             {theme => {
                     return(
-                    <input type="text" onKeyDown={handleEnter} placeholder={translate(languagePhrases, "search", theme) + " " + translate(languagePhrases, "learningResources", theme)} />
+                    <input type="text" onKeyDown={handleEnter} placeholder={translate(languagePhrases, "search", theme) + " " + translate(languagePhrases, "archive", theme)} />
                 )}}
           </LangContext.Consumer>
           <button onClick={handleSearch} aria-labelledby="search-label">

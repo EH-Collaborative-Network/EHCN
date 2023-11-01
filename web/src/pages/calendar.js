@@ -77,8 +77,10 @@ export const query = graphql`
           july
           august
           september
+          noResults
           october
           november
+          newsletter
           december
 
         }
@@ -203,6 +205,14 @@ const CalendarPage = props => {
     }
     return is;
   }
+
+  let currentEvents = [];
+  events.toReversed().forEach((event, i) => {
+    let d = event.node.endDate.date.split("-")
+    if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
+      currentEvents.push(event)
+    }
+  })
   function getSunday() {
     // Copy date so don't modify original
     let d = new Date();
@@ -287,7 +297,7 @@ const CalendarPage = props => {
             </div>
             {monthView &&
             <>
-            <h1><TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/></h1>
+            <h1 style={{"marginTop":"0", "marginBottom":"50px"}}><TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/></h1>
        
             <div className={"blue-button " + styles.button} disabled={monthView ? false : true} onClick={showWeek} aria-labelled-by="switch-to-week">
             <TranslatedPhrase translations={languagePhrases} phrase={"listview"}/>
@@ -320,16 +330,14 @@ const CalendarPage = props => {
             }
             {!monthView &&
             <>
-            <h1><TranslatedPhrase translations={languagePhrases} phrase={"upcomingEvents"}/></h1>
+            <h1 style={{"marginTop":"0"}}><TranslatedPhrase translations={languagePhrases} phrase={"upcomingEvents"}/></h1>
             <div className={"blue-button " + styles.button} disabled={monthView ? true : false} onClick={showMonth} aria-labelled-by="switch-to-month">
             <TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/>
             </div>
             
             <div className={styles.cardWrapper}>
             {
-              events.toReversed().map((event, i) => {
-                let d = event.node.endDate.date.split("-")
-                if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
+              currentEvents.map((event, i) => {
                   return(
                     <Link to={"/events/"+ event.node.slug.current}>
                       {event.node.mainImage &&
@@ -345,8 +353,10 @@ const CalendarPage = props => {
                       
                     </Link>
                   )
-                }
               })
+            }
+            {currentEvents.length == 0 &&
+            <em><TranslatedPhrase translations={languagePhrases} phrase={"noResults"}/>  <TranslatedPhrase translations={languagePhrases} phrase={"upcomingEvents"}/></em>
             }
                       
             

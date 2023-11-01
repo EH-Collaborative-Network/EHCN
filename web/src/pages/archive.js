@@ -159,6 +159,10 @@ export const query = graphql`
                     code
                   }
                 }
+                startDate{
+                  date
+                  time
+                }
                 slug{
                     current
                 }
@@ -342,6 +346,7 @@ const ArchivePage = props => {
   const [partnerFilter, setPartnerFilter] = useState([]);
   const [mediumFilter, setMediumFilter] = useState([]);
   const [themeFilter, setThemeFilter] = useState([]);
+  const [yearFilter, setYearFilter] = useState("All");
   
   const [previewData, setPreviewData] = useState(false)
   if(location?.search){
@@ -440,7 +445,9 @@ const ArchivePage = props => {
       }
     }
   }
-
+  function handleYear(e){
+    setYearFilter(e.target.value);
+  }
   function handlePartner(e){
     let els;
     let arr = partnerFilter.slice(0);
@@ -501,7 +508,7 @@ const ArchivePage = props => {
                   let mediumNames = []
                   let mediumFound = false;
 
-                  let themenNames = []
+                  let themeNames = []
                   let themeFound = false;
                   
                   let show = true;
@@ -515,13 +522,13 @@ const ArchivePage = props => {
                   node.node.mediums.forEach((p,i) => {
                     mediumNames.push(p.name)
                   })
-
-
+                  
+                  
                   if(partnerFilter.length > 0){
                     instituteFound = partnerFilter.some( ai => institutionNames.includes(ai) );
                   }
                   if(mediumFilter.length > 0){
-                    mediumFound = mediumFilter.some( ai => mediumnNames.includes(ai) );
+                    mediumFound = mediumFilter.some( ai => mediumNames.includes(ai) );
                   }
                   if(themeFilter.length > 0){
                     themeFound = themeFilter.some( ai => themeNames.includes(ai) );
@@ -535,8 +542,13 @@ const ArchivePage = props => {
                     show = false;
                   }
 
-                  if(partnerFilter.length > 0 && !partnerFound){
+                  if(partnerFilter.length > 0 && !instituteFound){
                     show = false;
+                  }
+                  if(yearFilter != "All"){
+                    if(node.node.startDate?.date.split("-")[0] != yearFilter || node.node.starDate == `undefined`){
+                      show = false
+                    }
                   }
                   if(show){
                     return(
@@ -589,9 +601,12 @@ const ArchivePage = props => {
               </div>
               <div>
                 <h4>Year</h4>
-                <select>
-                  <option>2023</option>
-                  <option>2024</option>
+                <select onChange={handleYear}>
+                  <option value={"All"}>Any</option>
+                  <option value={"2023"}>2023</option>
+                  <option value={"2022"}>2022</option>
+                  <option value={"2021"}>2021</option>
+                  <option value={"2020"}>2020</option>
                 </select>
               </div>
              

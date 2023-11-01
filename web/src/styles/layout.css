@@ -408,6 +408,9 @@ color:inherit;
 .accordion.open > div{
   display: block;
 }
+.accordion.open h4{
+  border-bottom: 1px solid var(--color-dark-blue);
+}
 .accordion.open svg path:last-child{
   display: none;
 }

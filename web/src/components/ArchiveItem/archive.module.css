@@ -16,19 +16,22 @@
     top: var(--space);
     right:var(--space);
     flex-basis: 17%;
+    max-width: 17%;
     padding-bottom: var(--small-space);
 }
 .filterWrapper h4{
     font-size: var(--font-small-size);
-    font-family: var(--font-family-sans);
-    margin:0 var(--small-space);
-    width: 100%;
+    margin:0;
+    padding:var(--small-space);
+}
+.filterWrapper .accordion h4{
+    padding:var(--small-space) calc(var(--small-space)*2);
 }
 .filterWrapper select{
     margin:var(--small-space);
     margin-top:0;
 }
-.filterWrapper h4 svg{
+.filterWrapper .accordion h4 svg{
     width: var(--space);
     float: right;
     top: calc(var(--small-space) * 2);
@@ -46,8 +49,8 @@
 }
 .accordion{
     border-top: 1px solid var(--color-dark-blue);
-    padding: var(--small-space);
     cursor: pointer;
+    padding:0;
 }
 .accordion:nth-child(5){
     border-bottom: 1px solid var(--color-dark-blue);
@@ -57,9 +60,25 @@
 }
 
 .accordion > div{
+    padding: var(--small-space);
     display: none;
 }
-
+.accordion input[type=checkbox]{
+    display: none;
+}
+.accordion input[type=checkbox]:checked + label{
+    font-family: var(--font-family-bold);
+}
+.accordion div div{
+    display: inline-block;
+    padding:0 calc(var(--small-space)/2);
+}
+.accordion label::after{
+    content:","
+}
+.accordion div div:last-child label::after{
+    content:""
+}
 .resultsWrapper{
     display: flex;
     flex-wrap: wrap;
@@ -104,4 +123,41 @@
     color:var(--color-black);
     display: flex;
     flex-direction: column;
+}
+
+.searchWrapper{
+    position:relative;
+    width:100%;
+    margin:var(--space) 0;
+    @media (--media-min-medium) {
+        width:70%;
+    }
+}
+.searchWrapper input{
+    width:90%;
+}
+.searchWrapper button{
+    outline:none;
+    border:none;
+    cursor: pointer;
+    padding:0;
+    right:10px;
+    background-color: transparent;
+    top:12px;
+    position:absolute;
+    vertical-align: top;
+    @media (--media-min-medium) {
+        right:65px;
+    }
+}
+.searchWrapper button:hover svg{
+    top:-4px;
+    left:1px;
+}
+.searchWrapper svg{
+    width:20px;
+    height:20px;
+    vertical-align: top;
+    position:relative;
+    top:-5px;
 }

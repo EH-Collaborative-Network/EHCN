@@ -5,6 +5,7 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
+import { useFlexSearch } from 'react-use-flexsearch'
 import Container from "../components/Container/container";
 import ArchiveItem from "../components/ArchiveItem/archiveItem";
 import BlockContent from "../components/TranslationHelpers/block-content";
@@ -60,6 +61,10 @@ export const query = graphql`
         }
       }
     }
+    items: localSearchItems {
+      store
+      index
+    }
     mediums: allSanityMedium{
       edges{
         node{
@@ -96,6 +101,8 @@ export const query = graphql`
           availableOpps
           networkWide
           studentLed
+          results
+          noResults
           facultyLed
         }
       }
@@ -103,6 +110,7 @@ export const query = graphql`
     workingGroups: allSanityWorkingGroup{
         edges{
             node {
+                studentLed
                 titles{
                   text
                   language{
@@ -151,6 +159,7 @@ export const query = graphql`
     events: allSanityEvent{
         edges{
             node {
+                studentLed
                 titles{
                   text
                   language{
@@ -251,6 +260,7 @@ export const query = graphql`
     projects: allSanityProject{
         edges{
             node {
+                studentLed
                 titles{
                   text
                   language{
@@ -340,7 +350,30 @@ const ArchivePage = props => {
   let previewQuery = '*[_id == "drafts.'+ (data || {}).fp.edges[0]?.node?._id +'"]{ _id, titles[]{language->{code}, text}, bodies[]{language->{code}, text}}'
   const location = useLocation();
   let preview = false;
-
+  const store = (data || {}).items?.store
+  const index = (data || {}).items?.index
+  const [query, setQuery] = useState(null);
+  const results = index ? useFlexSearch(query, index, store) : []
+  let filteredResults = [];
+  results?.map(function(node, index){
+    if(node.type == "project" || node.type == "event" || node.type == "course" || node.type == "workingGroup"){
+      filteredResults.push(node)
+    }
+  })
+  function handleSearch(e){
+    let el = e.target;
+    let parent = el.closest("div");
+    let phrase = parent.querySelector("input").value
+    setQuery(phrase)
+  }
+  function handleEnter(e){
+    if(e.key == "Enter"){
+      let el = e.target;
+      let parent = el.closest("div");
+      let phrase = parent.querySelector("input").value
+      setQuery(phrase)
+    }
+  }
   const [studentLed, setStudentLed] = useState(true);
   const [facultyLed, setFacultyLed] = useState(true);
   const [partnerFilter, setPartnerFilter] = useState([]);
@@ -497,10 +530,80 @@ const ArchivePage = props => {
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
+          <div><div className={styles.searchWrapper}>
+          <LangContext.Consumer>
+            {theme => {
+                    return(
+                    <input type="text" onKeyDown={handleEnter} placeholder={translate(languagePhrases, "search", theme) + " " + translate(languagePhrases, "learningResources", theme)} />
+                )}}
+          </LangContext.Consumer>
+          <button onClick={handleSearch} aria-labelledby="search-label">
+              <span id="search-label" hidden>Search</span>
+              <svg width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.0023 11.2C22.0023 16.4901 17.4814 20.9 11.7511 20.9C6.02087 20.9 1.5 16.4901 1.5 11.2C1.5 5.90992 6.02087 1.5 11.7511 1.5C17.4814 1.5 22.0023 5.90992 22.0023 11.2Z" stroke="#333333" stroke-width="3"/>
+              <path d="M27.9786 27.9995C28.5976 28.5501 29.5453 28.4943 30.0955 27.8749C30.6456 27.2556 30.5898 26.3071 29.9709 25.7565L27.9786 27.9995ZM17.9062 19.0395L27.9786 27.9995L29.9709 25.7565L19.8985 16.7965L17.9062 19.0395Z" fill="#333333"/>
+              </svg>
+          </button>
+          </div>
+          {(query?.length > 0 && results.length == 0) &&
+            <em id="no-results"><TranslatedPhrase translations={languagePhrases} phrase={"noResults"}/> "{query}"</em>
+          }
+          {filteredResults.length > 0 &&
+                    <em><TranslatedPhrase translations={languagePhrases} phrase={"search"}/> <TranslatedPhrase translations={languagePhrases} phrase={"results"}/>:</em>
+                  }
+          </div>
           <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
           
           <div className={styles.wrapper}>
              <div className={styles.resultsWrapper}>
+
+             { filteredResults.length > 0 &&
+<>
+          {filteredResults.map(function(node, index){
+            let slug = node.slug?.current || "";
+            switch (node.type) {
+              case 'learningResource':
+                slug = "/learning-resource/"+slug;
+                break;
+              case 'course':
+                slug = "/course/"+slug;
+                break
+              case 'fundingOpportunity':
+                slug = "/funding/"+slug;
+                break;
+              case 'news':
+                slug = "/news/"+slug;
+                break;
+              case 'event':
+                slug = "/event/"+slug;
+                break;
+              case 'project':
+                slug = "/project/"+slug;
+                break;
+              case 'workingGroup':
+                slug = "/working-group/"+slug;
+                break;
+              case 'researchThread':
+                slug = "/research-thread/"+slug;
+                break;
+              case 'partner':
+                slug = "/partner/"+slug;
+                break;
+              default:
+                slug = slug;
+            }
+console.log(node.mainImage, node)
+              return(
+                <ArchiveItem titles={node.titles} key={index} image={node.mainImage} link={slug}/>
+
+              )
+            
+          })}
+          </>
+
+          }
+{ filteredResults.length < 1 &&
+<>
              { all.map(function(node, i){
                   let institutionNames = []
                   let instituteFound = false;
@@ -545,11 +648,18 @@ const ArchivePage = props => {
                   if(partnerFilter.length > 0 && !instituteFound){
                     show = false;
                   }
+                  if(studentLed == false && node.node.studentLed){
+                    show = false;
+                  }
+                  if(facultyLed == false && studentLed == true && !node.node.studentLed){
+                    show = false;
+                  }
                   if(yearFilter != "All"){
                     if(node.node.startDate?.date.split("-")[0] != yearFilter || node.node.starDate == `undefined`){
                       show = false
                     }
                   }
+
                   if(show){
                     return(
                         <ArchiveItem titles={node.node.titles} key={i} image={node.node.mainImage} link={'/projects/'+node.node.slug.current}/>
@@ -559,6 +669,10 @@ const ArchivePage = props => {
                  
               })
             }
+            </>
+}
+
+
              </div>
              <div className={styles.filterWrapper}>
               <h1>Filters</h1>

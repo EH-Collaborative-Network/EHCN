@@ -213,6 +213,7 @@ const CalendarPage = props => {
       currentEvents.push(event)
     }
   })
+  currentEvents = currentEvents.slice().reverse()
 
   function getSunday() {
     // Copy date so don't modify original
@@ -338,7 +339,7 @@ const CalendarPage = props => {
             
             <div className={styles.cardWrapper}>
             {
-              currentEvents.toReversed().map((event, i) => {
+              currentEvents.map((event, i) => {
                   return(
                     <Link to={"/events/"+ event.node.slug.current}>
                       {event.node.mainImage &&

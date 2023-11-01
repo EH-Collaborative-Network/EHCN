@@ -44,6 +44,38 @@ export const query = graphql`
         }
       }
     }
+    themes: allSanityTheme{
+      edges{
+        node{
+          id
+          name
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+        }
+      }
+    }
+    mediums: allSanityMedium{
+      edges{
+        node{
+          id
+          name
+          titles{
+            text
+            language{
+              id
+              name
+              code
+            }
+          }
+        }
+      }
+    }
     languagePhrases: allSanityLanguage {
       edges {
         node {
@@ -78,6 +110,14 @@ export const query = graphql`
                     name
                     code
                   }
+                }
+                themes{
+                  id
+                  name
+                }
+                mediums{
+                  id
+                  name
                 }
                 slug{
                     current
@@ -129,6 +169,14 @@ export const query = graphql`
                     current
                   }
                 }
+                themes{
+                  id
+                  name
+                }
+                mediums{
+                  id
+                  name
+                }
                 mainImage {
                     crop {
                       _key
@@ -158,6 +206,14 @@ export const query = graphql`
                   name
                   code
                 }
+              }
+              themes{
+                id
+                name
+              }
+              mediums{
+                id
+                name
               }
               slug{
                   current
@@ -208,6 +264,14 @@ export const query = graphql`
                   slug{
                     current
                   }
+                }
+                themes{
+                  id
+                  name
+                }
+                mediums{
+                  id
+                  name
                 }
                 mainImage {
                     crop {
@@ -276,6 +340,8 @@ const ArchivePage = props => {
   const [studentLed, setStudentLed] = useState(true);
   const [facultyLed, setFacultyLed] = useState(true);
   const [partnerFilter, setPartnerFilter] = useState([]);
+  const [mediumFilter, setMediumFilter] = useState([]);
+  const [themeFilter, setThemeFilter] = useState([]);
   
   const [previewData, setPreviewData] = useState(false)
   if(location?.search){
@@ -293,6 +359,8 @@ const ArchivePage = props => {
   const titles = (data || {}).fp.edges[0]?.node?.titles;
   const projects = (data || {}).projects?.edges;
   const partners = (data || {}).partners?.edges;
+  const themes = (data || {}).themes?.edges;
+  const mediums = (data || {}).mediums?.edges;
   const events = (data || {}).events?.edges;
   const workingGroups = (data || {}).workingGroups?.edges;
   const courses = (data || {}).courses?.edges;
@@ -319,6 +387,28 @@ const ArchivePage = props => {
             </div> 
         )
   })
+
+  let themeDivs = [] 
+  themes.forEach((node,i) => {
+        themeDivs.push(
+            <div key={i}>
+              <input onChange={handleTheme} value={node.node.name} id={node.node.id} type={"checkbox"}></input>
+              <label for={node.node.id}><TranslatedTitle translations={node.node.titles}/></label>
+            </div> 
+        )
+  })
+
+  let mediumDivs = [] 
+  mediums.forEach((node,i) => {
+        mediumDivs.push(
+            <div key={i}>
+              <input onChange={handleMedium} value={node.node.name} id={node.node.id} type={"checkbox"}></input>
+              <label for={node.node.id}><TranslatedTitle translations={node.node.titles}/></label>
+            </div> 
+        )
+  })
+
+  
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
@@ -365,6 +455,34 @@ const ArchivePage = props => {
     setPartnerFilter(arr);
   }
 
+  function handleMedium(e){
+    let els;
+    let arr = partnerFilter.slice(0);
+    if(e.target.checked){
+      arr.push(e.target.value);
+    }else{
+      const index = arr.indexOf(e.target.value);
+      if (index > -1) { // only splice array when item is found
+        arr.splice(index, 1); // 2nd parameter means remove one item only
+      }
+    }
+    setMediumFilter(arr);
+  }
+
+  function handleTheme(e){
+    let els;
+    let arr = themeFilter.slice(0);
+    if(e.target.checked){
+      arr.push(e.target.value);
+    }else{
+      const index = arr.indexOf(e.target.value);
+      if (index > -1) { // only splice array when item is found
+        arr.splice(index, 1); // 2nd parameter means remove one item only
+      }
+    }
+    setThemeFilter(arr);
+  }
+
   return (
       <>  
       <Layout extra="" navTranslations={languagePhrases} globalLanguages={globalLanguages} showMarquee={false} marqueeContent={null}>
@@ -378,19 +496,55 @@ const ArchivePage = props => {
              <div className={styles.resultsWrapper}>
              { all.map(function(node, i){
                   let institutionNames = []
-                  let isFound = false;
-                  console.log(partnerFilter)
+                  let instituteFound = false;
+
+                  let mediumNames = []
+                  let mediumFound = false;
+
+                  let themenNames = []
+                  let themeFound = false;
+                  
+                  let show = true;
+                  
                   node.node.partners.forEach((p,i) => {
                     institutionNames.push(p.name)
                   })
+                  node.node.themes.forEach((p,i) => {
+                    themeNames.push(p.name)
+                  })
+                  node.node.mediums.forEach((p,i) => {
+                    mediumNames.push(p.name)
+                  })
+
+
                   if(partnerFilter.length > 0){
-                    isFound = partnerFilter.some( ai => institutionNames.includes(ai) );
+                    instituteFound = partnerFilter.some( ai => institutionNames.includes(ai) );
                   }
-                  if(partnerFilter.length == 0 || isFound){
+                  if(mediumFilter.length > 0){
+                    mediumFound = mediumFilter.some( ai => mediumnNames.includes(ai) );
+                  }
+                  if(themeFilter.length > 0){
+                    themeFound = themeFilter.some( ai => themeNames.includes(ai) );
+                  }
+
+                  if(mediumFilter.length > 0 && !mediumFound){
+                    show = false;
+                  }
+
+                  if(themeFilter.length > 0 && !themeFound){
+                    show = false;
+                  }
+
+                  if(partnerFilter.length > 0 && !partnerFound){
+                    show = false;
+                  }
+                  if(show){
                     return(
                         <ArchiveItem titles={node.node.titles} key={i} image={node.node.mainImage} link={'/projects/'+node.node.slug.current}/>
                     )
-                  } 
+                  }
+                    
+                 
               })
             }
              </div>
@@ -412,13 +566,15 @@ const ArchivePage = props => {
                 <div>{partnerDivs}</div>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
-                <h4>Medium 
+                <h4>Medium/Format
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" stroke-linecap="round"/>
                     <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
                     </svg>
                   </h4>
-                <div>lorem ipsum</div>
+                <div>
+                  {mediumDivs}
+                </div>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
                 <h4>Theme/Topic
@@ -427,7 +583,9 @@ const ArchivePage = props => {
                     <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" stroke-linecap="round"/>
                     </svg>
                 </h4>
-                <div>lorem ipsum</div>
+                <div>
+                  {themeDivs}
+                </div>
               </div>
               <div>
                 <h4>Year</h4>

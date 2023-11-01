@@ -44,7 +44,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
           <ul className={styles.menu}>
               <li><Link to="/about/"><TranslatedPhrase translations={translations} phrase={"aboutEHCN"}/></Link></li>
               <li><Link to="/archive/"><TranslatedPhrase translations={translations} phrase={"archive"}/></Link></li>
-              <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"calendar"}/></Link></li>
+              <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"events"}/></Link></li>
               <li><Link to="/funding"><TranslatedPhrase translations={translations} phrase={"fundingOpportunities"}/></Link></li>
               <li><Link to="/learningresources/"><TranslatedPhrase translations={translations} phrase={"learningResources"}/></Link></li>
           </ul>

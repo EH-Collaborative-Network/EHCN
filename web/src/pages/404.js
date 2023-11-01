@@ -29,7 +29,7 @@ export const query = graphql`
           code
           aboutEHCN
           archive
-          calendar
+          events
           fundingOpportunities
           ehcnSupported
           learningResources

@@ -73,13 +73,13 @@ export const query = graphql`
           name
           code
           aboutEHCN
-          calendar
           archive
           newsletter
           fundingOpportunities
           ehcnSupported
           learningResources
           researchThreads
+          events
           selectInstitution
           availableIn
           search

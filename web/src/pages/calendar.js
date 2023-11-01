@@ -55,9 +55,12 @@ export const query = graphql`
           researchThreads
           availableIn
           search
+          upcomingEvents
+          pastEvents
           archive
           timezone
           sunday
+          listview
           monday
           tuesday
           wednesday
@@ -65,6 +68,7 @@ export const query = graphql`
           friday
           saturday
           january
+          events
           february
           march
           april
@@ -176,7 +180,7 @@ const CalendarPage = props => {
     let year = d.getFullYear();
     let month = d.getMonth();
     let is = true;
-    // cmonth = cmonth - 1;
+    cmonth = cmonth - 1;
 
 
     if(cyear < year){
@@ -208,7 +212,7 @@ const CalendarPage = props => {
   }
 
   const [offset, setOffset] = useState(null);
-  const [monthView, setMonthView] = useState(true);
+  const [monthView, setMonthView] = useState(false);
   const [month, setMonth] = useState(new Date().getMonth());
   const [sunday, setSunday] = useState(getSunday());
   const [year, setYear] = useState(new Date().getFullYear())
@@ -267,48 +271,29 @@ const CalendarPage = props => {
         
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
-          <h1><TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/></h1>
-          <div>
-          <button className={styles.bubbleButton} disabled={monthView ? true : false} onClick={showMonth} aria-labelled-by="switch-to-month">
-            <span id='switch-to-month' hidden>switch to month view</span>
-            <svg  viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 6.40039)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 9.49609 6.40039)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 18.9941 6.40039)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 28.4922 6.40039)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 14.9336)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 9.49609 14.9336)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 18.9941 14.9336)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 28.4922 14.9336)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 23.4668)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 9.49609 23.4668)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 18.9941 23.4668)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 28.4922 23.4668)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 32)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 9.49609 32)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 18.9941 32)" fill="#D4EAED"/>
-            <rect width="7.59763" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 28.4922 32)" fill="#D4EAED"/>
-            </svg>
-          </button>
-          <button className={styles.bubbleButton} disabled={monthView ? false : true} onClick={showWeek} aria-labelled-by="switch-to-week">
-            <span id='switch-to-week' hidden>switch to week view</span>
-            <svg  viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 6.40039)" fill="#D4EAED"/>
-            <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 14.9336)" fill="#D4EAED"/>
-            <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 23.4668)" fill="#D4EAED"/>
-            <rect width="39.8876" height="6.4" rx="3.2" transform="matrix(1 0 0 -1 0 32)" fill="#D4EAED"/>
-            </svg>
-          </button>
-          </div>
+          
+          
           <div>
             <div className={styles.selectWrapper}>
               <label className={styles.label} htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
               <select className={styles.select} id="change-tz" onChange={handleTime}>
                 <TimeZoneList />
               </select>
+              <div>
+            
+          
+          
+          </div>
             </div>
             {monthView &&
             <>
+            <h1><TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/></h1>
+       
+            <div className={"blue-button " + styles.button} disabled={monthView ? false : true} onClick={showWeek} aria-labelled-by="switch-to-week">
+            <TranslatedPhrase translations={languagePhrases} phrase={"listview"}/>
+            </div>
+            
+          
             <div className={styles.buttonWrapper}>
             <button onClick={decrement} aria-labelled-by="previous-month">
               <span id='previous-month' hidden>previous month</span>
@@ -335,7 +320,11 @@ const CalendarPage = props => {
             }
             {!monthView &&
             <>
-            <h1>Current/Upcoming</h1>
+            <h1><TranslatedPhrase translations={languagePhrases} phrase={"upcomingEvents"}/></h1>
+            <div className={"blue-button " + styles.button} disabled={monthView ? true : false} onClick={showMonth} aria-labelled-by="switch-to-month">
+            <TranslatedPhrase translations={languagePhrases} phrase={"calendar"}/>
+            </div>
+            
             <div className={styles.cardWrapper}>
             {
               events.toReversed().map((event, i) => {
@@ -362,7 +351,7 @@ const CalendarPage = props => {
                       
             
             </div>
-            <h1>Past</h1>
+            <h1><TranslatedPhrase translations={languagePhrases} phrase={"pastEvents"}/></h1>
             <div className={styles.cardWrapper}>
             {
               events.map((event, i) => {

@@ -68,9 +68,9 @@ export const query = graphql`
           code
           aboutEHCN
           EHCN
-          calendar
           aboutP1
           aboutP2
+          events
           archive
           fundingOpportunities
           ehcnSupported

@@ -88,8 +88,8 @@ export const query = graphql`
           name
           code
           aboutEHCN
-          calendar
           newsletter
+          events
           fundingOpportunities
           ehcnSupported
           learningResources

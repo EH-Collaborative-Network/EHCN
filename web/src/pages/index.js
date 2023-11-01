@@ -187,7 +187,7 @@ export const query = graphql`
           justice
           technology
           creativepractice
-          calendar
+          events
           fundingOpportunities
           ehcnSupported
           newsletter

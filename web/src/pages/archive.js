@@ -630,7 +630,7 @@ workingGroups.forEach((node,i) => {
                   let node = n[0]
 
                   let slug = node.node.slug?.current || "";
-                  switch (node[1]) {
+                  switch (n[1]) {
                     case 'learningResource':
                       slug = "/learning-resource/"+slug;
                       break;

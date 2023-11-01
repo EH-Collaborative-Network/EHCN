@@ -186,7 +186,7 @@ const AQBVoicesPage = props => {
                 <div><img src={bawh1}/></div>
                 <div className={styles.textBox}>
                     <h4>BAWH  بوح PODCAST</h4>
-                    <p>Bawh بوح is a student-produced podcast based at Al-Quds Bard College in Palestine that  taps into the transformative power of everyday people and their life stories. Every week, the podcast  tunes into Palestine in all its shapes, sizes, sounds and textures..</p>
+                    <p>Bawh بوح is a student-produced podcast based at Al-Quds Bard College in Palestine that  taps into the transformative power of everyday people and their life stories. Every week, the podcast  tunes into Palestine in all its shapes, sizes, sounds and textures.</p>
                     <a className="blue-button" href={"https://bawh.org/"}>Bawh بوح Website</a>
                 </div>
             </div>

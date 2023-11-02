@@ -2,49 +2,80 @@
 @import '../../styles/custom-properties.css';
 
 .bubble{
-    background: var(--blue-hover-gradient);
-    border-radius: 5px;
-    padding: 20px;
-    margin:10px 0 20px;
-    font-size: var(--font-medium-size);
-    box-shadow:  0px 6px 6px var(--color-light-blue);
+    background: var(--color-blue);
+    border-radius: 0;
+    padding: calc(var(--space)/2);
+    margin:calc(var(--small-space) * 2) var(--small-space);
+    font-family: var(--font-family-bold);
+    clip-path: polygon(0% 3px, 100% 0%, 100% calc(100% - 1px), 2px 100%);
+    font-size: var(--font-base-size);
+    width: calc(100% - var(--space));
     @media (--media-min-medium) {
-        max-width: calc(60%);
+        /* max-width: calc(60%); */
     }
 }
-.toggle.on{
-    text-decoration: underline;
+.bubble:first-child{
+    left: var(--space);
+    position:relative;
+    clip-path: polygon(0% 8px, 100% 0%, calc(100% - 2px) calc(100% - 5px), 1px 100%);
 }
-.toggle.on::after{
-    content:"";
-    display: none;
-    position: absolute;
-    width: 0; 
-    left:1em;
-    bottom:1.5em;
-    height: 0; 
-    border-left: 35px solid transparent;
-    border-right: 35px solid transparent;
-    border-top: 30px solid #D6EAEC;
-    @media (--media-min-medium) {
-        display: block; 
-    }
+.bubble:last-child{
+    left: var(--space);
+    position:relative;
+   clip-path: polygon(0% 0px, calc(100% - 3px) 4%, calc(100% - 2px) calc(100% - 5px), 1px 100%)
 }
 .bubble p{
     margin:0;
+
 }
-.toggle{
-    position: relative;
-    text-transform: capitalize;
-    font-style: italic;
-    cursor: pointer;
+
+
+.overwrapper > div{
+    align-self: stretch;
 }
-.toggle:hover{
-    text-decoration: underline;
+
+.aboveWrapper{
+    font-size: var(--font-h4-size);
+    padding-top:var(--space);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @media (--media-min-medium) {
+       padding-left: var(--space); 
+       padding-top:0;
+    }
 }
-.toggle:nth-child(2){
-    color: var(--color-dark-blue);
+.aboveWrapper p{
+    /* margin-bottom: 0; */
 }
-.toggle:nth-child(3){
-    color: var(--color-red);
+.wrapper{
+    display: flex;
+    padding-right: var(--space);
+    flex-direction: row;
+    flex-basis: 50%;
+    position:relative;
+    left: calc(var(--space) * -1);
+    /* background-color: var(--color-light-blue); */
 }
+.wrapper strong{
+    font-family: var(--font-family-bolder);
+}
+.overwrapper > div:nth-child(2){
+    flex-basis: 50%;
+    padding-right: var(--space);
+}
+.overwrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: calc(var(--space) * 2) 0;
+    margin-top: var(--space);
+    @media (--media-min-medium) {
+        flex-direction: row;
+        /* max-width: calc(60%); */
+    }
+    /* padding: var(--space); */
+}
+
+

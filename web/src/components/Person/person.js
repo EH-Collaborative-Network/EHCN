@@ -8,13 +8,14 @@ const Person = ({ person, index, blue, hideArrow }) =>{
     
     if(!el.querySelector(".modal").classList.contains("show")){
         el.querySelector(".modal").classList.add('show');
+        el.querySelector(".modal-bg").classList.add('show');
     }
     
   }
 
   return(
       <span className={styles.person}>
-          <div onClick={handler} className={`${blue ? "blue-button": "button"}`}>{person.node.name }{hideArrow ? "" : ""}</div>
+          <div onClick={handler} className={styles.personButton + ` person-button`}>{person.node.name }{hideArrow ? "" : ""}</div>
           <Modal name={person.node.name} image={person.node.image} content={person.node.bios} />
       </span> 
   );

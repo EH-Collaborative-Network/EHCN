@@ -35,34 +35,6 @@ const Carousel = ({ media, imageOnly }) => {
           }
         }
     },500)
-    let interval = setInterval(() => {
-      let tracks = document.getElementsByClassName(styles.slideTrack);
-      for(let j = 0; j < tracks.length; j++){
-        let track = tracks[j];
-        let inner = track.closest('.inner');
-        let t = track.style.transform;
-        t = t.split("%")[0];
-        t = t.split("(-")[1];
-        t = parseFloat(t)
-        let valToScroll = 0;
-
-        if(track.classList.contains('rtl') && Math.floor(inner.scrollLeft) >= (inner.scrollWidth - inner.offsetWidth - 1) && (inner.scrollWidth - inner.offsetWidth - 1) > 0){
-          valToScroll -= 2;
-          track.classList.remove('rtl')
-          track.classList.add('ltr')
-        }else if(track.classList.contains('ltr') && Math.floor(inner.scrollLeft) <= 0){
-          valToScroll += 2
-          track.classList.remove('ltr')
-          track.classList.add('rtl')
-        }else if(track.classList.contains('ltr')){
-          valToScroll -= 2
-        }else if(!track.classList.contains('paused') && track.classList.contains('rtl')){
-          valToScroll += 2;
-        }
-        inner.scrollBy({left: valToScroll, behavior: "smooth"})
-      } 
-    }, 30);
-    return () => clearInterval(interval);
   }, []);
   const handleOver = function(event){
     setPaused(true)
@@ -90,20 +62,34 @@ const Carousel = ({ media, imageOnly }) => {
     setStart([event.pageX, event.pageY])
   }
   
-  const handleMove = function(e){
+ 
+  const advanceCarousel = function(e){
     let track = e.target;
-    if(!track.classList.contains("slide-track")){
-      if(track.closest("slide-track")){
-        track = track.closest("slide-track")
-      }
-    }
-    let inner = track.closest('.inner');
-    let x = e.pageX - inner.offsetLeft;
-    let walk = (x - startX) * 3; //scroll-fast
-    if(isDragging){
-      inner.scrollLeft = scrollLeft - walk;
+    if(track){
+      track = track.closest(".outer")
+      let inner = track.querySelector('.inner');
+      inner.scrollBy({
+        top: 0,
+        left: +600,
+        behavior: 'smooth'
+      }) 
+      
     }
   }
+
+  const reverseCarousel = function(e){
+    let track = e.target;
+    if(track){
+      track = track.closest(".outer")
+      let inner = track.querySelector('.inner');
+      inner.scrollBy({
+        top: 0,
+        left: -600,
+        behavior: 'smooth'
+      }) 
+    }
+  }
+
   function lightboxed(e){
     let media = e.cloneNode(true);
     if(!media){
@@ -140,7 +126,7 @@ const Carousel = ({ media, imageOnly }) => {
       return(
         <Link key={index} onMouseDown={handleDown} onMouseUp={handleUp} to={node[2]}>
             <Figure key={index} node={node[0]} />
-            <h4><TranslatedTitle translations={node[1]}/></h4>
+            <span><TranslatedTitle translations={node[1]}/></span>
         </Link>
       )
       }else{
@@ -165,13 +151,20 @@ let resp = {
     {(media.length <= 2 && !imageOnly) ?
       <Masonry media={media}/>
               :
-      <div className={styles.root}>
+      <div className={styles.root + " outer"}>
           <div className={styles.inner + " inner"}>
-          <div onMouseDown={imageOnly ? null: handleDown} onMouseUp={imageOnly ? null :  handleUp} onMouseMove={handleMove} onMouseOver={handleOver} onMouseLeave={handleOut} className={`${dir ? 'ltr' : 'rtl'}` +" " + styles.slideTrack + " "+"slide-track " + `${paused ? 'paused' : ''}`}>
+          <div onMouseDown={imageOnly ? null: handleDown} onMouseUp={imageOnly ? null :  handleUp} onMouseOver={handleOver} onMouseLeave={handleOut} className={`${dir ? 'ltr' : 'rtl'}` +" " + styles.slideTrack + " "+"slide-track " + `${paused ? 'paused' : ''}`}>
             {medias}
           </div>
           </div>
-        <div className={styles.wrapper}></div>
+        <div onClick={reverseCarousel} className={styles.arrowButtonLeft}><svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 1L2 10.88L13 20" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </div>
+        <div onClick={advanceCarousel} className={styles.arrowButtonRight}><svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 20L12 10.12L1 1" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </div>
       </div>
     }
     </>

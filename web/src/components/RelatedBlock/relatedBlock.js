@@ -16,20 +16,6 @@ if(node){
   return(
     <div aria-hidden="true" className={styles.root}>
         <div className="two-column">
-        {(node.researchThreads?.length > 0) &&
-            <section>
-            <h4><TranslatedPhrase phrase={"relatedResearchThreads"} translations={languagePhrases}/></h4>
-            <ul className={styles.special}>
-               {
-                   node.researchThreads.map(function(node,index){
-                       return(
-                           <li key={index}><Link className="blue-button" to={"/research-thread/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
-                       )
-                   })
-                }            
-            </ul>
-            </section>
-        }
         {(node.partners?.length > 0) &&
             <section>
             <h4><TranslatedPhrase phrase={"relatedPartners"} translations={languagePhrases}/></h4>
@@ -37,7 +23,7 @@ if(node){
                {
                    node.partners.map(function(node,index){
                        return(
-                           <li key={index}><Link className="blue-button" to={"/partner/"+node.slug?.current}>{node.name}</Link></li>
+                           <li key={index}><Link to={"/partner/"+node.slug?.current}>{node.name}</Link></li>
                        )
                    })
                 }            
@@ -48,7 +34,6 @@ if(node){
             <LangContext.Consumer>
             {theme => {
                let lang = theme.lang
-               
                let sortedEvents = node.events.sort((a,b) => createDateTime(b.startDate?.date, b.startDate?.time, b.timeZone?.offset).getDate() - createDateTime(a.startDate?.date, a.startDate?.time, a.timeZone?.offset).getDate()); 
         
                if(languagePhrases){
@@ -100,20 +85,20 @@ if(node){
                     }
 
                        return(
-                           <li className="blue-button" key={index}><Link to={"/event/"+node.slug?.current}>
+                           <li key={index}><Link to={"/event/"+node.slug?.current}>
+                           <TranslatedTitle translations={node.titles}/>
                            {(multi && upcoming)  &&
-                             <sup className={styles.date}>*<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)} - { translateTime(ed, locale, offset, true, false, true)}</sup>
+                             <span className={styles.date}>(<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)} - { translateTime(ed, locale, offset, true, false, true)})</span>
                            }
                            {(!multi && upcoming) &&
-                             <sup className={styles.date}>*<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
+                             <span className={styles.date}>(<TranslatedPhrase phrase={"upcomingEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)})</span>
                            }
                            {(!multi && !upcoming && current) &&
-                             <sup className={styles.date}>*<TranslatedPhrase phrase={"currentEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)}</sup>
+                             <span className={styles.date}>(<TranslatedPhrase phrase={"currentEvents"} translations={languagePhrases}/> - {translateTime(sd, locale, offset, true, false, true)})</span>
                            }
                            {(!multi && !upcoming && !current) &&
-                            <sup className={styles.date}><TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/></sup>
+                            <span className={styles.date}>(<TranslatedPhrase phrase={"pastEvents"} translations={languagePhrases}/>)</span>
                             }
-                           <TranslatedTitle translations={node.titles}/>
                            </Link></li>
                        )
                    })
@@ -130,7 +115,7 @@ if(node){
                {
                    node.newsItems.map(function(node,index){
                        return(
-                           <li key={index}><Link className="blue-button" to={"/news/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                           <li key={index}><Link to={"/news/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
                        )
                    })
                 }            
@@ -145,7 +130,7 @@ if(node){
                {
                    node.courses.map(function(node,index){
                        return(
-                           <li key={index}><Link className="blue-button" to={"/course/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                           <li key={index}><Link to={"/course/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
                        )
                    })
                 }            
@@ -159,7 +144,7 @@ if(node){
                {
                    node.workingGroups.map(function(node,index){
                        return(
-                           <li key={index}><Link className="blue-button" to={"/working-group/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                           <li key={index}><Link to={"/working-group/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
                        )
                    })
                 }            
@@ -173,7 +158,7 @@ if(node){
                {
                    node.projects.map(function(node,index){
                        return(
-                           <li key={index}><Link className="blue-button" to={"/project/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                           <li key={index}><Link to={"/project/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
                        )
                    })
                 }            
@@ -188,7 +173,7 @@ if(node){
                {
                    node.learningResources.map(function(node,index){
                        return(
-                           <li key={index}><Link className="blue-button" to={"/learning-resource/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                           <li key={index}><Link to={"/learning-resource/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
                        )
                    })
                 }            

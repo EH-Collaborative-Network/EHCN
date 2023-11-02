@@ -44,9 +44,7 @@ const components = {
         middle = "learning-resource"
       }else if(middle == "workingGroup"){
         middle = "working-group"
-      }else if(middle == "researchThread"){
-        middle = "research-thread"
-      } 
+      }
       middle = "/"+middle;
       if(middle == "/page"){
         middle = ""
@@ -172,7 +170,7 @@ const BlockContent = ({ blocks, globalLanguages, languagePhrases }) => {
         // })
       }
 
-
+    
       return(
         <>
         <PortableText value={adhoc ? adhoc : translation} components={components} serializers={serializers} />

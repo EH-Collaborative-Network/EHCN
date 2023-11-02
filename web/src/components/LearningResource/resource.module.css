@@ -2,19 +2,19 @@
 @import '../../styles/custom-properties.css';
 
 .root {
-  /* background: var(--color-white); */
-  background: var(--blue-link-gradient);
+  background: var(--color-light-blue);
   color: var(--color-black);
-  padding:20px;
-  margin-top:1em;
+  padding:var(--space);
+  margin-top:var(--space);
   position:relative;
-  /* padding-bottom:50px; */
 
 }
 .root:hover{
-    background: var(--light-blue-gradient);
     top:3px;
     left:3px;
+}
+.root h4{
+    margin-top:0;
 }
 .root > a{
     text-decoration: none;
@@ -33,9 +33,16 @@
     display: flex;
     flex-wrap: wrap;
     width:100%;
-    flex-direction: column;
-    margin-top:1em;
+    flex-direction: row;
+    margin-top:var(--space);
+    max-height: 60vh;
+    overflow: scroll;
     justify-content: space-between;
+    @media (--media-min-medium) {
+        width:75%;
+        margin-top:0;
+        max-height: none;
+    }
 }
 .wrapper > em{
     text-transform: lowercase;
@@ -47,13 +54,16 @@
 .searchWrapper{
     position:relative;
     width:100%;
-    margin:1em 0;
+    margin:var(--space) 0;
     @media (--media-min-medium) {
         width:70%;
     }
 }
 .searchWrapper input{
-    width:90%;
+    width:calc(100% - (var(--space)*1.5));
+    @media (--media-min-medium) {
+        width:90%;
+    }
 }
 .searchWrapper button{
     outline:none;
@@ -66,7 +76,7 @@
     position:absolute;
     vertical-align: top;
     @media (--media-min-medium) {
-        right:50px;
+        right:65px;
     }
 }
 .searchWrapper button:hover svg{

@@ -1,25 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import Container from "../components/Container/container";
-import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
 import { useLocation } from '@reach/router';
-import queryString from 'query-string';
 import BlockContent from "../components/TranslationHelpers/block-content";
 import Carousel from "../components/Carousel/carousel";
-import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import RelatedBlock from "../components/RelatedBlock/relatedBlock";
-import sanityClient from "@sanity/client";
 
 
-const client = sanityClient({
-  projectId: '46orb7yp',
-  dataset: 'production',
-  apiVersion: '2022-03-25', // use current UTC date - see "specifying API version"!
-  token: 'skyfnkmqWJbwvihHkx2GQByHOktPsJB6ztzSRAfi7mZWaQegg23IaNrgFXjSxrBvL5Tli1zygeDqnUMr8QSXOZLNyjjhab5HTPsgD6QnBBxcNBOUwzGyiI69x7lpMKYhxZ94dpxLwIuVRBB1Hn47wR4rPtCpf17JGCYehmiLgCpMZrX1rzZW', // or leave blank for unauthenticated usage
-  useCdn: true, // `false` if you want to ensure fresh data
-})
+
+
 export const query = graphql`
   query PartnerTemplateQuery($id: String!) {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -38,12 +29,10 @@ export const query = graphql`
           name
           code
           aboutEHCN
-          calendar
+          events
           newsletter
           fundingOpportunities
-          ehcnSupported
           learningResources
-          researchThreads
           availableIn
           search
           news
@@ -51,33 +40,40 @@ export const query = graphql`
           relatedEvents
           relatedWorkingGroups
           relatedProjects
-          relatedResearchThreads
           relatedLearningResources
           relatedPartners
           relatedNews
+          archive
           currentEvents
           pastEvents
           upcomingEvents
         }
       }
     }
-    opps: allSanityOpportunity(
-      filter: {applications: {elemMatch: {partner: {id: {eq: $id}}}}}
+    events: allSanityEvent(
+      filter: {partners: {elemMatch: {id: {eq: $id}}}}
     ){
       edges{
           node {
-              applications {
-                text
-                url
-                partner {
-                  id
-                  slug {
-                    current
-                  }
-                }
+              partners {
+                id
               }
-              institution
-              title
+              name
+              timeZone{
+                name
+                offset
+              }
+              startDate{
+                date
+                time
+              }
+              endDate{
+                date
+                time
+              }
+              slug{
+                current
+              }
               id
               titles{
                 text
@@ -87,17 +83,105 @@ export const query = graphql`
                   code
                 }
               }
-              descriptions{
-                _rawText(resolveReferences: { maxDepth: 20 })
+            }
+      }
+    }
+    projects: allSanityProject(
+      filter: {partners: {elemMatch: {id: {eq: $id}}}}
+    ){
+      edges{
+          node {
+              partners {
+                id
+              }
+              name
+              slug{
+                current
+              }
+              id
+              titles{
+                text
                 language{
                   id
-                  code
                   name
+                  code
                 }
               }
             }
       }
-  }
+    }
+    learningResources: allSanityLearningResource(
+      filter: {partners: {elemMatch: {id: {eq: $id}}}}
+    ){
+      edges{
+          node {
+              partners {
+                id
+              }
+              name
+              slug{
+                current
+              }
+              id
+              titles{
+                text
+                language{
+                  id
+                  name
+                  code
+                }
+              }
+            }
+      }
+    }
+    workingGroups: allSanityWorkingGroup(
+      filter: {partners: {elemMatch: {id: {eq: $id}}}}
+    ){
+      edges{
+          node {
+              partners {
+                id
+              }
+              name
+              slug{
+                current
+              }
+              id
+              titles{
+                text
+                language{
+                  id
+                  name
+                  code
+                }
+              }
+            }
+      }
+    }
+    courses: allSanityCourse(
+      filter: {partners: {elemMatch: {id: {eq: $id}}}}
+    ){
+      edges{
+          node {
+              partners {
+                id
+              }
+              name
+              slug{
+                current
+              }
+              id
+              titles{
+                text
+                language{
+                  id
+                  name
+                  code
+                }
+              }
+            }
+      }
+    }
   site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
     title
     description
@@ -168,117 +252,6 @@ export const query = graphql`
       slug {
         current
       }
-      events {
-        id
-        timeZone{
-          name
-          offset
-        }
-        startDate{
-          date
-          time
-        }
-        endDate{
-          date
-          time
-        }
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      learningResources{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      newsItems{
-        id
-        date
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      projects{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      researchThreads{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      workingGroups{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      courses{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
     }
   }
 `;
@@ -287,24 +260,40 @@ const PartnerTemplate = props => {
   const { data, errors } = props;
   
   const site = (data || {}).site;
-  const opps = (data || {}).opps?.edges;
+  const projects = (data || {}).projects?.edges;
+  const workingGroups = (data || {}).workingGroups?.edges;
+  const learningResources = (data || {}).learningResources?.edges;
+  const courses = (data || {}).courses?.edges;
+  const events = (data || {}).events?.edges;
   const globalLanguages = site.languages;
   const partner = data && data.partner;
-  let previewQuery = '*[_id == "drafts.'+ partner._id +'"]{ _id, titles[]{language->{code}, text}, descriptions[]{language->{code}, text}, media[]{image{asset->, caption},embed,pdf{asset->, caption}}}'
   const location = useLocation();
-  let preview = false;
-  const [previewData, setPreviewData] = useState(false)
-  if(location?.search){
-    preview = queryString.parse(location.search).preview;
+
+  let fakeNode = {
+    "projects": [],
+    "events": [],
+    "workingGroups": [],
+    "courses": [],
+    "learningResources":[]
   }
-  if(preview && !previewData){
-    const fetchData = async () => {
-      setPreviewData(await client.fetch(previewQuery).then((data) => {
-        return(data[0]);
-      }))
-    }
-    fetchData()
-  }
+  projects.forEach((n,i)=>{
+    fakeNode.projects.push(n.node)
+  })
+  events.forEach((n,i)=>{
+    fakeNode.events.push(n.node)
+  })
+  workingGroups.forEach((n,i)=>{
+    fakeNode.workingGroups.push(n.node)
+  })
+  courses.forEach((n,i)=>{
+    fakeNode.courses.push(n.node)
+  })
+  learningResources.forEach((n,i)=>{
+    fakeNode.learningResources.push(n.node)
+  })
+
+
+
   const media = partner.media;
   const descriptions = partner.descriptions;
   const languagePhrases = (data || {}).languagePhrases?.edges;
@@ -314,16 +303,16 @@ const PartnerTemplate = props => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
-        <h1>{(preview && previewData) ? previewData.name : partner.name}</h1>
-        <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : partner.locations}/></div>
+        <h1>{partner.name}</h1>
+        <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={partner.locations}/></div>
         {partner.mainLink?.text?.length > 0 &&
                   <div className={'main-link top-link'}><a target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
         }
-        <div className="top-text two-column partner-page"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.descriptions : descriptions}/></div>
+        <div className="top-text one-column partner-page"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={descriptions}/></div>
         {media.length > 0 &&
-           <Carousel media={(preview && previewData) ? previewData.media : media}/>
+           <Carousel media={media}/>
         }
-        <RelatedBlock opps={opps} languagePhrases={languagePhrases} node={partner}/>
+        <RelatedBlock languagePhrases={languagePhrases} node={fakeNode}/>
       </Container>
     </Layout>
     

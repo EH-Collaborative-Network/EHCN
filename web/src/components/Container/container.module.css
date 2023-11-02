@@ -2,39 +2,41 @@
 @import '../../styles/custom-properties.css';
 
 .root {
-  background: var(--clear);
+  background: var(--color-white);
   min-height: calc(100vh - 50px);
   margin-left: 0;
-  width: calc(100% - 24px);
+  position:relative;
+  width: auto;
   margin: 0 auto;
-  padding-bottom:4em;
   @media (--media-min-medium) {
     margin-left:16vw;
-    padding:50px;
-    padding-left:75px;
     width: auto;
     padding-bottom:0;
   }
 
+}
+
+.root.fullBleed{
+  padding:0;
 }
 .root > p{
   margin-top:0;
 }
 
 .root p a{
-  color: var(--color-red);
+  color: var(--color-dark-blue);
   text-decoration: none;
-}
-/* blue hover effect */
-.root p a{
   position:relative;
   display: inline-block;
   z-index: 0;
+  font-family:var(--font-family-bold);
 }
-.root p a:hover::after{
-  opacity: 1;
-  width: 100%;
+/* blue hover effect */
+
+.root p a:hover{
+  color:var(--color-red);
 }
+
 .root > h1:nth-child(2){
   margin-top:0;
   margin-bottom:0;
@@ -47,7 +49,7 @@
   width: 80%;
   height: 100%;
   content: " ";
-  background: var(--blue-link-gradient);
+  background: var(--color-light-blue);
   opacity: 0;
   transition: 0.5s;
 }

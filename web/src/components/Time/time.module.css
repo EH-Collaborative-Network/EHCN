@@ -81,7 +81,7 @@
 }
 .calendar tr{
     border:1px solid transparent;
-    background: var(--blue-link-gradient);
+    background: var(--color-light-blue);
 }
 .calendar td > sup{
   position:absolute;
@@ -111,7 +111,7 @@
     text-overflow: unset; */
 }
 .week a{
-    color: var(--color-red);
+    color: var(--color-black);
     text-decoration: none;
 }
 .week > h4:first-child{
@@ -126,7 +126,7 @@
     pointer-events: none;
 }
 .week a:hover{
-    text-decoration: underline;
+    color: var(--color-red);
 }
 .multiDayWeek{
     background: rgba(248,248,248,0.5);
@@ -148,7 +148,7 @@
     padding:5px;
     margin:5px 0;
     min-height:100px;
-    background:  var(--blue-link-gradient);
+    background:  var(--color-light-blue);
 }
 .bubbleButton{
     border:none;
@@ -162,6 +162,7 @@
 .bubbleButton svg{
     height: 25px;
     width: 25px;
+    margin-right: 5px;
     @media (--media-min-medium) {
         height: 35px;
         width: 35px;
@@ -209,24 +210,24 @@
     color:var(--color-black);
 }
 .dayRow > div > * > a:hover p a{
-    text-decoration: underline;
+    color:var(--color-red);
 }
 .dayRow a:hover p a{
-    text-decoration: underline;
+    color:var(--color-red);
 }
 
 .calendar a{
     font-size: var(--font-extra-small-size);
     display: inline-block;
     text-decoration: none;
-    color:var(--color-red);
+    color:var(--color-black);
     white-space:nowrap;
     text-overflow: ellipsis;
     max-width: calc(100% - 2em);
     overflow: hidden;
 }
 .calendar a:hover{
-    text-decoration: underline;
+    color:var(--color-red);
 }
 .buttonWrapper{
     display: flex;
@@ -259,7 +260,7 @@
     font-size: var(--font-small-size);
 }
 .selectWrapper{
-    position:absolute;
+    
     top:115px;
     right:15px;
     display: flex;
@@ -268,6 +269,17 @@
     @media (--media-min-medium) {
         top:50px;
         right:50px;
+        position:absolute;
+    }
+}
+.button{
+    cursor: pointer;
+    margin-bottom: var(--space);
+    top: calc(var(--space) * -1);
+    @media (--media-min-medium) {
+        position: absolute;
+        top:calc(var(--space) * 3);
+        right:calc(var(--space) * 2);
     }
 }
 .select{
@@ -307,4 +319,40 @@
 
 .ml a{
     padding-left:0;
+}
+
+.cardWrapper{
+    display: flex;
+    gap: var(--space);
+    flex-wrap: wrap;
+    @media (--media-min-medium) {
+        max-width: calc(100% - (var(--space) * 5));
+    }
+}
+.cardWrapper > a{
+    background-color: var(--color-light-blue);
+    display: flex;
+    padding: var(--space);
+    width: 100%;
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.cardWrapper a > div{
+    flex-basis: 60%;
+}
+.cardWrapper a figure{
+    flex-basis: 30%;
+    width: 25%;
+    margin:0;
+}
+.cardWrapper a figure img, .cardWrapper a figure div{
+    width: 100%;
+}
+.cardWrapper a > div{
+    padding:0 var(--space);
+}
+
+.cardWrapper a a{
+    margin-top: var(--space);
 }

@@ -38,19 +38,17 @@ export const query = graphql`
           name
           code
           aboutEHCN
-          calendar
+          events
           fundingOpportunities
-          ehcnSupported
           newsletter
           learningResources
-          researchThreads
           availableIn
           search
           relatedCourses
           relatedEvents
           relatedWorkingGroups
           relatedProjects
-          relatedResearchThreads
+          archive
           relatedLearningResources
           relatedPartners
           relatedNews
@@ -209,20 +207,6 @@ export const query = graphql`
           }
         }
       }
-      researchThreads{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
       courses{
         id
         slug{
@@ -270,7 +254,7 @@ const WorkingGroupTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : workingGroup.titles}/></h1>
         <div className={'subtitle'}><TranslatedPhrase translations={languagePhrases} phrase={workingGroup.studentLed ? 'studentLed' : 'facultyLed'}/></div>
-        <div className="top-text two-column"><BlockContent blocks={(preview && previewData) ? previewData.descriptions : workingGroup.descriptions}/></div>
+        <div className="top-text one-column"><BlockContent blocks={(preview && previewData) ? previewData.descriptions : workingGroup.descriptions}/></div>
         {workingGroup.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={workingGroup.mainLink.url}>{workingGroup.mainLink.text}</a></div>
         }

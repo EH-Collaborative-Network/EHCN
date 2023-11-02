@@ -67,15 +67,17 @@ export const query = graphql`
           name
           code
           aboutEHCN
-          calendar
+          EHCN
+          aboutP1
+          aboutP2
+          events
+          archive
           fundingOpportunities
-          ehcnSupported
           newsletter
           technology
           justice
           creativepractice
           learningResources
-          researchThreads
           availableIn
           search
         }
@@ -217,35 +219,36 @@ const AboutPage = props => {
         <SEO title={site.title} description={site.description} keywords={site.keywords} />
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
+
+          
+                
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
-          {toggle == "justice" &&
-          <div className={aboutStyles.bubble +" top-text one-column"}>
-            <BlockContent languagePhrases={languagePhrases} blocks={site.aboutJustice} globalLanguages={globalLanguages}/>
-          </div>
-          }
-           {toggle == "creative practice" &&
-            <div className={aboutStyles.bubble +" top-text one-column"}>
-              <BlockContent languagePhrases={languagePhrases} blocks={site.aboutCreativePractice} globalLanguages={globalLanguages}/>
-            </div>
-          }
-          {toggle == "technology" &&
-            <div className={aboutStyles.bubble +" top-text one-column"}>
-              <BlockContent languagePhrases={languagePhrases} blocks={site.aboutTechnology} globalLanguages={globalLanguages}/>
-            </div>
-          }
-           <h1><span onMouseOver={() => setToggle("technology")} className={`${toggle == "technology" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"technology"}/></span>, <span onMouseOver={() => setToggle("justice")} className={`${toggle == "justice" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"justice"}/></span> & <span onMouseOver={() => setToggle("creative practice")} className={`${toggle == "creative practice" ? aboutStyles.on : " "} ${aboutStyles.toggle}`}><TranslatedPhrase translations={languagePhrases} phrase={"creativepractice"}/></span></h1>
+          <div><div className={aboutStyles.overwrapper}> 
+              <div className={aboutStyles.wrapper}>
+                <div>
+                <div className={aboutStyles.bubble +" "}>
+                    <BlockContent languagePhrases={languagePhrases} blocks={site.aboutTechnology} globalLanguages={globalLanguages}/>
+                  </div>
+                  <div className={aboutStyles.bubble +" "}>
+                  <BlockContent languagePhrases={languagePhrases} blocks={site.aboutJustice} globalLanguages={globalLanguages}/>
+                </div>
+                <div className={aboutStyles.bubble +" "}>
+                    <BlockContent languagePhrases={languagePhrases} blocks={site.aboutCreativePractice} globalLanguages={globalLanguages}/>
+                  </div>
+                  </div>
+              </div>
+              <div><div className={aboutStyles.aboveWrapper}><TranslatedPhrase translations={languagePhrases} phrase={"aboutP2"}/><p><TranslatedPhrase translations={languagePhrases} phrase={"aboutP1"}/></p></div></div>
+            </div> </div>
+
+          <div className="top-text about-page one-column"><BlockContent languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.bodies : ap} globalLanguages={globalLanguages}/></div>
+ 
           
-          <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} blocks={(preview && previewData) ? previewData.bodies : ap} globalLanguages={globalLanguages}/></div>
-          <h1>
-          
-          </h1>
-          
-          <br/>
+
           <h4>Partner Institutions</h4> 
           <div className="">
             <div className={styles.partners}>
             {partners.map(function(node, index){
-                return <Link to={"/partner/"+node.node.slug.current} key={index}><div className="blue-button">{node.node.name + ""}</div></Link>;
+                return <Link to={"/partner/"+node.node.slug.current} key={index}><div className={styles.partner}>{node.node.name + ""}</div>, </Link>;
             })}
             </div>
           </div>

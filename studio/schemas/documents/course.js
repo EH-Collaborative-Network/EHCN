@@ -108,6 +108,20 @@ export default {
         of:[{type:'reference', title:'Associated Working Group', to: [{type: 'workingGroup'}]}]
     },
     {
+      name: 'themes',
+      type: 'array',
+      description: 'themes associated with this (if any)',
+      title: 'Associated Themes',
+      of:[{type:'reference', title:'theme', to: [{type: 'theme'}]}]
+  },
+  {
+    name: 'mediums',
+    type: 'array',
+    description: 'mediums associated with this (if any)',
+    title: 'Associated Mediums',
+    of:[{type:'reference', title:'medium', to: [{type: 'medium'}]}]
+},
+    {
         name: 'keywords',
         type: 'array',
         title: 'Keywords',

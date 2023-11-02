@@ -37,11 +37,9 @@ export const query = graphql`
           name
           code
           aboutEHCN
-          calendar
+          events
           fundingOpportunities
-          ehcnSupported
           learningResources
-          researchThreads
           newsletter
           availableIn
           search
@@ -49,7 +47,7 @@ export const query = graphql`
           relatedEvents
           relatedWorkingGroups
           relatedProjects
-          relatedResearchThreads
+          archive
           relatedLearningResources
           relatedPartners
           relatedNews
@@ -210,20 +208,6 @@ export const query = graphql`
           }
         }
       }
-      researchThreads{
-        id
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
       workingGroups{
         id
         slug{
@@ -287,7 +271,7 @@ const LearningResourceTemplate = props => {
         {learningResource.mainLink?.text?.length > 0 &&
                   <div className={'main-link'}><a target="_blank" href={learningResource.mainLink.url}>{learningResource.mainLink.text}</a></div>
         }
-        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : learningResource.descriptions}/></div>
+        <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : learningResource.descriptions}/></div>
         {media.length > 0 &&
           <Carousel media={(preview && previewData) ? previewData.media : learningResource.media}/>
         }

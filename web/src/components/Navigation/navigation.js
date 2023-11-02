@@ -30,7 +30,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
         </div>
     </div>
     <div id="navigation" className={styles.header}>
-      <div className={styles.logo}><Link to="/"><img alt={"EHCN's logo which has an abstracted 'E' with a grey 'H' inside of it. Alongside this, is the text Experimental Humanities Collaborative Network."} src={logo} /></Link></div>
+      <div className={styles.logo}><Link to="/"><img alt={"EHCN's logo which has an abstracted 'E' with a grey 'H' inside of it. Alongside this, is the text Experimental Humanities Collaborative Network."} src={logo} /></Link><h4>Technology, Justice, & Creative Practice</h4></div>
       <div className={styles.close} onClick={closeHandler}>
         <svg  viewBox="0 0 54 57" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="73.4602" height="3.45354" rx="1.72677" transform="matrix(0.698084 0.716016 -0.698084 0.716016 2.61719 0.69043)" fill="#333333"/>
@@ -43,9 +43,9 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
         return(
           <ul className={styles.menu}>
               <li><Link to="/about/"><TranslatedPhrase translations={translations} phrase={"aboutEHCN"}/></Link></li>
+              <li><Link to="/archive/"><TranslatedPhrase translations={translations} phrase={"archive"}/></Link></li>
+              <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"events"}/></Link></li>
               <li><Link to="/funding"><TranslatedPhrase translations={translations} phrase={"fundingOpportunities"}/></Link></li>
-              <li><Link to="/researchthreads/"><TranslatedPhrase translations={translations} phrase={"researchThreads"}/></Link></li>
-              <li><Link to="/calendar/"><TranslatedPhrase translations={translations} phrase={"calendar"}/></Link></li>
               <li><Link to="/learningresources/"><TranslatedPhrase translations={translations} phrase={"learningResources"}/></Link></li>
           </ul>
           )
@@ -78,7 +78,7 @@ const Navigation = ({ siteTitle, translations, globalLanguages }) =>{
         <div>
           <div className={styles.searchWrapper}>
             <input aria-label="search" type="text" onKeyDown={handleEnter} placeholder={translate(translations, "search" ,theme)} />
-            <button onClick={handleSearch} className="blue-button" aria-labelledby="nav-search-label">
+            <button onClick={handleSearch} aria-labelledby="nav-search-label">
               <span id="nav-search-label" hidden>Search</span>
               <svg width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M22.0023 11.2C22.0023 16.4901 17.4814 20.9 11.7511 20.9C6.02087 20.9 1.5 16.4901 1.5 11.2C1.5 5.90992 6.02087 1.5 11.7511 1.5C17.4814 1.5 22.0023 5.90992 22.0023 11.2Z" stroke="#333333" strokeWidth="3"/>

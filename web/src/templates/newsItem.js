@@ -37,18 +37,16 @@ export const query = graphql`
           code
           aboutEHCN
           newsletter
-          calendar
+          events
+          archive
           fundingOpportunities
-          ehcnSupported
           learningResources
-          researchThreads
           availableIn
           search
           relatedCourses
           relatedEvents
           relatedWorkingGroups
           relatedProjects
-          relatedResearchThreads
           relatedLearningResources
           relatedPartners
           relatedNews
@@ -136,7 +134,7 @@ const NewsItemTemplate = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : newsItem.titles} /></h1>
-        <div className="top-text two-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : newsItem.bodies}/></div>
+        <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : newsItem.bodies}/></div>
         <RelatedBlock opps={""} languagePhrases={languagePhrases} node={newsItem}/>
       </Container>
     </Layout>

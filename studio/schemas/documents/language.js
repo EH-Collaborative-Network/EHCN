@@ -508,6 +508,30 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'filters',
+      type: 'string',
+      title: 'Filters'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'year',
+      type: 'string',
+      title: 'Year'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'medium',
+      type: 'string',
+      title: 'Medium/Format'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'theme',
+      type: 'string',
+      title: 'Theme/topic'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'relatedEvents',
       type: 'string',
       title: 'Related Events'

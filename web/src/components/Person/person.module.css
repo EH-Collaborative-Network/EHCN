@@ -4,3 +4,11 @@
 .person{
     cursor:pointer;
 }
+
+.personButton{
+    color:var(--color-dark-blue);
+    font-family: var(--font-family-bold);
+}
+.personButton:hover{
+    color:var(--color-red);
+}

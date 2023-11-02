@@ -74,6 +74,20 @@ module.exports = {
                   id
                   keywords
                   name
+                  mainImage {
+                    crop {
+                      _key
+                      _type
+                      top
+                      bottom
+                      left
+                      right
+                    }
+                    asset {
+                      _id
+                    }
+                    altText
+                  }
                   titles {
                     text
                     language {
@@ -100,6 +114,20 @@ module.exports = {
                   id
                   keywords
                   name
+                  mainImage {
+                    crop {
+                      _key
+                      _type
+                      top
+                      bottom
+                      left
+                      right
+                    }
+                    asset {
+                      _id
+                    }
+                    altText
+                  }
                   titles {
                     text
                     language {
@@ -117,6 +145,13 @@ module.exports = {
               edges {
                 node {
                   descriptions {
+                    _rawText(resolveReferences: {maxDepth: 10})
+                    language {
+                      code
+                      name
+                    }
+                  }
+                  excerpts {
                     _rawText(resolveReferences: {maxDepth: 10})
                     language {
                       code
@@ -242,6 +277,20 @@ module.exports = {
                     }
                   }
                   id
+                  mainImage {
+                    crop {
+                      _key
+                      _type
+                      top
+                      bottom
+                      left
+                      right
+                    }
+                    asset {
+                      _id
+                    }
+                    altText
+                  }
                   keywords
                   name
                   titles {
@@ -295,6 +344,20 @@ module.exports = {
                   }
                   id
                   keywords
+                  mainImage {
+                    crop {
+                      _key
+                      _type
+                      top
+                      bottom
+                      left
+                      right
+                    }
+                    asset {
+                      _id
+                    }
+                    altText
+                  }
                   name
                   titles {
                     text
@@ -336,6 +399,7 @@ module.exports = {
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
             titles: edge.node.titles,
+            mainImage: edge.node.mainImage,
             slug:edge.node.slug,
             type: "course"
           }))
@@ -344,6 +408,7 @@ module.exports = {
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
             titles: edge.node.titles,
+            mainImage: edge.node.mainImage,
             slug:edge.node.slug,
             type: "event"
           }))
@@ -352,6 +417,7 @@ module.exports = {
           let resources = data.allSanityLearningResource.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
+            excerpts:  edge.node.excerpts,
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "learningResource"
@@ -394,6 +460,7 @@ module.exports = {
             descriptions:  edge.node.descriptions,
             titles: edge.node.titles,
             slug: edge.node.slug,
+            mainImage: edge.node.mainImage,
             type: "project"
           }))
           let threads = data.allSanityResearchThread.edges.map((edge) => ({
@@ -407,6 +474,7 @@ module.exports = {
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
             titles: edge.node.titles,
+            mainImage: edge.node.mainImage,
             slug:edge.node.slug,
             type: "workingGroup"
           }))

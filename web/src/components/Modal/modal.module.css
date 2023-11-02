@@ -7,6 +7,7 @@
   padding-top:0;
   position: relative;
 }
+
 .steering{
   list-style: none;
   padding-left: 0;
@@ -17,7 +18,10 @@
 }
 .twoColumnStaff{
   display: flex;
-  width:100%;
+  width:auto;
+  @media (--media-min-medium) {
+    width:auto;
+  }
 }
 .twoColumnStaff > div{
   width: calc(50%);
@@ -25,6 +29,7 @@
 .twoColumnStaff > div:nth-child(2){
   padding-left:10px;
 }
+
 .steering li{
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
@@ -36,20 +41,43 @@
   top: -1em;
   position: relative;
 }
+.partners a{
+  text-decoration: none;
+}
+.partner:hover{
+  color: var(--color-red);
+}
+.partner{
+  display: inline-block;
+  color:var(--color-dark-blue);
+  font-family: var(--font-family-bold);
+}
+.bg{
+  content:"";
+  position:fixed;
+  z-index: 9;
+  background-color: var(--color-black);
+  width: 100vw;
+  height: 100vh;
+  top:0;
+  left: 0;
+  opacity: 0.5;
+  display: none;
+}
 
 .modal{
   background: var(--color-light-blue);
-  height: 94vh;
-  width:90vw;
-  left:5vw;
+  height: auto;
+  width:75vw;
+  left:var(--space);
   opacity: 0;
+  padding:35px;
   top:3vh;
-  overflow: scroll;
+  overflow: hidden;
   position:fixed;
   z-index: -2;
-  box-shadow: 0 0 5px 15px #d4eaed;
   @media (--media-min-medium) {
-    height: 70vh;
+    height: auto;
     width:60vw;
     left:20vw;
     top:15vh;
@@ -57,27 +85,38 @@
 }
 .close{
   text-align: right;
-  padding: 25px 30px;
+  padding: var(--space);
   cursor: pointer;
   float:right;
   position:absolute;
   right: 0;
-  width: 35px;
+  top:0;
+  width: 20px;
   @media (--media-min-medium) {
-    width: 50px;
+    width: 20px;
   }
 }
 .close svg{
   width: 100%;
 }
 .inner{
-  padding:20px 20px;
+  padding:0;
   overflow:scroll;
-  height: 90vh;
+  max-height: 70vh;
   @media (--media-min-medium) {
-    height: 70vh;
+    max-height: 70vh;
   }
 }
 .inner h4{
+  margin-top:0;
   font-size:1em;
+}
+
+.modal p a{
+  color: var(--color-dark-blue);
+  font-family:var(--font-family-bold);
+  text-decoration: none;
+}
+.modal p a:hover{
+  color:var(--color-red);
 }

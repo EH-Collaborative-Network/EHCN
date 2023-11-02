@@ -48,7 +48,9 @@
 }
 
 .twoUp .textBox{
-    padding-left: var(--space);
+    @media (--media-min-medium) {
+        padding-left: var(--space);
+    }
 }
 .twoUp.left .textBox{
     padding-left:0;

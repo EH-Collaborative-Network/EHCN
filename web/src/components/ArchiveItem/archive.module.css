@@ -19,9 +19,10 @@
     overflow: scroll;
     padding-bottom: var(--small-space);
     @media (--media-min-medium) {
-        flex-basis: 17%;
-        max-width: 17%;
+        flex-basis: 18%;
+        max-width: 18%;
         position: fixed;
+        max-height: none;
     }
 }
 .filterWrapper h4{
@@ -29,9 +30,12 @@
     margin:0;
     padding:var(--small-space);
 }
-.filterWrapper h1 svg{
-    float:right;
+.filterWrapper h1, .filterWrapper h4{
     position:relative;
+}
+.filterWrapper h1 svg{
+    right:0;
+    position:absolute;
     top: calc(var(--small-space) * 2);
     @media (--media-min-medium) {
         display: none;
@@ -39,6 +43,7 @@
 }
 .filterWrapper .accordion h4{
     padding:var(--small-space) calc(var(--small-space)*2);
+    padding-right: calc(var(--space) * 1);
 }
 .filterWrapper select{
     margin:var(--small-space);
@@ -46,11 +51,14 @@
 }
 .filterWrapper .accordion h4 svg{
     width: var(--space);
-    float: right;
+    position:absolute;
+    right:var(--small-space);
     top: calc(var(--small-space) * 2);
-    position:relative;
-    margin-left: var(--small-space);
+    @media (--media-min-medium) {
+        right:0;
+    }
 }
+
 .filterWrapper > *{
     padding: 0 var(--small-space);
 }
@@ -95,6 +103,8 @@
 .resultsWrapper{
     display: flex;
     max-height: 60vh;
+    gap:calc(var(--small-space) * 2);
+    justify-content: flex-start;
     overflow: scroll;
     margin-top: var(--space);
     flex-wrap: wrap;
@@ -120,22 +130,26 @@
     height: 20vh;
     overflow:hidden;
     margin:0;
+    @media (min-width: 1300px) {
+        height: 12vw;
+    }
 }
 .root figure div{
     height: 20vh;
     min-width: 100%;
+    @media (min-width: 1300px) {
+        height: 12vw;
+    }
 }
 .root{
     background-color: var(--color-light-blue);
-    margin: calc(var(--small-space)) 0;
     padding: var(--small-space);
-    flex-basis: calc(50% - (var(--small-space) * 3));
-    @media (--media-min-medium) {
-        flex-basis: calc(33% - (var(--small-space) * 8));
-        margin-left:0;
-        margin-right: calc(var(--small-space) * 4);
+    flex-basis: calc(50% - (var(--small-space) * 4));
+    @media (min-width: 1300px) {
+        flex-basis: calc(33% - (var(--small-space) * 3));
     }
 }
+
 .root:nth-child(even){
     margin-left: calc(var(--small-space)*2);
     @media (--media-min-medium) {
@@ -149,6 +163,9 @@
     flex-direction: column;
 }
 
+.filterWrapper select{
+    width: calc(100% - (var(--small-space) * 2));
+}
 .searchWrapper{
     position:relative;
     width:100%;

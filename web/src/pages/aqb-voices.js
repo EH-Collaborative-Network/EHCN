@@ -7,7 +7,6 @@ import {
 } from "../lib/helpers";
 import mansour from "../components/AQB/mansour.mp3"
 import bawh1 from "../components/AQB/bawh1.png"
-import bawh2 from "../components/AQB/bawh2.png"
 import { Link } from "@reach/router";
 import yom from "../components/AQB/yom.png"
 import yom1 from "../components/AQB/yom1.png"
@@ -201,25 +200,17 @@ Amidst the uprising of 2021 when the Israeli government attempted to evict six f
 political imprisonment.</p>
                 </div>
             </div>
-          </div>
+         
 
-          <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
+          {/* <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
                 <div className={styles.textBox}>
                     <h4>The Unwanted Path (2021, 40min) dir. Yazan Iwaina</h4>
                     <p>
                     Through the intertwined, but polar perspectives of a Palestinian worker and his son, the film immerses viewers into the physical and emotional realities of laboring in Israel. </p>
                 </div>
                 <div><img src={bawh2}/></div>
-            </div>
-            <div className={styles.chapter + " " + styles.twoUp}>
-                <div><iframe src="https://drive.google.com/file/d/1rlCYL5O0LCP0pE4BDm8f3pyC78XTNXQF/preview"  allow="autoplay"></iframe></div>
-                <div className={styles.textBox}>
-                    <h4>Occupied Workers (2022, 10min) dir. Layan Dajani & Rana Hadieh</h4>
-                    <p>This is the story of two Palestinians who cross occupation checkpoints every day
-to make ends meet. How do they survive the daily hardships? What makes them
-persevere?</p>
-                </div>
-            </div>
+            </div> */}
+            
             <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>
                 <div className={styles.textBox}>
                     <h4>The Struggle of an ID Card (2022, 8min) dir. Hind al-Kassis, Zaina al-Khatib, Razan Hamdan</h4>
@@ -237,6 +228,17 @@ no identity. This is her story.</p>
                     <h4>حب أزرق و أخضر / The Highway (2020, 26min) dir. Afnan Abassi</h4>
                     <p>Love, loss and resilience.</p>
                 </div>
+            </div>
+            <div className={styles.chapter + " " + styles.twoUp + " "+ styles.left}>
+                <div className={styles.textBox}>
+                    <h4>Occupied Workers (2022, 10min) dir. Layan Dajani & Rana Hadieh</h4>
+                    <p>This is the story of two Palestinians who cross occupation checkpoints every day
+to make ends meet. How do they survive the daily hardships? What makes them
+persevere?</p>
+                </div>
+                <div><iframe src="https://drive.google.com/file/d/1rlCYL5O0LCP0pE4BDm8f3pyC78XTNXQF/preview"  allow="autoplay"></iframe></div>
+
+            </div>
             </div>
           <div className={styles.yomWrapper}>
             <div className={styles.chapter + " " + styles.twoUp + " " +  styles.left}>

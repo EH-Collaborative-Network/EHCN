@@ -151,42 +151,6 @@ async function createLearningResourcePages (graphql, actions) {
 }
 
 
-/* News Item */
-async function createNewsItemPages (graphql, actions) {
-  const {createPage} = actions
-  const result = await graphql(`
-    {
-      allSanityNewsItem(filter: {slug: {current: {ne: null}}}) {
-        edges {
-          node {
-            id
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors) throw result.errors
-
-  const newsItemEdges = (result.data.allSanityNewsItem || {}).edges || []
-
-  newsItemEdges
-    .forEach(edge => {
-      const id = edge.node.id
-      const slug = edge.node.slug.current
-      const path = `/news-item/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
-
-      createPage({
-        path,
-        component: require.resolve('./src/templates/newsItem.js'),
-        context: {id}
-      })
-    })
-}
-
 /* Page */
 async function createDefaultPages (graphql, actions) {
   const {createPage} = actions
@@ -302,7 +266,6 @@ exports.createPages = async ({graphql, actions}) => {
   await createCoursePages(graphql, actions)
   await createEventPages(graphql, actions)
   await createLearningResourcePages(graphql, actions)
-  await createNewsItemPages(graphql, actions)
   await createPartnerPages(graphql, actions)
   await createDefaultPages(graphql, actions)
   await createWorkingGroupPages(graphql, actions)

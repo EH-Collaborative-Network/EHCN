@@ -173,32 +173,6 @@ module.exports = {
                 }
               }
             }
-            allSanityNewsItem {
-              edges {
-                node {
-                  bodies {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
-                  id
-                  keywords
-                  name
-                  titles {
-                    text
-                    language {
-                      code
-                      name
-                    }
-                  }
-                  slug {
-                    current
-                  }
-                }
-              }
-            }
             allSanityOpportunity {
               edges {
                 node {
@@ -421,15 +395,6 @@ module.exports = {
             titles: edge.node.titles,
             slug:edge.node.slug,
             type: "learningResource"
-          }))
-
-
-          let news = data.allSanityNewsItem.edges.map((edge) => ({
-            id: edge.node.id,
-            descriptions:  edge.node.bodies,
-            titles: edge.node.titles,
-            slug:edge.node.slug,
-            type: "news"
           }))
 
 

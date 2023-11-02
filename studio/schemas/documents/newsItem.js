@@ -85,13 +85,6 @@ export default {
         of:[{type:'reference', title:'Associated Projects', to: [{type: 'project'}]}]
     },
     {
-        name: 'researchThreads',
-        type: 'array',
-        description: 'Research Threads associated with this news item (if any)',
-        title: 'Associated Research Threads',
-        of:[{type:'reference', title:'Associated Research Thread', to: [{type: 'researchThread'}]}]
-    },
-    {
         name: 'workingGroups',
         type: 'array',
         description: 'Working Groups associated with this news item (if any)',

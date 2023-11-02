@@ -54,55 +54,6 @@ export default {
         of: [{type: 'mediaItem'}],
     },
     {
-        name: 'events',
-        type: 'array',
-        description: 'Events associated with this partner (if any)',
-        title: 'Associated Events',
-        of:[{type:'reference', title:'Associated Event', to: [{type: 'event'}]}]
-    },
-    {
-        name: 'learningResources',
-        type: 'array',
-        description: 'Learning Resources associated with this partner (if any)',
-        title: 'Associated Learning Resources',
-        of:[{type:'reference', title:'Associated Learning Resource', to: [{type: 'learningResource'}]}]
-    },
-    {
-        name: 'newsItems',
-        type: 'array',
-        description: 'News Items associated with this partner (if any)',
-        title: 'Associated News Items',
-        of:[{type:'reference', title:'Associated News Item', to: [{type: 'newsItem'}]}]
-    },
-    {
-        name: 'courses',
-        type: 'array',
-        description: 'Courses associated with this partner (if any)',
-        title: 'Associated Courses',
-        of:[{type:'reference', title:'Associated Course', to: [{type: 'course'}]}]
-    },
-    {
-        name: 'projects',
-        type: 'array',
-        description: 'Projects associated with this partner (if any)',
-        title: 'Associated Projects',
-        of:[{type:'reference', title:'Associated Project', to: [{type: 'project'}]}]
-    },
-    {
-        name: 'researchThreads',
-        type: 'array',
-        description: 'Research Threads associated with this partner (if any)',
-        title: 'Associated Research Threads',
-        of:[{type:'reference', title:'Associated Research Thread', to: [{type: 'researchThread'}]}]
-    },
-    {
-        name: 'workingGroups',
-        type: 'array',
-        description: 'Working Groups associated with this partner (if any)',
-        title: 'Associated Working Groups',
-        of:[{type:'reference', title:'Associated Working Group', to: [{type: 'workingGroup'}]}]
-    },
-    {
         name: 'keywords',
         type: 'array',
         title: 'Keywords',

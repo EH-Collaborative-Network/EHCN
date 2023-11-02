@@ -38,9 +38,7 @@ const components = {
     internalLink: ({value, children}) => {
       const target = "/" + value?.reference?.slug?.current
       let middle = value?.reference?._type
-      if(middle == "newsItem"){
-        middle = "news"
-      }else if(middle == "learningResource"){
+      if(middle == "learningResource"){
         middle = "learning-resource"
       }else if(middle == "workingGroup"){
         middle = "working-group"

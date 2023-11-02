@@ -86,13 +86,6 @@ export default {
         of:[{type:'reference', title:'Associated Learning Resource', to: [{type: 'learningResource'}]}]
     },
     {
-        name: 'newsItems',
-        type: 'array',
-        description: 'News Items associated with this project (if any)',
-        title: 'Associated News Items',
-        of:[{type:'reference', title:'Associated News Item', to: [{type: 'newsItem'}]}]
-    },
-    {
         name: 'partners',
         type: 'array',
         description: 'Partner Institutions associated with this project (if any)',
@@ -107,13 +100,6 @@ export default {
         of:[{type:'reference', title:'Associated Course', to: [{type: 'course'}]}]
     },
     {
-        name: 'researchThreads',
-        type: 'array',
-        description: 'Research Threads associated with this project (if any)',
-        title: 'Associated Research Threads',
-        of:[{type:'reference', title:'Associated Research Thread', to: [{type: 'researchThread'}]}]
-    },
-    {
         name: 'workingGroups',
         type: 'array',
         description: 'Working Groups associated with this project (if any)',
@@ -121,19 +107,19 @@ export default {
         of:[{type:'reference', title:'Associated Working Group', to: [{type: 'workingGroup'}]}]
     },
     {
-      name: 'themes',
-      type: 'array',
-      description: 'themes associated with this (if any)',
-      title: 'Associated Themes',
-      of:[{type:'reference', title:'theme', to: [{type: 'theme'}]}]
-  },
-  {
-    name: 'mediums',
-    type: 'array',
-    description: 'mediums associated with this (if any)',
-    title: 'Associated Mediums',
-    of:[{type:'reference', title:'medium', to: [{type: 'medium'}]}]
-},
+          name: 'themes',
+          type: 'array',
+          description: 'themes associated with this (if any)',
+          title: 'Associated Themes',
+          of:[{type:'reference', title:'theme', to: [{type: 'theme'}]}]
+      },
+      {
+        name: 'mediums',
+        type: 'array',
+        description: 'mediums associated with this (if any)',
+        title: 'Associated Mediums',
+        of:[{type:'reference', title:'medium', to: [{type: 'medium'}]}]
+    },
     {
         name: 'keywords',
         type: 'array',

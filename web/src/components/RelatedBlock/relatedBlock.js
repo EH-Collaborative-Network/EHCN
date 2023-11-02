@@ -108,20 +108,6 @@ if(node){
                 )}}
             </LangContext.Consumer>
         }
-        {(node.newsItems?.length > 0) &&
-            <section>
-            <h4><TranslatedPhrase phrase={"relatedNews"} translations={languagePhrases}/></h4>
-            <ul>
-               {
-                   node.newsItems.map(function(node,index){
-                       return(
-                           <li key={index}><Link to={"/news/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
-                       )
-                   })
-                }            
-            </ul>
-            </section>
-        }
         
         {(node.courses?.length > 0) &&
             <section>

@@ -194,21 +194,6 @@ export const query = graphql`
           }
         }
       }
-      newsItems{
-        id
-        date
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
       partners{
         id
         name

@@ -73,13 +73,6 @@ export default {
         of:[{type:'reference', title:'Associated Learning Resource', to: [{type: 'learningResource'}]}]
     },
     {
-        name: 'newsItems',
-        type: 'array',
-        description: 'News Items associated with this research thread (if any)',
-        title: 'Associated News Items',
-        of:[{type:'reference', title:'Associated News Item', to: [{type: 'newsItem'}]}]
-    },
-    {
         name: 'partners',
         type: 'array',
         description: 'Partner Institutions associated with this research thread (if any)',

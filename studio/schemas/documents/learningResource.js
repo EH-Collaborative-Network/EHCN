@@ -78,13 +78,6 @@ export default {
         of:[{type:'reference', title:'Associated Event', to: [{type: 'event'}]}]
     },
     {
-        name: 'newsItems',
-        type: 'array',
-        description: 'News Items associated with this learning resource (if any)',
-        title: 'Associated News Items',
-        of:[{type:'reference', title:'Associated News Item', to: [{type: 'newsItem'}]}]
-    },
-    {
         name: 'partners',
         type: 'array',
         description: 'Partner Institutions associated with this learning resource (if any)',
@@ -106,13 +99,6 @@ export default {
         of:[{type:'reference', title:'Associated Project', to: [{type: 'project'}]}]
     },
     {
-        name: 'researchThreads',
-        type: 'array',
-        description: 'Research Threads associated with this learning resource (if any)',
-        title: 'Associated Research Threads',
-        of:[{type:'reference', title:'Associated Research Thread', to: [{type: 'researchThread'}]}]
-    },
-    {
         name: 'workingGroups',
         type: 'array',
         description: 'Working Groups associated with this learning resource (if any)',
@@ -127,12 +113,12 @@ export default {
       of:[{type:'reference', title:'theme', to: [{type: 'theme'}]}]
   },
   {
-    name: 'mediums',
-    type: 'array',
-    description: 'mediums associated with this (if any)',
-    title: 'Associated Mediums',
-    of:[{type:'reference', title:'medium', to: [{type: 'medium'}]}]
-},
+        name: 'mediums',
+        type: 'array',
+        description: 'mediums associated with this (if any)',
+        title: 'Associated Mediums',
+        of:[{type:'reference', title:'medium', to: [{type: 'medium'}]}]
+    },
     
     {
         name: 'keywords',

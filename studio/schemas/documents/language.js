@@ -86,21 +86,9 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
-      name:'researchThread',
-      type: 'string',
-      title: 'Research Thread'
-    },
-    {
-      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'search',
       type: 'string',
       title: 'Search'
-    },
-    {
-      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
-      name:'researchThreads',
-      type: 'string',
-      title: 'Research Threads'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
@@ -493,12 +481,6 @@ export default {
       name:'relatedPartners',
       type: 'string',
       title: 'Related Partners'
-    },
-    {
-      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
-      name:'relatedResearchThreads',
-      type: 'string',
-      title: 'Related Research Threads'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',

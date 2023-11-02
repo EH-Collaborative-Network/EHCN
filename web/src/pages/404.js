@@ -33,7 +33,6 @@ export const query = graphql`
           fundingOpportunities
           ehcnSupported
           learningResources
-          researchThreads
           availableIn
           search
         }

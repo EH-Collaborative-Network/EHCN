@@ -192,7 +192,6 @@ export const query = graphql`
           ehcnSupported
           newsletter
           learningResources
-          researchThreads
           availableIn
           search
           ourPartners
@@ -212,17 +211,6 @@ export const query = graphql`
               name
             }
           }
-        }
-      }
-    }
-    menu: allSanityLanguage {
-      edges {
-        node {
-          id
-          fundingOpportunities
-          researchThreads
-          calendar
-          aboutEHCN
         }
       }
     }

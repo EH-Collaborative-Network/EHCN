@@ -16,20 +16,6 @@ if(node){
   return(
     <div aria-hidden="true" className={styles.root}>
         <div className="two-column">
-        {(node.researchThreads?.length > 0) &&
-            <section>
-            <h4><TranslatedPhrase phrase={"relatedResearchThreads"} translations={languagePhrases}/></h4>
-            <ul className={styles.special}>
-               {
-                   node.researchThreads.map(function(node,index){
-                       return(
-                           <li key={index}><Link to={"/research-thread/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
-                       )
-                   })
-                }            
-            </ul>
-            </section>
-        }
         {(node.partners?.length > 0) &&
             <section>
             <h4><TranslatedPhrase phrase={"relatedPartners"} translations={languagePhrases}/></h4>

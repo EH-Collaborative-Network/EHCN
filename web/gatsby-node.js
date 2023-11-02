@@ -261,45 +261,6 @@ async function createPartnerPages (graphql, actions) {
 
 
 
-/* Research Thread */
-async function createResearchThreadPages (graphql, actions) {
-  const {createPage} = actions
-  const result = await graphql(`
-    {
-      allSanityResearchThread(filter: {slug: {current: {ne: null}}}) {
-        edges {
-          node {
-            id
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors) throw result.errors
-
-  const researchThreadEdges = (result.data.allSanityResearchThread || {}).edges || []
-
-  researchThreadEdges
-    .forEach(edge => {
-      const id = edge.node.id
-      const slug = edge.node.slug.current
-      const path = `/research-thread/${slug.replace(/[?=]/g, "").replace(/[#=]/g, "")}/`
-
-      createPage({
-        path,
-        component: require.resolve('./src/templates/researchThread.js'),
-        context: {id}
-      })
-    
-    })
-  }
-
-
-/* Research Thread */
 async function createWorkingGroupPages (graphql, actions) {
   const {createPage} = actions
   const result = await graphql(`
@@ -344,7 +305,6 @@ exports.createPages = async ({graphql, actions}) => {
   await createNewsItemPages(graphql, actions)
   await createPartnerPages(graphql, actions)
   await createDefaultPages(graphql, actions)
-  await createResearchThreadPages(graphql, actions)
   await createWorkingGroupPages(graphql, actions)
 }
 

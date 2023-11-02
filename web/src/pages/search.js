@@ -39,13 +39,11 @@ export const query = graphql`
                 fundingOpportunities
                 ehcnSupported
                 learningResources
-                researchThreads
                 availableIn
                 search
                 results
                 course
                 learningResource
-                researchThread
                 event
                 partner
                 archive
@@ -162,9 +160,6 @@ const Search = props => {
                         break;
                       case 'workingGroup':
                         slug = "/working-group/"+slug;
-                        break;
-                      case 'researchThread':
-                        slug = "/research-thread/"+slug;
                         break;
                       case 'partner':
                         slug = "/partner/"+slug;

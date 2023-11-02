@@ -79,7 +79,6 @@ export const query = graphql`
           justice
           creativepractice
           learningResources
-          researchThreads
           availableIn
           search
         }

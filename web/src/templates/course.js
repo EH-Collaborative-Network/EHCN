@@ -42,7 +42,6 @@ export const query = graphql`
           fundingOpportunities
           ehcnSupported
           learningResources
-          researchThreads
           archive
           availableIn
           search
@@ -50,7 +49,6 @@ export const query = graphql`
           relatedEvents
           relatedWorkingGroups
           relatedProjects
-          relatedResearchThreads
           relatedLearningResources
           relatedPartners
           relatedNews
@@ -211,21 +209,6 @@ export const query = graphql`
         }
       }
       projects{
-        id
-        name
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      researchThreads{
         id
         name
         slug{

@@ -37,7 +37,11 @@ export const query = graphql`
           ehcnSupported
           learningResources
           archive
-          researchThreads
+          relatedPartners
+          filters
+          year
+          medium
+          theme
           availableIn
           newsletter
           learningResource
@@ -590,7 +594,7 @@ useEffect(() => {
 
 
           <div className={archiveStyles.filterWrapper + ' filterwrapper'}>
-              <h1 onClick={(e) => bigAccordion(e)}>Filters
+              <h1 onClick={(e) => bigAccordion(e)}><TranslatedPhrase translations={languagePhrases} phrase={'filters'}/>
 
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
@@ -599,7 +603,7 @@ useEffect(() => {
               </h1>
               
               <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
-                <h4>EHCN Partners Involved
+                <h4><TranslatedPhrase translations={languagePhrases} phrase={'relatedPartners'}/>
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
                     <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
@@ -608,7 +612,7 @@ useEffect(() => {
                 <div>{partnerDivs}</div>
               </div>
               <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
-                <h4>Medium/Format
+                <h4><TranslatedPhrase translations={languagePhrases} phrase={'medium'}/>
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
                     <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
@@ -619,7 +623,7 @@ useEffect(() => {
                 </div>
               </div>
               <div onClick={(e) => accordion(e)} className={archiveStyles.accordion + " accordion"}>
-                <h4>Theme/Topic
+                <h4><TranslatedPhrase translations={languagePhrases} phrase={'theme'}/>
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
                     <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>

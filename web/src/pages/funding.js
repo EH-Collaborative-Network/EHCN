@@ -60,7 +60,6 @@ export const query = graphql`
           fundingOpportunities
           ehcnSupported
           learningResources
-          researchThreads
           selectInstitution
           archive
           availableIn

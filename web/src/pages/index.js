@@ -189,7 +189,6 @@ export const query = graphql`
           creativepractice
           events
           fundingOpportunities
-          ehcnSupported
           newsletter
           learningResources
           availableIn

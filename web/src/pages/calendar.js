@@ -50,7 +50,6 @@ export const query = graphql`
           aboutEHCN
           calendar
           fundingOpportunities
-          ehcnSupported
           learningResources
           availableIn
           search

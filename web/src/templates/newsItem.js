@@ -40,7 +40,6 @@ export const query = graphql`
           events
           archive
           fundingOpportunities
-          ehcnSupported
           learningResources
           availableIn
           search

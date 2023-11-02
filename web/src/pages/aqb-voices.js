@@ -76,7 +76,6 @@ export const query = graphql`
           archive
           newsletter
           fundingOpportunities
-          ehcnSupported
           learningResources
           events
           selectInstitution

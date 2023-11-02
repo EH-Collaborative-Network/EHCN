@@ -73,7 +73,6 @@ export const query = graphql`
           events
           archive
           fundingOpportunities
-          ehcnSupported
           newsletter
           technology
           justice

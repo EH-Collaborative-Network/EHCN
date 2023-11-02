@@ -375,7 +375,7 @@ persevere?</p>
             <div className={styles.resourceWrapper}>
                 <div className={styles.chapter}>
                 <h4>Resources</h4>
-                <ul className={"two-column"}>
+                <ul className={styles.twoColumn}>
                     <li><a href="https://buildpalestine.com/2021/05/15/trusted-organizations-to-donate-to-palestine/">Trusted Organizations to Donate to Palestine</a></li>
                     <li><a href="https://www.palestinefilminstitute.org/en/unprovoked-narratives"> Palestine Film Institute's <em>Unprovoked Narratives</em>: “A series of films celebrating the beauty of Gaza, its people, its struggle and its survival. The program aims to resist the demonisation of this beautiful place.” </a></li>
                     <li><a href="https://www.youtube.com/watch?v=HnZSaKYmP2s">Film: “Gaza Fights for Freedom (2019)”</a></li>

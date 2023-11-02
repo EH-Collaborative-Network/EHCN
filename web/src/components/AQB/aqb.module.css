@@ -46,7 +46,15 @@
         margin-top: 0;
     }
 }
-
+.twoColumn{
+    margin-bottom:var(--space);
+    @media (--media-min-medium) {
+    column-count: 2;
+    column-gap: 1rem;
+    
+    }
+   
+}
 .twoUp .textBox{
     @media (--media-min-medium) {
         padding-left: var(--space);

@@ -195,10 +195,10 @@ const AQBVoicesPage = props => {
                     <p>
 Amidst the uprising of 2021 when the Israeli government attempted to evict six families from occupied East Jerusalem, five students express what it means to strive for freedom.</p>
                 </div>
-                <div><iframe src="https://drive.google.com/file/d/1RIBV2-pYT6FUYKE25szdmlahtLW3bV7R/preview" width="640" height="480" allow="fullscreen"></iframe></div>
+                <div><iframe src="https://drive.google.com/file/d/1RIBV2-pYT6FUYKE25szdmlahtLW3bV7R/preview" width="100%" height="480" allow="fullscreen"></iframe></div>
             </div>
             <div className={styles.chapter + " " + styles.twoUp}>
-                <div><iframe src="https://drive.google.com/file/d/1ZVeWZSM2MgDyn0L792vwZKxxqEaJCKqH/preview" width="640" height="480" allow="fullscreen"></iframe></div>
+                <div><iframe src="https://drive.google.com/file/d/1ZVeWZSM2MgDyn0L792vwZKxxqEaJCKqH/preview" width="100%" height="480" allow="fullscreen"></iframe></div>
                 <div className={styles.textBox}>
                     <h4>Freedom is Worth Everything (2022, 14min) dir. Hazar Alatrash & Amr Hussein</h4>
                     <p>Two young women share their experiences after their education is cut short by
@@ -216,7 +216,7 @@ political imprisonment.</p>
                 <div><img src={bawh2}/></div>
             </div>
             <div className={styles.chapter + " " + styles.twoUp}>
-                <div><iframe src="https://drive.google.com/file/d/1rlCYL5O0LCP0pE4BDm8f3pyC78XTNXQF/preview" width="640" height="480" allow="autoplay"></iframe></div>
+                <div><iframe src="https://drive.google.com/file/d/1rlCYL5O0LCP0pE4BDm8f3pyC78XTNXQF/preview" width="100%" height="480" allow="autoplay"></iframe></div>
                 <div className={styles.textBox}>
                     <h4>Occupied Workers (2022, 10min) dir. Layan Dajani & Rana Hadieh</h4>
                     <p>This is the story of two Palestinians who cross occupation checkpoints every day
@@ -232,11 +232,11 @@ persevere?</p>
 a child who is rendered stateless as a result. Twenty-six years later, she still has
 no identity. This is her story.</p>
                 </div>
-                <div><iframe src="https://drive.google.com/file/d/1lTL64ocLKr-QyF7CfPAjP59pBQUcT0CR/preview" width="640" height="480" allow="fullscreen"></iframe></div>
+                <div><iframe src="https://drive.google.com/file/d/1lTL64ocLKr-QyF7CfPAjP59pBQUcT0CR/preview" width="100%" height="480" allow="fullscreen"></iframe></div>
             </div>
 
             <div className={styles.chapter + " " + styles.twoUp}>
-                <div><iframe src="https://drive.google.com/file/d/1kqagUksUgTYgVSpWZnV4qPMDn6RokdJb/preview" width="640" height="480" allow="fullscreen"></iframe></div>
+                <div><iframe src="https://drive.google.com/file/d/1kqagUksUgTYgVSpWZnV4qPMDn6RokdJb/preview" width="100%" height="480" allow="fullscreen"></iframe></div>
                 <div className={styles.textBox}>
                     <h4>حب أزرق و أخضر / The Highway (2020, 26min) dir. Afnan Abassi</h4>
                     <p>Love, loss and resilience.</p>

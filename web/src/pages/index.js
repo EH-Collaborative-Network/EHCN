@@ -112,7 +112,7 @@ export const query = graphql`
       }
     }
     events: allSanityEvent(
-      limit: 10
+      limit: 40
       filter: { slug: { current: { ne: null } }}
     ) {
       edges {
@@ -134,7 +134,7 @@ export const query = graphql`
       }
     }
     projects: allSanityProject(
-      limit: 10
+      limit: 40
       filter: { slug: { current: { ne: null } }}
     ) {
       edges {
@@ -156,7 +156,7 @@ export const query = graphql`
       }
     }
     resources: allSanityLearningResource(
-      limit: 10
+      limit: 40
       filter: { slug: { current: { ne: null } }}
     ) {
       edges {

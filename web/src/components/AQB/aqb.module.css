@@ -9,6 +9,13 @@
 .bawhWrapper .chapter:first-child{
     margin-top: calc(var(--space) * 2);
 }
+.chapter iframe{
+    width: 100%;
+    height: 40vh;
+    @media (--media-min-medium) {
+        height: 20vw;
+    }
+}
 .chapter{
     position: relative;   
     margin-top:calc(var(--space) * 4);

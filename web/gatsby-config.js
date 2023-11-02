@@ -280,32 +280,6 @@ module.exports = {
                 }
               }
             }
-            allSanityResearchThread {
-              edges {
-                node {
-                  descriptions {
-                    _rawText(resolveReferences: {maxDepth: 10})
-                    language {
-                      code
-                      name
-                    }
-                  }
-                  id
-                  keywords
-                  name
-                  titles {
-                    text
-                    language {
-                      code
-                      name
-                    }
-                  }
-                  slug {
-                    current
-                  }
-                }
-              }
-            }
             allSanityWorkingGroup {
               edges {
                 node {
@@ -428,13 +402,6 @@ module.exports = {
             mainImage: edge.node.mainImage,
             type: "project"
           }))
-          let threads = data.allSanityResearchThread.edges.map((edge) => ({
-            id: edge.node.id,
-            descriptions:  edge.node.descriptions,
-            titles: edge.node.titles,
-            slug:edge.node.slug,
-            type: "researchThread"
-          }))
           let groups = data.allSanityWorkingGroup.edges.map((edge) => ({
             id: edge.node.id,
             descriptions:  edge.node.descriptions,
@@ -444,7 +411,7 @@ module.exports = {
             type: "workingGroup"
           }))
 
-          let finalArray = courses.concat(events, resources, news, projects, partners, threads, groups, opps, pages)
+          let finalArray = courses.concat(events, resources, projects, partners, groups, opps, pages)
           return(finalArray.flat(1))
         },
       },

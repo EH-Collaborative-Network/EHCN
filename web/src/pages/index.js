@@ -112,7 +112,7 @@ export const query = graphql`
       }
     }
     events: allSanityEvent(
-      limit: 40
+      limit: 10
       filter: { slug: { current: { ne: null } }}
     ) {
       edges {
@@ -134,7 +134,7 @@ export const query = graphql`
       }
     }
     projects: allSanityProject(
-      limit: 40
+      limit: 10
       filter: { slug: { current: { ne: null } }}
     ) {
       edges {
@@ -156,7 +156,7 @@ export const query = graphql`
       }
     }
     resources: allSanityLearningResource(
-      limit: 40
+      limit: 10
       filter: { slug: { current: { ne: null } }}
     ) {
       edges {
@@ -193,7 +193,6 @@ export const query = graphql`
           learningResources
           availableIn
           search
-          ourPartners
         }
       }
     }

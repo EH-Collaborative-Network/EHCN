@@ -7,7 +7,6 @@ import course from './documents/course'
 import event from './documents/event'
 import language from './documents/language'
 import learningResource from './documents/learningResource'
-import newsItem from './documents/newsItem'
 import opportunity from './documents/opportunity'
 import page from './documents/page'
 import theme from './documents/theme'
@@ -15,7 +14,6 @@ import medium from './documents/medium'
 import person from './documents/person'
 import partner from './documents/partner'
 import project from './documents/project'
-import researchThread from './documents/researchThread'
 import siteSettings from './documents/siteSettings'
 import workingGroup from './documents/workingGroup'
 import timeZone from './documents/timeZone'
@@ -57,13 +55,11 @@ export default createSchema({
     event,
     language,
     learningResource,
-    newsItem,
     opportunity,
     page,
     person,
     partner,
     project,
-    researchThread,
     siteSettings,
     timeZone,
     workingGroup

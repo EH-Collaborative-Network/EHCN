@@ -78,8 +78,6 @@ export default {
                 to: [
                   { type: 'page' },
                   { type: 'project' },
-                  { type: 'researchThread' },
-                  { type: 'newsItem' },
                   { type: 'workingGroup' },
                   { type: 'course' },
                   { type: 'event' },

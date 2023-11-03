@@ -304,8 +304,8 @@ li.alice-carousel__stage-item {
   margin:0;
   position:relative;
   z-index: 1;
-  padding:0 calc(var(--small-space)*3);
-  padding-top: calc(var(--small-space) *3);
+  padding:calc(var(--small-space)*2) calc(var(--small-space)*3);
+  padding-top: calc(var(--small-space) *4);
   background-color: var(--color-light-blue);
 }
 .hp-highlights h4 span{

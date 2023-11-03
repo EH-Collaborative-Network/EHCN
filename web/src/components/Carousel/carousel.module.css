@@ -143,8 +143,10 @@
 .figure, .figure  div, .root figure  img{
   height: 30vh;
   display: inline-block;
+  max-width: 30vh;
   @media (--media-min-medium) {
     height: 40vh;
+    max-width: none;
   }
 }
 .wrapper{

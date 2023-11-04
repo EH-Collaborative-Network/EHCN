@@ -11,6 +11,7 @@ import { Link } from "@reach/router";
 import yom from "../components/AQB/yom.png"
 import yom1 from "../components/AQB/yom1.png"
 import yom2 from "../components/AQB/yom2.png"
+import muflih from "../components/AQB/muflih.png"
 import yom3 from "../components/AQB/yom3.png"
 import olive from "../components/AQB/olive.png"
 import hike from "../components/AQB/hike.png"
@@ -297,16 +298,18 @@ persevere?</p>
 
             <div className={styles.chapter + " " + styles.twoUp}>
                 <div>
-                <figcaption>Sliman Mansour interviewed by Noor Sada:</figcaption>
-                <audio controls>
-                  <source src={mansour} type="audio/mpeg"/>
-                Your browser does not support the audio element.
-                </audio>
+                <img src={yom2}/>
+                
                 
                 </div> 
                 <div className={styles.textBox}>
                 <h4>Resistance and the Arts / الفن المقاوم</h4>
                 <p>World renowed artist, Sliman Mansour, discussed the role of the arts in shedding light on the Palestinian movement for liberation as well as inspiring people to keep hope alive. He discussed the narrative arc of his own work from the 1970s until today. Q&A moderated by Rawan Sharaf.</p>
+                <figcaption>Sliman Mansour interviewed by Noor Sada:</figcaption>
+                <audio controls>
+                  <source src={mansour} type="audio/mpeg"/>
+                Your browser does not support the audio element.
+                </audio>
                 </div>     
 
             </div>
@@ -334,17 +337,19 @@ persevere?</p>
                 <h4>Palestinian Identity Through Dance</h4>
                 <p>Noora Baker, Head of Production at <a href="https://www.el-funoun.org/" target="_blank">El-Funoun Palestinian Popular Dance Troupe</a>, and member since 1987, discussed the history, vision and mission of El-Funoun, charting its role in reviving Palestinian dance and music folklore since its inception in 1979, as well as in creating new forms of movement and dance that are unique to Palestine.</p>
                 </div>     
-                <div><img src={yom3}/></div> 
+                <div><img src={yom3}/>
+                  
+                </div> 
             </div>
 
-            <div className={styles.chapter + " " + styles.twoUp}>
-                <div><img src={yom2}/></div> 
+            <div className={styles.chapter + " " + styles.oneUp}>
+                <div><img src={muflih}/> <figcaption>Photograph by Wahaj Bani Muflih</figcaption>  </div> 
                 <div className={styles.textBox}>
                 <h4>Rooted /متجذرون: Photography Panel and Exhibition</h4>
                 <p>Acclaimed photographers Tanya Habjouqa and Wahaj Bani Muflih discussed how they use photography to tell the stories of Palestine and its people. The artists’ work was on exhibition from Sunday, March 27th - Sunday, April 2nd, 2022 at <a target="_blank" href="https://bard.alquds.edu/">Al-Quds Bard College</a>. Tanya Habjouqa joined from abroad via video call.</p>
                 </div>     
             </div>
-            <div className={styles.chapter + " " + styles.oneUp}>
+            <div className={styles.chapter + " " + styles.twoUp}>
                 <div><img src={sakiye}/></div> 
                 <div className={styles.textBox}>
                 <h4>Sakiya Field Trip & Prickly Pear Workshop</h4>
@@ -368,7 +373,7 @@ persevere?</p>
                 <div className={styles.textBox}>
                 <h4>AQB Arts Showcase : Kamanjati</h4>
                 <p> In May 2023, we held our 4th annual AQB Arts Showcase in Ramallah's Old City for an action-packed program of films, creative writing, multimedia, music and fine arts produced by our students, staff and faculty at AQB. We had over 80 people attend the arts crawl across three venues, and featured over 30 artists from AQB. This event has become a cherished AQB tradition that allows our community’s creativity to shine. </p>
-                <a className={"blue-button " + styles.button} target="_blank" href={'https://aqbarts.ps/?id=3'}>See More</a>
+                {/* <a className={"blue-button " + styles.button} target="_blank" href={'https://aqbarts.ps/?id=3'}>See More</a> */}
                 </div>     
             </div>
 

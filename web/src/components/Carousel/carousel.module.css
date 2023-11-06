@@ -136,6 +136,10 @@
 
 .embed > iframe{
   position: relative !important;
+  height: 80vw;
+  @media (--media-min-medium) {
+    height: 500px;
+  }
 }
 .embed p{
   display: none;

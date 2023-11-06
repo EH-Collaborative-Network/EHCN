@@ -317,9 +317,9 @@
     vertical-align: top;
 }
 
-.ml a{
+/* .ml a{
     padding-left:0;
-}
+} */
 
 .cardWrapper{
     display: flex;

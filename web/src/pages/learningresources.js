@@ -44,7 +44,6 @@ export const query = graphql`
           availableIn
           newsletter
           learningResource
-          featured
           search
           results
           noResults
@@ -106,7 +105,6 @@ export const query = graphql`
         node {
           id
           name
-          featured
           slug{
             current
           }

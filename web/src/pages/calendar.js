@@ -339,7 +339,7 @@ const CalendarPage = props => {
             {
               currentEvents.map((event, i) => {
                   return(
-                    <Link to={"/events/"+ event.node.slug.current}>
+                    <Link to={"/event/"+ event.node.slug.current}>
                       {event.node.mainImage &&
                         <Figure normal={true} node={event.node.mainImage} /> 
                       }
@@ -348,7 +348,7 @@ const CalendarPage = props => {
                         <DisplayTime event={event.node} offset={offset} languagePhrases={languagePhrases}/>
                         }
                         <h4><TranslatedTitle translations={ event.node.titles}/></h4>
-                        <Link className="blue-button" to={"/events/" + event.node.slug.current}>More Info</Link>
+                        <Link className="blue-button" to={"/event/" + event.node.slug.current}>More Info</Link>
                       </div>
                       
                     </Link>
@@ -368,7 +368,7 @@ const CalendarPage = props => {
                 let d = event.node.endDate.date.split("-")
                 if(!isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
                   return(
-                    <Link to={"/events/"+ event.node.slug}>
+                    <Link to={"/event/"+ event.node.slug}>
                       {event.node.mainImage &&
                         <Figure normal={true} node={event.node.mainImage} /> 
                       }
@@ -377,7 +377,7 @@ const CalendarPage = props => {
                         <DisplayTime event={event.node} offset={offset} languagePhrases={languagePhrases}/>
                         }
                         <h4><TranslatedTitle translations={ event.node.titles}/></h4>
-                      <Link className="blue-button" to={"/events/" + event.node.slug.current}>More Info</Link>
+                      <Link className="blue-button" to={"/event/" + event.node.slug.current}>More Info</Link>
                       </div>
                     </Link>
                   )

@@ -347,7 +347,7 @@ const EventTemplate = props => {
    
         <div className={'subtitle'}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.locations : event.locations}/></div>
         {event.mainLink?.text?.length > 0 &&
-                  <div className={'main-link '+ styles.ml}><a target="_blank" href={event.mainLink.url}>{event.mainLink.text}</a></div>
+                  <div className={'main-link '+ styles.ml}><a className="blue-button" target="_blank" href={event.mainLink.url}>{event.mainLink.text}</a></div>
         }
         <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : event.descriptions}/></div>
         {media.length > 0 &&

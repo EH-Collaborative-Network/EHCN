@@ -233,24 +233,16 @@ li.alice-carousel__stage-item {
   margin:0;
 }
 .main-link a{
-  color:var(--color-dark-blue);
   position: relative;
   display: inline-block;
   vertical-align: top;
-  padding: 5px 10px;
   z-index: 0;
-  padding-right: 0;
-  padding-left: 5px;
-  margin-top: 8px;
+  margin-top: var(--space);
   margin-right:12px;
-  border-radius: 0px;
   text-decoration: none;
-  font-family:var(--font-family-bold);
 }
 
-.main-link a:hover{
-  color:var(--color-red)
-}
+
 .main-link{
   margin: 5px 0;
   position: relative;
@@ -261,7 +253,6 @@ li.alice-carousel__stage-item {
   margin-bottom:0;
 }
 .main-link.top-link a{
-  padding-left:0;
   margin-left:0;
 }
 @media(max-width:675px){

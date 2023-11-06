@@ -87,6 +87,12 @@
 .accordion input[type=checkbox]{
     display: none;
 }
+.filterWrapper label{
+    cursor: pointer;
+}
+.filterWrapper label:hover{
+    font-family: var(--font-family-bold);
+}
 .accordion input[type=checkbox]:checked + label{
     font-family: var(--font-family-bold);
 }

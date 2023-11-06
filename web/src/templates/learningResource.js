@@ -254,7 +254,7 @@ const LearningResourceTemplate = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : learningResource.titles}/></h1>
         {learningResource.mainLink?.text?.length > 0 &&
-                  <div className={'main-link'}><a target="_blank" href={learningResource.mainLink.url}>{learningResource.mainLink.text}</a></div>
+                  <div className={'main-link'}><a className="blue-button" target="_blank" href={learningResource.mainLink.url}>{learningResource.mainLink.text}</a></div>
         }
         <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.descriptions : learningResource.descriptions}/></div>
         {media.length > 0 &&

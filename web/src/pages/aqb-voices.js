@@ -237,7 +237,7 @@ no identity. This is her story.</p>
 to make ends meet. How do they survive the daily hardships? What makes them
 persevere?</p>
                 </div>
-                <div><iframe src="https://drive.google.com/file/d/1rlCYL5O0LCP0pE4BDm8f3pyC78XTNXQF/preview"  allow="autoplay"></iframe></div>
+                <div><iframe src="https://drive.google.com/file/d/1rlCYL5O0LCP0pE4BDm8f3pyC78XTNXQF/preview"  allow="fullscreen"></iframe></div>
 
             </div>
             </div>
@@ -298,18 +298,14 @@ persevere?</p>
 
             <div className={styles.chapter + " " + styles.twoUp}>
                 <div>
-                <img src={yom2}/>
+                <iframe src="https://drive.google.com/file/d/1aIwJeQ7T3Lkw0eIMmRUP8_sKPEFhz0Fg/preview" width="640" height="480" allow="fullscreen"></iframe>
+
                 
                 
                 </div> 
                 <div className={styles.textBox}>
                 <h4>Resistance and the Arts / الفن المقاوم</h4>
                 <p>World renowed artist, Sliman Mansour, discussed the role of the arts in shedding light on the Palestinian movement for liberation as well as inspiring people to keep hope alive. He discussed the narrative arc of his own work from the 1970s until today. Q&A moderated by Rawan Sharaf.</p>
-                <figcaption>Sliman Mansour interviewed by Noor Sada:</figcaption>
-                <audio controls>
-                  <source src={mansour} type="audio/mpeg"/>
-                Your browser does not support the audio element.
-                </audio>
                 </div>     
 
             </div>
@@ -342,20 +338,20 @@ persevere?</p>
                 </div> 
             </div>
 
-            <div className={styles.chapter + " " + styles.oneUp}>
-                <div><img src={muflih}/> <figcaption>Photograph by Wahaj Bani Muflih</figcaption>  </div> 
+            <div className={styles.chapter + " " + styles.twoUp}>
+                <div><iframe src="https://drive.google.com/file/d/16AxnyI0NngsgQMLgfIvvdoZM1aao9STj/preview" width="640" height="480" allow="fullscreen"></iframe> </div> 
                 <div className={styles.textBox}>
                 <h4>Rooted /متجذرون: Photography Panel and Exhibition</h4>
                 <p>Acclaimed photographers Tanya Habjouqa and Wahaj Bani Muflih discussed how they use photography to tell the stories of Palestine and its people. The artists’ work was on exhibition from Sunday, March 27th - Sunday, April 2nd, 2022 at <a target="_blank" href="https://bard.alquds.edu/">Al-Quds Bard College</a>. Tanya Habjouqa joined from abroad via video call.</p>
                 </div>     
             </div>
-            <div className={styles.chapter + " " + styles.twoUp}>
-                <div><img src={sakiye}/></div> 
+            <div className={styles.chapter + " " + styles.twoUp + " " + styles.left}>
+                
                 <div className={styles.textBox}>
                 <h4>Sakiya Field Trip & Prickly Pear Workshop</h4>
                 <p> Students visited the Sakiya nature reserve and academy with agronomist and community educator, Mary Diek. During their field visit, students learned how to make shelters out of prickly pear leaves, and in general, learned about local agrarian traditions of self-sufficiency and food production, toured the exhibition hall, and explored the intersections of art, science and permaculture.</p>
                 </div>
-                
+                <div><img src={sakiye}/></div> 
             </div>
 
             

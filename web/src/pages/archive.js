@@ -114,6 +114,7 @@ export const query = graphql`
     workingGroups: allSanityWorkingGroup{
         edges{
             node {
+                _createdAt
                 studentLed
                 titles{
                   text
@@ -216,6 +217,7 @@ export const query = graphql`
     courses: allSanityCourse{
       edges{
           node {
+              _createdAt
               titles{
                 text
                 language{
@@ -264,6 +266,7 @@ export const query = graphql`
     projects: allSanityProject{
         edges{
             node {
+                _createdAt
                 studentLed
                 titles{
                   text
@@ -564,7 +567,6 @@ all.sort(function (a, b) {
   function handleCheck(e){
     if(typeof window != `undefined`){
       let searchstring = window.location.search?.split("?")[1]
-      let currentYear = false;
       let searchParams = [];
       //check param
       if(searchstring){
@@ -641,7 +643,6 @@ all.sort(function (a, b) {
   function handleYear(e){
     if(typeof window != `undefined`){
       let searchstring = window.location.search?.split("?")[1]
-      let currentYear = false;
       let searchParams = [];
       //check param
       if(searchstring){
@@ -1016,9 +1017,13 @@ all.sort(function (a, b) {
                     show = false;
                   }
                   if(yearFilter != "All"){
-                    if(node.node.startDate?.date.split("-")[0] != yearFilter || node.node.starDate == `undefined`){
-                      show = false
+                    
+                    if(node.node.startDate?.date.split("-")[0] == yearFilter || ( (new Date(node.node._createdAt))?.getFullYear() == yearFilter) ){
+                      show = true;
+                    }else{
+                      show = false;
                     }
+
                   }
 
                   if(show){

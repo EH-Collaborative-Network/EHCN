@@ -140,6 +140,9 @@
         height: 12vw;
     }
 }
+.yearResources{
+    border-top: 1px solid var(--color-dark-blue);
+}
 .root figure div{
     height: 20vh;
     min-width: 100%;

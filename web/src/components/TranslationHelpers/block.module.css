@@ -13,3 +13,7 @@
 .blockPerson > span > div:first-child:hover{
    color: var(--color-red)
 }
+
+.blockPerson{
+    display: inline-block;
+}

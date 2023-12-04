@@ -85,14 +85,14 @@ if(node){
                    node.projects.map(function(node,index){
                        return(
 
-                            <Link key={index} className={styles.relatedCard} to={"/projects/"+node.slug?.current}>
+                            <Link key={index} className={styles.relatedCard} to={"/project/"+node.slug?.current}>
                                 {node.mainImage &&
                                     <Figure normal={true} node={node.mainImage} />  
                                 }
                                 <div className={styles.textBox}>
                                 <h4><TranslatedTitle translations={node.titles}/></h4>
                                 <p><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={node.descriptions}/></p>
-                                <Link key={index} className={"blue-button"} to={"/projects/"+node.slug?.current}>See More</Link>
+                                <Link key={index} className={"blue-button"} to={"/project/"+node.slug?.current}>See More</Link>
                                 </div>
                             </Link>  
             
@@ -157,7 +157,7 @@ if(node){
                     }
 
                        return(
-                            <ArchiveItem titles={node.titles} key={index} image={node.mainImage} link={"/events/"+node.slug?.current}/>
+                            <ArchiveItem titles={node.titles} key={index} image={node.mainImage} link={"/event/"+node.slug?.current}/>
                        )
                    })
                 }            

@@ -8,6 +8,9 @@
   color: var(--color-white);
   padding-top: calc(var(--space)*3);
 }
+.special{
+  padding-left: 0;
+}
 .root .special li{
   display: block;
   margin-right:5px;
@@ -65,13 +68,13 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-.relatedCard:nth-child(odd){
+/* .relatedCard:nth-child(odd){
   flex-direction: row-reverse;
-}
-.relatedCard:nth-child(odd) figure{
+} */
+/* .relatedCard:nth-child(odd) figure{
   margin-left: var(--space);
   margin-right:0;
-}
+} */
 .relatedCard figure{
   width: calc(50% - var(--space));
   margin-top:0;
@@ -82,7 +85,7 @@
 }
 .wrapper{
   display: flex;
-  gap:calc(var(--small-space) * 2);
+  gap:calc(var(--small-space) * 3);
   justify-content: flex-start;
   overflow: scroll;
   margin-top: var(--space);
@@ -91,6 +94,15 @@
       max-height: none;
       margin-top:0;
   }
+}
+.root .wrapper > *{
+  flex-basis: calc(100% - (var(--small-space) * 4));
+  @media (--media-min-medium) {
+    flex-basis: calc(33% - (var(--small-space) * 4));
+  }
+}
+.root .wrapper > *:nth-child(even){
+  margin-left:inherit
 }
 .root > div > section{
   break-inside: avoid;

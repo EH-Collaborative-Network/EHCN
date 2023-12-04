@@ -140,6 +140,29 @@ export const query = graphql`
           date
           time
         }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
+        descriptions{
+          _rawText(resolveReferences: { maxDepth: 20 })
+          language{
+            id
+            name
+            code
+          }
+        }
         endDate{
           date
           time
@@ -181,6 +204,29 @@ export const query = graphql`
         id
         slug{
           current
+        }
+        mainImage {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
+        descriptions{
+          _rawText(resolveReferences: { maxDepth: 20 })
+          language{
+            id
+            name
+            code
+          }
         }
         titles{
           text

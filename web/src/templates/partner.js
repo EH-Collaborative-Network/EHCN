@@ -58,6 +58,29 @@ export const query = graphql`
               partners {
                 id
               }
+              mainImage {
+                crop {
+                  _key
+                  _type
+                  top
+                  bottom
+                  left
+                  right
+                }
+                asset {
+                  _id
+                }
+                altText
+                caption
+              }
+              descriptions{
+                _rawText(resolveReferences: { maxDepth: 20 })
+                language{
+                  id
+                  name
+                  code
+                }
+              }
               name
               timeZone{
                 name
@@ -93,6 +116,29 @@ export const query = graphql`
           node {
               partners {
                 id
+              }
+              mainImage {
+                crop {
+                  _key
+                  _type
+                  top
+                  bottom
+                  left
+                  right
+                }
+                asset {
+                  _id
+                }
+                altText
+                caption
+              }
+              descriptions{
+                _rawText(resolveReferences: { maxDepth: 20 })
+                language{
+                  id
+                  name
+                  code
+                }
               }
               name
               slug{
@@ -312,7 +358,7 @@ const PartnerTemplate = props => {
         {media.length > 0 &&
            <Carousel media={media}/>
         }
-        <RelatedBlock languagePhrases={languagePhrases} node={fakeNode}/>
+        <RelatedBlock globalLanguages={globalLanguages} languagePhrases={languagePhrases} node={fakeNode}/>
       </Container>
     </Layout>
     

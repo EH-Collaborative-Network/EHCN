@@ -275,21 +275,21 @@ const PartnerTemplate = props => {
     "courses": [],
     "learningResources":[]
   }
-  projects.forEach((n,i)=>{
-    fakeNode.projects.push(n.node)
-  })
-  events.forEach((n,i)=>{
-    fakeNode.events.push(n.node)
-  })
-  workingGroups.forEach((n,i)=>{
-    fakeNode.workingGroups.push(n.node)
-  })
-  courses.forEach((n,i)=>{
-    fakeNode.courses.push(n.node)
-  })
-  learningResources.forEach((n,i)=>{
-    fakeNode.learningResources.push(n.node)
-  })
+  // projects.forEach((n,i)=>{
+  //   fakeNode.projects.push(n.node)
+  // })
+  // events.forEach((n,i)=>{
+  //   fakeNode.events.push(n.node)
+  // })
+  // workingGroups.forEach((n,i)=>{
+  //   fakeNode.workingGroups.push(n.node)
+  // })
+  // courses.forEach((n,i)=>{
+  //   fakeNode.courses.push(n.node)
+  // })
+  // learningResources.forEach((n,i)=>{
+  //   fakeNode.learningResources.push(n.node)
+  // })
 
 
 

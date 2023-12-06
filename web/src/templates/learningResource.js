@@ -72,14 +72,6 @@ export const query = graphql`
         text
       }
       mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
         hotspot {
           _key
           _type
@@ -120,14 +112,6 @@ export const query = graphql`
           }
         }
         image{
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
           hotspot {
             _key
             _type
@@ -163,6 +147,21 @@ export const query = graphql`
         slug{
           current
         }
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
+        descriptions{
+          _rawText(resolveReferences: { maxDepth: 20 })
+          language{
+            id
+            name
+            code
+          }
+        }
         titles{
           text
           language{
@@ -183,6 +182,21 @@ export const query = graphql`
         id
         slug{
           current
+        }
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
+        descriptions{
+          _rawText(resolveReferences: { maxDepth: 20 })
+          language{
+            id
+            name
+            code
+          }
         }
         titles{
           text

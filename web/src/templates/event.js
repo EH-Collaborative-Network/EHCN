@@ -103,14 +103,6 @@ export const query = graphql`
         time
       }
       mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
         asset {
           _id
         }
@@ -148,22 +140,6 @@ export const query = graphql`
           }
         }
         image{
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
           asset {
             _id
           }
@@ -181,14 +157,6 @@ export const query = graphql`
           offset
         }
         mainImage {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
           asset {
             _id
           }

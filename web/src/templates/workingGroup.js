@@ -77,14 +77,6 @@ export const query = graphql`
         text
       }
       mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
         asset {
           _id
         }
@@ -206,14 +198,6 @@ export const query = graphql`
           current
         }
         mainImage {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
           asset {
             _id
           }

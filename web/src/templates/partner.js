@@ -55,23 +55,11 @@ export const query = graphql`
     ){
       edges{
           node {
-              partners {
-                id
-              }
               mainImage {
-                crop {
-                  _key
-                  _type
-                  top
-                  bottom
-                  left
-                  right
-                }
                 asset {
                   _id
                 }
                 altText
-                caption
               }
               descriptions{
                 _rawText(resolveReferences: { maxDepth: 20 })
@@ -114,23 +102,11 @@ export const query = graphql`
     ){
       edges{
           node {
-              partners {
-                id
-              }
               mainImage {
-                crop {
-                  _key
-                  _type
-                  top
-                  bottom
-                  left
-                  right
-                }
                 asset {
                   _id
                 }
                 altText
-                caption
               }
               descriptions{
                 _rawText(resolveReferences: { maxDepth: 20 })
@@ -161,9 +137,6 @@ export const query = graphql`
     ){
       edges{
           node {
-              partners {
-                id
-              }
               name
               slug{
                 current
@@ -185,9 +158,6 @@ export const query = graphql`
     ){
       edges{
           node {
-              partners {
-                id
-              }
               name
               slug{
                 current
@@ -272,27 +242,10 @@ export const query = graphql`
           }
         }
         image{
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
           asset {
             _id
           }
           altText
-          caption
         }
       }
       slug {

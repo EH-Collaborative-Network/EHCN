@@ -104,6 +104,7 @@ export const query = graphql`
       edges {
         node {
           id
+          _createdAt
           name
           slug{
             current
@@ -151,6 +152,15 @@ const LearningResources = props => {
   const [query, setQuery] = useState(null);
   const results = index ? useFlexSearch(query, index, store) : []
   let filteredResults = [];
+  resources.sort(function (a, b) {
+    if (a.node._createdAt < b.node._createdAt) {
+      return 1;
+    }
+    if (a.node._createdAt > b.node._createdAt) {
+      return -1;
+    }
+    return 0;
+  });
   results?.map(function(node, index){
     if(node.type == "learningResource"){
       filteredResults.push(node)
@@ -186,6 +196,8 @@ const LearningResources = props => {
   const partners = (data || {}).partners?.edges;
   const themes = (data || {}).themes?.edges;
   const mediums = (data || {}).mediums?.edges;
+  const [yearFilter, setYearFilter] = useState("All");
+  
   const accordion = (e) => {
     let el = e.target;
     if(!el.classList.contains("accordion")){
@@ -246,7 +258,9 @@ useEffect(() => {
           document.querySelector("#partner-" + id).checked = true;
         })
         setPartnerFilter(ve.split(','))
-      }
+      }else if(p == "year"){
+          setYearFilter(v)
+       }
     })
   }
     }, []);
@@ -280,7 +294,33 @@ useEffect(() => {
             </div> 
         )
   })
+/* CHECK YEAR */ 
 
+function handleYear(e){
+  if(typeof window != `undefined`){
+    let searchstring = window.location.search?.split("?")[1]
+    let searchParams = [];
+    //check param
+    if(searchstring){
+      let kv = searchstring.split("&");
+      kv.forEach((k,i)=>{
+        let newk = k.split("=");
+        if(newk[0]!="year"){
+          searchParams.push(newk.join("="))
+        }
+        
+      })
+    }
+    
+    let newSearchString = "?" + searchParams.join("&");
+    newSearchString = newSearchString + "&year=" + e.target.value;
+    
+
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
+  }
+  setYearFilter(e.target.value);
+}
   /* CHECK PARTNER */ 
   function handlePartner(e){
     if(typeof window != `undefined`){
@@ -552,6 +592,15 @@ useEffect(() => {
                 show = false;
               }
 
+              if(yearFilter != "All"){
+                    
+                if(( (new Date(node.node._createdAt))?.getFullYear() == yearFilter) ){
+                  show = true;
+                }else{
+                  show = false;
+                }
+
+              }
 
             if(show){
               return(
@@ -630,7 +679,16 @@ useEffect(() => {
                   {themeDivs}
                 </div>
               </div>
-              
+              <div className={archiveStyles.yearResources}>
+                <h4>Year</h4>
+                <select onChange={handleYear}>
+                  <option value={"All"}>Any</option>
+                  <option value={"2023"}>2023</option>
+                  <option value={"2022"}>2022</option>
+                  <option value={"2021"}>2021</option>
+                  <option value={"2020"}>2020</option>
+                </select>
+              </div>
              
              </div>
 

@@ -156,6 +156,13 @@ export const query = graphql`
       }
       events {
         id
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
         timeZone{
           name
           offset

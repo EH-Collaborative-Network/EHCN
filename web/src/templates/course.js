@@ -145,6 +145,13 @@ export const query = graphql`
       events {
         id
         name
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
         timeZone{
           name
           offset
@@ -193,6 +200,21 @@ export const query = graphql`
       }
       projects{
         id
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
+        descriptions{
+          _rawText(resolveReferences: { maxDepth: 20 })
+          language{
+            id
+            name
+            code
+          }
+        }
         name
         slug{
           current

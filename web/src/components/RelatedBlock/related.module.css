@@ -2,10 +2,14 @@
 @import '../../styles/custom-properties.css';
 
 .root {
-  background: var(--color-light-blue);
+  background: var(--color-black);
   margin-top:calc(var(--space)*3);
   padding-bottom:calc(var(--space)*2);
+  color: var(--color-white);
   padding-top: calc(var(--space)*3);
+}
+.special{
+  padding-left: 0;
 }
 .root .special li{
   display: block;
@@ -24,19 +28,85 @@
   text-decoration: none;
 }
 .root li a:hover{
-  color:var(--color-red);
+  color:var(--color-white);
 }
+
+.root li a{
+  color:var(--color-blue);
+}
+
 .root > div > section:first-child > h4:first-child{
    margin-top:0;
 }
-.root > div{
-  column-count: 1;
+.root .relatedCard{
+  display: flex;
+  text-decoration: none;
+  width: calc(100% - (var(--space) * 2));
+  padding:var(--space);
+  background-color: var(--color-light-blue);
+  flex-direction: row;
+  color: var(--color-black);
+  margin-bottom: calc(var(--space) * 2);
+}
+.root .relatedCard .textBox{
+  flex-basis: 50%;
+  text-align: left;
+}
+.textBox > h4{
+  margin:0;
+}
+.textBox p a{
+  color: var(--color-dark-blue);
+}
+.relatedCard figcaption{
+  display: none;
+}
+.textBox > p{
+  display: none;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+/* .relatedCard:nth-child(odd){
+  flex-direction: row-reverse;
+} */
+/* .relatedCard:nth-child(odd) figure{
+  margin-left: var(--space);
+  margin-right:0;
+} */
+.relatedCard figure{
+  width: calc(50% - var(--space));
+  margin-top:0;
+  margin-bottom:0;
+  margin-left:0;
+  max-height: 30vw;
+  overflow: hidden;
+}
+.wrapper{
+  display: flex;
+  gap:calc(var(--small-space) * 3);
+  justify-content: flex-start;
+  overflow: scroll;
+  margin-top: var(--space);
+  flex-wrap: wrap;
   @media (--media-min-medium) {
-    column-count:2;
+      max-height: none;
+      margin-top:0;
   }
+}
+.root .wrapper > *{
+  flex-basis: calc(100% - (var(--small-space) * 4));
+  @media (--media-min-medium) {
+    flex-basis: calc(33% - (var(--small-space) * 4));
+  }
+}
+.root .wrapper > *:nth-child(even){
+  margin-left:inherit
 }
 .root > div > section{
   break-inside: avoid;
+  margin-bottom: calc(var(--space)*2);
 }
 .root li:first-child a{
   margin-top:0;
@@ -44,5 +114,4 @@
 .date{
   display: inline;
   margin-left: 5px;
-  /* font-size: var(--font-small-size); */
 }

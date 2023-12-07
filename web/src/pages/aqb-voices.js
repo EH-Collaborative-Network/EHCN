@@ -5,6 +5,7 @@ import {
   filterOutDocsWithoutSlugs,
   filterOutDocsPublishedInTheFuture
 } from "../lib/helpers";
+import mansour from "../components/AQB/mansour.mp3"
 import bawh1 from "../components/AQB/bawh1.png"
 import { Link } from "@reach/router";
 import yom from "../components/AQB/yom.png"

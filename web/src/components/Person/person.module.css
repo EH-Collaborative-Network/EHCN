@@ -3,6 +3,7 @@
 
 .person{
     cursor:pointer;
+    display: inline-block;
 }
 
 .personButton{

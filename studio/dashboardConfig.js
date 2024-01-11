@@ -12,7 +12,7 @@ export default {
                 'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when documents are published.',
               sites: [
                 {
-                  buildHookId: '623cde2af1d31b47c1c4471e',
+                  buildHookId: '65a05168ec269134e0714e09',
                   title: 'EHCN',
                   name: 'ehcn',
                   apiId: 'c9fbc94a-26c5-4712-9ec0-0175ee0a4e04'

@@ -368,7 +368,7 @@ const CalendarPage = props => {
                 let d = event.node.endDate.date.split("-")
                 if(!isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
                   return(
-                    <Link to={"/event/"+ event.node.slug}>
+                    <Link to={"/event/"+ event.node.slug.current}>
                       {event.node.mainImage &&
                         <Figure normal={true} node={event.node.mainImage} /> 
                       }

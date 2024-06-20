@@ -254,12 +254,12 @@ const IndexPage = props => {
 
   events.map(function(event,index){
     scrollTitles.push(
-      <div key={"01"+index} className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/events/'+ event.node.slug.current}><TranslatedTitle translations={event.node.titles}/></Link></div>
+      <div key={"01"+index} className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/event/'+ event.node.slug.current}><TranslatedTitle translations={event.node.titles}/></Link></div>
     )
   })
   projects.map(function(project,index){
     scrollTitles.push(
-      <div key={"02"+index} className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/projects/'+ project.node.slug.current}><TranslatedTitle translations={project.node.titles}/></Link></div>
+      <div key={"02"+index} className={Math.random() > 0.5 ? "large-title" :"title"}><Link to={'/project/'+ project.node.slug.current}><TranslatedTitle translations={project.node.titles}/></Link></div>
     )
   })
   resources.map(function(resource,index){

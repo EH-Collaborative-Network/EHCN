@@ -52,8 +52,8 @@ function SEO({lang}) {
             <script async={false} type="text/javascript">
            {`window.dataLayer = window.dataLayer || []
            function gtag(){dataLayer.push(arguments);}
-           window.gtag('js', new Date())
-           window.gtag('config', 'G-8HCTYSWFZ8')`
+           gtag('js', new Date())
+           gtag('config', 'G-8HCTYSWFZ8')`
            }
          </script></Helmet>
           );

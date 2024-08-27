@@ -28,8 +28,8 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
         
         if(( sd.getMonth() == mon || ed.getMonth() == mon ) && (sd.getFullYear() == year || ed.getFullYear() == year)){
           currentEvents.push([sd,ed,event.node]);
-        }else if((mon > sd.getMonth() && mon < ed.getMonth())){
-          console.log(event.node.slug.current)
+        }else if((mon > sd.getMonth() && mon < ed.getMonth()) && ed.getFullYear == year){
+          
           currentEvents.push([sd,ed,event.node]);
         }
       }
@@ -118,6 +118,7 @@ const CreateCalendar = ({globalLanguages, translations, year, month, theme, even
             
         })
         multiEvents.forEach(function(event,i){
+
           if(event[0].getMonth() < event[1].getMonth()){
             if((d.getMonth() == event[0].getMonth() && d.getDate() > event[0].getDate()) ) {
               if(d.getDate() == event[0].getDate() + 2 || d.getDate() == event[0].getDate() + 4 || d.getDate() == event[0].getDate() + 6 || d.getDate() == event[0].getDate() + 8 || d.getDate() == event[0].getDate() + 10 || d.getDate() == event[0].getDate() + 12 || d.getDate() == event[0].getDate() + 14 || d.getDate() == event[0].getDate() + 16 || d.getDate() == event[0].getDate() + 18){

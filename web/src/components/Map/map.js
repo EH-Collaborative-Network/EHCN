@@ -41,7 +41,7 @@ const previousCP = () => {
           <div className={styles.nodes}>
             {cp == 0 &&
             <svg viewBox="0 0 599 413" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M411.5 156L457 168.5L139.5 125.5L148.5 124H362L519.5 45.5L411.5 156Z" stroke="#BF0B3E" strokeWidth="3"/>
+            <path d="M20.4,150.9l128.1-26.9h213.5l157.5-78.5-108,110.5,45.5,12.5L93,255.7,20.4,150.9Z" stroke="#BF0B3E" strokeWidth="3"/>
             </svg>   
             }
             {cp == 1 &&
@@ -61,7 +61,8 @@ const previousCP = () => {
             <ellipse onMouseLeave={() => leaveLabel("NewYork-label")} onMouseEnter={() => hoverLabel("NewYork-label")} className={cp == 0 ? styles.active + " NewYork": "NewYork"} cx="148.763" cy="124.991" rx="4.44067" ry="4.29084" fill="#333333"/>
             <ellipse onMouseLeave={() => leaveLabel("DC-label")} onMouseEnter={() => hoverLabel("DC-label")} className={cp == 0 ? styles.active + " DC": "DC"} cx="139.881" cy="124.991" rx="4.44067" ry="4.29084" fill="#333333"/>
             <ellipse onMouseLeave={() => leaveLabel("Virginia-label")} onMouseEnter={() => hoverLabel("Virginia-label")} className={cp == 1 ? styles.active + " Virginia": "Virginia"} cx="135.441" cy="131.427" rx="4.44067" ry="4.29084" fill="#333333"/>
-            <ellipse onMouseLeave={() => leaveLabel("Bogota-label")} onMouseEnter={() => hoverLabel("Bogota-label")} className={" Bogota"} cx="93.2551" cy="255.862" rx="4.44067" ry="4.29084" fill="#333333"/>
+            <ellipse onMouseLeave={() => leaveLabel("Mexico-label")} onMouseEnter={() => hoverLabel("Mexico-label")} className={cp == 0 ? styles.active + " Mexico City":"Mexico City"} cx="20.2551" cy="150.862" rx="4.44067" ry="4.29084" fill="#333333"/>
+            <ellipse onMouseLeave={() => leaveLabel("Bogota-label")} onMouseEnter={() => hoverLabel("Bogota-label")} className={cp == 0 ? styles.active + " Bogota":"Bogota"} cx="93.2551" cy="255.862" rx="4.44067" ry="4.29084" fill="#333333"/>
             <ellipse onMouseLeave={() => leaveLabel("Arizona-label")} onMouseEnter={() => hoverLabel("Arizona-label")} className={cp == 1 ? styles.active + " Arizona": "Arizona"} cx="38.8567" cy="37.0286" rx="4.44067" ry="4.29084" fill="#333333"/>
             </svg>
             
@@ -77,6 +78,7 @@ const previousCP = () => {
             <Link to={"/partner/bard-annandale"} className={"NewYork-label"}>Bard College Annandale, USA</Link>
             <Link to={"/partner/recovering-voices"} className={"DC-label"}>Recovering Voices, Smithsonian Institution, USA</Link>
             <Link to={"/partner/hampton-university"} className={"Virginia-label"}>Hampton University, USA</Link>
+            <Link to={"/event/nombrar_"} className={"Mexico-label"}>Mexico City, México</Link>
             <Link to={"/partner/universidad-de-los-andes"} className={"Bogota-label"}>Universidad de Los Andes, Colombia</Link>
             <Link to={"/partner/arizona-state-university"} className={"Arizona-label"}>Arizona State University, USA</Link>
           </div>

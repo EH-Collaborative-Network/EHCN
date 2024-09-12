@@ -217,6 +217,68 @@ export const query = graphql`
         url
         text
       }
+      featured_events {
+        id
+        timeZone{
+          name
+          offset
+        }
+        startDate{
+          date
+          time
+        }
+        endDate{
+          date
+          time
+        }
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
+        slug{
+          current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+      }
+      featured_projects{
+        id
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
+        descriptions{
+          _rawText(resolveReferences: { maxDepth: 20 })
+          language{
+            id
+            name
+            code
+          }
+        }
+        slug{
+          current
+        }
+        titles{
+          text
+          language{
+            id
+            name
+            code
+          }
+        }
+      }
       locations{
         _rawText(resolveReferences: { maxDepth: 20 })
         language{
@@ -298,12 +360,22 @@ const PartnerTemplate = props => {
     "courses": [],
     "learningResources":[]
   }
-  projects.forEach((n,i)=>{
-    fakeNode.projects.push(n.node)
-  })
-  events.forEach((n,i)=>{
-    fakeNode.events.push(n.node)
-  })
+  if(partner.featured_projects?.length > 0){
+    fakeNode.projects = partner.featured_projects;
+  }else{
+    projects.forEach((n,i)=>{
+      fakeNode.projects.push(n.node)
+    })
+  }
+  
+  if(partner.featured_events?.length > 0){
+    fakeNode.events = partner.featured_events
+  }else{
+    events.forEach((n,i)=>{
+      fakeNode.events.push(n.node)
+    })
+  }
+  
   workingGroups.forEach((n,i)=>{
     fakeNode.workingGroups.push(n.node)
   })
@@ -330,10 +402,15 @@ const PartnerTemplate = props => {
         {partner.mainLink?.text?.length > 0 &&
                   <div className={'main-link top-link'}><a className="blue-button" target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
         }
-        <div className="top-text one-column partner-page"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={descriptions}/></div>
-        {media.length > 0 &&
-           <Carousel media={media}/>
-        }
+        <div className="top-text one-column partner-page">
+          <div>
+          <BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={descriptions}/>
+          </div>
+          {/* {media.length > 0 &&
+            <Carousel media={[media[0]]}/>
+          } */}
+        </div>
+        
         <RelatedBlock languagePhrases={languagePhrases} node={fakeNode}/>
       </Container>
     </Layout>

@@ -184,6 +184,13 @@ export const query = graphql`
           date
           time
         }
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
+        }
         endDate{
           date
           time

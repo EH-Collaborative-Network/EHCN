@@ -19,64 +19,7 @@ if(node){
   return(
     <div aria-hidden="true" className={styles.root}>
         <div className="one-column">
-        {(node.partners?.length > 0) &&
-            <section>
-            <h4><TranslatedPhrase phrase={"relatedPartners"} translations={languagePhrases}/></h4>
-            <ul className={styles.special}>
-               {
-                   node.partners.map(function(node,index){
-                       return(
-                           <li key={index}><Link to={"/partner/"+node.slug?.current}>{node.name}</Link></li>
-                       )
-                   })
-                }            
-            </ul>
-            </section>
-        }
-        {(node.learningResources?.length > 0) &&
-            <section>
-            <h4><TranslatedPhrase phrase={"relatedLearningResources"} translations={languagePhrases}/></h4>
-            <ul>
-               {
-                   node.learningResources.map(function(node,index){
-                       return(
-                           <li key={index}><Link to={"/learning-resource/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
-                       )
-                   })
-                }            
-            </ul>
-            </section>
-        }
-
         
-        {(node.courses?.length > 0) &&
-            <section>
-            <h4><TranslatedPhrase phrase={"relatedCourses"} translations={languagePhrases}/></h4>
-            <ul>
-               {
-                   node.courses.map(function(node,index){
-                       return(
-                           <li key={index}><Link to={"/course/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
-                       )
-                   })
-                }            
-            </ul>
-            </section>
-        }
-        {(node.workingGroups?.length > 0) &&
-            <section>
-            <h4><TranslatedPhrase phrase={"relatedWorkingGroups"} translations={languagePhrases}/></h4>
-            <ul>
-               {
-                   node.workingGroups.map(function(node,index){
-                       return(
-                           <li key={index}><Link to={"/working-group/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
-                       )
-                   })
-                }            
-            </ul>
-            </section>
-        }
         {(node.projects?.length > 0) &&
             <section>
             <h4><TranslatedPhrase phrase={"relatedProjects"} translations={languagePhrases}/></h4>
@@ -166,6 +109,66 @@ if(node){
                 )}}
             </LangContext.Consumer>
         }
+
+        {(node.partners?.length > 0) &&
+            <section>
+            <h4><TranslatedPhrase phrase={"relatedPartners"} translations={languagePhrases}/></h4>
+            <ul className={styles.special}>
+               {
+                   node.partners.map(function(node,index){
+                       return(
+                           <li key={index}><Link to={"/partner/"+node.slug?.current}>{node.name}</Link></li>
+                       )
+                   })
+                }            
+            </ul>
+            </section>
+        }
+        {(node.learningResources?.length > 0) &&
+            <section>
+            <h4><TranslatedPhrase phrase={"relatedLearningResources"} translations={languagePhrases}/></h4>
+            <ul>
+               {
+                   node.learningResources.map(function(node,index){
+                       return(
+                           <li key={index}><Link to={"/learning-resource/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                       )
+                   })
+                }            
+            </ul>
+            </section>
+        }
+
+        
+        {(node.courses?.length > 0) &&
+            <section>
+            <h4><TranslatedPhrase phrase={"relatedCourses"} translations={languagePhrases}/></h4>
+            <ul>
+               {
+                   node.courses.map(function(node,index){
+                       return(
+                           <li key={index}><Link to={"/course/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                       )
+                   })
+                }            
+            </ul>
+            </section>
+        }
+        {(node.workingGroups?.length > 0) &&
+            <section>
+            <h4><TranslatedPhrase phrase={"relatedWorkingGroups"} translations={languagePhrases}/></h4>
+            <ul>
+               {
+                   node.workingGroups.map(function(node,index){
+                       return(
+                           <li key={index}><Link to={"/working-group/"+node.slug?.current}><TranslatedTitle translations={node.titles}/></Link></li>
+                       )
+                   })
+                }            
+            </ul>
+            </section>
+        }
+
         
          
  

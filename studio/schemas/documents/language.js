@@ -520,6 +520,18 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'featuredEvents',
+      type: 'string',
+      title: 'Featured Events'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'featuredProjects',
+      type: 'string',
+      title: 'Featured Projects'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'ehcnSupported',
       type: 'string',
       title: 'EHCN is supported by the <a href="https://opensocietyuniversitynetwork.org/">Open Society University Network</a>.'

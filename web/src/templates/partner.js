@@ -36,7 +36,9 @@ export const query = graphql`
           search
           news
           relatedCourses
+          featuredEvents
           relatedWorkingGroups
+          featuredProjects
           relatedLearningResources
           relatedNews
           archive

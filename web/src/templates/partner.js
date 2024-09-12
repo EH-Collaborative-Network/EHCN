@@ -37,9 +37,9 @@ export const query = graphql`
           search
           news
           relatedCourses
-          relatedEvents
+          featuredEvents
           relatedWorkingGroups
-          relatedProjects
+          featuredProjects
           relatedLearningResources
           relatedPartners
           relatedNews
@@ -411,7 +411,7 @@ const PartnerTemplate = props => {
           } */}
         </div>
         
-        <RelatedBlock languagePhrases={languagePhrases} node={fakeNode}/>
+        <RelatedBlock featured={true} languagePhrases={languagePhrases} node={fakeNode}/>
       </Container>
     </Layout>
     

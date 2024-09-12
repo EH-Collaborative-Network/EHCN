@@ -11,7 +11,7 @@ import BlockContent from "../TranslationHelpers/block-content";
 import ArchiveItem from "../ArchiveItem/archiveItem"
 import {Figure} from "../Figure/figure"
 // import { FundingOpportunity } from "./fundingOpportunity"
-const RelatedBlock = ({node, languagePhrases, globalLanguages, opps}) => {
+const RelatedBlock = ({node, languagePhrases,featured, globalLanguages, opps}) => {
 if(node){
     let locale = 'en-GB';
     let offset = null;
@@ -22,7 +22,7 @@ if(node){
         
         {(node.projects?.length > 0) &&
             <section>
-            <h4><TranslatedPhrase phrase={"relatedProjects"} translations={languagePhrases}/></h4>
+            <h4><TranslatedPhrase phrase={featured? "featuredProjects":"relatedProjects"} translations={languagePhrases}/></h4>
 
                {
                    node.projects.map(function(node,index){
@@ -76,7 +76,7 @@ if(node){
               }
                 return(
             <section>
-            <h4><TranslatedPhrase phrase={"relatedEvents"} translations={languagePhrases}/></h4>
+            <h4><TranslatedPhrase phrase={featured? "featuredEvents":"relatedEvents"} translations={languagePhrases}/></h4>
                     <div className={styles.wrapper}>
                {
                    sortedEvents.map(function(node,index){

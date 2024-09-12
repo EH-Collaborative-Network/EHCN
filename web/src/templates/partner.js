@@ -177,7 +177,7 @@ export const query = graphql`
           caption
         }
         descriptions{
-          _rawText(resolveReferences: { maxDepth: 20 })
+          _rawText(resolveReferences: { maxDepth: 2 })
           language{
             id
             name

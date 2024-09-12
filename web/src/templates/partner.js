@@ -214,44 +214,6 @@ export const query = graphql`
           name
         }
       }
-      media{
-        embed{
-          embed
-          altText
-          caption
-        }
-        pdf{
-          altText
-          caption
-          asset {
-            _id
-            url
-          }
-        }
-        image{
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            height
-            width
-          }
-          asset {
-            _id
-          }
-          altText
-          caption
-        }
-      }
       slug {
         current
       }

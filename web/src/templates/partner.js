@@ -50,88 +50,7 @@ export const query = graphql`
         }
       }
     }
-    events: allSanityEvent(
-      filter: {partners: {elemMatch: {id: {eq: $id}}}}
-    ){
-      edges{
-          node {
-              partners {
-                id
-              }
-              name
-              mainImage {
-                asset {
-                  _id
-                }
-                altText
-                caption
-              }
-              timeZone{
-                name
-                offset
-              }
-              startDate{
-                date
-                time
-              }
-              endDate{
-                date
-                time
-              }
-              slug{
-                current
-              }
-              id
-              titles{
-                text
-                language{
-                  id
-                  name
-                  code
-                }
-              }
-            }
-      }
-    }
-    projects: allSanityProject(
-      filter: {partners: {elemMatch: {id: {eq: $id}}}}
-    ){
-      edges{
-          node {
-              partners {
-                id
-              }
-              name
-              slug{
-                current
-              }
-              mainImage {
-                asset {
-                  _id
-                }
-                altText
-                caption
-              }
-              descriptions{
-                _rawText(resolveReferences: { maxDepth: 20 })
-                language{
-                  id
-                  name
-                  code
-                }
-              }
-              id
-              titles{
-                text
-                language{
-                  id
-                  name
-                  code
-                }
-              }
-            }
-      }
-    }
+    
     learningResources: allSanityLearningResource(
       filter: {partners: {elemMatch: {id: {eq: $id}}}}
     ){
@@ -344,11 +263,9 @@ const PartnerTemplate = props => {
   const { data, errors } = props;
   
   const site = (data || {}).site;
-  const projects = (data || {}).projects?.edges;
   const workingGroups = (data || {}).workingGroups?.edges;
   const learningResources = (data || {}).learningResources?.edges;
   const courses = (data || {}).courses?.edges;
-  const events = (data || {}).events?.edges;
   const globalLanguages = site.languages;
   const partner = data && data.partner;
   const location = useLocation();
@@ -362,18 +279,10 @@ const PartnerTemplate = props => {
   }
   if(partner.featured_projects?.length > 0){
     fakeNode.projects = partner.featured_projects;
-  }else{
-    projects.forEach((n,i)=>{
-      fakeNode.projects.push(n.node)
-    })
   }
   
   if(partner.featured_events?.length > 0){
     fakeNode.events = partner.featured_events
-  }else{
-    events.forEach((n,i)=>{
-      fakeNode.events.push(n.node)
-    })
   }
   
   workingGroups.forEach((n,i)=>{

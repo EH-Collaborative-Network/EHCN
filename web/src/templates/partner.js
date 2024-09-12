@@ -31,7 +31,6 @@ export const query = graphql`
           aboutEHCN
           events
           newsletter
-          fundingOpportunities
           learningResources
           availableIn
           search
@@ -41,7 +40,6 @@ export const query = graphql`
           relatedWorkingGroups
           featuredProjects
           relatedLearningResources
-          relatedPartners
           relatedNews
           archive
           currentEvents

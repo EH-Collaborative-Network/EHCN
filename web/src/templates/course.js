@@ -39,7 +39,6 @@ export const query = graphql`
           aboutEHCN
           events
           newsletter
-          fundingOpportunities
           learningResources
           archive
           availableIn

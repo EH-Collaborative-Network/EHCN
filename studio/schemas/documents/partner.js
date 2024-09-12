@@ -54,6 +54,20 @@ export default {
         of: [{type: 'mediaItem'}],
     },
     {
+      name: 'featured_events',
+      type: 'array',
+      description: 'Featured Events associated with this partner (if any)',
+      title: 'Featured Events',
+      of:[{type:'reference', title:'Associated Event', to: [{type: 'event'}]}]
+    },
+    {
+        name: 'featured_projects',
+        type: 'array',
+        description: 'Featured Projects associated with this partner (if any)',
+        title: 'Featured Projects',
+        of:[{type:'reference', title:'Associated Project', to: [{type: 'project'}]}]
+    },
+    {
         name: 'keywords',
         type: 'array',
         title: 'Keywords',

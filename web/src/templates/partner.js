@@ -330,9 +330,6 @@ const PartnerTemplate = props => {
                   <div className={'main-link top-link'}><a className="blue-button" target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
         }
         <div className="top-text one-column partner-page"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={descriptions}/></div>
-        {media.length > 0 &&
-           <Carousel media={media}/>
-        }
         <RelatedBlock languagePhrases={languagePhrases} node={fakeNode}/>
       </Container>
     </Layout>

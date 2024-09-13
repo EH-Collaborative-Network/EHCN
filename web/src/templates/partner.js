@@ -35,7 +35,6 @@ export const query = graphql`
           learningResources
           availableIn
           search
-          news
           relatedCourses
           relatedEvents
           relatedWorkingGroups

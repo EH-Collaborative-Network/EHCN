@@ -164,21 +164,9 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
-      name:'featured',
-      type: 'string',
-      title: 'Featured'
-    },
-    {
-      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'partner',
       type: 'string',
       title: 'Partner Institution'
-    },
-    {
-      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
-      name:'ourPartners',
-      type: 'string',
-      title: 'Our Partners'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
@@ -191,12 +179,6 @@ export default {
       name:'projects',
       type: 'string',
       title: 'Projects'
-    },
-    {
-      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
-      name:'news',
-      type: 'string',
-      title: 'News'
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',

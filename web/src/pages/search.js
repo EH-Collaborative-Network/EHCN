@@ -46,7 +46,6 @@ export const query = graphql`
                 event
                 partner
                 archive
-                news
                 fundingOpportunity
                 project
                 workingGroup

@@ -44,7 +44,6 @@ export const query = graphql`
           aboutEHCN
           newsletter
           events
-          fundingOpportunities
           learningResources
           availableIn
           search
@@ -183,6 +182,13 @@ export const query = graphql`
         startDate{
           date
           time
+        }
+        mainImage {
+          asset {
+            _id
+          }
+          altText
+          caption
         }
         endDate{
           date

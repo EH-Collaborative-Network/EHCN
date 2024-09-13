@@ -33,7 +33,6 @@ export const query = graphql`
           code
           aboutEHCN
           events
-          fundingOpportunities
           learningResources
           archive
           relatedPartners

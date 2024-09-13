@@ -460,6 +460,18 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'featuredProjects',
+      type: 'string',
+      title: 'Featured Projects'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'featuredEvents',
+      type: 'string',
+      title: 'Featured Events'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'relatedCourses',
       type: 'string',
       title: 'Related Courses'

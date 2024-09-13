@@ -134,68 +134,7 @@ export const query = graphql`
         url
         text
       }
-      featured_events {
-        id
-        timeZone{
-          name
-          offset
-        }
-        startDate{
-          date
-          time
-        }
-        endDate{
-          date
-          time
-        }
-        mainImage {
-          asset {
-            _id
-          }
-          altText
-          caption
-        }
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
-      featured_projects{
-        id
-        mainImage {
-          asset {
-            _id
-          }
-          altText
-          caption
-        }
-        descriptions{
-          _rawText(resolveReferences: { maxDepth: 2 })
-          language{
-            id
-            name
-            code
-          }
-        }
-        slug{
-          current
-        }
-        titles{
-          text
-          language{
-            id
-            name
-            code
-          }
-        }
-      }
+      
       locations{
         _rawText(resolveReferences: { maxDepth: 20 })
         language{

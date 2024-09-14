@@ -115,7 +115,7 @@ export default {
         name: 'feature_partners',
         type: 'array',
         description: 'Feature this project on a partner page',
-        title: 'EHCN Partners involved',
+        title: 'feature on EHCN Partner page',
         of:[{type:'reference', title:'Feature Partner', to: [{type: 'partner'}]}]
     },
     {

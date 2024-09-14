@@ -36,11 +36,10 @@ export const query = graphql`
           availableIn
           search
           relatedCourses
-          relatedEvents
+          featuredEvents
           relatedWorkingGroups
-          relatedProjects
+          featuredProjects
           relatedLearningResources
-          relatedPartners
           relatedNews
           archive
           currentEvents
@@ -50,7 +49,7 @@ export const query = graphql`
       }
     }
     events: allSanityEvent(
-      filter: {partners: {elemMatch: {id: {eq: $id}}}}
+      filter: {feature_partners: {elemMatch: {id: {eq: $id}}}}
     ){
       edges{
           node {
@@ -93,7 +92,7 @@ export const query = graphql`
       }
     }
     projects: allSanityProject(
-      filter: {partners: {elemMatch: {id: {eq: $id}}}}
+      filter: {feature_partners: {elemMatch: {id: {eq: $id}}}}
     ){
       edges{
           node {
@@ -330,7 +329,7 @@ const PartnerTemplate = props => {
                   <div className={'main-link top-link'}><a className="blue-button" target="_blank" href={partner.mainLink.url}>{partner.mainLink.text}</a></div>
         }
         <div className="top-text one-column partner-page"><BlockContent globalLanguages={globalLanguages} languagePhrases={languagePhrases} blocks={descriptions}/></div>
-        <RelatedBlock languagePhrases={languagePhrases} node={fakeNode}/>
+        <RelatedBlock featured={true} languagePhrases={languagePhrases} node={fakeNode}/>
       </Container>
     </Layout>
     

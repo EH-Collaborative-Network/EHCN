@@ -86,6 +86,13 @@ export default {
         of:[{type:'reference', title:'Associated Learning Resource', to: [{type: 'learningResource'}]}]
     },
     {
+        name: 'feature_partners',
+        type: 'array',
+        description: 'Feature this project on a partner page',
+        title: 'EHCN Partners involved',
+        of:[{type:'reference', title:'Feature Partner', to: [{type: 'partner'}]}]
+    },
+    {
         name: 'partners',
         type: 'array',
         description: 'Partner Institutions associated with this project (if any)',

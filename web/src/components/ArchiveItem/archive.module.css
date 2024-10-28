@@ -20,7 +20,7 @@
     padding-bottom: var(--small-space);
     @media (--media-min-medium) {
         flex-basis: 18%;
-        max-width: 18%;
+        max-width: 27%;
         position: fixed;
         max-height: none;
     }
@@ -85,7 +85,7 @@
     display: none;
 }
 .accordion input[type=checkbox]{
-    display: none;
+    /* display: none; */
 }
 .filterWrapper label{
     cursor: pointer;
@@ -97,11 +97,11 @@
     font-family: var(--font-family-bold);
 }
 .accordion div div{
-    display: inline-block;
+    display: block;
     padding:0 calc(var(--small-space)/2);
 }
 .accordion label::after{
-    content:","
+    /* content:"," */
 }
 .accordion div div:last-child label::after{
     content:""

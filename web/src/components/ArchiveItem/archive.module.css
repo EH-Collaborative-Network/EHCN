@@ -11,7 +11,7 @@
 }
 .filterWrapper{
     background-color: var(--color-light-blue);
-    font-size:var(--font-small-size);
+    font-size:var(--font-extra-small-size);
     top: var(--space);
     right:var(--space);
     max-width: 100%;

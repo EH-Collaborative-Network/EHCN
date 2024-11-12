@@ -5,6 +5,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Document types
 import course from './documents/course'
 import event from './documents/event'
+import onGoingActivity from './documents/ongoingActivity'
 import language from './documents/language'
 import learningResource from './documents/learningResource'
 import opportunity from './documents/opportunity'
@@ -28,6 +29,7 @@ import richText from './objects/richText'
 import translation from './objects/translation'
 import titleTranslation from './objects/titleTranslation'
 import dateObj from './objects/dateObj'
+import ongoingActivity from './documents/ongoingActivity'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -59,6 +61,7 @@ export default createSchema({
     page,
     person,
     partner,
+    ongoingActivity,
     project,
     siteSettings,
     timeZone,

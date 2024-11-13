@@ -164,6 +164,12 @@ export default {
     },
     {
       description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
+      name:'showPastEvents',
+      type: 'string',
+      title: 'Show past events'
+    },
+    {
+      description: 'This translation is for cross-site navigation. Page-specific translations can be added via their own page in the CMS',
       name:'ongoing',
       type: 'string',
       title: 'Ongoing'

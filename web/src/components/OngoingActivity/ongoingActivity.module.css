@@ -5,9 +5,8 @@
 .wrapper{
     display: flex;
     flex-direction: column-reverse;
-    @media (--media-min-medium) {
-        flex-direction: row;
-    }
+    padding-right: calc(var(--space)* 3);
+    max-width: 935px;
 }
 .label{
    font-size: var(--font-small-size); 
@@ -15,18 +14,29 @@
 .filterWrapper{
     background-color: var(--color-light-blue);
     font-size:var(--font-extra-small-size);
-    top: var(--space);
+    top: 0;
     right:var(--space);
     max-width: 100%;
     max-height: 60vh;
     overflow: scroll;
+    position:sticky;
     padding-bottom: var(--small-space);
-    @media (--media-min-medium) {
+    /* @media (--media-min-medium) {
         flex-basis: 18%;
         max-width: 27%;
         position: fixed;
         max-height: none;
-    }
+    } */
+}
+.filterWrapper .filterPastYear{
+    display: flex;
+    width: calc(100% - var(--space-small));
+    justify-content: space-between;
+}
+.filterWrapper .year{
+    display: flex;
+    flex-basis: 50%;
+    
 }
 .filterWrapper h4{
     font-size: var(--font-small-size);
@@ -131,30 +141,65 @@
 
 .titleArea{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    @media (--media-min-medium) {
+        flex-direction: row;
+    }
+}
+.selectWrapper{
+    top: 50px;
+    right: 50px;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+}
+.selectWrapper > select{
+    margin-bottom: calc(1* 5px);
+    margin-top: 0;
+    width: calc(var(--space) * 5);
+    padding-top: 0;
 }
 .root figure{
     width: 100%;
     height: auto;
     overflow:hidden;
     margin:0;
+    margin-bottom:var(--space);
+    flex-basis: 50%;
     @media (min-width: 1300px) {
         height: auto;
         width: 50%;
+        
     }
 }
+/* .root figure > div{
+    max-width: 1000000px;
+    @media (--media-min-medium) {
+        max-width: 100%;
+    }
+} */
 .yearResources{
     border-top: 1px solid var(--color-dark-blue);
 }
 .title{
     font-size: var(--font-base-size);
-    font-weight: bold;
     flex-basis: calc(50% - (var(--small-space) * 2));
+}
+.title span.titleMain{
+    font-weight:bold;
+    font-size: var(--font-base-size);
+    width: 100%;
 }
 .title span{
     display: block;
     margin-top: calc(var(--small-space)*2);
-    font-size: var(--font-small-size);
+    font-size: var(--font-base-size);
+    width: 60%;
+}
+.currentPast{
+    margin-top: var(--small-space);
+   font-size: var(--font-small-size);
 }
 .themeAccordion{
     border-bottom: 1px solid var(--color-dark-blue);
@@ -166,9 +211,9 @@
     background-color: var(--color-light-blue);
     padding: var(--space);
     margin-top:var(--space);
-    flex-basis: calc(100% - (var(--space) * 4));
+    flex-basis: calc(100% - (var(--space) ));
     @media (min-width: 1300px) {
-        flex-basis: calc(100% - (var(--space) * 3));
+        flex-basis: calc(100% - (var(--space)));
     }
 }
 
@@ -186,7 +231,7 @@
 }
 
 .filterWrapper select{
-    width: calc(100% - (var(--small-space) * 2));
+    width: calc(var(--space) * 5);
 }
 .searchWrapper{
     position:relative;

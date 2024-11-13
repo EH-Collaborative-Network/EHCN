@@ -84,6 +84,7 @@ export const query = graphql`
           events
           fundingOpportunities
           learningResources
+          showPastEvents
           selectInstitution
           archive
           relatedPartners
@@ -96,10 +97,10 @@ export const query = graphql`
           application
           availableOpps
           networkWide
-          studentLed
+          upcomingEvents
           results
           noResults
-          facultyLed
+          showPastEvents
         }
       }
     }
@@ -119,9 +120,17 @@ export const query = graphql`
                   date
                   time
                 }
-                  mainLink{
+                mainLink{
                   url
                   text
+                }
+                locations{
+                  _rawText(resolveReferences: { maxDepth: 20 })
+                  language{
+                    id
+                    name
+                    code
+                  }
                 }
                 timeZone{
                   name
@@ -224,6 +233,36 @@ const OngoingPage = props => {
       filteredResults.push(node)
     }
   })
+
+  function isCurrentOrUpcoming(cdate, cmonth, cyear) {
+    let d = new Date();
+    let date = d.getDate();
+    let year = d.getFullYear();
+    let month = d.getMonth();
+    let is = true;
+    cmonth = cmonth - 1;
+
+
+    if(cyear < year){
+      is = false
+    }else if(cyear > year){
+      is = true
+    }else{
+      
+      if(cmonth > month){
+        is = true
+      }else if(cmonth < month){
+          is = false
+      }else{
+          if(cdate >= date){
+            is = true
+          }else if(cdate < date){
+            is = false;
+          }
+      }
+    }
+    return is;
+  }
   function handleSearch(e){
     let el = e.target;
     let parent = el.closest("div");
@@ -238,8 +277,8 @@ const OngoingPage = props => {
       setQuery(phrase)
     }
   }
-  const [studentLed, setStudentLed] = useState(true);
-  const [facultyLed, setFacultyLed] = useState(true);
+  const [current, setCurrent] = useState(true);
+  const [past, setPast] = useState(true);
   const [partnerFilter, setPartnerFilter] = useState([]);
   const [mediumFilter, setMediumFilter] = useState([]);
   const [themeFilter, setThemeFilter] = useState([]);
@@ -317,21 +356,21 @@ const OngoingPage = props => {
             document.querySelector("#theme-" + id).checked = true;
           })
           setThemeFilter(ve.split(','))
-        }else if(p == "student-led"){
+        }else if(p == "current-upcoming"){
           if(v == "true"){
 
-            setStudentLed(true)
+            setCurrent(true)
           }else{
             document.querySelector("#student-led").checked = false;
-            setStudentLed(false)
+            setCurrent(false)
           }
           
         }else if(p == "faculty-led"){
           if(v == "true"){
-            setFacultyLed(true)
+            setPast(true)
           }else{
             document.querySelector("#faculty-led").checked = false;
-            setFacultyLed(false)
+            setPast(false)
           }
           
         }else if(p == "year"){
@@ -404,7 +443,7 @@ all.sort(function (a, b) {
         let kv = searchstring.split("&");
         kv.forEach((k,i)=>{
           let newk = k.split("=");
-          if((newk[0]!="student-led" && e.target.value == "student-led") || (newk[0]!="faculty-led" && e.target.value == "faculty-led")){
+          if((newk[0]!="upcoming-current" && e.target.value == "upcoming-current") || (newk[0]!="past" && e.target.value == "past")){
             searchParams.push(newk.join("="))
           }
           
@@ -420,43 +459,43 @@ all.sort(function (a, b) {
     
     if(e.target.checked){
 
-      if( e.target.value == 'student-led'){
+      if( e.target.value == 'upcoming-current'){
         
         
-        newSearchString = newSearchString + "&student-led=" + true;
+        newSearchString = newSearchString + "&upcoming-current=" + true;
         var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
         window.history.pushState({path:newurl},'',newurl);
 
 
-        setStudentLed(true)
+        setCurrent(true)
       }else{
 
-        newSearchString = newSearchString + "&faculty-led=" + true;
+        newSearchString = newSearchString + "&past=" + true;
         var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
         window.history.pushState({path:newurl},'',newurl);
 
 
 
-        setFacultyLed(true)
+        setPast(true)
       }
     }else{
-      if( e.target.value == 'student-led'){
+      if( e.target.value == 'upcoming-current'){
         if(facultyLed){
-          newSearchString = newSearchString + "&student-led=" + false;;
+          newSearchString = newSearchString + "&upcoming-current=" + false;;
           var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
           window.history.pushState({path:newurl},'',newurl);
-          setStudentLed(false)
+          setCurrent(false)
         }else{
           e.target.checked = true;
         }
         
       }else{
-        if(studentLed){
-          newSearchString = newSearchString + "&faculty-led=" + false;
+        if(current){
+          newSearchString = newSearchString + "&past=" + false;
           var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
           window.history.pushState({path:newurl},'',newurl);
 
-          setFacultyLed(false)
+          setPast(false)
         }else{
           e.target.checked = true;
         }
@@ -788,8 +827,16 @@ function handleMedium(e){
                 slug = slug;
             }
 
+            let d = node.endDate.date.split("-")
+            let currentOrUpcoming = false;
+            if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
+              currentOrUpcoming = true;
+            }
+
+
+
               return(
-                <OngoingActivity offset={offset} key={index} languagePhrases={languagePhrases} globalLanguages={globalLanguages} descriptions={node.descriptions} node={node} titles={node.titles} image={node.mainImage} link={slug}/>
+                <OngoingActivity currentUpcoming={currentOrUpcoming} offset={offset} key={index} languagePhrases={languagePhrases} globalLanguages={globalLanguages} descriptions={node.descriptions} node={node} titles={node.titles} image={node.mainImage} link={slug}/>
 
               )
             
@@ -872,10 +919,11 @@ function handleMedium(e){
                   if(partnerFilter.length > 0 && !instituteFound){
                     show = false;
                   }
-                  if(studentLed == false && node.node.studentLed){
+                  let d = node.node.endDate.date.split("-")
+                  if(current == false && (isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0])))){
                     show = false;
                   }
-                  if(facultyLed == false && studentLed == true && !node.node.studentLed){
+                  if(past == false && current == true && !(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0])))){
                     show = false;
                   }
                   if(yearFilter != "All"){
@@ -889,8 +937,15 @@ function handleMedium(e){
                   }
 
                   if(show){
+                    let d = node.node.endDate.date.split("-")
+                    let currentOrUpcoming = false;
+
+                    if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
+                       currentOrUpcoming = true;
+                    }
+
                     return(
-                        <OngoingActivity offset={offset} key={index} globalLanguages={globalLanguages} languagePhrases={languagePhrases} descriptions={node.node.descriptions} node={node.node} titles={node.node.titles} image={node.node.mainImage} link={slug}/>
+                        <OngoingActivity currentUpcoming={currentOrUpcoming} offset={offset} key={index} globalLanguages={globalLanguages} languagePhrases={languagePhrases} descriptions={node.node.descriptions} node={node.node} titles={node.node.titles} image={node.node.mainImage} link={slug}/>
                     )
                   }
                     
@@ -910,11 +965,22 @@ function handleMedium(e){
                     <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
                     </svg>
               </h1>
-              <div>
-                <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
-                <label htmlFor="student-led"><span><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></span></label><br></br>
-                <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>
-                <label htmlFor="faculty-led"><span><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></span></label>
+              <div className={styles.filterPastYear}>
+              <div className={styles.currentPast}>
+                <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="past" defaultChecked={true}/>
+                <label htmlFor="faculty-led"><span><TranslatedPhrase translations={languagePhrases} phrase={"showPastEvents"}/></span></label>
+              </div>
+              <div className={styles.year}>
+                <h4>Year</h4>
+                <select onChange={handleYear}>
+                  <option value={"All"}>Any</option>
+                  <option value={"2024"}>2024</option>
+                  <option value={"2023"}>2023</option>
+                  <option value={"2022"}>2022</option>
+                  <option value={"2021"}>2021</option>
+                  <option value={"2020"}>2020</option>
+                </select>
+              </div>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
                 <h4><TranslatedPhrase translations={languagePhrases} phrase={'medium'}/>
@@ -927,7 +993,7 @@ function handleMedium(e){
                   {mediumDivs}
                 </div>
               </div>
-              <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion " + styles.themeAccordion}>
+              <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion " }>
                 <h4><TranslatedPhrase translations={languagePhrases} phrase={'theme'}/>
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
@@ -938,17 +1004,7 @@ function handleMedium(e){
                   {themeDivs}
                 </div>
               </div>
-              <div>
-                <h4>Year</h4>
-                <select onChange={handleYear}>
-                  <option value={"All"}>Any</option>
-                  <option value={"2024"}>2024</option>
-                  <option value={"2023"}>2023</option>
-                  <option value={"2022"}>2022</option>
-                  <option value={"2021"}>2021</option>
-                  <option value={"2020"}>2020</option>
-                </select>
-              </div>
+              
              
              </div>
           </div>

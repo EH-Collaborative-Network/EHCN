@@ -7,23 +7,27 @@ import BlockContent from "../TranslationHelpers/block-content";
 import DisplayTime from "../Time/displayTime";
 
 
-const OngoingActivity = ({titles, descriptions, languagePhrases, globalLanguages, image, node, offset, key}) => {
+const OngoingActivity = ({titles, currentUpcoming, descriptions, languagePhrases, globalLanguages, image, node, offset, key}) => {
    
 
 
   return(
-    <div key={key} className={styles.root}>
+    <div key={key} className={currentUpcoming ?  "current-upcoming " + styles.root : styles.root}>
 
       <div className={styles.titleArea}>
       {
           image &&
           <Figure normal={true} node={image} />  
       }
-      <span className={styles.title}><TranslatedTitle translations={titles}/>
+      <span className={styles.title}>
+        <span className={styles.titleMain}><TranslatedTitle translations={titles}/></span>
       
       {(node.timeZone && node.startDate) &&
              <span> <DisplayTime event={node} offset={offset} languagePhrases={languagePhrases}/></span>
-            }</span>
+            }
+           <span className={styles.location}><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={ node.locations}/></span> 
+      </span>
+       
       </div>
 
       

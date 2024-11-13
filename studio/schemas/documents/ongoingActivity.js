@@ -56,6 +56,13 @@ export default {
         of: [{type: 'translation'}],
     },
     {
+      name: 'locations',
+      title: 'Location Information',
+      type: 'array',
+      description:"select add item to add a description in any language (including English)",
+      of: [{type: 'translation'}],
+  },
+    {
           name: 'themes',
           type: 'array',
           description: 'themes associated with this (if any)',

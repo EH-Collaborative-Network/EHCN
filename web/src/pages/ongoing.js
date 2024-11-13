@@ -7,7 +7,7 @@ import {
 } from "../lib/helpers";
 import { useFlexSearch } from 'react-use-flexsearch'
 import Container from "../components/Container/container";
-import ArchiveItem from "../components/ArchiveItem/archiveItem";
+import OngoingActivity from "../components/OngoingActivity/ongoingActivity";
 import BlockContent from "../components/TranslationHelpers/block-content";
 import TranslatedTitle from "../components/TranslationHelpers/translatedTitle";
 import TranslatedPhrase from "../components/TranslationHelpers/translatedPhrase";
@@ -15,17 +15,18 @@ import translate from "../components/TranslationHelpers/translate";
 import LangContext from "../components/context/lang";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
+import TimeZoneList from "../components/Time/timeZoneList";
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import { Link } from "@reach/router";
 import { Figure } from "../components/Figure/figure";
 import Layout from "../containers/layout";
-import * as styles from "../components/ArchiveItem/archive.module.css";
+import * as styles from "../components/OngoingActivity/ongoingActivity.module.css";
 
 
 
 export const query = graphql`
-  query ArchivePageQuery {
+  query OngoingPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
@@ -33,17 +34,6 @@ export const query = graphql`
       languages {
         name
         code
-      }
-    }
-    partners: allSanityPartner{
-      edges{
-        node{
-          id
-          name
-          slug{
-            current
-          }
-        }
       }
     }
     themes: allSanityTheme{
@@ -88,7 +78,9 @@ export const query = graphql`
           name
           code
           aboutEHCN
+          ongoing
           newsletter
+          timezone
           events
           fundingOpportunities
           learningResources
@@ -111,60 +103,10 @@ export const query = graphql`
         }
       }
     }
-    workingGroups: allSanityWorkingGroup{
+
+    activities: allSanityOngoingActivity{
         edges{
             node {
-                _createdAt
-                studentLed
-                titles{
-                  text
-                  language{
-                    id
-                    name
-                    code
-                  }
-                }
-                themes{
-                  id
-                  name
-                }
-                mediums{
-                  id
-                  name
-                }
-                slug{
-                    current
-                }
-                partners{
-                  id
-                  name
-                  slug{
-                    current
-                  }
-                }
-                mainImage {
-                    crop {
-                      _key
-                      _type
-                      top
-                      bottom
-                      left
-                      right
-                    }
-                    asset {
-                      _id
-                    }
-                    altText
-                  }
-                
-                id
-              }
-        }
-    }
-    events: allSanityEvent{
-        edges{
-            node {
-                studentLed
                 titles{
                   text
                   language{
@@ -177,15 +119,17 @@ export const query = graphql`
                   date
                   time
                 }
-                slug{
-                    current
+                  mainLink{
+                  url
+                  text
                 }
-                partners{
-                  id
+                timeZone{
                   name
-                  slug{
-                    current
-                  }
+                  offset
+                }
+                endDate{
+                  date
+                  time
                 }
                 themes{
                   id
@@ -195,104 +139,13 @@ export const query = graphql`
                   id
                   name
                 }
-                mainImage {
-                    crop {
-                      _key
-                      _type
-                      top
-                      bottom
-                      left
-                      right
-                    }
-                    asset {
-                      _id
-                    }
-                    altText
-                  }
-                
-                id
-              }
-        }
-    }
-    courses: allSanityCourse{
-      edges{
-          node {
-              _createdAt
-              titles{
-                text
-                language{
-                  id
-                  name
-                  code
-                }
-              }
-              themes{
-                id
-                name
-              }
-              mediums{
-                id
-                name
-              }
-              slug{
-                  current
-              }
-              partners{
-                id
-                name
-                slug{
-                  current
-                }
-              }
-              mainImage {
-                  crop {
-                    _key
-                    _type
-                    top
-                    bottom
-                    left
-                    right
-                  }
-                  asset {
-                    _id
-                  }
-                  altText
-                }
-              
-              id
-            }
-      }
-  }
-    projects: allSanityProject{
-        edges{
-            node {
-                _createdAt
-                studentLed
-                titles{
-                  text
-                  language{
+                descriptions{
+                    _rawText(resolveReferences: { maxDepth: 20 })
+                    language{
                     id
                     name
                     code
-                  }
-                }
-                slug{
-                    current
-                }
-                partners{
-                  id
-                  name
-                  slug{
-                    current
-                  }
-                }
-                themes{
-                  id
-                  name
-                }
-                mediums{
-                  id
-                  name
+                    }
                 }
                 mainImage {
                     crop {
@@ -313,7 +166,9 @@ export const query = graphql`
               }
         }
     }
-    fp: allSanityPage(filter: {slug: {current: {eq: "archive"}}}) {
+
+
+    fp: allSanityPage(filter: {slug: {current: {eq: "ongoing"}}}) {
       edges {
         node {
           id
@@ -340,8 +195,9 @@ export const query = graphql`
   }
 `;
 
-const ArchivePage = props => {
+const OngoingPage = props => {
   const { data, errors } = props;
+
 
   if (errors) {
     return (
@@ -360,6 +216,7 @@ const ArchivePage = props => {
   const store = (data || {}).items?.store
   const index = (data || {}).items?.index
   const [query, setQuery] = useState(null);
+  const [offset, setOffset] = useState(null);
   const results = index ? useFlexSearch(query, index, store) : []
   let filteredResults = [];
   results?.map(function(node, index){
@@ -402,13 +259,11 @@ const ArchivePage = props => {
   }
 
   const titles = (data || {}).fp.edges[0]?.node?.titles;
-  const projects = (data || {}).projects?.edges;
-  const partners = (data || {}).partners?.edges;
+
+
   const themes = (data || {}).themes?.edges;
   const mediums = (data || {}).mediums?.edges;
-  const events = (data || {}).events?.edges;
-  const workingGroups = (data || {}).workingGroups?.edges;
-  const courses = (data || {}).courses?.edges;
+  const events = (data || {}).activities?.edges;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const accordion = (e) => {
     let el = e.target;
@@ -462,13 +317,6 @@ const ArchivePage = props => {
             document.querySelector("#theme-" + id).checked = true;
           })
           setThemeFilter(ve.split(','))
-        }else if(p == "partners"){
-          let ve = v.split("%20").join(" ") //handle spaces
-          ve.split(",").forEach((t,i)=>{
-            let id = t.split(" ").join("-");
-            document.querySelector("#partner-" + id).checked = true;
-          })
-          setPartnerFilter(ve.split(','))
         }else if(p == "student-led"){
           if(v == "true"){
 
@@ -495,26 +343,14 @@ const ArchivePage = props => {
 
 
   let all = [];
-  projects.forEach((node,i) => {
-        all.push(
-            [node, "project"]
-        )
-  })
+
   events.forEach((node,i) => {
     all.push(
         [node, "event"]
     )
 })
-courses.forEach((node,i) => {
-  all.push(
-      [node, "course"]
-  )
-})
-workingGroups.forEach((node,i) => {
-  all.push(
-      [node, "workingGroup"]
-  )
-})
+
+
 all.sort(function (a, b) {
   if (a[0].node.name < b[0].node.name) {
     return -1;
@@ -525,15 +361,7 @@ all.sort(function (a, b) {
   return 0;
 });
 
-  let partnerDivs = [] 
-  partners.forEach((node,i) => {
-        partnerDivs.push(
-            <div key={i}>
-              <input onChange={handlePartner} value={node.node.name} id={"partner-"+ node.node.name.split(" ").join("-")} type={"checkbox"}></input>
-              <label for={"partner-"+ node.node.name.split(" ").join("-")}>{node.node.name}</label>
-            </div> 
-        )
-  })
+
 
   let themeDivs = [] 
   themes.forEach((node,i) => {
@@ -550,13 +378,10 @@ all.sort(function (a, b) {
 
   let mediumDivs = [] 
   mediums.forEach((node,i) => {
-    let n = node.node.name.split(" ").join("-")
-    n = n.replace("&","-");
-    n = n.toLowerCase();
         mediumDivs.push(
             <div key={i}>
-              <input onChange={handleMedium} value={node.node.name} id={"medium-"+ n} type={"checkbox"}></input>
-              <label for={"medium-"+ n}><TranslatedTitle translations={node.node.titles}/></label>
+              <input onChange={handleMedium} value={node.node.name} id={"medium-"+ node.node.name.split(" ").join("-")} type={"checkbox"}></input>
+              <label for={"medium-"+ node.node.name.split(" ").join("-")}><TranslatedTitle translations={node.node.titles}/></label>
             </div> 
         )
   })
@@ -737,7 +562,7 @@ all.sort(function (a, b) {
     }
   }
 /** CHECK MEDIUM */
-  function handleMedium(e){
+function handleMedium(e){
     if(typeof window != `undefined`){
       let searchstring = window.location.search?.split("?")[1]
       let currentMedium = false;
@@ -805,77 +630,85 @@ all.sort(function (a, b) {
     setMediumFilter(arr);
     }
   }
-/* CHECK THEME */
-function handleTheme(e){
-  if(typeof window != `undefined`){
-    let searchstring = window.location.search?.split("?")[1]
-    let currentTheme = false;
-    let searchParams = [];
-    //check param
-    if(searchstring){
-
-      let kv = searchstring.split("&");
-      kv.forEach((k,i)=>{
-        let newk = k.split("=");
-        if(newk[0]!="themes"){
-          searchParams.push(newk.join("="))
-        }else{
-          currentTheme = newk[1].split(",")
-        }
-        
-      })
+  function handleTime(e){
+    let value = e.target.value;
+    if(value){
+      let value = parseInt(value);
     }
-    if(currentTheme){
+    setOffset(value);
+  }
+/* CHECK THEME */
+
+  function handleTheme(e){
+    if(typeof window != `undefined`){
+      let searchstring = window.location.search?.split("?")[1]
+      let currentTheme = false;
+      let searchParams = [];
+      //check param
+      if(searchstring){
+
+        let kv = searchstring.split("&");
+        kv.forEach((k,i)=>{
+          let newk = k.split("=");
+          if(newk[0]!="themes"){
+            searchParams.push(newk.join("="))
+          }else{
+            currentTheme = newk[1].split(",")
+          }
+          
+        })
+      }
+      if(currentTheme){
+        let n = e.target.value.split(" ").join("-")
+        n = n.replace("&","-");
+        n = n.toLowerCase();
+        const index = currentTheme.indexOf(n);
+        if (index > -1) { // only splice array when item is found
+          currentTheme.splice(index, 1); // 2nd parameter means remove one item only
+        }
+      }else{
+        currentTheme = []
+      }
+    let newSearchString;
+    
+    let arr = themeFilter.slice(0);
+    if(e.target.checked){
+      newSearchString = "?" + searchParams.join("&");
       let n = e.target.value.split(" ").join("-")
       n = n.replace("&","-");
       n = n.toLowerCase();
-      const index = currentTheme.indexOf(n);
-      if (index > -1) { // only splice array when item is found
-        currentTheme.splice(index, 1); // 2nd parameter means remove one item only
-      }
-    }else{
-      currentTheme = []
-    }
-  let newSearchString;
-  
-  let arr = themeFilter.slice(0);
-  if(e.target.checked){
-    newSearchString = "?" + searchParams.join("&");
-    let n = e.target.value.split(" ").join("-")
-    n = n.replace("&","-");
-    n = n.toLowerCase();
-    currentTheme.push(n);
-    if(currentTheme.length == 1){
-      currentTheme = currentTheme[0]
-    }else{
-      currentTheme = currentTheme.join(",")
-    } 
-    newSearchString = newSearchString + "&themes=" + currentTheme;
-    arr.push(e.target.value);
-  }else{
-
-    if(currentTheme.length == 1){
-      currentTheme = currentTheme[0]
-    }else{
-      currentTheme = currentTheme.join(",")
-    } 
-    newSearchString = "?" + searchParams.join("&");
-    if(currentTheme.length == 0){
-      newSearchString = newSearchString;
-    }else{
+      currentTheme.push(n);
+      if(currentTheme.length == 1){
+        currentTheme = currentTheme[0]
+      }else{
+        currentTheme = currentTheme.join(",")
+      } 
       newSearchString = newSearchString + "&themes=" + currentTheme;
+      arr.push(e.target.value);
+    }else{
+
+      if(currentTheme.length == 1){
+        currentTheme = currentTheme[0]
+      }else{
+        currentTheme = currentTheme.join(",")
+      } 
+      newSearchString = "?" + searchParams.join("&");
+      if(currentTheme.length == 0){
+        newSearchString = newSearchString;
+      }else{
+        newSearchString = newSearchString + "&themes=" + currentTheme;
+      }
+     
+      const index = arr.indexOf(e.target.value);
+      if (index > -1) { // only splice array when item is found
+        arr.splice(index, 1); // 2nd parameter means remove one item only
+      }
     }
-   
-    const index = arr.indexOf(e.target.value);
-    if (index > -1) { // only splice array when item is found
-      arr.splice(index, 1); // 2nd parameter means remove one item only
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+    window.history.pushState({path:newurl},'',newurl);
+    setThemeFilter(arr);
     }
   }
-  var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
-  window.history.pushState({path:newurl},'',newurl);
-  setThemeFilter(arr);
-  }
-}
 
   return (
       <>  
@@ -884,6 +717,8 @@ function handleTheme(e){
         <Container>
           <h1 hidden>Welcome to {site.title}</h1>
           <h1><TranslatedTitle translations={(preview && previewData) ? previewData.titles : titles}/></h1>
+          <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
+
           <div><div className={styles.searchWrapper}>
           <LangContext.Consumer>
             {theme => {
@@ -906,13 +741,22 @@ function handleTheme(e){
                     <em><TranslatedPhrase translations={languagePhrases} phrase={"search"}/> <TranslatedPhrase translations={languagePhrases} phrase={"results"}/>:</em>
                   }
           </div>
-          <div className="top-text one-column"><BlockContent languagePhrases={languagePhrases} globalLanguages={globalLanguages} blocks={(preview && previewData) ? previewData.bodies : fp}/></div>
+          <div className={styles.selectWrapper}>
+              <label className={styles.label} htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
+              <select className={styles.select} id="change-tz" onChange={handleTime}>
+                <TimeZoneList />
+              </select>
+              <div>
+            
           
+          
+          </div>
+            </div>
           <div className={styles.wrapper}>
              <div className={styles.resultsWrapper}>
 
              { filteredResults.length > 0 &&
-<>
+            <>
           {filteredResults.map(function(node, index){
             let slug = node.slug?.current || "";
             switch (node.type) {
@@ -945,7 +789,7 @@ function handleTheme(e){
             }
 
               return(
-                <ArchiveItem titles={node.titles} key={index} image={node.mainImage} link={slug}/>
+                <OngoingActivity offset={offset} key={index} languagePhrases={languagePhrases} globalLanguages={globalLanguages} descriptions={node.descriptions} node={node} titles={node.titles} image={node.mainImage} link={slug}/>
 
               )
             
@@ -998,9 +842,7 @@ function handleTheme(e){
                   
                   let show = true;
                   
-                  node.node.partners.forEach((p,i) => {
-                    institutionNames.push(p.name)
-                  })
+     
                   node.node.themes.forEach((p,i) => {
                     themeNames.push(p.name)
                   })
@@ -1048,7 +890,7 @@ function handleTheme(e){
 
                   if(show){
                     return(
-                        <ArchiveItem titles={node.node.titles} key={i} image={node.node.mainImage} link={slug}/>
+                        <OngoingActivity offset={offset} key={index} globalLanguages={globalLanguages} languagePhrases={languagePhrases} descriptions={node.node.descriptions} node={node.node} titles={node.node.titles} image={node.node.mainImage} link={slug}/>
                     )
                   }
                     
@@ -1075,15 +917,6 @@ function handleTheme(e){
                 <label htmlFor="faculty-led"><span><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></span></label>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
-                <h4><TranslatedPhrase translations={languagePhrases} phrase={'relatedPartners'}/>
-                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
-                    <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
-                    </svg>
-                </h4>
-                <div>{partnerDivs}</div>
-              </div>
-              <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
                 <h4><TranslatedPhrase translations={languagePhrases} phrase={'medium'}/>
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
@@ -1094,7 +927,7 @@ function handleTheme(e){
                   {mediumDivs}
                 </div>
               </div>
-              <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
+              <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion " + styles.themeAccordion}>
                 <h4><TranslatedPhrase translations={languagePhrases} phrase={'theme'}/>
                     <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 5.5741H10.1481" stroke="black" strokeLinecap="round"/>
@@ -1128,4 +961,4 @@ function handleTheme(e){
   );
 };
 
-export default ArchivePage;
+export default OngoingPage;

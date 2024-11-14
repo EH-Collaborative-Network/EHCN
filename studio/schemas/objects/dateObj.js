@@ -3,7 +3,9 @@ export default{
     name: 'dateObj',
     type: 'object',
     fields: [
-      {name: 'date', type: 'date', title: 'Date', description: 'Date',validation: Rule => Rule.required()},
+      {name: 'date', type: 'date', title: 'Date', description: 'Date',
+        // validation: Rule => Rule.required()
+        },
       {name: 'time', type: 'string', title: 'Time', description: '24 hour time format please (i.e. 17 instead of 5pm)',options: {
        list: ['00:00',
               '00:15',
@@ -101,7 +103,9 @@ export default{
               '23:15',
               '23:30',
               '23:45',
-              '24:00']},validation: Rule => Rule.required()},
+              '24:00']},
+            //   validation: Rule => Rule.required()
+            },
     ],
     preview: {
         select: {

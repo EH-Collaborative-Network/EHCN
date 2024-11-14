@@ -31,17 +31,18 @@ export default {
       type: 'reference',
       to:{ type: 'timezone'}
     },
+
      {
          name: 'startDate',
          title: 'Start Date & Time',
          type: 'dateObj',
-         description: ''
+         description: 'If this is an ongoing project, leave blank'
      },
      {
       name: 'endDate',
       title: 'End Date & Time',
       type: 'dateObj',
-      description: ''
+      description: 'If this is an ongoing project, leave blank'
     },
      {
         name: 'mainLink',
@@ -61,7 +62,13 @@ export default {
       type: 'array',
       description:"select add item to add a description in any language (including English)",
       of: [{type: 'translation'}],
-  },
+     },
+     {
+      name:'online',
+      type: 'boolean',
+      title: 'Is this event online?',
+      description: 'If this is in-person set to false',
+      },
     {
           name: 'themes',
           type: 'array',

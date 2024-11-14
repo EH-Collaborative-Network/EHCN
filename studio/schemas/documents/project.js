@@ -47,6 +47,18 @@ export default {
       }
     },
     {
+          name: 'startDate',
+          title: 'Start Date & Time',
+          type: 'dateObj',
+          description: ''
+      },
+      {
+      name: 'endDate',
+      title: 'End Date & Time',
+      type: 'dateObj',
+      description: ''
+    },
+    {
         name:'studentLed',
         type: 'boolean',
         title: 'Is this project student-lead?',

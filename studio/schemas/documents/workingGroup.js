@@ -25,6 +25,18 @@ export default {
       type: 'figure',
     },
     {
+      name: 'startDate',
+      title: 'Start Date & Time',
+      type: 'dateObj',
+      description: ''
+    },
+    {
+      name: 'endDate',
+      title: 'End Date & Time',
+      type: 'dateObj',
+      description: ''
+    },
+    {
       name:'studentLed',
       type: 'boolean',
       title: 'Is this working group student-lead?',

@@ -10,7 +10,7 @@ export default {
       name: 'name',
       type: 'string',
       title: 'Name of Timezone',
-      validation: Rule => Rule.required().error('title cannot be left blank')
+      // validation: Rule => Rule.required().error('title cannot be left blank')
     },
     {
       name:'offset',
@@ -55,7 +55,7 @@ export default {
         "+12:45",
         "+13:00"]
       },
-      validation: Rule => Rule.required().error('this cannot be left blank')
+      // validation: Rule => Rule.required().error('this cannot be left blank')
     }
   ],
   preview: {

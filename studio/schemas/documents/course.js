@@ -59,6 +59,18 @@ export default {
         of: [{type: 'mediaItem'}],
     },
     {
+      name: 'startDate',
+      title: 'Start Date & Time',
+      type: 'dateObj',
+      description: ''
+      },
+      {
+      name: 'endDate',
+      title: 'End Date & Time',
+      type: 'dateObj',
+      description: ''
+    },
+    {
         name: 'events',
         type: 'array',
         description: 'Events associated with this course (if any)',

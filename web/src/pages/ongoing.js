@@ -87,7 +87,6 @@ export const query = graphql`
           showPastEvents
           selectInstitution
           archive
-          relatedPartners
           filters
           year
           medium
@@ -116,6 +115,7 @@ export const query = graphql`
                     code
                   }
                 }
+                online
                 startDate{
                   date
                   time
@@ -229,7 +229,8 @@ const OngoingPage = props => {
   const results = index ? useFlexSearch(query, index, store) : []
   let filteredResults = [];
   results?.map(function(node, index){
-    if(node.type == "project" || node.type == "event" || node.type == "course" || node.type == "workingGroup"){
+    console.log(node)
+    if(node.type == "ongoingActivity"){
       filteredResults.push(node)
     }
   })
@@ -279,7 +280,10 @@ const OngoingPage = props => {
   }
   const [current, setCurrent] = useState(true);
   const [past, setPast] = useState(true);
-  const [partnerFilter, setPartnerFilter] = useState([]);
+  const [ongoing, setOngoing] = useState(true);
+  const [online, setOnline] = useState(true);
+  const [inperson, setInperson] = useState(true);
+
   const [mediumFilter, setMediumFilter] = useState([]);
   const [themeFilter, setThemeFilter] = useState([]);
   const [yearFilter, setYearFilter] = useState("All");
@@ -302,7 +306,7 @@ const OngoingPage = props => {
 
   const themes = (data || {}).themes?.edges;
   const mediums = (data || {}).mediums?.edges;
-  const events = (data || {}).activities?.edges;
+  const activities = (data || {}).activities?.edges;
   const languagePhrases = (data || {}).languagePhrases?.edges;
   const accordion = (e) => {
     let el = e.target;
@@ -356,24 +360,47 @@ const OngoingPage = props => {
             document.querySelector("#theme-" + id).checked = true;
           })
           setThemeFilter(ve.split(','))
-        }else if(p == "current-upcoming"){
-          if(v == "true"){
-
-            setCurrent(true)
-          }else{
-            document.querySelector("#student-led").checked = false;
+        }else if(p == "upcoming"){
+          if(v == "false"){
+            document.querySelector("#show-upcoming").checked = false;
             setCurrent(false)
-          }
-          
-        }else if(p == "faculty-led"){
-          if(v == "true"){
-            setPast(true)
           }else{
-            document.querySelector("#faculty-led").checked = false;
-            setPast(false)
+            setCurrent(true)
           }
           
-        }else if(p == "year"){
+        }else if(p == "past"){
+          if(v == "false"){
+            document.querySelector("#show-past").checked = false;
+            setPast(false)
+          }else{
+            setPast(true)
+          }
+          
+        } else if(p == "ongoing"){
+          if(v == "false"){
+            document.querySelector("#show-ongoing").checked = false;
+            setOngoing(false)
+          }else{
+            setOngoing(true)
+          }
+          
+        }  else if(p == "online"){
+          if(v == "false"){
+            document.querySelector("#show-online").checked = false;
+            setOnline(false)
+          }else{
+            setOnline(true)
+          }
+          
+        }  else if(p == "inperson"){
+          if(v == "false"){
+            document.querySelector("#show-inperson").checked = false;
+            setInperson(false)
+          }else{
+            setInperson(true)
+          }
+          
+        } else if(p == "year"){
           setYearFilter(v)
         }
       })
@@ -381,24 +408,7 @@ const OngoingPage = props => {
       }, []);
 
 
-  let all = [];
 
-  events.forEach((node,i) => {
-    all.push(
-        [node, "event"]
-    )
-})
-
-
-all.sort(function (a, b) {
-  if (a[0].node.name < b[0].node.name) {
-    return -1;
-  }
-  if (a[0].node.name > b[0].node.name) {
-    return 1;
-  }
-  return 0;
-});
 
 
 
@@ -410,17 +420,20 @@ all.sort(function (a, b) {
         themeDivs.push(
             <div key={i}>
               <input onChange={handleTheme} value={node.node.name} id={"theme-"+ n} type={"checkbox"}></input>
-              <label for={"theme-"+n}><TranslatedTitle translations={node.node.titles}/></label>
+              <label htmlFor={"theme-"+n}><TranslatedTitle translations={node.node.titles}/></label>
             </div> 
         )
   })
 
   let mediumDivs = [] 
   mediums.forEach((node,i) => {
+    let n = node.node.name.split(" ").join("-")
+    n = n.replace("&", "-");
+    n = n.toLowerCase()
         mediumDivs.push(
             <div key={i}>
-              <input onChange={handleMedium} value={node.node.name} id={"medium-"+ node.node.name.split(" ").join("-")} type={"checkbox"}></input>
-              <label for={"medium-"+ node.node.name.split(" ").join("-")}><TranslatedTitle translations={node.node.titles}/></label>
+              <input onChange={handleMedium} value={node.node.name} id={"medium-"+ n} type={"checkbox"}></input>
+              <label htmlFor={"medium-"+ n}><TranslatedTitle translations={node.node.titles}/></label>
             </div> 
         )
   })
@@ -433,7 +446,7 @@ all.sort(function (a, b) {
   }
 
 
-  /* STUDENT LED CHECK */
+  /* Checkbox CHECK */
   function handleCheck(e){
     if(typeof window != `undefined`){
       let searchstring = window.location.search?.split("?")[1]
@@ -443,7 +456,7 @@ all.sort(function (a, b) {
         let kv = searchstring.split("&");
         kv.forEach((k,i)=>{
           let newk = k.split("=");
-          if((newk[0]!="upcoming-current" && e.target.value == "upcoming-current") || (newk[0]!="past" && e.target.value == "past")){
+          if((newk[0]!="upcoming" && e.target.value == "upcoming") || (newk[0]!="past" && e.target.value == "past")|| (newk[0]!="ongoing" && e.target.value == "ongoing") || (newk[0]!="online" && e.target.value == "online")|| (newk[0]!="inperson" && e.target.value == "inperson")){
             searchParams.push(newk.join("="))
           }
           
@@ -459,16 +472,16 @@ all.sort(function (a, b) {
     
     if(e.target.checked){
 
-      if( e.target.value == 'upcoming-current'){
+      if( e.target.value == 'upcoming'){
         
         
-        newSearchString = newSearchString + "&upcoming-current=" + true;
+        newSearchString = newSearchString + "&upcoming=" + true;
         var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
         window.history.pushState({path:newurl},'',newurl);
 
 
         setCurrent(true)
-      }else{
+      }else if(e.target.value == 'past'){
 
         newSearchString = newSearchString + "&past=" + true;
         var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
@@ -477,11 +490,38 @@ all.sort(function (a, b) {
 
 
         setPast(true)
+      }else if(e.target.value == 'ongoing'){
+
+        newSearchString = newSearchString + "&ongoing=" + true;
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+        window.history.pushState({path:newurl},'',newurl);
+
+
+
+        setOngoing(true)
+      }else if(e.target.value == 'inperson'){
+
+        newSearchString = newSearchString + "&inperson=" + true;
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+        window.history.pushState({path:newurl},'',newurl);
+
+
+
+        setInperson(true)
+      }else if(e.target.value == 'online'){
+
+        newSearchString = newSearchString + "&online=" + true;
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+        window.history.pushState({path:newurl},'',newurl);
+
+
+
+        setOnline(true)
       }
     }else{
-      if( e.target.value == 'upcoming-current'){
-        if(facultyLed){
-          newSearchString = newSearchString + "&upcoming-current=" + false;;
+      if( e.target.value == 'upcoming'){
+        if(current){
+          newSearchString = newSearchString + "&upcoming=" + false;;
           var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
           window.history.pushState({path:newurl},'',newurl);
           setCurrent(false)
@@ -489,13 +529,43 @@ all.sort(function (a, b) {
           e.target.checked = true;
         }
         
-      }else{
-        if(current){
+      }else if(e.target.value == 'past'){
+        if(past){
           newSearchString = newSearchString + "&past=" + false;
           var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
           window.history.pushState({path:newurl},'',newurl);
 
           setPast(false)
+        }else{
+          e.target.checked = true;
+        }
+      }else if(e.target.value == 'ongoing'){
+        if(past){
+          newSearchString = newSearchString + "&ongoing=" + false;
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+          window.history.pushState({path:newurl},'',newurl);
+
+          setOngoing(false)
+        }else{
+          e.target.checked = true;
+        }
+      }else if(e.target.value == 'online'){
+        if(past){
+          newSearchString = newSearchString + "&online=" + false;
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+          window.history.pushState({path:newurl},'',newurl);
+
+          setOnline(false)
+        }else{
+          e.target.checked = true;
+        }
+      }else if(e.target.value == 'inperson'){
+        if(past){
+          newSearchString = newSearchString + "&inperson=" + false;
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
+          window.history.pushState({path:newurl},'',newurl);
+
+          setInperson(false)
         }else{
           e.target.checked = true;
         }
@@ -506,6 +576,8 @@ all.sort(function (a, b) {
 
     
     }
+
+
   }
 
 /* CHECK YEAR */ 
@@ -535,71 +607,7 @@ all.sort(function (a, b) {
     }
     setYearFilter(e.target.value);
   }
-  /* CHECK PARTNER */ 
-  function handlePartner(e){
-    if(typeof window != `undefined`){
 
-      let searchstring = window.location.search?.split("?")[1]
-      let currentPartner = false;
-      let searchParams = [];
-      //check param
-      if(searchstring){
-        let kv = searchstring.split("&");
-        kv.forEach((k,i)=>{
-          let newk = k.split("=");
-          if(newk[0]!="partners"){
-            searchParams.push(newk.join("="))
-          }else{
-            currentPartner = newk[1].split(",")
-          }
-          
-        })
-      }
-      if(currentPartner){
-        const index = currentPartner.indexOf(e.target.value.split(" ").join("%20"));
-        if (index > -1) { // only splice array when item is found
-          currentPartner.splice(index, 1); // 2nd parameter means remove one item only
-        }
-      }else{
-        currentPartner = []
-      }
-      
-
-
-    let newSearchString;
-    let arr = partnerFilter.slice(0);
-    if(e.target.checked){
-      newSearchString = "?" + searchParams.join("&");
-      currentPartner.push(e.target.value.split(" ").join("%20"));
-      if(currentPartner.length == 1){
-        currentPartner = currentPartner[0]
-      }else{
-        currentPartner = currentPartner.join(",")
-      } 
-      newSearchString = newSearchString + "&partners=" + currentPartner;
-      arr.push(e.target.value);
-    }else{
-      if(currentPartner.length == 1){
-        currentPartner = currentPartner[0]
-      }else{
-        currentPartner = currentPartner.join(",")
-      } 
-      newSearchString = "?" + searchParams.join("&");
-      if(currentPartner.length == 0){
-        newSearchString = newSearchString;
-      }else{
-        newSearchString = newSearchString + "&partners=" + currentPartner;
-      }
-      const index = arr.indexOf(e.target.value);
-      if (index > -1) { // only splice array when item is found
-        arr.splice(index, 1); // 2nd parameter means remove one item only
-      }
-    }
-    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + newSearchString;
-    window.history.pushState({path:newurl},'',newurl);
-    setPartnerFilter(arr);
-    }
-  }
 /** CHECK MEDIUM */
 function handleMedium(e){
     if(typeof window != `undefined`){
@@ -797,46 +805,22 @@ function handleMedium(e){
              { filteredResults.length > 0 &&
             <>
           {filteredResults.map(function(node, index){
-            let slug = node.slug?.current || "";
-            switch (node.type) {
-              case 'learningResource':
-                slug = "/learning-resource/"+slug;
-                break;
-              case 'course':
-                slug = "/course/"+slug;
-                break
-              case 'fundingOpportunity':
-                slug = "/funding/"+slug;
-                break;
-              case 'news':
-                slug = "/news/"+slug;
-                break;
-              case 'event':
-                slug = "/event/"+slug;
-                break;
-              case 'project':
-                slug = "/project/"+slug;
-                break;
-              case 'workingGroup':
-                slug = "/working-group/"+slug;
-                break;
-              case 'partner':
-                slug = "/partner/"+slug;
-                break;
-              default:
-                slug = slug;
-            }
-
-            let d = node.endDate.date.split("-")
-            let currentOrUpcoming = false;
-            if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
-              currentOrUpcoming = true;
+           
+            let currentOrUpcoming = "past";
+            if(node.endDate){
+              let d = node.endDate.date.split("-")
+              
+              if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
+                currentOrUpcoming = "upcoming";
+              }
+            }else{
+              currentOrUpcoming = "ongoing"
             }
 
 
 
               return(
-                <OngoingActivity currentUpcoming={currentOrUpcoming} offset={offset} key={index} languagePhrases={languagePhrases} globalLanguages={globalLanguages} descriptions={node.descriptions} node={node} titles={node.titles} image={node.mainImage} link={slug}/>
+                <OngoingActivity currentUpcoming={currentOrUpcoming} offset={offset} key={index} languagePhrases={languagePhrases} globalLanguages={globalLanguages} descriptions={node.descriptions} node={node} titles={node.titles} image={node.mainImage}/>
 
               )
             
@@ -846,40 +830,9 @@ function handleMedium(e){
           }
 { filteredResults.length < 1 &&
 <>
-             { all.map(function(n, i){
-                  let node = n[0]
+             { activities.map(function(n, index){
+                  let node = n
 
-                  let slug = node.node.slug?.current || "";
-                  switch (n[1]) {
-                    case 'learningResource':
-                      slug = "/learning-resource/"+slug;
-                      break;
-                    case 'course':
-                      slug = "/course/"+slug;
-                      break
-                    case 'fundingOpportunity':
-                      slug = "/funding/"+slug;
-                      break;
-                    case 'news':
-                      slug = "/news/"+slug;
-                      break;
-                    case 'event':
-                      slug = "/event/"+slug;
-                      break;
-                    case 'project':
-                      slug = "/project/"+slug;
-                      break;
-                    case 'workingGroup':
-                      slug = "/working-group/"+slug;
-                      break;
-                    case 'partner':
-                      slug = "/partner/"+slug;
-                      break;
-                    default:
-                      slug = slug;
-                  }
-                  let institutionNames = []
-                  let instituteFound = false;
 
                   let mediumNames = []
                   let mediumFound = false;
@@ -898,9 +851,7 @@ function handleMedium(e){
                   })
                   
                   
-                  if(partnerFilter.length > 0){
-                    instituteFound = partnerFilter.some( ai => institutionNames.includes(ai) );
-                  }
+                
                   if(mediumFilter.length > 0){
                     mediumFound = mediumFilter.some( ai => mediumNames.includes(ai) );
                   }
@@ -915,21 +866,45 @@ function handleMedium(e){
                   if(themeFilter.length > 0 && !themeFound){
                     show = false;
                   }
+                  let currentOrUpcoming = "past";
+                  if(node.node.endDate){
+                      let d = node.node.endDate?.date.split("-")
+                      if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
+                        currentOrUpcoming = "upcoming";
+                      }
+                  }else{
+                    currentOrUpcoming = "ongoing"
+                  }
+              
 
-                  if(partnerFilter.length > 0 && !instituteFound){
-                    show = false;
-                  }
-                  let d = node.node.endDate.date.split("-")
-                  if(current == false && (isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0])))){
-                    show = false;
-                  }
-                  if(past == false && current == true && !(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0])))){
-                    show = false;
-                  }
+
+                    if(current == false && currentOrUpcoming == "upcoming"){
+                      show = false;
+                    }
+
+                    if(past == false && currentOrUpcoming == "past"){
+                      show = false;
+                    }
+
+                    if(ongoing == false && currentOrUpcoming == "ongoing"){
+                      show = false;
+                    }
+
+
+                    if(online == false && node.node.online){
+                      show = false;
+                    }
+                    if(inperson == false && !node.node.online){
+                      show = false;
+                    }
+                  
+                  
                   if(yearFilter != "All"){
                     
                     if(node.node.startDate?.date.split("-")[0] == yearFilter || ( (new Date(node.node._createdAt))?.getFullYear() == yearFilter) ){
-                      show = true;
+                      // show = true;
+                    }else if(!node.node.endDate){
+
                     }else{
                       show = false;
                     }
@@ -937,15 +912,9 @@ function handleMedium(e){
                   }
 
                   if(show){
-                    let d = node.node.endDate.date.split("-")
-                    let currentOrUpcoming = false;
-
-                    if(isCurrentOrUpcoming(parseInt(d[2]),parseInt(d[1]), parseInt(d[0]))){
-                       currentOrUpcoming = true;
-                    }
-
+                   
                     return(
-                        <OngoingActivity currentUpcoming={currentOrUpcoming} offset={offset} key={index} globalLanguages={globalLanguages} languagePhrases={languagePhrases} descriptions={node.node.descriptions} node={node.node} titles={node.node.titles} image={node.node.mainImage} link={slug}/>
+                        <OngoingActivity currentUpcoming={currentOrUpcoming} offset={offset} key={index} globalLanguages={globalLanguages} languagePhrases={languagePhrases} descriptions={node.node.descriptions} node={node.node} titles={node.node.titles} image={node.node.mainImage}/>
                     )
                   }
                     
@@ -967,8 +936,20 @@ function handleMedium(e){
               </h1>
               <div className={styles.filterPastYear}>
               <div className={styles.currentPast}>
-                <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="past" defaultChecked={true}/>
-                <label htmlFor="faculty-led"><span><TranslatedPhrase translations={languagePhrases} phrase={"showPastEvents"}/></span></label>
+
+                <input onChange={handleCheck} type="checkbox" id="show-past" name="past" value="past" defaultChecked={true}/>
+                <label htmlFor="show-past"><span>Past</span></label>
+                <input onChange={handleCheck} type="checkbox" id="show-upcoming" name="upcoming" value="upcoming" defaultChecked={true}/>
+                <label htmlFor="show-upcoming"><span>Upcoming</span></label>
+                <input onChange={handleCheck} type="checkbox" id="show-ongoing" name="ongoing" value="ongoing" defaultChecked={true}/>
+                <label htmlFor="show-ongoing"><span>Ongoing</span></label>
+                
+                <input onChange={handleCheck} type="checkbox" id="show-online" name="online" value="online" defaultChecked={true}/>
+                <label htmlFor="show-online"><span>Online</span></label>
+                <input onChange={handleCheck} type="checkbox" id="show-inperson" name="inperson" value="inperson" defaultChecked={true}/>
+                <label htmlFor="show-inperson"><span>In-person</span></label>
+              
+              
               </div>
               <div className={styles.year}>
                 <h4>Year</h4>

@@ -7,12 +7,12 @@ import BlockContent from "../TranslationHelpers/block-content";
 import DisplayTime from "../Time/displayTime";
 
 
-const OngoingActivity = ({titles, currentUpcoming, descriptions, languagePhrases, globalLanguages, image, node, offset, key}) => {
+const OngoingActivity = ({titles, currentUpcoming, descriptions, languagePhrases, globalLanguages, image, node, offset}) => {
    
 
 
   return(
-    <div key={key} className={currentUpcoming ?  "current-upcoming " + styles.root : styles.root}>
+    <div className={currentUpcoming +  " " + styles.root}>
 
       <div className={styles.titleArea}>
       {

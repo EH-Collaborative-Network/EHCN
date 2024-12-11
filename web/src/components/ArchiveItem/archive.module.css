@@ -5,25 +5,39 @@
 .wrapper{
     display: flex;
     flex-direction: column-reverse;
-    @media (--media-min-medium) {
-        flex-direction: row;
-    }
+    padding-right: calc(var(--space)* 3);
+    max-width: 935px;
 }
 .filterWrapper{
+    outline: 2px solid var(--color-white);
     background-color: var(--color-light-blue);
     font-size:var(--font-extra-small-size);
-    top: var(--space);
+    top: 0;
     right:var(--space);
     max-width: 100%;
     max-height: 60vh;
     overflow: scroll;
+    position:sticky;
+    margin-bottom: var(--space);
     padding-bottom: var(--small-space);
-    @media (--media-min-medium) {
+    /* @media (--media-min-medium) {
         flex-basis: 18%;
         max-width: 27%;
         position: fixed;
         max-height: none;
-    }
+    } */
+}
+.filterWrapper input[type=checkbox] + label{
+    margin-right: var(--space)
+}
+.filterWrapper.sticky > div{
+   display: none;
+}
+.filterWrapper.sticky > h1 svg{
+   display: inline;
+}
+.filterWrapper .year{
+    display: flex;
 }
 .filterWrapper h4{
     font-size: var(--font-small-size);
@@ -68,14 +82,15 @@
     margin:var(--small-space);
     font-family: var(--font-family-bold);
 }
+
 .accordion{
     border-top: 1px solid var(--color-dark-blue);
     cursor: pointer;
     padding:0;
 }
-.accordion:nth-child(5){
+/* .accordion:nth-child(5){
     border-bottom: 1px solid var(--color-dark-blue);
-}
+} */
 .accordion:nth-child(3){
     margin-top: var(--small-space);
 }
@@ -112,7 +127,7 @@
     gap:calc(var(--small-space) * 2);
     justify-content: flex-start;
     overflow: scroll;
-    margin-top: var(--space);
+    margin-top: calc(var(--space) * 2);
     flex-wrap: wrap;
     @media (--media-min-medium) {
         flex-basis: 80%;
@@ -154,9 +169,10 @@
     background-color: var(--color-light-blue);
     padding: var(--small-space);
     flex-basis: calc(50% - (var(--small-space) * 4));
-    @media (min-width: 1300px) {
-        flex-basis: calc(33% - (var(--small-space) * 3));
+    @media (--media-min-medium) {
+    flex-basis: calc(33.1% - (var(--small-space) * 3));
     }
+
 }
 
 .root:nth-child(even){
@@ -174,6 +190,10 @@
 
 .filterWrapper select{
     width: calc(100% - (var(--small-space) * 2));
+    margin-bottom: calc(1* 5px);
+    margin-top: 0;
+    width: calc(var(--space) * 5);
+    padding-top: 0;
 }
 .searchWrapper{
     position:relative;
@@ -216,9 +236,12 @@
     top:-5px;
 }
 
-.filterWrapper > div{
-    display: none;
-    @media (--media-min-medium) {
-        display: block;
-    }
+
+.yearFilter{
+    display: flex;
+    font-size: var(--font-small-size)
+}
+.yearCheckFilter{
+    display:flex;
+    justify-content: space-between;
 }

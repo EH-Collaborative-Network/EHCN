@@ -937,13 +937,7 @@ function handleMedium(e){
               <div className={styles.filterPastYear}>
               <div className={styles.currentPast}>
 
-                <input onChange={handleCheck} type="checkbox" id="show-past" name="past" value="past" defaultChecked={true}/>
-                <label htmlFor="show-past"><span>Past</span></label>
-                <input onChange={handleCheck} type="checkbox" id="show-upcoming" name="upcoming" value="upcoming" defaultChecked={true}/>
-                <label htmlFor="show-upcoming"><span>Upcoming</span></label>
-                <input onChange={handleCheck} type="checkbox" id="show-ongoing" name="ongoing" value="ongoing" defaultChecked={true}/>
-                <label htmlFor="show-ongoing"><span>Ongoing</span></label>
-                
+             
                 <input onChange={handleCheck} type="checkbox" id="show-online" name="online" value="online" defaultChecked={true}/>
                 <label htmlFor="show-online"><span>Online</span></label>
                 <input onChange={handleCheck} type="checkbox" id="show-inperson" name="inperson" value="inperson" defaultChecked={true}/>
@@ -962,6 +956,14 @@ function handleMedium(e){
                   <option value={"2020"}>2020</option>
                 </select>
               </div>
+              <div className={styles.currentPast}>
+              <input onChange={handleCheck} type="checkbox" id="show-past" name="past" value="past" defaultChecked={true}/>
+                <label htmlFor="show-past"><span>Past</span></label>
+                <input onChange={handleCheck} type="checkbox" id="show-upcoming" name="upcoming" value="upcoming" defaultChecked={true}/>
+                <label htmlFor="show-upcoming"><span>Upcoming</span></label>
+                <input onChange={handleCheck} type="checkbox" id="show-ongoing" name="ongoing" value="ongoing" defaultChecked={true}/>
+                <label htmlFor="show-ongoing"><span>Ongoing</span></label>
+                </div>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
                 <h4><TranslatedPhrase translations={languagePhrases} phrase={'medium'}/>

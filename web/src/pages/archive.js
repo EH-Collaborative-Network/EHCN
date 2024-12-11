@@ -1068,11 +1068,24 @@ function handleTheme(e){
                     <path d="M5.57422 10.1481L5.57422 0.999983" stroke="black" strokeLinecap="round"/>
                     </svg>
               </h1>
+              <div className={styles.yearCheckFilter}>
               <div>
                 <input onChange={handleCheck} type="checkbox" id="student-led" name="student-led" value="student-led" defaultChecked={true}/>
-                <label htmlFor="student-led"><span><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></span></label><br></br>
+                <label htmlFor="student-led"><span><TranslatedPhrase translations={languagePhrases} phrase={'studentLed'}/></span></label>
                 <input onChange={handleCheck} type="checkbox" id="faculty-led" name="faculty-led" value="faculty-led" defaultChecked={true}/>
                 <label htmlFor="faculty-led"><span><TranslatedPhrase translations={languagePhrases} phrase={"facultyLed"}/></span></label>
+              </div>
+              <div className={styles.yearFilter}>
+                <h4>Year</h4>
+                <select onChange={handleYear}>
+                  <option value={"All"}>Any</option>
+                  <option value={"2024"}>2024</option>
+                  <option value={"2023"}>2023</option>
+                  <option value={"2022"}>2022</option>
+                  <option value={"2021"}>2021</option>
+                  <option value={"2020"}>2020</option>
+                </select>
+              </div>
               </div>
               <div onClick={(e) => accordion(e)} className={styles.accordion + " accordion"}>
                 <h4><TranslatedPhrase translations={languagePhrases} phrase={'relatedPartners'}/>
@@ -1105,17 +1118,7 @@ function handleTheme(e){
                   {themeDivs}
                 </div>
               </div>
-              <div>
-                <h4>Year</h4>
-                <select onChange={handleYear}>
-                  <option value={"All"}>Any</option>
-                  <option value={"2024"}>2024</option>
-                  <option value={"2023"}>2023</option>
-                  <option value={"2022"}>2022</option>
-                  <option value={"2021"}>2021</option>
-                  <option value={"2020"}>2020</option>
-                </select>
-              </div>
+              
              
              </div>
           </div>

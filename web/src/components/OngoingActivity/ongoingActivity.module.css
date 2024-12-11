@@ -12,6 +12,7 @@
    font-size: var(--font-small-size); 
 }
 .filterWrapper{
+    outline: 2px solid var(--color-white);
     background-color: var(--color-light-blue);
     font-size:var(--font-extra-small-size);
     top: 0;
@@ -28,15 +29,17 @@
         max-height: none;
     } */
 }
-.filterWrapper .filterPastYear{
-    display: flex;
-    width: calc(100% - var(--space-small));
-    justify-content: space-between;
+.filterWrapper input[type=checkbox] + label{
+    margin-right: var(--space)
+}
+.filterWrapper.sticky > div{
+   display: none;
+}
+.filterWrapper.sticky > h1 svg{
+   display: inline;
 }
 .filterWrapper .year{
     display: flex;
-    flex-basis: 50%;
-    
 }
 .filterWrapper h4{
     font-size: var(--font-small-size);
@@ -50,9 +53,7 @@
     right:0;
     position:absolute;
     top: calc(var(--small-space) * 2);
-    @media (--media-min-medium) {
-        display: none;
-    }
+    display: none;
 }
 .filterWrapper .accordion h4{
     padding:var(--small-space) calc(var(--small-space)*2);
@@ -125,7 +126,7 @@
     gap:calc(var(--small-space) * 2);
     justify-content: flex-start;
     overflow: scroll;
-    margin-top: var(--space);
+    margin-top: calc(var(--space) * 2);
     flex-wrap: wrap;
     @media (--media-min-medium) {
         flex-basis: 80%;
@@ -148,17 +149,29 @@
     }
 }
 .selectWrapper{
-    top: 50px;
-    right: 50px;
-    position: absolute;
+    
     display: flex;
     align-items: flex-start;
+    top: 0;
+    right: 0;
+    position: relative;
+    margin: var(--space) 0;
+    width: 100%;
+    @media(--media-min-medium){
+        top: 50px;
+        right: 50px;
+        position: absolute;
+        width: auto;
+    }
 }
 .selectWrapper > select{
     margin-bottom: calc(1* 5px);
     margin-top: 0;
-    width: calc(var(--space) * 5);
+    width: calc(var(--space) * 20);
     padding-top: 0;
+    @media(--media-min-medium){
+        width: calc(var(--space) * 5);
+    }
 }
 .root figure{
     width: 100%;
@@ -274,9 +287,16 @@
     top:-5px;
 }
 
-.filterWrapper > div{
+/* .filterWrapper > div{
     display: none;
     @media (--media-min-medium) {
         display: block;
     }
+} */
+.filterWrapper .filterPastYear{
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - var(--space-small));
+    justify-content: space-between;
+   
 }

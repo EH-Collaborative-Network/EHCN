@@ -419,12 +419,12 @@ color:inherit;
   display: none;
 }
 
-.filterwrapper.open > div{
+/* .filterwrapper.open > div{
   display: block;
   @media (--media-min-medium) {
       display: block;
   }
-}
+} */
 .filterwrapper.open h1 svg path:last-child{
   display: none;
 }

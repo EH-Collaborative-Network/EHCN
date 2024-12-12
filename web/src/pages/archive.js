@@ -1038,7 +1038,7 @@ function handleTheme(e){
                   }
                   if(yearFilter != "All"){
                     
-                    if(node.node.startDate?.date.split("-")[0] == yearFilter || ( (new Date(node.node._createdAt))?.getFullYear() == yearFilter) ){
+                    if(node.node.startDate?.date.split("-")[0] == yearFilter ){
                       // show = true;
                     }else{
                       show = false;

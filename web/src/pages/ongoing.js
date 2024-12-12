@@ -788,6 +788,7 @@ function handleMedium(e){
                     <em><TranslatedPhrase translations={languagePhrases} phrase={"search"}/> <TranslatedPhrase translations={languagePhrases} phrase={"results"}/>:</em>
                   }
           </div>
+          
           <div className={styles.selectWrapper}>
               <label className={styles.label} htmlFor="change-tz">{<TranslatedPhrase translations={languagePhrases} phrase={'timezone'}/>}:</label>
               <select className={styles.select} id="change-tz" onChange={handleTime}>
@@ -830,7 +831,7 @@ function handleMedium(e){
           }
 { filteredResults.length < 1 &&
 <>
-             { activities.map(function(n, index){
+             { activities.sort((a, b) => new Date(b.startDate?.datetime) - new Date(a.startDate?.datetime)).slice().reverse().map(function(n, index){
                   let node = n
 
 

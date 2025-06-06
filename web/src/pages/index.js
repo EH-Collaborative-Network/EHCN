@@ -339,7 +339,7 @@ const IndexPage = props => {
         </Container>
 
 
-        <Modal start={true} raw={statement}></Modal>
+{/* <Modal start={true} raw={statement}></Modal> */}
       </Layout>
       
     </>
